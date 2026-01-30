@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+@include('admin.components.head')
+
+<body>
+
+    @include('admin.components.sidebar')
+
+    <main class="dashboard-main">
+
+        @include('admin.components.navbar')
+
+        <div class="dashboard-main-body">
+
+            @include('admin.components.breadcrumb', [
+                'title' => $title ?? '',
+                'subTitle' => $subTitle ?? ''
+            ])
+
+            @yield('content')
+
+        </div>
+
+        @include('admin.components.footer')
+
+    </main>
+
+    @include('admin.components.script', [
+        'script' => $script ?? ''
+    ])
+
+</body>
+</html>
