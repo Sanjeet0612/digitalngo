@@ -35,4 +35,4 @@ return [
         'key' => env('OPENAI_API_KEY'),
     ],
 
-]; 
+];  
