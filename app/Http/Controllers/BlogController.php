@@ -14,7 +14,7 @@ use Illuminate\Support\Str;
 
 
 class BlogController extends Controller{
-    // All blogs
+    // All blogss
     public function blog(Request $request){
         $blogs = Blog::with('user')->where('status', 1)->orderByDesc('created_at')->get();
         $title = 'Blog';
