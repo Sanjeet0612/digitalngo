@@ -60,7 +60,7 @@
                         </div>
                         
                         <div class="card-body p-24">
-                            <form id="myForm" action="{{url('/')}}/add-sponsor" method="post" class="d-flex flex-column gap-20" enctype="multipart/form-data">
+                            <form id="myForm" action="{{route('admin.add-sponsor')}}" method="post" class="d-flex flex-column gap-20" enctype="multipart/form-data">
                                 @csrf
                                 
                                 <div>
