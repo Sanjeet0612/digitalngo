@@ -37,36 +37,31 @@
                                             S.L
                                         </div>
                                     </th>
-                                    <th scope="col">Created Date</th>
-                                    <th scope="col">Title</th>
-                                    <th scope="col">Image</th>
-                                    <th scope="col">Order Position</th>
+                                    <th scope="col">Phone</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Address</th>
+                                    <th scope="col">City</th>
                                     <th scope="col" class="text-center">Status</th>
                                     <th scope="col" class="text-center">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @php $i=1; @endphp
-                                @foreach($contact as $bannersVal)
+                                
                                 <tr>
                                     <td>
                                         <div class="d-flex align-items-center gap-10">
                                             <div class="form-check style-check d-flex align-items-center">
                                                 <input class="form-check-input radius-4 border border-neutral-400" type="checkbox" name="checkbox">
                                             </div>
-                                            {{$i}}
+                                            01
                                         </div>
                                     </td>
-                                    <td>{{$bannersVal->created_at}}</td>
-                                    <td>{{$bannersVal->title}}</td>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <img src="{{ asset('storage/'.$bannersVal->image_link) }}" alt="" class="w-100-px h-70-px  flex-shrink-0 me-12 overflow-hidden">
-                                        </div>
-                                    </td>
-                                    <td>{{$bannersVal->sort_order}}</td>
+                                    <td>{{$contact->phone}}</td>
+                                    <td>{{$contact->emailid}}</td>
+                                    <td>{{$contact->address}}</td>
+                                    <td>{{$contact->city}}</td>
                                     <td class="text-center">
-                                        @if($bannersVal->status==1)
+                                        @if($contact->status==1)
                                         <span class="bg-success-focus text-success-600 border border-success-main px-24 py-4 radius-4 fw-medium text-sm">Active</span>
                                         @else
                                         <span class="bg-danger-focus text-danger-600 border border-danger-main px-24 py-4 radius-4 fw-medium text-sm">Deactive</span>
@@ -74,17 +69,16 @@
                                     </td>
                                     <td class="text-center">
                                         <div class="d-flex align-items-center gap-10 justify-content-center">
-                                            <a href="{{route('admin.edit_banner', $bannersVal->id)}}" class="bg-success-focus text-success-600 bg-hover-success-200 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle">
+                                            <a href="{{route('admin.add_contact')}}" class="bg-success-focus text-success-600 bg-hover-success-200 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle">
                                                 <iconify-icon icon="lucide:edit" class="menu-icon"></iconify-icon>
                                             </a>
-                                            <button type="button" class="remove-item-btn bg-danger-focus bg-hover-danger-200 text-danger-600 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle">
+                                            <!--<button type="button" class="remove-item-btn bg-danger-focus bg-hover-danger-200 text-danger-600 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle">
                                                 <iconify-icon icon="fluent:delete-24-regular" class="menu-icon"></iconify-icon>
-                                            </button>
+                                            </button>-->
                                         </div>
                                     </td>
                                 </tr>
-                                @php $i++; @endphp
-                                @endforeach
+                               
                             </tbody>
                         </table>
                     </div>
