@@ -7,7 +7,7 @@
                 <h1>Our Volunteers Teams</h1>
                 <nav aria-label="breadcrumb" class="breadcrumb-wrap">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Our Volunteers</li>
                     </ol>
                 </nav>  
@@ -27,10 +27,6 @@
                     Volunteers Teams
                 </h1>
                 <div class="row">
-                    
-                   
-
-
                     <!-- Team Column One -->
                     <div class="col-12 col-lg-3 col-sm-6">
                         <div class="team-section-wrap">
@@ -40,7 +36,7 @@
                                     <a href="#"><i class="icofont-twitter"></i></a>
                                     <a href="#"><i class="icofont-instagram"></i></a>
                                 </div>
-                                <img src="assets/images/team/team-5.jpg" alt="" class="rounded-circle">
+                                <img src="{{url('/')}}/front/assets/images/team/team-5.jpg" alt="" class="rounded-circle">
                             </div>
                             <h4>Your Name</h4>
                             <h5>Volunteers </h5>
@@ -59,7 +55,7 @@
                                     <a href="#"><i class="icofont-twitter"></i></a>
                                     <a href="#"><i class="icofont-instagram"></i></a>
                                 </div>
-                                <img src="assets/images/team/team-5.jpg" alt="" class="rounded-circle">
+                                <img src="{{url('/')}}/front/assets/images/team/team-5.jpg" alt="" class="rounded-circle">
                             </div>
                             <h4>Your Name</h4>
                             <h5>Volunteers </h5>
@@ -78,7 +74,7 @@
                                     <a href="#"><i class="icofont-twitter"></i></a>
                                     <a href="#"><i class="icofont-instagram"></i></a>
                                 </div>
-                                <img src="assets/images/team/team-5.jpg" alt="" class="rounded-circle">
+                                <img src="{{url('/')}}/front/assets/images/team/team-5.jpg" alt="" class="rounded-circle">
                             </div>
                             <h4>Your Name</h4>
                             <h5>Volunteers </h5>
@@ -97,7 +93,7 @@
                                     <a href="#"><i class="icofont-twitter"></i></a>
                                     <a href="#"><i class="icofont-instagram"></i></a>
                                 </div>
-                                <img src="assets/images/team/team-5.jpg" alt="" class="rounded-circle">
+                                <img src="{{url('/')}}/front/assets/images/team/team-5.jpg" alt="" class="rounded-circle">
                             </div>
                             <h4>Your Name</h4>
                             <h5>Volunteers </h5>
@@ -116,7 +112,7 @@
                                     <a href="#"><i class="icofont-twitter"></i></a>
                                     <a href="#"><i class="icofont-instagram"></i></a>
                                 </div>
-                                <img src="assets/images/team/team-5.jpg" alt="" class="rounded-circle">
+                                <img src="{{url('/')}}/front/assets/images/team/team-5.jpg" alt="" class="rounded-circle">
                             </div>
                             <h4>Your Name</h4>
                             <h5>Volunteers </h5>
@@ -136,7 +132,7 @@
                                     <a href="#"><i class="icofont-twitter"></i></a>
                                     <a href="#"><i class="icofont-instagram"></i></a>
                                 </div>
-                                <img src="assets/images/team/team-5.jpg" alt="" class="rounded-circle">
+                                <img src="{{url('/')}}/front/assets/images/team/team-5.jpg" alt="" class="rounded-circle">
                             </div>
                             <h4>Your Name</h4>
                             <h5>Volunteers </h5>
@@ -156,7 +152,7 @@
                                     <a href="#"><i class="icofont-twitter"></i></a>
                                     <a href="#"><i class="icofont-instagram"></i></a>
                                 </div>
-                                <img src="assets/images/team/team-7.jpg" alt="" class="rounded-circle">
+                                <img src="{{url('/')}}/front/assets/images/team/team-7.jpg" alt="" class="rounded-circle">
                             </div>
                             <h4>Your Name</h4>
                             <h5>Volunteers </h5>
@@ -176,7 +172,7 @@
                                     <a href="#"><i class="icofont-twitter"></i></a>
                                     <a href="#"><i class="icofont-instagram"></i></a>
                                 </div>
-                                <img src="assets/images/team/team-8.jpg" alt="" class="rounded-circle">
+                                <img src="{{url('/')}}/front/assets/images/team/team-8.jpg" alt="" class="rounded-circle">
                             </div>
                             <h4>Your Name</h4>
                             <h5>Volunteers </h5>
