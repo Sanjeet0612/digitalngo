@@ -94,6 +94,10 @@ class AdminController extends Controller{
         $banner->update($data);
         return redirect()->route('admin.manage_banner')->with('success', 'Banner updated successfully');
     }
+    // Contact Section Start
+    public function manage_contact(Request $request){
+        return view('admin.contact.manage_contact');
+    }
     public function logout(Request $request){
         if(Auth::check()) { // check if user is logged in
             $user = Auth::user();  // full user object
