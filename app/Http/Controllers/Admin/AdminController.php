@@ -147,7 +147,31 @@ class AdminController extends Controller{
                 'sponsor_name' => 'required|string|max:255',
                 'emailid' => 'required|email',
                 'phone' => 'nullable|string|max:20',
+                'logo' => 'nullable|image|mimes:jpg,jpeg,png,gif,webp|max:500', // 500 Kb max
             ]);
+            $logoPath = null;
+            Sponsor::create([
+                'name' => $request->sponsor_name,
+                'phone' => $request->phone,
+                'email' => $request->emailid,
+                'address' => $request->address,
+                'state' => $request->state,
+                'city' => $request->city,
+                'zipcode' => $request->zip_code,
+                'description' => $request->description,
+                'logo' => $logoPath,  // store path in DB
+                'website' => $request->weburl,
+                'sponsor_type' => $request->sponsor_type ?? 'bronze',
+                'status' => 1,
+            ]);
+            if($request->hasFile('logo')) {
+                $file = $request->file('logo');
+                $filename = time().'_'.Str::slug($request->name).'.'.$file->getClientOriginalExtension();
+                $file->move(public_path('uploads/sponsors'), $filename);
+                $logoPath = 'uploads/sponsors/'.$filename;
+            }
+
+            return redirect()->back()->with('success', 'Sponsor created successfully');
 
          }else{
             $sponsor = Sponsor::all();
