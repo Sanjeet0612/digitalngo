@@ -161,8 +161,8 @@
         <div class="container pos-rel">
             <div class="row text-md-start text-center">
                 <div class="col-sm-12 col-md-auto copyright-text">
-                    © Copyright <span class="txt-blue">Mahror Foundation</span> 2022-<?php echo date("Y"); ?>. |
-                    Created by <a href="https://mavsolution.com/" rel="nofollow">MAV Digital Solutions Pvt. Ltd.</a>
+                    © Copyright <span class="txt-blue">{{$contact->copyright}}</span> |
+                    Created by <a href="{{$contact->created_by_url}}" rel="nofollow" target="_blank">{{$contact->created_by}}</a>
                 </div>
 
                 <div class="col-sm-12 col-md-auto ml-md-auto text-md-right text-center copyright-links">
