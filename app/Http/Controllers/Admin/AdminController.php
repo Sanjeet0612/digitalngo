@@ -180,7 +180,6 @@ class AdminController extends Controller{
          }
     }
     public function edit_sponsor(Request $request,$id){
-
         $sponsor = Sponsor::find($id); // id ke basis pe fetch
         if(!$sponsor){
             return redirect()->back()->with('error', 'Sponsor not found');
@@ -188,9 +187,8 @@ class AdminController extends Controller{
         return view('admin.event.edit_sponsor_form', compact('sponsor'));
     }
     public function update_sponsor(Request $request,$id){
-            // Fetch sponsor by ID
+        // Fetch sponsor by ID
         $sponsor = Sponsor::findOrFail($id);
-
         // Validation
         $request->validate([
             'sponsor_name' => 'required|string|max:255',
@@ -209,12 +207,10 @@ class AdminController extends Controller{
         // Handle logo upload
         if($request->hasFile('logo')) {
             $file = $request->file('logo');
-
             // Optional: delete old logo if exists
-            if ($sponsor->logo && file_exists(public_path($sponsor->logo))) {
+            if($sponsor->logo && file_exists(public_path($sponsor->logo))) {
                 unlink(public_path($sponsor->logo));
             }
-
             $filename = time().'_'.Str::slug($request->sponsor_name).'.'.$file->getClientOriginalExtension();
             $file->move(public_path('uploads/sponsors'), $filename);
             $sponsor->logo = 'uploads/sponsors/'.$filename;
@@ -231,9 +227,7 @@ class AdminController extends Controller{
         $sponsor->website = $request->weburl;
         $sponsor->sponsor_type = $request->sponsor_type ?? 'bronze';
         $sponsor->status = $request->status ?? 1;
-
         $sponsor->save();
-
         return redirect()->route('admin.manage_sponsor')->with('success', 'Sponsor updated successfully!');
     }
     public function manage_event(Request $request){
