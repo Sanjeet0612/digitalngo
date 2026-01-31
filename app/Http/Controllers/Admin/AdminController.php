@@ -111,6 +111,7 @@ class AdminController extends Controller{
                     'workingDays' => $request->workingDays,
                     'officeTime' => $request->officeTime,
                     'address' => $request->address,
+                    'short_desc' => $request->short_desc,
                     'city' => $request->city,
                     'state' => $request->state,
                     'zipcode' => $request->zipcode,
