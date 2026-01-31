@@ -28,3 +28,9 @@
     <script src="{{ asset('assets/js/app.js') }}"></script>
 
     <?php echo (isset($script) ? $script   : '')?>
+
+     <script>
+        document.getElementById("myForm").addEventListener("submit", function() {
+        document.getElementById("editdesc").value = quill.root.innerHTML;
+        });
+    </script>
