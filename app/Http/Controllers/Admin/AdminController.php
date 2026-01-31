@@ -135,6 +135,10 @@ class AdminController extends Controller{
         }
     }
     // Event Section Start
+    public function manage_sponsor(Request $request){
+        $sponsorList = array();
+        return view('admin.event.manage_sponsor',compact('sponsorList'));
+    }
     public function manage_event(Request $request){
         $eventList = array();
         return view('admin.event.manage_event',compact('eventList'));
