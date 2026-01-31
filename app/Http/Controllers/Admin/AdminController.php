@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
 use Carbon\Carbon;
 
 class AdminController extends Controller{
@@ -150,6 +151,12 @@ class AdminController extends Controller{
                 'logo' => 'nullable|image|mimes:jpg,jpeg,png,gif,webp|max:500', // 500 Kb max
             ]);
             $logoPath = null;
+            if($request->hasFile('logo')) {
+                $file = $request->file('logo');
+                $filename = time().'_'.Str::slug($request->name).'.'.$file->getClientOriginalExtension();
+                $file->move(public_path('uploads/sponsors'), $filename);
+                $logoPath = 'uploads/sponsors/'.$filename;
+            }
             Sponsor::create([
                 'name' => $request->sponsor_name,
                 'phone' => $request->phone,
@@ -164,12 +171,6 @@ class AdminController extends Controller{
                 'sponsor_type' => $request->sponsor_type ?? 'bronze',
                 'status' => 1,
             ]);
-            if($request->hasFile('logo')) {
-                $file = $request->file('logo');
-                $filename = time().'_'.Str::slug($request->name).'.'.$file->getClientOriginalExtension();
-                $file->move(public_path('uploads/sponsors'), $filename);
-                $logoPath = 'uploads/sponsors/'.$filename;
-            }
 
             return redirect()->back()->with('success', 'Sponsor created successfully');
 
