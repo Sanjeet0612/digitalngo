@@ -119,6 +119,8 @@ Route::prefix('admin')->group(function () {
         Route::get('/manage-contact', [AdminController::class, 'manage_contact'])->name('admin.manage_contact');
         Route::match(['get', 'post'], '/add-contact', [AdminController::class, 'add_contact'])->name('admin.add_contact');
         // Event Section
+        
+        Route::get('/manage-sponsor', [AdminController::class, 'manage_sponsor'])->name('admin.manage_sponsor');
         Route::get('/manage-event', [AdminController::class, 'manage_event'])->name('admin.manage_event');
         Route::match(['get', 'post'], '/add-event', [AdminController::class, 'add_event'])->name('admin.add-event');
         
