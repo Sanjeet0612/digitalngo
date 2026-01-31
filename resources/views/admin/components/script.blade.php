@@ -29,6 +29,12 @@
 
     <?php echo (isset($script) ? $script   : '')?>
 
+    <script>
+    setTimeout(function() {
+        $(".message").fadeOut('slow');
+    }, 3000); // 3000 = 3 seconds
+    </script>
+
      <script>
         document.getElementById("myForm").addEventListener("submit", function() {
         document.getElementById("editdesc").value = quill.root.innerHTML;
