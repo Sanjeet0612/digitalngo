@@ -86,7 +86,7 @@
                         <div class="icon-box-4 bg-orange mb-4">
                             <i data-feather="map-pin"></i>
                             <h3>Our Address</h3>
-                            <div>Mahadeo Asthan Maner, Patna, Bihar -801108 (India)</div>
+                            <div>{{$contact->address}}, {{$contact->city}}, {{$contact->state}} - {{$contact->zipcode}} ({{$contact->country}})</div>
                         </div>
                         <!-- Icon Boxes Style -->
 
