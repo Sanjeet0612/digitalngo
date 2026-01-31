@@ -96,6 +96,14 @@
                                     <input type="text" name="country" value="{{$contact->country}}" class="form-control radius-8" id="country" placeholder="Country">
                                 </div>
                             </div>
+                            <div class="col-sm-6">
+                                <div class="mb-20">
+                                    <label for="short_desc" class="form-label fw-semibold text-primary-light text-sm mb-8">Footer Short Description <span class="text-danger-600">*</span></label>
+                                    <input type="text" name="short_desc" value="{{$contact->short_desc}}" class="form-control radius-8" id="short_desc" placeholder="Footer Short Desc">
+                                </div>
+                            </div>
+
+                            
 
                             <div class="col-sm-6">
                                 <div class="mb-20">
