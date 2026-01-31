@@ -97,7 +97,7 @@ class AdminController extends Controller{
     }
     // Contact Section Start
     public function manage_contact(Request $request){
-        $contact = array();
+        $contact = Contact::first();
         return view('admin.contact.manage_contact',compact('contact'));
     }
     public function add_contact(Request $request){
