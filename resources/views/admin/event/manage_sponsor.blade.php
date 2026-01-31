@@ -47,13 +47,6 @@
                                 @else
                                 <img src="{{ asset('assets/images/user-grid/user-grid-bg1.png') }}" alt="" class="w-100 object-fit-cover">
                                 @endif
-                                
-                                
-                                <?php
-                                $sessiondata = session()->get('logSession');
-                                $userid      = session('logSession.id');
-                                ?>
-                                @if($eventListVal->user_id==$userid)
                                 <div class="dropdown position-absolute top-0 end-0 me-16 mt-16">
                                     <button type="button" data-bs-toggle="dropdown" aria-expanded="false" class="bg-white-gradient-light w-32-px h-32-px radius-8 border border-light-white d-flex justify-content-center align-items-center text-white">
                                         <iconify-icon icon="entypo:dots-three-vertical" class="icon "></iconify-icon>
@@ -66,21 +59,18 @@
                                         </li>
                                     </ul>
                                 </div>
-                                @endif
-                                
-                                
  
                                 <div class="ps-16 pb-16 pe-16 text-center" style="margin-top:8%">
                                     <h6 class="text-lg mb-0 mt-4">{{$eventListVal->name}}</h6>
                                     <small class="text-line-3 text-neutral-500">{{strip_tags($eventListVal->email)}}</small>
                                     @if($eventListVal->sponsor_type=="silver")
-                                        <img src="{{url('/assets/images/event/silver.png')}}" style="width:40%;">
+                                        <img src="{{url('/assets/images/silver.png')}}" style="width:40%;">
                                     
                                     @elseif($eventListVal->sponsor_type=="bronze")
-                                        <img src="{{url('/assets/images/event/bronze.png')}}" style="width:40%;">
+                                        <img src="{{url('/assets/images/bronze.png')}}" style="width:40%;">
                                         
                                     @else($eventListVal->sponsor_type=="gold")
-                                        <img src="{{url('/assets/images/event/gold.png')}}" style="width:40%;"> 
+                                        <img src="{{url('/assets/images/gold.png')}}" style="width:40%;"> 
                                     
                                     @endif 
                                     
