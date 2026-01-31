@@ -42,7 +42,7 @@
             <!-- Column First -->
             <div class="col-lg-3 col-md-6">
                 <div class="logo-footer">
-                    <img src="assets/images/logo_white.svg" alt="">
+                    <img src="{{url('/')}}/front/assets/images/logo_white.svg" alt="">
                 </div>
                 <p>Mahror Foundaton Help for nature save</p>
                 <div class="social-icons">
