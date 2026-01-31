@@ -135,7 +135,8 @@ class AdminController extends Controller{
     }
     // Event Section Start
     public function manage_event(Request $request){
-        return view('admin.event.manage_event');
+        $eventList = array();
+        return view('admin.event.manage_event',compact('eventList'));
     }
     public function logout(Request $request){
         if(Auth::check()) { // check if user is logged in
