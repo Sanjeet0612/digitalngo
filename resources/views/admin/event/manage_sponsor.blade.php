@@ -19,7 +19,7 @@
                             <iconify-icon icon="ion:search-outline" class="icon"></iconify-icon>
                         </form>
                     </div>
-                    <a  href="{{url('/add-sponsor')}}" class="btn btn-primary text-sm btn-sm px-12 py-12 radius-8 d-flex align-items-center gap-2">
+                    <a  href="{{route('admin.add-sponsor')}}" class="btn btn-primary text-sm btn-sm px-12 py-12 radius-8 d-flex align-items-center gap-2">
                         <iconify-icon icon="ic:baseline-plus" class="icon text-xl line-height-1"></iconify-icon>
                         Add New Sponsor
                     </a>
