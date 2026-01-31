@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Admin\Admin;
 use App\Models\Admin\Banner;
 use App\Models\Admin\Contact;
+use App\Models\Admin\Sponsor;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
