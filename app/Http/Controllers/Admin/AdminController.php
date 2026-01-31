@@ -137,7 +137,7 @@ class AdminController extends Controller{
     }
     // Event Sponsor Section Start
     public function manage_sponsor(Request $request){
-        $sponsorList = array();
+        $sponsorList = Sponsor::all();
         return view('admin.event.manage_sponsor',compact('sponsorList'));
     }
     public function add_sponsor(Request $request){
@@ -175,8 +175,8 @@ class AdminController extends Controller{
             return redirect()->back()->with('success', 'Sponsor created successfully');
 
          }else{
-            $sponsor = Sponsor::all();
-            return view('admin.event.sponsor_form',compact('sponsor'));
+            
+            return view('admin.event.sponsor_form');
          }
     }
     public function manage_event(Request $request){
