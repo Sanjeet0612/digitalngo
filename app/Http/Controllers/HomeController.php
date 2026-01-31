@@ -12,7 +12,6 @@ class HomeController extends Controller{
         $banners = Banner::where('status',1)->orderBy('sort_order','asc')->get();
         return view('front.index',compact('banners'));
     }
-
     public function about(Request $request){
         return view('front.about');
     }
