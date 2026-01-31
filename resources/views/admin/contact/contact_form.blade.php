@@ -163,9 +163,9 @@
                             </div>
 
                             <div class="d-flex align-items-center justify-content-center gap-3 mt-24">
-                                <button type="reset" class="border border-danger-600 bg-hover-danger-200 text-danger-600 text-md px-40 py-11 radius-8">
-                                    Reset
-                                </button>
+                                <a href="{{route('admin.manage_contact')}}" class="border border-danger-600 bg-hover-danger-200 text-danger-600 text-md px-40 py-11 radius-8">
+                                    Back
+                                </a>
                                 <button type="submit" class="btn btn-primary border border-primary-600 text-md px-24 py-12 radius-8">
                                     Save
                                 </button>
