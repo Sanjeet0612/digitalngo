@@ -181,7 +181,60 @@ class AdminController extends Controller{
     }
     public function edit_sponsor(Request $request,$id){
 
-        return view('admin.event.edit_sponsor_form');
+        $sponsor = Sponsor::find($id); // id ke basis pe fetch
+        if(!$sponsor){
+            return redirect()->back()->with('error', 'Sponsor not found');
+        }
+        return view('admin.event.edit_sponsor_form', compact('sponsor'));
+    }
+    public function update_sponsor(Request $request,$id){
+            // Fetch sponsor by ID
+        $sponsor = Sponsor::findOrFail($id);
+
+        // Validation
+        $request->validate([
+            'sponsor_name' => 'required|string|max:255',
+            'phone' => 'required|string|max:20',
+            'emailid' => 'required|email|max:255',
+            'address' => 'nullable|string|max:255',
+            'state' => 'nullable|string|max:100',
+            'city' => 'nullable|string|max:100',
+            'zip_code' => 'nullable|string|max:60',
+            'description' => 'nullable|string',
+            'logo' => 'nullable|image|mimes:jpg,jpeg,png,gif,webp|max:500',
+            'website' => 'nullable|url|max:255',
+            'sponsor_type' => 'nullable|in:gold,silver,bronze',
+        ]);
+
+        // Handle logo upload
+        if($request->hasFile('logo')) {
+            $file = $request->file('logo');
+
+            // Optional: delete old logo if exists
+            if ($sponsor->logo && file_exists(public_path($sponsor->logo))) {
+                unlink(public_path($sponsor->logo));
+            }
+
+            $filename = time().'_'.Str::slug($request->sponsor_name).'.'.$file->getClientOriginalExtension();
+            $file->move(public_path('uploads/sponsors'), $filename);
+            $sponsor->logo = 'uploads/sponsors/'.$filename;
+        }
+        // Update other fields
+        $sponsor->name = $request->sponsor_name;
+        $sponsor->phone = $request->phone;
+        $sponsor->email = $request->emailid;
+        $sponsor->address = $request->address;
+        $sponsor->state = $request->state;
+        $sponsor->city = $request->city;
+        $sponsor->zipcode = $request->zip_code;
+        $sponsor->description = $request->description;
+        $sponsor->website = $request->weburl;
+        $sponsor->sponsor_type = $request->sponsor_type ?? 'bronze';
+        $sponsor->status = $request->status ?? 1;
+
+        $sponsor->save();
+
+        return redirect()->route('admin.manage_sponsor')->with('success', 'Sponsor updated successfully!');
     }
     public function manage_event(Request $request){
         $eventList = array();
