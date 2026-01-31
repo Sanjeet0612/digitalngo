@@ -61,7 +61,6 @@
                                     <td>{{$sponsorListVal->email}}</td>
                                     <td>{{$sponsorListVal->phone}}</td>
                                     <td>{{$sponsorListVal->sponsor_type}}</td>
-                                    
                                     <td class="text-center">
                                         @if($sponsorListVal->status==1)
                                         <span class="bg-success-focus text-success-600 border border-success-main px-24 py-4 radius-4 fw-medium text-sm">Active</span>
@@ -71,7 +70,7 @@
                                     </td>
                                     <td class="text-center">
                                         <div class="d-flex align-items-center gap-10 justify-content-center">
-                                            <a href="#" class="bg-success-focus text-success-600 bg-hover-success-200 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle">
+                                            <a href="{{ route('admin.edit-sponsor', $sponsorListVal->id) }}" class="bg-success-focus text-success-600 bg-hover-success-200 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle">
                                                 <iconify-icon icon="lucide:edit" class="menu-icon"></iconify-icon>
                                             </a>
                                             <button type="button" class="remove-item-btn bg-danger-focus bg-hover-danger-200 text-danger-600 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle">
