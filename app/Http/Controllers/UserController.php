@@ -62,14 +62,14 @@ class UserController extends Controller{
         }
         // Background Image
         if($request->hasFile('bg_img')) {
-            if ($user->bg_img) {
+            if($user->bg_img) {
                 Storage::disk('public')->delete($user->bg_img);
             }
             $user->bg_img = $request->file('bg_img')
                 ->store('uploads/background', 'public');
         }
         // PAN Image
-        if ($request->hasFile('pan_img')) {
+        if($request->hasFile('pan_img')) {
             // Delete old file if exists
             if ($user->pan_img && Storage::disk('private')->exists($user->pan_img)) {
                 Storage::disk('private')->delete($user->pan_img);
