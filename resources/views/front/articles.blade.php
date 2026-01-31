@@ -1,3 +1,248 @@
 @include('front.includes.new_header')
 
+          <!-- Page Breadcrumbs Start -->
+    <section class="breadcrumbs-page-wrap">
+        <div class="bg-fixed pos-rel breadcrumbs-page">
+            <div class="container">
+                <h1>Blog</h1>
+                <nav aria-label="breadcrumb" class="breadcrumb-wrap">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Blog  </li>
+                    </ol>
+                </nav>  
+            </div>
+        </div>
+    </section>
+    <!-- Page Breadcrumbs End -->
+
+    <!-- Main Body Content Start -->
+    <main id="body-content">
+
+        <!-- Blog Post Start -->
+        <section class="wide-tb-100">
+            <div class="container">
+                <div class="row">                    
+                    <div class="col-lg-9 col-md-12">
+                        <div class="sidebar-spacer">
+                            <div class="row">
+                            <?php 
+                                /* $query_events = mysqli_query($con,"select * from blog order by b_id desc");
+                                if(mysqli_num_rows($query_events)>0){
+                                    while($row=mysqli_fetch_array($query_events)){
+                                    $e_date = $row['b_create_date'];
+                                    
+                                    $date=date_create("$e_date"); */
+                            ?>
+                                <!-- Blog Wrap -->
+                                <div class="col-md-6 mb-0">                                    
+                                    <div class="post-wrap">
+                                        <div class="post-img">
+                                            <a href="blog_details.php?blog=<?php //echo $row['b_id'];?>"><img src="{{url('/')}}/front/assets/images/blogs/<?php //echo $row['b_image']; ?>" alt=""></a>
+                                        </div>
+                                        <div class="post-content">
+                                            <div class="post-date"><?php //echo date_format($date,"d, M, Y");?></div>
+                                            <h3 class="post-title"><a href="blog_details.php?blog=<?php //echo $row['b_id'];?>"><?php //echo $row['b_title']; ?></a></h3>
+                                            <div class="post-category"><?php //echo $row['b_cat_name']; ?></div>
+                                            <div class="text-md-right">
+                                                <a href="blog_details.php?blog=<?php //echo $row['b_id'];?>" class="read-more-line"><span>Read More</span></a>
+                                            </div>
+                                        </div>
+                                    </div>                                    
+                                </div>
+                                <!-- Blog Wrap -->
+                                <?php //} } ?>
+                            </div>
+
+                            <div class="theme-pagination">
+                                <nav aria-label="Page navigation example">
+                                    <ul class="pagination justify-content-center">
+                                        <li class="page-item disabled">
+                                            <a class="page-link" href="#" aria-label="Previous">
+                                                <span aria-hidden="true"><i data-feather="chevron-left"></i></span>
+                                            </a>
+                                        </li>
+                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="#" aria-label="Next">
+                                                <span aria-hidden="true"><i data-feather="chevron-right"></i></span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-3 col-md-12">
+                        <aside class="row sidebar-widgets">
+                            <!-- Sidebar Primary Start -->
+                            <div class="sidebar-primary col-lg-12 col-md-6">
+                                <!-- Widget Wrap -->
+                                <div class="widget-wrap">
+                                    <h3 class="widget-title">Search Keywords</h3>
+
+                                    <form class="sidebar-search">
+                                        <input type="text" class="form-control" placeholder="Enter here search...">
+                                        <button type="submit" class="btn-link"><i class="icofont-search"></i></button>
+                                    </form>
+                                </div>
+                                <!-- Widget Wrap -->
+
+                                <!-- Widget Wrap -->
+                                <div class="widget-wrap">
+                                    <h3 class="widget-title">Categories</h3>
+                                    
+                                    <div class="blog-list-categories">
+                                        <ul class="list-unstyled icons-listing theme-orange mb-0">                                        
+                                            <li><a href="#">Charity</a></li>
+                                            <li><a href="#">Healthcare</a></li>
+                                            <li><a href="#">Senior</a></li>
+                                            <li><a href="#">Children Citizens</a></li>
+                                            <li><a href="#">Environment</a></li>                                        
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- Widget Wrap -->
+
+                                <!-- Widget Wrap -->
+                                <div class="widget-wrap">
+                                    <h3 class="widget-title">Popular Posts</h3>
+                                    
+                                    <div class="popular-post">
+                                        <ul class="list-unstyled">
+                                            <li>
+                                                <img src="{{url('/')}}/front/assets/images/post_thumb_1.jpg" alt="">
+                                                <div>
+                                                    <h6><a href="blog-single.html">A Huge Thank You to Our Donors</a></h6>
+                                                    <small>12 Aug 2020</small>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <img src="{{url('/')}}/front/assets/images/post_thumb_2.jpg" alt="">
+                                                <div>
+                                                    <h6><a href="blog-single.html">A Huge Thank You to Our Donors</a></h6>
+                                                    <small>12 Aug 2020</small>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- Widget Wrap -->
+                            </div>
+                            <!-- Sidebar Primary End -->
+
+                            <!-- Sidebar Secondary Start -->
+                            <div class="sidebar-secondary col-lg-12 col-md-6">
+                                <!-- Widget Wrap -->
+                                <div class="widget-wrap">
+                                    <h3 class="widget-title">Recent Causes</h3>
+                                    <div class="owl-carousel owl-theme" id="sidebar-causes">
+                        
+                                        <!-- Causes Wrap -->
+                                        <div class="causes-wrap">
+                                            <div class="img-wrap">
+                                                <a href="causes-single.html"><img src="{{url('/')}}/front/assets/images/causes/causes_img_3.jpg" alt=""></a>
+                                                <div class="raised-progress">
+                                                    <div class="skillbar-wrap">
+                                                        <div class="clearfix">
+                                                            <span class="txt-orange">$10086</span> raised of <span class="txt-green">$15000</span>
+                                                        </div>           
+                                                    </div>
+                                                </div>
+                                            </div>
+    
+                                            <div class="content-wrap">
+                                                <span class="tag">Health</span>
+                                                <h3><a href="causes-single.html">Supply Water For Good Health</a></h3>
+                                                <div class="text-md-right">
+                                                    <a href="causes-single.html" class="read-more-line"><span>Read More</span></a>
+                                                </div>
+                                            </div>
+    
+                                        </div>
+                                        <!-- Causes Wrap -->
+                                    
+                                        <!-- Causes Wrap -->
+                                        <div class="item">
+                                            <div class="causes-wrap">
+                                                <div class="img-wrap">
+                                                    <a href="causes-single.html"><img src="{{url('/')}}/front/assets/images/causes/causes_img_2.jpg" alt=""></a>
+                                                    <div class="raised-progress">
+                                                        <div class="skillbar-wrap">
+                                                            <div class="clearfix">
+                                                                <span class="txt-orange">$10086</span> raised of <span class="txt-green">$15000</span>
+                                                            </div>           
+                                                        </div>
+                                                    </div>
+                                                </div>
+        
+                                                <div class="content-wrap">
+                                                    <span class="tag">People</span>
+                                                    <h3><a href="causes-single.html">Help For Homeless People</a></h3>
+                                                    <div class="text-md-right">
+                                                        <a href="causes-single.html" class="read-more-line"><span>Read More</span></a>
+                                                    </div>
+                                                </div>
+        
+                                            </div>
+                                        </div>
+                                        <!-- Causes Wrap -->
+                                    
+                                        <!-- Causes Wrap -->
+                                        <div class="item">
+                                            <div class="causes-wrap">
+                                                <div class="img-wrap">
+                                                    <a href="causes-single.html"><img src="{{url('/')}}/front/assets/images/causes/causes_img_6.jpg" alt=""></a>
+                                                    <div class="raised-progress">
+                                                        <div class="skillbar-wrap">
+                                                            <div class="clearfix">
+                                                                <span class="txt-orange">$10086</span> raised of <span class="txt-green">$15000</span>
+                                                            </div>           
+                                                        </div>
+                                                    </div>
+                                                </div>
+        
+                                                <div class="content-wrap">
+                                                    <span class="tag">Health</span>
+                                                    <h3><a href="causes-single.html">Help From Natural
+                                                        Disaster</a></h3>
+                                                    <div class="text-md-right">
+                                                        <a href="causes-single.html" class="read-more-line"><span>Read More</span></a>
+                                                    </div>
+                                                </div>
+        
+                                            </div>
+                                        </div>
+                                        <!-- Causes Wrap -->
+                                    </div>
+                                </div>
+                                <!-- Widget Wrap -->
+                                <!-- Widget Wrap -->
+                                <div class="widget-wrap">
+                                    <div class="sidebar-ads">
+                                        <img src="{{url('/')}}/front/assets/images/sidebar_ads.jpg" alt="">
+                                        <div class="content">
+                                            <i class="charity-donate_money"></i>
+                                            <h3>Let Us Come Together To Make A Difference</h3>
+                                            <a href="donation-page.html" class="btn btn-secondary">Donate Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Widget Wrap -->
+                            </div>
+                            <!-- Sidebar Secondary End -->
+                        </aside>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Blog Post End -->        
+           
+    </main>
+
+         <!-- Main Footer Start -->
+
 @include('front.includes.new_footer')
