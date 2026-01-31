@@ -181,6 +181,7 @@ class AdminController extends Controller{
     }
     public function edit_sponsor(Request $request,$id){
 
+        return view('admin.event.edit_sponsor_form');
     }
     public function manage_event(Request $request){
         $eventList = array();
