@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('tb_sponsors', function (Blueprint $table) {
             $table->id(); // id BIGINT AUTO_INCREMENT PRIMARY
-            $table->string('name')->nullable();
-            $table->string('phone', 20)->nullable();
-            $table->string('email')->nullable();
+            $table->string('name');
+            $table->string('phone', 20);
+            $table->string('email');
             $table->string('address')->nullable();
             $table->string('state', 100)->nullable();
             $table->string('city', 100)->nullable();
