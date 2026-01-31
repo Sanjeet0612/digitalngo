@@ -115,6 +115,9 @@ Route::prefix('admin')->group(function () {
         Route::match(['get', 'post'], '/add-banner', [AdminController::class, 'add_banner'])->name('admin.add_banner');
         Route::get('/edit-banner/{id}', [AdminController::class, 'edit_banner'])->name('admin.edit_banner');
         Route::put('/update-banner/{id}', [AdminController::class, 'update_banner'])->name('admin.update_banner');
+        // Contact Section
+        Route::get('/manage-contact', [AdminController::class, 'manage_contact'])->name('admin.manage_contact');
+        
 
         
     });
