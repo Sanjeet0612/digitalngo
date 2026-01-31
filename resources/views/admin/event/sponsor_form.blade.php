@@ -97,28 +97,28 @@
                                     
                                     <div class="col-md-6">
                                         <label class="form-label fw-bold text-neutral-900">City</label>
-                                        <input type="text" name="city" class="form-control border border-neutral-200 radius-8"id="city" required>
+                                        <input type="text" name="city" class="form-control border border-neutral-200 radius-8"id="city">
                                     </div>
 
                                     <div class="col-md-6">
                                         <label class="form-label fw-bold text-neutral-900">State</label>
-                                        <input type="text" name="state" class="form-control border border-neutral-200 radius-8" id="state" required>    
+                                        <input type="text" name="state" class="form-control border border-neutral-200 radius-8" id="state">    
                                     </div>
                                 </div>
                                 
                                 <div>
                                     <label class="form-label fw-bold text-neutral-900" for="title">Pin Code: </label>
-                                    <input type="text" name="zip_code" class="form-control border border-neutral-200 radius-8" id="zip_code" placeholder="Enter Pin code" required>
+                                    <input type="text" name="zip_code" class="form-control border border-neutral-200 radius-8" id="zip_code" placeholder="Enter Pin code">
                                 </div>
                                 
                                 <div>
                                     <label class="form-label fw-bold text-neutral-900" for="title">Logo: </label>
-                                    <input type="file" name="logo" class="form-control border border-neutral-200 radius-8" id="logo"  required>
+                                    <input type="file" name="logo" class="form-control border border-neutral-200 radius-8" id="logo" >
                                 </div>
                                 
                                 <div>
                                     <label class="form-label fw-bold text-neutral-900" for="title">Website url: </label>
-                                    <input type="url" name="weburl" class="form-control border border-neutral-200 radius-8" id="weburl" placeholder="Enter web url" required>
+                                    <input type="url" name="weburl" class="form-control border border-neutral-200 radius-8" id="weburl" placeholder="Enter web url">
                                 </div>
                                 
                                 <div>
