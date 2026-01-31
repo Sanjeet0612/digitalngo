@@ -21,9 +21,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        View::composer(['front.includes.new_header', 'front.includes.new_footer'], function ($view) {
-            $contact = Contact::where('status', 1)->first();
-            $view->with('front.contact', $contact);
-        });
+        // header & footer ke liye
+        View::composer(
+            ['front.includes.new_header', 'front.includes.new_footer'],
+            function ($view) {
+                $contact = Contact::where('status', 1)->first();
+                $view->with('contact', $contact); // simple variable name
+            }
+        );
     }
 }
