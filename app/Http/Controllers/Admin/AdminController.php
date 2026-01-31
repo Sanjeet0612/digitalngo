@@ -134,10 +134,18 @@ class AdminController extends Controller{
             return view('admin.contact.contact_form',compact('contact'));
         }
     }
-    // Event Section Start
+    // Event Sponsor Section Start
     public function manage_sponsor(Request $request){
         $sponsorList = array();
         return view('admin.event.manage_sponsor',compact('sponsorList'));
+    }
+    public function add_sponsor(Request $request){
+        if($request->isMethod('post')){
+
+         }else{
+            $sponsor = Sponsor::all();
+            return view('admin.event.sponsor_form',compact('sponsor'));
+         }
     }
     public function manage_event(Request $request){
         $eventList = array();
