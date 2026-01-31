@@ -66,15 +66,21 @@
                     @endphp
                     <div><i data-feather="phone"></i>  
                         @foreach($phones as $phone)
-                            <a href="tel:{{ trim($phone) }}">{{ trim($phone) }}</a><br>
+                            <a href="tel:{{ trim($phone) }}">{{ trim($phone) }}</a>
+                            @break<br>
                         @endforeach
                     </div>
                 @endif
 
                 @if($contact && $contact->emailid)
-                    <div>
-                        <i data-feather="mail"></i>  <a href="mailto:{{trim($contact->emailid)}}">{{$contact->emailid}}</a>
-                    </div>
+                    @php
+                        $allemail = explode(',', $contact->emailid);
+                    @endphp
+                    @foreach($allemail as $allemailVal)    
+                        <div>
+                            <i data-feather="mail"></i>  <a href="mailto:{{trim($allemailVal)}}">{{$allemailVal}}</a>
+                        </div>@break
+                    @endforeach
                 @endif
             <div>
                 @if($contact && $contact->workingDays && $contact->officeTime)
