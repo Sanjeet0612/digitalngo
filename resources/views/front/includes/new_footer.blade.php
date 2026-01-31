@@ -27,7 +27,15 @@
             <div class="give-us-call">
                 <i data-feather="phone"></i>
                 <h4>Give us a call</h4>
-                <h3>+91 8478884111</h3>
+
+                @if($contact)
+                    @php
+                        $phones = explode(',', $contact->phone);
+                    @endphp
+                        @foreach($phones as $phone)
+                            <a href="tel:{{ trim($phone) }}"><h3>+91 {{trim($phone)}}</h3></a><br>
+                        @endforeach
+                @endif
             </div>
         </div>
         <div class="row">
@@ -39,11 +47,25 @@
                 <p>Mahror Foundaton Help for nature save</p>
                 <div class="social-icons">
                     <ul class="list-unstyled list-group list-group-horizontal">
-                        <li><a href="#"><i class="icofont-facebook"></i></a></li>
-                        <li><a href="#"><i class="icofont-twitter"></i></a></li>
-                        <li><a href="#"><i class="icofont-instagram"></i></a></li>
-                        <li><a href="#"><i class="icofont-behance"></i></a></li>
-                        <li><a href="#"><i class="icofont-youtube-play"></i></a></li>
+                        @if($contact && $contact->fb_link)
+                        <li><a href="{{ $contact->fb_link }}" target="_blank"><i class="icofont-facebook"></i></a></li>
+                        @endif
+
+                        @if($contact && $contact->twitter_link)
+                        <li><a href="{{ $contact->twitter_link }}" target="_blank"><i class="icofont-twitter"></i></a></li>
+                        @endif
+
+                        @if($contact && $contact->insta_link)
+                        <li><a href="{{ $contact->insta_link }}" target="_blank"><i class="icofont-instagram"></i></a></li>
+                        @endif
+
+                        @if($contact && $contact->behance_link)
+                        <li><a href="{{ $contact->behance_link }}" target="_blank"><i class="icofont-behance"></i></a></li>
+                        @endif
+
+                        @if($contact && $contact->youtube_link)
+                        <li><a href="{{ $contact->youtube_link }}" target="_blank"><i class="icofont-youtube-play"></i></a></li>
+                        @endif
                     </ul>
                 </div>
             </div>
@@ -57,19 +79,35 @@
                     <ul class="list-unstyled">
                         <li>
                             <div><i data-feather="map-pin"></i> </div>
-                            <div>Mahadeo Asthan Maner, Patna, Bihar -801108 (India)</div>
+                            <div>{{$contact->address}}, {{$contact->city}}, {{$contact->state}} - {{$contact->zipcode}} ({{$contact->country}})</div>
                         </li>
                         <li>
                             <div><i data-feather="phone"></i> </div>
-                            <div><a href="tel:+91 8478884111">+91 8478884111</a></div>
+                            <div>
+                                @if($contact)
+                                    @php
+                                        $phones = explode(',', $contact->phone);
+                                    @endphp
+                                        @foreach($phones as $phone)
+                                            <a href="tel:{{trim($phone)}}">+91 {{trim($phone)}}</a><br>
+                                        @endforeach
+                                    
+                                @endif
+                            </div>
                         </li>
                         <li>
                             <div><i data-feather="mail"></i> </div>
-                            <div><a href="mailto:info@mahrorfoundation.com">info@mahrorfoundation.com</a></div>
+                            @if($contact && $contact->emailid)
+                            <a href="mailto:{{trim($contact->emailid)}}">{{$contact->emailid}}</a>
+                            @endif
                         </li>
                         <li>
                             <div><i data-feather="clock"></i> </div>
-                            <div>Mon-Fri  /  9:00 AM - 19:00 PM</div>
+                            <div>
+                                @if($contact && $contact->workingDays && $contact->officeTime)
+                                    {{$contact->workingDays}}  /  {{$contact->officeTime}}
+                                @endif
+                            </div>
                         </li>
                     </ul>
                 </div>
