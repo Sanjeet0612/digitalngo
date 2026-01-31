@@ -143,7 +143,8 @@ class AdminController extends Controller{
          if($request->isMethod('post')){
 
          }else{
-            return view('admin.event.event_form');
+            $sponsor = Sponsor::all();
+            return view('admin.event.event_form',compact('sponsor'));
          }
     }
     public function logout(Request $request){
