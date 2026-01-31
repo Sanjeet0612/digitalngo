@@ -60,20 +60,27 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col d-flex align-items-center contact-info">
-                    @if($contact)
-                        @php
-                            $firstPhone = explode(',', $contact->phone)[0];
-                        @endphp
-                        <div><i data-feather="phone"></i>  
-                            <a href="tel:{{ $firstPhone }}">{{ $firstPhone }}</a>
-                        </div>
-                    @endif
-                <div>
-                    <i data-feather="mail"></i>  <a href="mailto:info@mahrorfoundation.com">info@mahrorfoundation.com</a>
-                </div>
-                <div>
-                    <i data-feather="clock"></i>  Mon-Sat  /  9:00 AM - 19:00 PM
-                </div>
+                @if($contact)
+                    @php
+                        $phones = explode(',', $contact->phone);
+                    @endphp
+                    <div><i data-feather="phone"></i>  
+                        @foreach($phones as $phone)
+                            <a href="tel:{{ trim($phone) }}">{{ trim($phone) }}</a><br>
+                        @endforeach
+                    </div>
+                @endif
+
+                @if($contact && $contact->emailid)
+                    <div>
+                        <i data-feather="mail"></i>  <a href="mailto:{{trim($contact->emailid)}}">{{$contact->emailid}}</a>
+                    </div>
+                @endif
+            <div>
+                @if($contact && $contact->workingDays && $contact->officeTime)
+                <i data-feather="clock"></i> {{$contact->workingDays}}  /  {{$contact->officeTime}}
+                @endif
+        </div>
             </div>
 
             <style>
@@ -86,11 +93,25 @@
 
             <div class="col-md-auto">
                 <div class="social-icons">
-                    <a href="#"><i class="icofont-facebook"></i></a>
-                    <a href="#"><i class="icofont-twitter"></i></a>
-                    <a href="#"><i class="icofont-instagram"></i></a>
-                    <a href="#"><i class="icofont-behance"></i></a>
-                    <a href="#"><i class="icofont-youtube-play"></i></a>
+                    @if($contact && $contact->fb_link)
+                        <a href="{{ $contact->fb_link }}" target="_blank"><i class="icofont-facebook"></i></a>
+                    @endif
+
+                    @if($contact && $contact->twitter_link)
+                        <a href="{{ $contact->twitter_link }}" target="_blank"><i class="icofont-twitter"></i></a>
+                    @endif
+
+                    @if($contact && $contact->insta_link)
+                        <a href="{{ $contact->insta_link }}" target="_blank"><i class="icofont-instagram"></i></a>
+                    @endif
+
+                    @if($contact && $contact->behance_link)
+                        <a href="{{ $contact->behance_link }}" target="_blank"><i class="icofont-behance"></i></a>
+                    @endif
+
+                    @if($contact && $contact->youtube_link)
+                        <a href="{{ $contact->youtube_link }}" target="_blank"><i class="icofont-youtube-play"></i></a>
+                    @endif
                 </div>
             </div>
         </div>
