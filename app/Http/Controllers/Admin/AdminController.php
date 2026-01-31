@@ -101,7 +101,7 @@ class AdminController extends Controller{
     }
     public function add_contact(Request $request){
         if($request->isMethod('post')){
-
+            print_r($_POST);
         }else{
             return view('admin.contact.contact_form');
         }
