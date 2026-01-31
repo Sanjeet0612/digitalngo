@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Admin\Admin;
 use App\Models\Admin\Banner;
+use App\Models\Admin\Contact;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
@@ -101,7 +102,31 @@ class AdminController extends Controller{
     }
     public function add_contact(Request $request){
         if($request->isMethod('post')){
-            print_r($_POST);
+
+            Contact::updateOrCreate(
+                ['id' => 1],   // ek hi record
+                [
+                    'phone' => $request->phone,
+                    'emailid' => $request->emailid,
+                    'workingDays' => $request->workingDays,
+                    'officeTime' => $request->officeTime,
+                    'address' => $request->address,
+                    'city' => $request->city,
+                    'state' => $request->state,
+                    'zipcode' => $request->zipcode,
+                    'country' => $request->country,
+                    'fb_link' => $request->fb_link,
+                    'twitter_link' => $request->twitter_link,
+                    'insta_link' => $request->insta_link,
+                    'behance_link' => $request->behance_link,
+                    'youtube_link' => $request->youtube_link,
+                    'copyright' => $request->copyright,
+                    'created_by' => $request->created_by,
+                    'created_by_url' =>$request->created_by_url,
+                    'status' => 1
+                ]
+            );
+                return back()->with('success','Contact details updated');
         }else{
             return view('admin.contact.contact_form');
         }
