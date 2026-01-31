@@ -138,6 +138,13 @@ class AdminController extends Controller{
         $eventList = array();
         return view('admin.event.manage_event',compact('eventList'));
     }
+    public function add_event(Request $request){
+         if($request->isMethod('post')){
+
+         }else{
+            return view('admin.event.event_form');
+         }
+    }
     public function logout(Request $request){
         if(Auth::check()) { // check if user is logged in
             $user = Auth::user();  // full user object
