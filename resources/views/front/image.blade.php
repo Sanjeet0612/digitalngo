@@ -75,13 +75,8 @@
             </div>
         </section>
         <!-- Callout Style End -->
-        
       <!-- Our Partners Start -->
       @include('front.includes.new_partner')
         <!-- Our Partners End -->
-        
-           
     </main>
-
-
 @include('front.includes.new_footer')
