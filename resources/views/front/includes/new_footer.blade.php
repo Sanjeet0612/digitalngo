@@ -44,7 +44,7 @@
                 <div class="logo-footer">
                     <img src="{{url('/')}}/front/assets/images/logo_white.svg" alt="">
                 </div>
-                <p>Mahror Foundaton Help for nature save</p>
+                <p>{{$contact->short_desc}}</p>
                 <div class="social-icons">
                     <ul class="list-unstyled list-group list-group-horizontal">
                         @if($contact && $contact->fb_link)
