@@ -142,6 +142,18 @@ class AdminController extends Controller{
     public function add_sponsor(Request $request){
         if($request->isMethod('post')){
 
+            $request->validate([
+                'sponsor_name' => 'required|string|max:255',
+                'emailid' => 'required|email',
+                'phone' => 'nullable|string|max:20',
+                'address' => 'required',
+                'state' => 'required',
+                'city' => 'required',
+                'zip_code' => 'required',
+                'description' => 'required',
+                'sponsor_type' => 'in:gold,silver,bronze',
+            ]);
+
          }else{
             $sponsor = Sponsor::all();
             return view('admin.event.sponsor_form',compact('sponsor'));
