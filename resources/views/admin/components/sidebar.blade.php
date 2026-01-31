@@ -30,6 +30,9 @@
                     <li>
                         <a  href="{{route('admin.manage_banner')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Manage Banner</a>
                     </li>
+                     <li>
+                        <a  href="{{route('admin.manage_event')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Manage Event</a>
+                    </li>
                 </ul>    
             </li>
 
