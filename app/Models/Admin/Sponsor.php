@@ -22,7 +22,6 @@ class Sponsor extends Model
         'description',
         'logo',
         'website',
-        'banner',
         'sponsor_type',
         'status',
     ];
