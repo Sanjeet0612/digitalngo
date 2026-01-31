@@ -143,15 +143,10 @@ class AdminController extends Controller{
         if($request->isMethod('post')){
 
             $request->validate([
+                'sponsor_type' => 'in:gold,silver,bronze',
                 'sponsor_name' => 'required|string|max:255',
                 'emailid' => 'required|email',
                 'phone' => 'nullable|string|max:20',
-                'address' => 'required',
-                'state' => 'required',
-                'city' => 'required',
-                'zip_code' => 'required',
-                'description' => 'required',
-                'sponsor_type' => 'in:gold,silver,bronze',
             ]);
 
          }else{
