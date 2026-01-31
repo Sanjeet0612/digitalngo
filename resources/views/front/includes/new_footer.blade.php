@@ -89,7 +89,7 @@
                                         $phones = explode(',', $contact->phone);
                                     @endphp
                                         @foreach($phones as $phone)
-                                            <a href="tel:{{trim($phone)}}">+91 {{trim($phone)}}</a><br>
+                                            <a href="tel:{{trim($phone)}}">+91 {{trim($phone)}}</a>@break<br>
                                         @endforeach
                                     
                                 @endif
@@ -98,7 +98,14 @@
                         <li>
                             <div><i data-feather="mail"></i> </div>
                             @if($contact && $contact->emailid)
-                            <a href="mailto:{{trim($contact->emailid)}}">{{$contact->emailid}}</a>
+                                @php
+                                    $allemail = explode(',', $contact->emailid);
+                                @endphp
+                                @foreach($allemail as $allemailVal)    
+                                  
+                                    <a href="mailto:{{trim($allemailVal)}}">{{$allemailVal}}</a>
+                                    @break<br>
+                                @endforeach
                             @endif
                         </li>
                         <li>
