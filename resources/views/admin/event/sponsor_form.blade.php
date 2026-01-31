@@ -94,17 +94,15 @@
                                 </div>
                                 
                                 <div class="row">
-                                    <div class="col-md-6">
-                                        <label class="form-label fw-bold text-neutral-900">State</label>
-                                        <input type="text" name="state"
-                                               class="form-control border border-neutral-200 radius-8"
-                                               id="state" required>
-                                    </div>
+                                    
                                     <div class="col-md-6">
                                         <label class="form-label fw-bold text-neutral-900">City</label>
-                                        <input type="text" name="city"
-                                               class="form-control border border-neutral-200 radius-8"
-                                               id="city" required>
+                                        <input type="text" name="city" class="form-control border border-neutral-200 radius-8"id="city" required>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-bold text-neutral-900">State</label>
+                                        <input type="text" name="state" class="form-control border border-neutral-200 radius-8" id="state" required>    
                                     </div>
                                 </div>
                                 
