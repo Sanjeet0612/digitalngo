@@ -123,7 +123,7 @@ Route::prefix('admin')->group(function () {
         Route::get('/manage-sponsor', [AdminController::class, 'manage_sponsor'])->name('admin.manage_sponsor');
         Route::match(['get', 'post'], '/add-sponsor', [AdminController::class, 'add_sponsor'])->name('admin.add-sponsor');
         Route::get('/edit-sponsor/{id}', [AdminController::class, 'edit_sponsor'])->name('admin.edit-sponsor');
-        
+        Route::put('/update-sponsor/{id}', [AdminController::class, 'update_sponsor'])->name('admin.update-sponsor');
         
         Route::get('/manage-event', [AdminController::class, 'manage_event'])->name('admin.manage_event');
         Route::match(['get', 'post'], '/add-event', [AdminController::class, 'add_event'])->name('admin.add-event');
