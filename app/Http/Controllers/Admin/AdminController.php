@@ -133,6 +133,10 @@ class AdminController extends Controller{
             return view('admin.contact.contact_form',compact('contact'));
         }
     }
+    // Event Section Start
+    public function manage_event(Request $request){
+        return view('admin.event.manage_event');
+    }
     public function logout(Request $request){
         if(Auth::check()) { // check if user is logged in
             $user = Auth::user();  // full user object
