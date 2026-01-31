@@ -60,9 +60,14 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col d-flex align-items-center contact-info">
-                <div>
-                    <i data-feather="phone"></i>  <a href="tel:+1234567899">+91 8478884111</a>
-                </div>
+                    @if($contact)
+                        @php
+                            $firstPhone = explode(',', $contact->phone)[0];
+                        @endphp
+                        <div><i data-feather="phone"></i>  
+                            <a href="tel:{{ $firstPhone }}">{{ $firstPhone }}</a>
+                        </div>
+                    @endif
                 <div>
                     <i data-feather="mail"></i>  <a href="mailto:info@mahrorfoundation.com">info@mahrorfoundation.com</a>
                 </div>
