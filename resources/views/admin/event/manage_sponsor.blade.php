@@ -2,11 +2,11 @@
 @php
     $title='Sponsor';
     $subTitle = 'Manage Sponsor';
-    $script = '<script>
-                        $(".delete-btn").on("click", function() {
-                            $(this).closest(".user-grid-card").addClass("d-none")
+    $script ='<script>
+                        $(".remove-item-btn").on("click", function() {
+                            $(this).closest("tr").addClass("d-none")
                         });
-                </script>';
+            </script>';
 @endphp
 
 @section('content')
@@ -21,79 +21,71 @@
                     </div>
                     <a  href="{{route('admin.add-sponsor')}}" class="btn btn-primary text-sm btn-sm px-12 py-12 radius-8 d-flex align-items-center gap-2">
                         <iconify-icon icon="ic:baseline-plus" class="icon text-xl line-height-1"></iconify-icon>
-                        Add New Sponsor
+                        Add Sponsor
                     </a>
-                  
                 </div>
-                  <div class="message">
-                    @if(session('success'))
-                        <div class="alert alert-success">
-                            {{ session('success') }}
-                        </div>
-                    @endif
-                     @if(session('error'))
-                        <div class="alert alert-danger">
-                            {{ session('error') }}
-                        </div>
-                    @endif
-                    </div>
                 <div class="card-body p-24">
-                    <div class="row gy-4">
-                         @foreach($sponsorList as $eventListVal)
-                        <div class="col-xxl-3 col-md-6 user-grid-card   ">
-                            <div class="position-relative border radius-16 overflow-hidden">
-                                @if(!empty($eventListVal->banner))
-                                <img src="{{url('/')}}/{{$eventListVal->banner}}" alt="" class="w-100 object-fit-cover">
-                                @else
-                                <img src="{{ asset('assets/images/user-grid/user-grid-bg1.png') }}" alt="" class="w-100 object-fit-cover">
-                                @endif
-                                <div class="dropdown position-absolute top-0 end-0 me-16 mt-16">
-                                    <button type="button" data-bs-toggle="dropdown" aria-expanded="false" class="bg-white-gradient-light w-32-px h-32-px radius-8 border border-light-white d-flex justify-content-center align-items-center text-white">
-                                        <iconify-icon icon="entypo:dots-three-vertical" class="icon "></iconify-icon>
-                                    </button>
-                                    <ul class="dropdown-menu p-12 border bg-base shadow">
-                                        <li>
-                                            <a class="dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900 d-flex align-items-center gap-10"  href="{{url('/')}}/edit-sponsor/{{base64_encode($eventListVal->id)}}">
-                                                Edit
+                    <div class="table-responsive scroll-sm">
+                        <table class="table bordered-table sm-table mb-0">
+                            <thead>
+                                <tr>
+                                    <th scope="col">
+                                        <div class="d-flex align-items-center gap-10">
+                                            <div class="form-check style-check d-flex align-items-center">
+                                                <input class="form-check-input radius-4 border input-form-dark" type="checkbox" name="checkbox" id="selectAll">
+                                            </div>
+                                            S.L
+                                        </div>
+                                    </th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Email Id</th>
+                                    <th scope="col">Phone</th>
+                                    <th scope="col">Sponsor Type</th>    
+                                    <th scope="col" class="text-center">Status</th>
+                                    <th scope="col" class="text-center">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @php $i=1; @endphp
+                                @foreach($sponsorList as $sponsorListVal)
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center gap-10">
+                                            <div class="form-check style-check d-flex align-items-center">
+                                                <input class="form-check-input radius-4 border border-neutral-400" type="checkbox" name="checkbox">
+                                            </div>
+                                            {{$i}}
+                                        </div>
+                                    </td>
+                                    <td>{{$sponsorListVal->name}}</td>
+                                    <td>{{$sponsorListVal->email}}</td>
+                                    <td>{{$sponsorListVal->phone}}</td>
+                                    <td>{{$sponsorListVal->sponsor_type}}</td>
+                                    
+                                    <td class="text-center">
+                                        @if($sponsorListVal->status==1)
+                                        <span class="bg-success-focus text-success-600 border border-success-main px-24 py-4 radius-4 fw-medium text-sm">Active</span>
+                                        @else
+                                        <span class="bg-danger-focus text-danger-600 border border-danger-main px-24 py-4 radius-4 fw-medium text-sm">Deactive</span>
+                                        @endif
+                                    </td>
+                                    <td class="text-center">
+                                        <div class="d-flex align-items-center gap-10 justify-content-center">
+                                            <a href="#" class="bg-success-focus text-success-600 bg-hover-success-200 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle">
+                                                <iconify-icon icon="lucide:edit" class="menu-icon"></iconify-icon>
                                             </a>
-                                        </li>
-                                    </ul>
-                                </div>
- 
-                                <div class="ps-16 pb-16 pe-16 text-center" style="margin-top:8%">
-                                    <h6 class="text-lg mb-0 mt-4">{{$eventListVal->name}}</h6>
-                                    <small class="text-line-3 text-neutral-500">{{strip_tags($eventListVal->email)}}</small>
-                                    @if($eventListVal->sponsor_type=="silver")
-                                        <img src="{{url('/assets/images/silver.png')}}" style="width:40%;">
-                                    
-                                    @elseif($eventListVal->sponsor_type=="bronze")
-                                        <img src="{{url('/assets/images/bronze.png')}}" style="width:40%;">
-                                        
-                                    @else($eventListVal->sponsor_type=="gold")
-                                        <img src="{{url('/assets/images/gold.png')}}" style="width:40%;"> 
-                                    
-                                    @endif 
-                                    
-                                    <p class="text-line-3 text-neutral-500"></p>
-                                   
-                                    @if($eventListVal->is_verified==0)
-                                        <a  href="javascript:void(0)" class="bg-warning-focus text-primary-600 bg-hover-primary-600 hover-text-white p-10 text-sm btn-sm px-12 py-12 radius-8 d-flex align-items-center justify-content-center mt-16 fw-medium gap-2 w-100">
-                                        Pending For Approval
-                                        <iconify-icon icon="solar:alt-arrow-right-linear" class="icon text-xl line-height-1"></iconify-icon>
-                                        </a>
-                                    @else
-                                        <a  href="" class="bg-primary-50 text-primary-600 bg-hover-primary-600 hover-text-white p-10 text-sm btn-sm px-12 py-12 radius-8 d-flex align-items-center justify-content-center mt-16 fw-medium gap-2 w-100">
-                                            View Event
-                                            <iconify-icon icon="solar:alt-arrow-right-linear" class="icon text-xl line-height-1"></iconify-icon>
-                                        </a>
-                                    @endif
-                                </div>
-                                
-                                
-                            </div>
-                        </div>
-                        @endforeach
+                                            <button type="button" class="remove-item-btn bg-danger-focus bg-hover-danger-200 text-danger-600 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle">
+                                                <iconify-icon icon="fluent:delete-24-regular" class="menu-icon"></iconify-icon>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                @php $i++; @endphp
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
+
                     <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mt-24">
                         <span>Showing 1 to 10 of 12 entries</span>
                         <ul class="pagination d-flex flex-wrap align-items-center gap-2 justify-content-center">
