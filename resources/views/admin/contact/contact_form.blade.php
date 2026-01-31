@@ -38,123 +38,117 @@
                             <div class="col-sm-6">
                                 <div class="mb-20">
                                     <label for="phone" class="form-label fw-semibold text-primary-light text-sm mb-8">Phone No.<span class="text-danger-600">*</span></label>
-                                    <input type="text" name="phone" class="form-control radius-8" id="phone" placeholder="e.g 1234567890 , 1234567899">
+                                    <input type="text" name="phone" value="{{$contact->phone}}" class="form-control radius-8" id="phone" placeholder="e.g 1234567890 , 1234567899">
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="mb-20">
                                     <label for="emailid" class="form-label fw-semibold text-primary-light text-sm mb-8">Email Id <span class="text-danger-600">*</span></label>
-                                    <input type="text" name="emailid" class="form-control radius-8" id="emailid" placeholder="e.g info@abc.com , support@xyz.com">
+                                    <input type="text" name="emailid" value="{{$contact->emailid}}" class="form-control radius-8" id="emailid" placeholder="e.g info@abc.com , support@xyz.com">
                                 </div>
                             </div>
 
                             <div class="col-sm-6">
                                 <div class="mb-20">
-                                    <label for="workingDays" class="form-label fw-semibold text-primary-light text-sm mb-8">Office Working Day's <span class="text-danger-600">*</span> </label>
-                                    <select class="form-control radius-8 form-select" name="workingDays" id="workingDays">
-                                        <sption value="">Select Working Day's</option>
-                                        <option value="Mon-Sat">Mon-Sat</option>
-                                        <option value="Mon-Fri">Mon-Fri</option>
-                                        <option value="Hybrid">Hybrid</option>
-                                        <option value="WFH">WFH</option>
-                                    </select>
+                                    <label for="workingDays" class="form-label fw-semibold text-primary-light text-sm mb-8">Office Working Day's <span class="text-danger-600">*</span></label>
+                                    <input type="text" name="workingDays" value="{{$contact->workingDays}}"  class="form-control radius-8" id="workingDays" placeholder="e.g, Mon-Fri">
                                 </div>
                             </div>
 
                             <div class="col-sm-6">
                                 <div class="mb-20">
                                     <label for="officeTime" class="form-label fw-semibold text-primary-light text-sm mb-8">Office Time <span class="text-danger-600">*</span></label>
-                                    <input type="url" name="officeTime" class="form-control radius-8" id="officeTime" placeholder="e.g, 9:00 AM - 19:00 PM">
+                                    <input type="text" name="officeTime" value="{{$contact->officeTime}}" class="form-control radius-8" id="officeTime" placeholder="e.g, 9:00 AM - 19:00 PM">
                                 </div>
                             </div>
 
                             <div class="col-sm-6">
                                 <div class="mb-20">
                                     <label for="address" class="form-label fw-semibold text-primary-light text-sm mb-8">Office Address <span class="text-danger-600">*</span></label>
-                                    <input type="text" name="address" class="form-control radius-8" id="address" placeholder="Office Address">
+                                    <input type="text" name="address" value="{{$contact->address}}" class="form-control radius-8" id="address" placeholder="Office Address">
                                 </div>
                             </div>
 
                             <div class="col-sm-6">
                                 <div class="mb-20">
                                     <label for="city" class="form-label fw-semibold text-primary-light text-sm mb-8">City <span class="text-danger-600">*</span></label>
-                                    <input type="text" name="city" class="form-control radius-8" id="city" placeholder="City">
+                                    <input type="text" name="city"  value="{{$contact->city}}" class="form-control radius-8" id="city" placeholder="City">
                                 </div>
                             </div>
 
                             <div class="col-sm-6">
                                 <div class="mb-20">
                                     <label for="state" class="form-label fw-semibold text-primary-light text-sm mb-8">State <span class="text-danger-600">*</span></label>
-                                    <input type="text" name="state" class="form-control radius-8" id="state" placeholder="State">
+                                    <input type="text" name="state" value="{{$contact->state}}"  class="form-control radius-8" id="state" placeholder="State">
                                 </div>
                             </div>
 
                             <div class="col-sm-6">
                                 <div class="mb-20">
                                     <label for="zipcode" class="form-label fw-semibold text-primary-light text-sm mb-8">Zipcode <span class="text-danger-600">*</span></label>
-                                    <input type="text" name="zipcode" class="form-control radius-8" id="zipcode" placeholder="zipcode">
+                                    <input type="text" name="zipcode" value="{{$contact->zipcode}}" class="form-control radius-8" id="zipcode" placeholder="zipcode">
                                 </div>
                             </div>
 
                             <div class="col-sm-6">
                                 <div class="mb-20">
                                     <label for="country" class="form-label fw-semibold text-primary-light text-sm mb-8">Country <span class="text-danger-600">*</span></label>
-                                    <input type="text" name="country" class="form-control radius-8" id="country" placeholder="Country">
+                                    <input type="text" name="country" value="{{$contact->country}}" class="form-control radius-8" id="country" placeholder="Country">
                                 </div>
                             </div>
 
                             <div class="col-sm-6">
                                 <div class="mb-20">
                                     <label for="fb_link" class="form-label fw-semibold text-primary-light text-sm mb-8">Facebook Link <span class="text-danger-600">*</span></label>
-                                    <input type="url" name="fb_link" class="form-control radius-8" id="fb_link">
+                                    <input type="url" name="fb_link" value="{{$contact->fb_link}}" class="form-control radius-8" id="fb_link">
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="mb-20">
                                     <label for="twitter_link" class="form-label fw-semibold text-primary-light text-sm mb-8">Twitter Link <span class="text-danger-600">*</span></label>
-                                    <input type="url" name="twitter_link" class="form-control radius-8" id="twitter_link">
+                                    <input type="url" name="twitter_link" value="{{$contact->twitter_link}}" class="form-control radius-8" id="twitter_link">
                                 </div>
                             </div>
 
                             <div class="col-sm-6">
                                 <div class="mb-20">
                                     <label for="insta_link" class="form-label fw-semibold text-primary-light text-sm mb-8">Insta Link <span class="text-danger-600">*</span></label>
-                                    <input type="url" name="insta_link" class="form-control radius-8" id="insta_link">
+                                    <input type="url" name="insta_link" value="{{$contact->insta_link}}" class="form-control radius-8" id="insta_link">
                                 </div>
                             </div>
 
                             <div class="col-sm-6">
                                 <div class="mb-20">
                                     <label for="behance_link" class="form-label fw-semibold text-primary-light text-sm mb-8">Behance Link <span class="text-danger-600">*</span></label>
-                                    <input type="url" name="behance_link" class="form-control radius-8" id="behance_link">
+                                    <input type="url" name="behance_link" value="{{$contact->behance_link}}" class="form-control radius-8" id="behance_link">
                                 </div>
                             </div>
 
                             <div class="col-sm-6">
                                 <div class="mb-20">
                                     <label for="youtube_link" class="form-label fw-semibold text-primary-light text-sm mb-8">Youtube Link <span class="text-danger-600">*</span></label>
-                                    <input type="url" name="youtube_link" class="form-control radius-8" id="youtube_link">
+                                    <input type="url" name="youtube_link"  value="{{$contact->youtube_link}}" class="form-control radius-8" id="youtube_link">
                                 </div>
                             </div>
 
                             <div class="col-sm-6">
                                 <div class="mb-20">
                                     <label for="copyright" class="form-label fw-semibold text-primary-light text-sm mb-8">@ Copyright  <span class="text-danger-600">*</span></label>
-                                    <input type="url" name="copyright" class="form-control radius-8" id="copyright" placeholder="e.g ABC Foundation 2022-2026.">
+                                    <input type="text" name="copyright" value="{{$contact->copyright}}" class="form-control radius-8" id="copyright" placeholder="e.g ABC Foundation 2022-2026.">
                                 </div>
                             </div>
 
                             <div class="col-sm-6">
                                 <div class="mb-20">
                                     <label for="created_by" class="form-label fw-semibold text-primary-light text-sm mb-8">Created by <span class="text-danger-600">*</span></label>
-                                    <input type="url" name="created_by" class="form-control radius-8" id="created_by" placeholder="e.g ABC Digital Solutions Pvt. Ltd.">
+                                    <input type="text" name="created_by" value="{{$contact->created_by}}" class="form-control radius-8" id="created_by" placeholder="e.g ABC Digital Solutions Pvt. Ltd.">
                                 </div>
                             </div>
 
                             <div class="col-sm-6">
                                 <div class="mb-20">
                                     <label for="created_by_url" class="form-label fw-semibold text-primary-light text-sm mb-8">Created by Link <span class="text-danger-600">*</span></label>
-                                    <input type="url" name="created_by_url" class="form-control radius-8" id="created_by_url" placeholder="e.g http://example.com">
+                                    <input type="url" name="created_by_url" value="{{$contact->created_by_url}}" class="form-control radius-8" id="created_by_url" placeholder="e.g http://example.com">
                                 </div>
                             </div>
 
@@ -162,8 +156,8 @@
                                 <div class="mb-20">
                                     <label for="status" class="form-label fw-semibold text-primary-light text-sm mb-8">Status <span class="text-danger-600">*</span> </label>
                                     <select class="form-control radius-8 form-select" name="status" id="status">
-                                        <option value="1">Active</option>
-                                        <option value="0">Deactive</option>
+                                        <option value="1" @if($contact->status==1) selected @endif>Active</option>
+                                        <option value="0"  @if($contact->status==0) selected @endif>Deactive</option>
                                     </select>
                                 </div>
                             </div>
