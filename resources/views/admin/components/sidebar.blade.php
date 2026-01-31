@@ -11,8 +11,8 @@
     </div>
     <div class="sidebar-menu-area">
         <ul class="sidebar-menu" id="sidebar-menu">
-            <li class="dropdown">
-                <a  href="javascript:void(0)">
+            <li>
+                <a  href="{{route('admin.dashboard')}}">
                     <iconify-icon icon="solar:home-smile-angle-outline" class="menu-icon"></iconify-icon>
                     <span>Dashboard</span>
                 </a>
@@ -20,7 +20,7 @@
 
              <li class="dropdown">
                 <a  href="javascript:void(0)">
-                    <iconify-icon icon="flowbite:users-group-outline" class="menu-icon"></iconify-icon>
+                    <iconify-icon icon="mdi:office-building" class="menu-icon"></iconify-icon>
                     <span>Home</span>
                 </a>
                 <ul class="sidebar-submenu">
@@ -30,13 +30,23 @@
                     <li>
                         <a  href="{{route('admin.manage_banner')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Manage Banner</a>
                     </li>
-                     <li>
-                        <a  href="{{route('admin.manage_event')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Manage Event</a>
-                    </li>
                 </ul>    
             </li>
 
-
+        <li class="dropdown">
+                <a  href="javascript:void(0)">
+                    <iconify-icon icon="fluent:calendar-24-regular" class="event-icon menu-icon"></iconify-icon>
+                    <span>Event</span>
+                </a>
+                <ul class="sidebar-submenu">
+                    <li>
+                        <a  href="{{route('admin.manage_sponsor')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Manage Sponsor</a>
+                    </li>
+                    <li>
+                        <a  href="{{route('admin.manage_event')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Manage Event</a>
+                    </li>
+                </ul>
+        </li>        
 		</ul>
 
         
