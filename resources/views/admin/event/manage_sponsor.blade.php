@@ -1,7 +1,7 @@
 @extends('admin.layout.layout')
 @php
-    $title='Event List';
-    $subTitle = 'Event List';
+    $title='Sponsor';
+    $subTitle = 'Manage Sponsor';
     $script = '<script>
                         $(".delete-btn").on("click", function() {
                             $(this).closest(".user-grid-card").addClass("d-none")
