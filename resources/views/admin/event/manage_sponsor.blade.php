@@ -12,18 +12,7 @@
 @section('content')
 
             <div class="card h-100 p-0 radius-12">
-                <div class="card-header border-bottom bg-base py-16 px-24 d-flex align-items-center flex-wrap gap-3 justify-content-between">
-                    <div class="d-flex align-items-center flex-wrap gap-3">
-                        <form class="navbar-search">
-                            <input type="text" class="bg-base h-40-px w-auto" name="search" placeholder="Search">
-                            <iconify-icon icon="ion:search-outline" class="icon"></iconify-icon>
-                        </form>
-                    </div>
-                    <a  href="{{route('admin.add-sponsor')}}" class="btn btn-primary text-sm btn-sm px-12 py-12 radius-8 d-flex align-items-center gap-2">
-                        <iconify-icon icon="ic:baseline-plus" class="icon text-xl line-height-1"></iconify-icon>
-                        Add Sponsor
-                    </a>
-                    <div class="message">
+                <div class="message">
                         @if($errors->any())
                             <div class="alert alert-danger">
                                 <ul>
@@ -38,8 +27,18 @@
                                 {{ session('success') }}
                             </div>
                         @endif
-                        </div>
-
+                    </div>
+                <div class="card-header border-bottom bg-base py-16 px-24 d-flex align-items-center flex-wrap gap-3 justify-content-between">
+                    <div class="d-flex align-items-center flex-wrap gap-3">
+                        <form class="navbar-search">
+                            <input type="text" class="bg-base h-40-px w-auto" name="search" placeholder="Search">
+                            <iconify-icon icon="ion:search-outline" class="icon"></iconify-icon>
+                        </form>
+                    </div>
+                    <a  href="{{route('admin.add-sponsor')}}" class="btn btn-primary text-sm btn-sm px-12 py-12 radius-8 d-flex align-items-center gap-2">
+                        <iconify-icon icon="ic:baseline-plus" class="icon text-xl line-height-1"></iconify-icon>
+                        Add Sponsor
+                    </a>
                 </div>
                 <div class="card-body p-24">
                     <div class="table-responsive scroll-sm">
