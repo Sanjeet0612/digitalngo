@@ -120,7 +120,7 @@ Route::prefix('admin')->group(function () {
         Route::match(['get', 'post'], '/add-contact', [AdminController::class, 'add_contact'])->name('admin.add_contact');
         // Event Section
         Route::get('/manage-event', [AdminController::class, 'manage_event'])->name('admin.manage_event');
-
+        Route::match(['get', 'post'], '/add-event', [AdminController::class, 'add_event'])->name('admin.add-event');
         
     });
 });
