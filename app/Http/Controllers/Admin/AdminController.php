@@ -96,7 +96,8 @@ class AdminController extends Controller{
     }
     // Contact Section Start
     public function manage_contact(Request $request){
-        return view('admin.contact.manage_contact');
+        $contact = "";
+        return view('admin.contact.manage_contact',compact('contact'));
     }
     public function logout(Request $request){
         if(Auth::check()) { // check if user is logged in
