@@ -65,55 +65,55 @@
                         </div>
                         
                         <div class="card-body p-24">
-                            <form id="myForm" action="{{route('admin.add-sponsor')}}" method="post" class="d-flex flex-column gap-20" enctype="multipart/form-data">
+                            <form id="myForm" action="{{route('admin.update-sponsor',$sponsor->id)}}" method="post" class="d-flex flex-column gap-20" enctype="multipart/form-data">
                                 @csrf
-                                
+                                @method('PUT')
                                 <div>
                                     <label class="form-label fw-bold text-neutral-900" for="title">Sponsor Type: </label>
                                     <select name="sponsor_type" class="form-control border border-neutral-200 radius-8">
-                                        <option value="bronze">Bronze</option>
-                                        <option value="silver">Silver</option>
-                                        <option value="gold">Gold</option>
+                                        <option value="bronze" @if($sponsor->sponsor_type=="bronze") selected @endif>Bronze</option>
+                                        <option value="silver" @if($sponsor->sponsor_type=="silver") selected @endif>Silver</option>
+                                        <option value="gold" @if($sponsor->sponsor_type=="gold") selected @endif>Gold</option>
                                     </select>
                                 </div>
                                 
                                 <div>
                                     <label class="form-label fw-bold text-neutral-900" for="title">Sponsor Name: </label>
-                                    <input type="text" name="sponsor_name" class="form-control border border-neutral-200 radius-8" id="sponsor_name" placeholder="Enter Sponsor Name"  required>
+                                    <input type="text" name="sponsor_name" value="{{$sponsor->name}}" class="form-control border border-neutral-200 radius-8" id="sponsor_name" placeholder="Enter Sponsor Name"  required>
                                 </div>
                                
                            
                                 <div>
                                     <label class="form-label fw-bold text-neutral-900" for="title">Email id: </label>
-                                    <input type="text" name="emailid" class="form-control border border-neutral-200 radius-8" id="emailid" placeholder="Enter Email Id" required>
+                                    <input type="text" name="emailid" value="{{$sponsor->email}}" class="form-control border border-neutral-200 radius-8" id="emailid" placeholder="Enter Email Id" required>
                                 </div>
                                 
                                 <div>
                                     <label class="form-label fw-bold text-neutral-900" for="title">Phone: </label>
-                                    <input type="text" name="phone" class="form-control border border-neutral-200 radius-8" id="phone" placeholder="Enter Phone Number" required>
+                                    <input type="text" name="phone" value="{{$sponsor->phone}}" class="form-control border border-neutral-200 radius-8" id="phone" placeholder="Enter Phone Number" required>
                                 </div>
                                 
                                 <div>
                                     <label class="form-label fw-bold text-neutral-900" for="title">Address: </label>
-                                    <textarea name="address" class="form-control"></textarea>
+                                    <textarea name="address" class="form-control">{{$sponsor->address}}</textarea>
                                 </div>
                                 
                                 <div class="row">
                                     
                                     <div class="col-md-6">
                                         <label class="form-label fw-bold text-neutral-900">City</label>
-                                        <input type="text" name="city" class="form-control border border-neutral-200 radius-8"id="city">
+                                        <input type="text" name="city" value="{{$sponsor->city}}" class="form-control border border-neutral-200 radius-8"id="city">
                                     </div>
 
                                     <div class="col-md-6">
                                         <label class="form-label fw-bold text-neutral-900">State</label>
-                                        <input type="text" name="state" class="form-control border border-neutral-200 radius-8" id="state">    
+                                        <input type="text" name="state" value="{{$sponsor->state}}" class="form-control border border-neutral-200 radius-8" id="state">    
                                     </div>
                                 </div>
                                 
                                 <div>
                                     <label class="form-label fw-bold text-neutral-900" for="title">Pin Code: </label>
-                                    <input type="text" name="zip_code" class="form-control border border-neutral-200 radius-8" id="zip_code" placeholder="Enter Pin code">
+                                    <input type="text" name="zip_code" value="{{$sponsor->zipcode}}" class="form-control border border-neutral-200 radius-8" id="zip_code" placeholder="Enter Pin code">
                                 </div>
                                 
                                 <div>
@@ -123,7 +123,7 @@
                                 
                                 <div>
                                     <label class="form-label fw-bold text-neutral-900" for="title">Website url: </label>
-                                    <input type="url" name="weburl" class="form-control border border-neutral-200 radius-8" id="weburl" placeholder="Enter web url">
+                                    <input type="url" name="weburl" value="{{$sponsor->website}}" class="form-control border border-neutral-200 radius-8" id="weburl" placeholder="Enter web url">
                                 </div>
                                 
                                 <div>
@@ -180,7 +180,7 @@
 
                                             <!-- Editor start -->
                                             <div id="editor">
-                                                <p class=""></p>
+                                                {{strip_tags($sponsor->description)}}
                                             </div>
                                           
                                             <input type="hidden" name="description" id="editdesc">
