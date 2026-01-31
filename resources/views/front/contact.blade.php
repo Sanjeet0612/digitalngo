@@ -94,7 +94,14 @@
                         <div class="icon-box-4 bg-green mb-4">
                             <i data-feather="phone"></i>
                             <h3>Phone Number</h3>
-                            <div>+91 8478884111<br>+91 9122691369</div>
+                            @if($contact)
+                                @php
+                                    $phones = explode(',', $contact->phone);
+                                @endphp
+                                @foreach($phones as $phone)
+                                <div>+91 <a href="tel:{{trim($phone)}}">{{trim($phone)}}</a></div>
+                                @endforeach
+                            @endif
                         </div>
                         <!-- Icon Boxes Style -->
 
@@ -102,8 +109,14 @@
                         <div class="icon-box-4 bg-gray mb-4">
                             <i data-feather="mail"></i>
                             <h3>Email Address</h3>
-                            <div><a href="mailto:info@mahrorfoundation.com">info@mahrorfoundation.com</a></div>
-                            <div><a href="mailto:volunteer@mahrorfoundation.com">volunteer@mahrorfoundation.com</a></div>
+                            @if($contact && $contact->emailid)
+                                @php
+                                    $allemail = explode(',', $contact->emailid);
+                                @endphp
+                                @foreach($allemail as $allemailVal)    
+                                    <div><a href="mailto:{{$allemailVal}}" style="text-decoration:none;">{{$allemailVal}}</a></div>
+                                @endforeach
+                            @endif
                         </div>
                         <!-- Icon Boxes Style -->
                     </div>
