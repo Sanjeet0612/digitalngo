@@ -128,7 +128,8 @@ class AdminController extends Controller{
             );
                 return back()->with('success','Contact details updated');
         }else{
-            return view('admin.contact.contact_form');
+            $contact = Contact::where('status', 1)->first();
+            return view('admin.contact.contact_form',compact('contact'));
         }
     }
     public function logout(Request $request){
