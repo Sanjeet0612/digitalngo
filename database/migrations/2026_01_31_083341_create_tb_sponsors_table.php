@@ -16,11 +16,11 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->string('phone', 20)->nullable();
             $table->string('email')->nullable();
-            $table->string('address');
-            $table->string('state', 100);
-            $table->string('city', 100);
-            $table->string('zipcode', 60);
-            $table->text('description');
+            $table->string('address')->nullable();
+            $table->string('state', 100)->nullable();
+            $table->string('city', 100)->nullable();
+            $table->string('zipcode', 60)->nullable();
+            $table->text('description')->nullable();
             $table->string('logo')->nullable();
             $table->string('website')->nullable();
             $table->enum('sponsor_type', ['gold', 'silver', 'bronze'])->default('bronze');
