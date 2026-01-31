@@ -17,6 +17,7 @@ class Contact extends Model
         'workingDays',
         'officeTime',
         'address',
+        'short_desc',
         'city',
         'state',
         'zipcode',
