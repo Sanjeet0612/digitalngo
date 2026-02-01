@@ -298,6 +298,13 @@ class AdminController extends Controller{
         $eventdata = Event::where('id',$rowid)->first();
         return view('admin.event.edit_event_form',compact('eventdata','sponsor'));
     }
+    public function update_event(Request $request,$id){
+        if($request->isMethod('post')){
+            print_r($_POST);
+        }else{
+
+        }
+    }
     public function view_event($id){
     }
     public function logout(Request $request){
