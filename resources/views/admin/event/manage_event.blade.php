@@ -56,7 +56,7 @@
                                 @else
                                 <img src="{{ asset('assets/images/user-grid/user-grid-bg1.png') }}" alt="" class="w-100 object-fit-cover">
                                 @endif
-                                
+
                                 <div class="dropdown position-absolute top-0 end-0 me-16 mt-16">
                                     <button type="button" data-bs-toggle="dropdown" aria-expanded="false" class="bg-white-gradient-light w-32-px h-32-px radius-8 border border-light-white d-flex justify-content-center align-items-center text-white">
                                         <iconify-icon icon="entypo:dots-three-vertical" class="icon "></iconify-icon>
@@ -99,6 +99,7 @@
                                             <span class="text-secondary-light text-sm mb-0">{{$eventListVal->end_date}}</span>
                                         </div>
                                     </div>
+                                    <p class="text-secondary-light text-sm mb-0 mt-3"><b class="text-md mb-0" >Time : </b> {{$eventListVal->e_time}}</p>
 
                                     <a  href="{{route('admin.view-event',$eventListVal->slug)}}" class="bg-primary-50 text-primary-600 bg-hover-primary-600 hover-text-white p-10 text-sm btn-sm px-12 py-12 radius-8 d-flex align-items-center justify-content-center mt-16 fw-medium gap-2 w-100">
                                         View Event
