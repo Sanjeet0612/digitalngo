@@ -164,25 +164,20 @@
                                         <label class="form-label fw-bold text-neutral-900" for="title">Pin Code: </label>
                                         <input type="text" name="zip_code" class="form-control border border-neutral-200 radius-8" id="zip_code" placeholder="Enter Pin code" required>
                                     </div>
+                                    
                                     <div class="col-md-6">
-                                        <label class="form-label fw-bold text-neutral-900" for="title">Location Map (iframe): </label>
-                                        <input type="text" name="location" class="form-control border border-neutral-200 radius-8" id="location" placeholder="EnterLocation">        
+                                        <label class="form-label fw-bold text-neutral-900" for="title">Web Link: </label>
+                                        <input type="url" name="og_weblink" class="form-control border border-neutral-200 radius-8" id="og_weblink" placeholder="e.g, https://abc.com">
                                     </div>
+
                                 </div>
                             <div class="row">
-                                <div class="col-md-6">
-                                <div>
-                                    <label class="form-label fw-bold text-neutral-900" for="title">Web Link: </label>
-                                    <input type="url" name="og_weblink" class="form-control border border-neutral-200 radius-8" id="og_weblink" placeholder="e.g, https://abc.com">
-                                </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                <div>
-                                    <label class="form-label fw-bold text-neutral-900" for="title">Video Link: </label>
-                                    <input type="text" name="video_link" class="form-control border border-neutral-200 radius-8" id="video_link" placeholder="e.g, https://www.youtube.com/embed/dQw4w9WgXcQ">
-                                </div>
-                                </div>
+                                
+                                 <div class="col-md-12">
+                                        <label class="form-label fw-bold text-neutral-900" for="title">Location Map (iframe): </label>
+                                        <input type="text" name="location" class="form-control border border-neutral-200 radius-8" id="location" placeholder="EnterLocation">        
+                                    </div>               
+                                
                             </div>    
                                 <div>
                                     <label class="form-label fw-bold text-neutral-900">Event Description </label>
