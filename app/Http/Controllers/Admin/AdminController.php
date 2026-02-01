@@ -266,15 +266,17 @@ class AdminController extends Controller{
 
                 /* 🔹 Insert data */
                 Event::create([
-                    'title' => $request->event_title,
+                    'title'       => $request->event_title,
                     'slug'        => $slug,
                     'og_name'     => $request->organizer_name,
                     'og_email'    => $request->emailid,
                     'og_phone'    => $request->phone,
+                    'og_weblink'  => $request->og_weblink,
                     'description' => $request->description,
                     'start_date'  => $request->start_date,
                     'end_date'    => $request->end_date,
-                    'user_id'     => Auth::id(), // logged-in user
+                    'location'    => $request->address,
+                    'user_id'     => Auth::id(), // logged-in user/admin
                     'banner'      => $bannerPath,
                 ]);
 
