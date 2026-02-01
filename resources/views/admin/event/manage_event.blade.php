@@ -52,7 +52,7 @@
                         <div class="col-xxl-3 col-md-6 user-grid-card   ">
                             <div class="position-relative border radius-16 overflow-hidden">
                                 @if(!empty($eventListVal->banner))
-                                <img src="{{url('/')}}/{{$eventListVal->banner}}" alt="" class="w-100 object-fit-cover">
+                                <img src="storage/{{$eventListVal->banner}}" alt="" class="w-100 object-fit-cover">
                                 @else
                                 <img src="{{ asset('assets/images/user-grid/user-grid-bg1.png') }}" alt="" class="w-100 object-fit-cover">
                                 @endif
