@@ -63,11 +63,11 @@
                                                            value="{{ $sponsorVal->id }}"
                                                            class="form-check-input mt-0">
                                                     @if($sponsorVal->sponsor_type=="silver")
-                                                        <img src="{{url('/assets/images/event/silver.png')}}" style="width:25%;">
+                                                        <img src="{{url('/assets/images/silver.png')}}" style="width:25%;">
                                                     @elseif($sponsorVal->sponsor_type=="bronze")
-                                                        <img src="{{url('/assets/images/event/bronze.png')}}" style="width:25%;">
+                                                        <img src="{{url('/assets/images/bronze.png')}}" style="width:25%;">
                                                     @else($sponsorVal->sponsor_type=="gold")
-                                                        <img src="{{url('/assets/images/event/gold.png')}}" style="width:25%;"> 
+                                                        <img src="{{url('/assets/images/gold.png')}}" style="width:25%;"> 
                                                     @endif      
                                                     <div>
                                                         <h6 class="mb-0">{{ $sponsorVal->name }}</h6>
