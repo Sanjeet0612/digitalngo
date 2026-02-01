@@ -52,7 +52,7 @@
                         <div class="col-xxl-3 col-md-6 user-grid-card   ">
                             <div class="position-relative border radius-16 overflow-hidden">
                                 @if(!empty($eventListVal->banner))
-                                <img src="storage/{{$eventListVal->banner}}" alt="" class="w-100 object-fit-cover">
+                                <img src="{{asset('storage/'.$eventListVal->banner)}}" alt="" class="w-100 object-fit-cover">
                                 @else
                                 <img src="{{ asset('assets/images/user-grid/user-grid-bg1.png') }}" alt="" class="w-100 object-fit-cover">
                                 @endif
@@ -61,23 +61,21 @@
                                 $sessiondata = session()->get('logSession');
                                 $userid      = session('logSession.id');
                                 ?>
-                                @if($eventListVal->user_id==$userid)
-                                    @if(!$now->gt($end))
-                                    <div class="dropdown position-absolute top-0 end-0 me-16 mt-16">
-                                        <button type="button" data-bs-toggle="dropdown" aria-expanded="false" class="bg-white-gradient-light w-32-px h-32-px radius-8 border border-light-white d-flex justify-content-center align-items-center text-white">
-                                            <iconify-icon icon="entypo:dots-three-vertical" class="icon "></iconify-icon>
-                                        </button>
-                                        
-                                            <ul class="dropdown-menu p-12 border bg-base shadow">
-                                                <li>
-                                                    <a class="dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900 d-flex align-items-center gap-10"  href="{{url('/')}}/edit-event/{{base64_encode($eventListVal->id)}}">
-                                                        Edit
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                    </div>
-                                    @endif
-                                @endif
+                                
+                                <div class="dropdown position-absolute top-0 end-0 me-16 mt-16">
+                                    <button type="button" data-bs-toggle="dropdown" aria-expanded="false" class="bg-white-gradient-light w-32-px h-32-px radius-8 border border-light-white d-flex justify-content-center align-items-center text-white">
+                                        <iconify-icon icon="entypo:dots-three-vertical" class="icon "></iconify-icon>
+                                    </button>
+                                    
+                                        <ul class="dropdown-menu p-12 border bg-base shadow">
+                                            <li>
+                                                <a class="dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900 d-flex align-items-center gap-10"  href="{{route('admin.edit-event',base64_encode($eventListVal->id))}}">
+                                                    Edit
+                                                </a>
+                                            </li>
+                                        </ul>
+                                </div>
+                                   
                                 
                                 <li class="event-item text-center">
                                     @if($now->lt($start))
