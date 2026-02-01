@@ -287,7 +287,7 @@ class AdminController extends Controller{
                     'banner'      => $bannerPath,
                 ]);
 
-                return redirect()->route('admin.add-event')->with('success', 'Event added successfully!');
+                return redirect()->route('admin.manage_event')->with('success', 'Event added successfully!');
 
 
          }else{
