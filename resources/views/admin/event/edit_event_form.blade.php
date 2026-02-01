@@ -85,8 +85,7 @@
                                                         <img src="{{url('/assets/images/gold.png')}}" style="width:25%;"> 
                                                     @endif      
                                                     <div>
-                                                        <h6 class="mb-0">{{ $sponsorVal->name }}</h6>
-                                                        <small class="text-muted">{{ $sponsorVal->sponsor_type }}</small>
+                                                        <b class="mb-0">{{ $sponsorVal->name }}</b>
                                                     </div>
                                                 </div>
                                             </label>
