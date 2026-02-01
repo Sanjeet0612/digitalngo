@@ -237,7 +237,6 @@ class AdminController extends Controller{
     }
     public function add_event(Request $request){
          if($request->isMethod('post')){
-
                 $request->validate([
                     'event_title'    => 'required|string|max:255',
                     'organizer_name' => 'nullable|string|max:255',
@@ -288,8 +287,6 @@ class AdminController extends Controller{
                 ]);
 
                 return redirect()->route('admin.manage_event')->with('success', 'Event added successfully!');
-
-
          }else{
             $sponsor = Sponsor::all();
             return view('admin.event.event_form',compact('sponsor'));
