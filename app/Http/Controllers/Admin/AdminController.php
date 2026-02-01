@@ -260,7 +260,7 @@ class AdminController extends Controller{
                 $bannerPath = null;
                 if($request->hasFile('event_banner')) {
                     $bannerPath = $request->file('event_banner')
-                        ->store('events/banner', 'public');
+                        ->store('admin/events/banner', 'public');
                 }
                 // Multiple sponsors ko comma separated string me convert karo
                 $sponsor_id = $request->has('sponsors') ? implode(',', $request->sponsors) : null;    
