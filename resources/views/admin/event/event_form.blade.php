@@ -131,6 +131,16 @@
                                                class="form-control border border-neutral-200 radius-8"
                                                id="end_date" required>
                                     </div>
+
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-bold text-neutral-900">Event Time</label>
+                                        <input type="time" name="e_time" class="form-control" required>
+                                    </div>
+
+
+                                    
+
+
                                 </div>
                                 
                                 <div>
@@ -156,6 +166,11 @@
                                 <div>
                                     <label class="form-label fw-bold text-neutral-900" for="title">Pin Code: </label>
                                     <input type="text" name="zip_code" class="form-control border border-neutral-200 radius-8" id="zip_code" placeholder="Enter Pin code" required>
+                                </div>
+
+                                <div>
+                                    <label class="form-label fw-bold text-neutral-900" for="title">Web Link: </label>
+                                    <input type="url" name="og_weblink" class="form-control border border-neutral-200 radius-8" id="og_weblink" placeholder="Enter Wesite link" required>
                                 </div>
                                 
                                 <div>
