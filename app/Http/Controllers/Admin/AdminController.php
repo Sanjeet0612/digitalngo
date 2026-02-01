@@ -232,7 +232,7 @@ class AdminController extends Controller{
         return redirect()->route('admin.manage_sponsor')->with('success', 'Sponsor updated successfully!');
     }
     public function manage_event(Request $request){
-        $eventList = array();
+        $eventList = Event::all();
         return view('admin.event.manage_event',compact('eventList'));
     }
     public function add_event(Request $request){
