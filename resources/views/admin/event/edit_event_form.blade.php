@@ -45,7 +45,8 @@
                 <div class="col-lg-8">
                     <div class="card mt-24">
                         <div class="card-header border-bottom">
-                            <h6 class="text-xl mb-0">Add New Event</h6>
+                            <h6 class="text-xl mb-0">Add New Event <a href="{{route('admin.manage_event')}}" class="btn btn-primary" style="float:right;">Back</a></h6>
+                            
                         </div>
                         <div class="card-body p-24">
 
