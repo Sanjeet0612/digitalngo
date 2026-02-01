@@ -133,8 +133,8 @@
                                     </div>
 
                                     <div class="col-md-6">
-                                        <label class="form-label fw-bold text-neutral-900">Event Time</label>
-                                        <input type="time" name="e_time" class="form-control" required>
+                                        <label class="form-label fw-bold text-neutral-900">Event Start-End Time</label>
+                                        <input type="text" name="e_time" class="form-control" placeholder="05:00 AM - 6:00 PM" required>
                                     </div>
 
 
