@@ -289,7 +289,8 @@ class AdminController extends Controller{
                 return redirect()->route('admin.manage_event')->with('success', 'Event added successfully!');
          }else{
             $sponsor = Sponsor::all();
-            return view('admin.event.event_form',compact('sponsor'));
+            $latestEvent = Event::latest()->take(5)->get();
+            return view('admin.event.event_form',compact('sponsor','latestEvent'));
          }
     }
     public function edit_event($id){
