@@ -296,7 +296,8 @@ class AdminController extends Controller{
         $rowid = base64_decode($id);
         $sponsor = Sponsor::all();
         $eventdata = Event::where('id',$rowid)->first();
-        return view('admin.event.edit_event_form',compact('eventdata','sponsor'));
+        $latestEvent = Event::latest()->take(5)->get();
+        return view('admin.event.edit_event_form',compact('eventdata','sponsor','latestEvent'));
     }
     public function update_event(Request $request,$id){
         if($request->isMethod('post')){
