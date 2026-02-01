@@ -108,39 +108,36 @@
                                     <label class="form-label fw-bold text-neutral-900" for="title">Organizer Name: </label>
                                     <input type="text" name="organizer_name" class="form-control border border-neutral-200 radius-8" id="organizer_name" placeholder="Enter Organizer Name" required>
                                 </div>
-                                <div>
+                            <div class="row">
+                                <div class="col-md-6">
                                     <label class="form-label fw-bold text-neutral-900" for="title">Email Id: </label>
                                     <input type="text" name="emailid" class="form-control border border-neutral-200 radius-8" id="emailid" placeholder="Enter Email Id" required>
                                 </div>
-                                <div>
+                                <div class="col-md-6">
                                     <label class="form-label fw-bold text-neutral-900" for="title">Phone: </label>
                                     <input type="text" name="phone" class="form-control border border-neutral-200 radius-8" id="phone" placeholder="Enter Phone Number" required>
                                 </div>
+                            </div>
                                 
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label class="form-label fw-bold text-neutral-900">Start Date</label>
-                                        <input type="datetime-local" name="start_date"
+                                        <input type="date" name="start_date"
                                                class="form-control border border-neutral-200 radius-8"
                                                id="start_date" required>
                                     </div>
                                 
                                     <div class="col-md-6">
                                         <label class="form-label fw-bold text-neutral-900">End Date</label>
-                                        <input type="datetime-local" name="end_date"
+                                        <input type="date" name="end_date"
                                                class="form-control border border-neutral-200 radius-8"
                                                id="end_date" required>
                                     </div>
+                                </div>
 
-                                    <div class="col-md-6">
-                                        <label class="form-label fw-bold text-neutral-900">Event Start-End Time</label>
-                                        <input type="text" name="e_time" class="form-control" placeholder="05:00 AM - 6:00 PM" required>
-                                    </div>
-
-
-                                    
-
-
+                                <div>
+                                    <label class="form-label fw-bold text-neutral-900">Event Start-End Time</label>
+                                    <input type="text" name="e_time" class="form-control" placeholder="05:00 AM - 6:00 PM" required>
                                 </div>
                                 
                                 <div>
@@ -162,22 +159,31 @@
                                                id="city" required>
                                     </div>
                                 </div>
-                                
-                                <div>
-                                    <label class="form-label fw-bold text-neutral-900" for="title">Pin Code: </label>
-                                    <input type="text" name="zip_code" class="form-control border border-neutral-200 radius-8" id="zip_code" placeholder="Enter Pin code" required>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-bold text-neutral-900" for="title">Pin Code: </label>
+                                        <input type="text" name="zip_code" class="form-control border border-neutral-200 radius-8" id="zip_code" placeholder="Enter Pin code" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-bold text-neutral-900" for="title">Location Map (iframe): </label>
+                                        <input type="text" name="location" class="form-control border border-neutral-200 radius-8" id="location" placeholder="EnterLocation">        
+                                    </div>
                                 </div>
-
+                            <div class="row">
+                                <div class="col-md-6">
                                 <div>
                                     <label class="form-label fw-bold text-neutral-900" for="title">Web Link: </label>
-                                    <input type="url" name="og_weblink" class="form-control border border-neutral-200 radius-8" id="og_weblink" placeholder="Enter Wesite link" required>
+                                    <input type="url" name="og_weblink" class="form-control border border-neutral-200 radius-8" id="og_weblink" placeholder="e.g, https://abc.com">
                                 </div>
-                                
+                                </div>
+
+                                <div class="col-md-6">
                                 <div>
                                     <label class="form-label fw-bold text-neutral-900" for="title">Video Link: </label>
-                                    <input type="text" name="video_link" class="form-control border border-neutral-200 radius-8" id="video_link" placeholder="Enter video link" required>
+                                    <input type="text" name="video_link" class="form-control border border-neutral-200 radius-8" id="video_link" placeholder="e.g, https://www.youtube.com/embed/dQw4w9WgXcQ">
                                 </div>
-                                
+                                </div>
+                            </div>    
                                 <div>
                                     <label class="form-label fw-bold text-neutral-900">Event Description </label>
                                     <div class="border border-neutral-200 radius-8 overflow-hidden">
