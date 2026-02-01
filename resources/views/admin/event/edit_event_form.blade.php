@@ -225,7 +225,7 @@
 
                                             <!-- Editor start -->
                                             <div id="editor">
-                                                {{strip_tags($eventdata->description)}}
+                                                {!! $eventdata->description !!}
                                             </div>
                                           
                                             <input type="hidden" name="description" id="editdesc">
