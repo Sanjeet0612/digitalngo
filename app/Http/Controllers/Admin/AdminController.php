@@ -263,7 +263,8 @@ class AdminController extends Controller{
                     $bannerPath = $request->file('event_banner')
                         ->store('events/banner', 'public');
                 }
-
+                // Multiple sponsors ko comma separated string me convert karo
+                $sponsor_id = $request->has('sponsors') ? implode(',', $request->sponsors) : null;    
                 /* 🔹 Insert data */
                 Event::create([
                     'title'       => $request->event_title,
@@ -275,8 +276,14 @@ class AdminController extends Controller{
                     'description' => $request->description,
                     'start_date'  => $request->start_date,
                     'end_date'    => $request->end_date,
+                    'e_time'      => $request->e_time,
                     'location'    => $request->address,
+                    'address'     => $request->address,
+                    'city'        => $request->city,
+                    'state'       => $request->state,
+                    'zipcode'     => $request->zip_code,
                     'user_id'     => Auth::id(), // logged-in user/admin
+                    'sponsor_id'  => $sponsor_id,
                     'banner'      => $bannerPath,
                 ]);
 
