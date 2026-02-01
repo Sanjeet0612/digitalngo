@@ -292,6 +292,11 @@ class AdminController extends Controller{
             return view('admin.event.event_form',compact('sponsor'));
          }
     }
+    public function edit_event($id){
+        $rowid = base64_decode($id);
+        $eventdata = Event::where('id',$rowid)->first();
+        return view('admin.event.edit_event_form',compact('eventdata'));
+    }
     public function logout(Request $request){
         if(Auth::check()) { // check if user is logged in
             $user = Auth::user();  // full user object
