@@ -268,19 +268,19 @@
                                 <h6 class="text-xl mb-0">Latest Events</h6>
                             </div>
                             <div class="card-body d-flex flex-column gap-24 p-24">
-                               
+                                @foreach($latestEvent as $latestEventVal)            
                                 <div class="d-flex flex-wrap">
-                                    <a  href="" class="blog__thumb w-100 radius-12 overflow-hidden">
-                                        <img src="" alt="" class="w-100 h-100 object-fit-cover">
+                                    <a  href="#" class="blog__thumb w-100 radius-12 overflow-hidden">
+                                        <img src="{{asset('storage/'.$latestEventVal->banner)}}" alt="" class="w-100 h-100 object-fit-cover">
                                     </a>
                                     <div class="blog__content">
                                         <h6 class="mb-8">
-                                            <a  href="" class="text-line-2 text-hover-primary-600 text-md transition-2">eee</a>
+                                            <a  href="" class="text-line-2 text-hover-primary-600 text-md transition-2">{{$latestEventVal->title}}</a>
                                         </h6>
-                                        <p class="text-line-2 text-sm text-neutral-500 mb-0">ee</p>
+                                        <p class="text-line-2 text-sm text-neutral-500 mb-0">{{strip_tags($latestEventVal->description)}}</p>
                                     </div>
                                 </div>
-                              
+                                @endforeach                
                             </div>
                         </div>
                     </div>
