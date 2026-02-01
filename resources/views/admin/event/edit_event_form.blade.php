@@ -66,7 +66,7 @@
                         @endif
                         </div>
 
-
+                            @php $allSponsor = explode(',',$eventdata->sponsor_id); @endphp
                             <form id="myForm" action="{{route('admin.add-event')}}" method="post" class="d-flex flex-column gap-20" enctype="multipart/form-data">
                                 @csrf
                                 
@@ -76,11 +76,7 @@
                                         <div class="col-md-4 mb-3">
                                             <label class="card p-2 cursor-pointer">
                                                 <div class="d-flex align-items-center gap-3">
-                                                    
-                                                    <input type="checkbox" 
-                                                           name="sponsors[]" 
-                                                           value="{{ $sponsorVal->id }}"
-                                                           class="form-check-input mt-0">
+                                                    <input type="checkbox" <?php if(in_array($sponsorVal->id,$allSponsor)){ echo "checked"; } ?> name="sponsors[]" value="{{ $sponsorVal->id }}" class="form-check-input mt-0">
                                                     @if($sponsorVal->sponsor_type=="silver")
                                                         <img src="{{url('/assets/images/silver.png')}}" style="width:25%;">
                                                     @elseif($sponsorVal->sponsor_type=="bronze")
@@ -100,36 +96,36 @@
 
                                 <div>
                                     <label class="form-label fw-bold text-neutral-900" for="title">Event Title: </label>
-                                    <input type="text" name="event_title" class="form-control border border-neutral-200 radius-8" id="title" placeholder="Enter Event Title"  required>
+                                    <input type="text" name="event_title" value="{{$eventdata->title}}" class="form-control border border-neutral-200 radius-8" id="title" placeholder="Enter Event Title"  required>
                                 </div>
                                
                            
                                 <div>
                                     <label class="form-label fw-bold text-neutral-900" for="title">Organizer Name: </label>
-                                    <input type="text" name="organizer_name" class="form-control border border-neutral-200 radius-8" id="organizer_name" placeholder="Enter Organizer Name" required>
+                                    <input type="text" name="organizer_name" value="{{$eventdata->og_name}}" class="form-control border border-neutral-200 radius-8" id="organizer_name" placeholder="Enter Organizer Name" required>
                                 </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <label class="form-label fw-bold text-neutral-900" for="title">Email Id: </label>
-                                    <input type="text" name="emailid" class="form-control border border-neutral-200 radius-8" id="emailid" placeholder="Enter Email Id" required>
+                                    <input type="text" name="emailid" value="{{$eventdata->og_email}}" class="form-control border border-neutral-200 radius-8" id="emailid" placeholder="Enter Email Id" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label fw-bold text-neutral-900" for="title">Phone: </label>
-                                    <input type="text" name="phone" class="form-control border border-neutral-200 radius-8" id="phone" placeholder="Enter Phone Number" required>
+                                    <input type="text" name="phone" value="{{$eventdata->og_phone}}" class="form-control border border-neutral-200 radius-8" id="phone" placeholder="Enter Phone Number" required>
                                 </div>
                             </div>
                                 
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label class="form-label fw-bold text-neutral-900">Start Date</label>
-                                        <input type="date" name="start_date"
+                                        <input type="date" name="start_date" value="{{ \Carbon\Carbon::parse($eventdata->start_date)->format('Y-m-d') }}"
                                                class="form-control border border-neutral-200 radius-8"
                                                id="start_date" required>
                                     </div>
                                 
                                     <div class="col-md-6">
                                         <label class="form-label fw-bold text-neutral-900">End Date</label>
-                                        <input type="date" name="end_date"
+                                        <input type="date" name="end_date" value="{{ \Carbon\Carbon::parse($eventdata->end_date)->format('Y-m-d') }}"
                                                class="form-control border border-neutral-200 radius-8"
                                                id="end_date" required>
                                     </div>
@@ -137,24 +133,24 @@
 
                                 <div>
                                     <label class="form-label fw-bold text-neutral-900">Event Start-End Time</label>
-                                    <input type="text" name="e_time" class="form-control" placeholder="05:00 AM - 6:00 PM" required>
+                                    <input type="text" name="e_time" value="{{$eventdata->e_time}}" class="form-control" placeholder="05:00 AM - 6:00 PM" required>
                                 </div>
                                 
                                 <div>
                                     <label class="form-label fw-bold text-neutral-900" for="title">Event Address: </label>
-                                    <textarea name="address" class="form-control"></textarea>
+                                    <textarea name="address" class="form-control">{{$eventdata->address}}</textarea>
                                 </div>
                                 
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label class="form-label fw-bold text-neutral-900">State</label>
-                                        <input type="text" name="state"
+                                        <input type="text" name="state" value="{{$eventdata->state}}"
                                                class="form-control border border-neutral-200 radius-8"
                                                id="state" required>
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label fw-bold text-neutral-900">City</label>
-                                        <input type="text" name="city"
+                                        <input type="text" name="city" value="{{$eventdata->city}}"
                                                class="form-control border border-neutral-200 radius-8"
                                                id="city" required>
                                     </div>
@@ -162,27 +158,18 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label class="form-label fw-bold text-neutral-900" for="title">Pin Code: </label>
-                                        <input type="text" name="zip_code" class="form-control border border-neutral-200 radius-8" id="zip_code" placeholder="Enter Pin code" required>
+                                        <input type="text" name="zip_code"  value="{{$eventdata->zipcode}}" class="form-control border border-neutral-200 radius-8" id="zip_code" placeholder="Enter Pin code" required>
                                     </div>
                                     <div class="col-md-6">
-                                        <label class="form-label fw-bold text-neutral-900" for="title">Location Map (iframe): </label>
-                                        <input type="text" name="location" class="form-control border border-neutral-200 radius-8" id="location" placeholder="EnterLocation">        
+                                        <label class="form-label fw-bold text-neutral-900" for="title">Web Link: </label>
+                                        <input type="url" name="og_weblink" value="{{$eventdata->og_weblink}}" class="form-control border border-neutral-200 radius-8" id="og_weblink" placeholder="e.g, https://abc.com">
                                     </div>
                                 </div>
                             <div class="row">
-                                <div class="col-md-6">
-                                <div>
-                                    <label class="form-label fw-bold text-neutral-900" for="title">Web Link: </label>
-                                    <input type="url" name="og_weblink" class="form-control border border-neutral-200 radius-8" id="og_weblink" placeholder="e.g, https://abc.com">
-                                </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                <div>
-                                    <label class="form-label fw-bold text-neutral-900" for="title">Video Link: </label>
-                                    <input type="text" name="video_link" class="form-control border border-neutral-200 radius-8" id="video_link" placeholder="e.g, https://www.youtube.com/embed/dQw4w9WgXcQ">
-                                </div>
-                                </div>
+                                <div class="col-md-12">
+                                    <label class="form-label fw-bold text-neutral-900" for="title">Location Map (iframe): </label>
+                                    <input type="text" name="location" value="{{$eventdata->location}}" class="form-control border border-neutral-200 radius-8" id="location" placeholder="EnterLocation">        
+                                </div>                
                             </div>    
                                 <div>
                                     <label class="form-label fw-bold text-neutral-900">Event Description </label>
@@ -238,7 +225,7 @@
 
                                             <!-- Editor start -->
                                             <div id="editor">
-                                                <p class=""></p>
+                                                {{strip_tags($eventdata->description)}}
                                             </div>
                                           
                                             <input type="hidden" name="description" id="editdesc">
