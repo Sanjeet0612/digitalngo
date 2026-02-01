@@ -8,6 +8,7 @@ use App\Models\Admin\Admin;
 use App\Models\Admin\Banner;
 use App\Models\Admin\Contact;
 use App\Models\Admin\Sponsor;
+use App\Models\Admin\Event;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
@@ -236,6 +237,49 @@ class AdminController extends Controller{
     }
     public function add_event(Request $request){
          if($request->isMethod('post')){
+
+                $request->validate([
+                    'event_title'    => 'required|string|max:255',
+                    'organizer_name' => 'nullable|string|max:255',
+                    'emailid'        => 'nullable|email|max:255',
+                    'phone'          => 'nullable|string|max:20',
+                    'start_date'     => 'required|date',
+                    'end_date'       => 'required|date|after_or_equal:start_date',
+                    'address'        => 'required|string|max:255',
+                    'state'          => 'required|string',
+                    'city'           => 'required|string',
+                    'zip_code'       => 'required|string',
+                    'event_banner'   => 'nullable|image|mimes:jpg,jpeg,png,webp|max:500',
+                ]);
+
+                /* Slug generate (unique) */
+                $slug = Str::slug($request->event_title);
+                $count = Event::where('slug', 'LIKE', "$slug%")->count();
+                $slug = $count ? "{$slug}-{$count}" : $slug;
+
+                /* Banner upload */
+                $bannerPath = null;
+                if($request->hasFile('event_banner')) {
+                    $bannerPath = $request->file('event_banner')
+                        ->store('events/banner', 'public');
+                }
+
+                /* 🔹 Insert data */
+                Event::create([
+                    'title' => $request->event_title,
+                    'slug'        => $slug,
+                    'og_name'     => $request->organizer_name,
+                    'og_email'    => $request->emailid,
+                    'og_phone'    => $request->phone,
+                    'description' => $request->description,
+                    'start_date'  => $request->start_date,
+                    'end_date'    => $request->end_date,
+                    'user_id'     => Auth::id(), // logged-in user
+                    'banner'      => $bannerPath,
+                ]);
+
+                return redirect()->route('admin.add-event')->with('success', 'Event added successfully!');
+
 
          }else{
             $sponsor = Sponsor::all();
