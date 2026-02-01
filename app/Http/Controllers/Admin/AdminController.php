@@ -277,7 +277,7 @@ class AdminController extends Controller{
                     'start_date'  => $request->start_date,
                     'end_date'    => $request->end_date,
                     'e_time'      => $request->e_time,
-                    'location'    => $request->address,
+                    'location'    => $request->location,
                     'address'     => $request->address,
                     'city'        => $request->city,
                     'state'       => $request->state,
