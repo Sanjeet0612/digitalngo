@@ -29,6 +29,7 @@ class Event extends Model
         'zipcode',
         'location',
         'user_id',
+        'sponsor_id',
         'banner',
     ];
 
