@@ -294,8 +294,9 @@ class AdminController extends Controller{
     }
     public function edit_event($id){
         $rowid = base64_decode($id);
+        $sponsor = Sponsor::all();
         $eventdata = Event::where('id',$rowid)->first();
-        return view('admin.event.edit_event_form',compact('eventdata'));
+        return view('admin.event.edit_event_form',compact('eventdata','sponsor'));
     }
     public function view_event($id){
     }
