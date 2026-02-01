@@ -128,6 +128,8 @@ Route::prefix('admin')->group(function () {
         Route::get('/manage-event', [AdminController::class, 'manage_event'])->name('admin.manage_event');
         Route::match(['get', 'post'], '/add-event', [AdminController::class, 'add_event'])->name('admin.add-event');
         Route::get('/edit-event/{id}', [AdminController::class, 'edit_event'])->name('admin.edit-event');
+        Route::get('/view-event/{id}', [AdminController::class, 'view_event'])->name('admin.view-event');
+        
         
         
     });
