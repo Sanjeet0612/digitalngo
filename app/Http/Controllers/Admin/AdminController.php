@@ -302,7 +302,56 @@ class AdminController extends Controller{
     }
     public function update_event(Request $request,$id){
         if($request->isMethod('post')){
-            print_r($_POST);
+            $request->validate([
+                'event_title'    => 'required|string|max:255',
+                'organizer_name' => 'nullable|string|max:255',
+                'emailid'        => 'nullable|email|max:255',
+                'phone'          => 'nullable|string|max:20',
+                'start_date'     => 'required|date',
+                'end_date'       => 'required|date|after_or_equal:start_date',
+                'address'        => 'required|string|max:255',
+                'state'          => 'required|string',
+                'city'           => 'required|string',
+                'zip_code'       => 'required|string',
+                'event_banner'   => 'nullable|image|mimes:jpg,jpeg,png,webp|max:500',
+            ]);
+
+            $event = Event::findOrFail($id);
+
+            $event->title       = $request->event_title;
+            $event->slug        = Str::slug($request->event_title);
+            $event->og_name     = $request->organizer_name;
+            $event->og_email    = $request->emailid;
+            $event->og_phone    = $request->phone;
+            $event->og_weblink  = $request->og_weblink;
+            $event->description = $request->description;
+            $event->start_date  = $request->start_date;
+            $event->end_date    = $request->end_date;
+            $event->e_time      = $request->e_time;
+            $event->location    = $request->location;
+            $event->address     = $request->address;
+            $event->city        = $request->city;
+            $event->state       = $request->state;
+            $event->zipcode     = $request->zip_code;
+
+            // sponsors[] ko implode karke save
+            if($request->has('sponsors')) {
+                $event->sponsor_id = implode(',', $request->sponsors);
+            }
+
+            // EVENT BANNER UPDATE
+            if($request->hasFile('event_banner')) {
+                // old image delete
+                if($event->banner && File::exists(public_path('admin/uploads/events/'.$event->banner))) {
+                    File::delete(public_path('admin/uploads/events/'.$event->banner));
+                }
+                $file = $request->file('event_banner');
+                $filename = time().'_'.$file->getClientOriginalName();
+                $file->move(public_path('admin/uploads/events'), $filename);
+                $event->banner = $filename;
+            }
+            $event->save();
+            return redirect()->back()->with('success', 'Event updated successfully');
         }else{
 
         }
