@@ -67,7 +67,7 @@
                         </div>
 
                             @php $allSponsor = explode(',',$eventdata->sponsor_id); @endphp
-                            <form id="myForm" action="{{route('admin.add-event')}}" method="post" class="d-flex flex-column gap-20" enctype="multipart/form-data">
+                            <form id="myForm" action="{{route('admin.update-event',$eventdata->id)}}" method="post" class="d-flex flex-column gap-20" enctype="multipart/form-data">
                                 @csrf
                                 
                                 <div class="row">
@@ -233,9 +233,12 @@
                                         </div>
                                     </div>
                                 </div>
-
+ 
                                 <div>
                                     <label class="form-label fw-bold text-neutral-900">Upload Banner </label>
+                                    @if(!empty($eventdata->banner))
+                                            <a href="{{asset('storage/'.$eventdata->banner)}}" target="_blank"><img src="{{asset('storage/'.$eventdata->banner)}}" style="width:100px;"></a>
+                                    @endif
                                     <div class="upload-image-wrapper">
                                         <div class="uploaded-img d-none position-relative h-160-px w-100 border input-form-light radius-8 overflow-hidden border-dashed bg-neutral-50">
                                             <button type="button" class="uploaded-img__remove position-absolute top-0 end-0 z-1 text-2xxl line-height-1 me-8 mt-8 d-flex bg-danger-600 w-40-px h-40-px justify-content-center align-items-center rounded-circle">
