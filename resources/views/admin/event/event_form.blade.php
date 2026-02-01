@@ -48,7 +48,26 @@
                             <h6 class="text-xl mb-0">Add New Event</h6>
                         </div>
                         <div class="card-body p-24">
-                            <form id="myForm" action="{{url('/')}}/add-event" method="post" class="d-flex flex-column gap-20" enctype="multipart/form-data">
+
+                            <div class="message">
+                        @if($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                        @if(session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+                        </div>
+
+
+                            <form id="myForm" action="{{route('admin.add-event')}}" method="post" class="d-flex flex-column gap-20" enctype="multipart/form-data">
                                 @csrf
                                 
                                 <div class="row">
