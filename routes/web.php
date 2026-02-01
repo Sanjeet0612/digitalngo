@@ -108,7 +108,7 @@ Route::prefix('admin')->group(function () {
     Route::post('/login', [AdminController::class, 'login'])->name('admin.login.post');
     // Logout
     Route::get('/logout', [AdminController::class, 'logout'])->name('admin.logout');
-    // Dashboard (protected)
+    // Admin (protected)
     Route::middleware('auth:admin')->group(function () {
         Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
         Route::get('/manage-banner', [AdminController::class, 'manage_banner'])->name('admin.manage_banner');
@@ -118,16 +118,16 @@ Route::prefix('admin')->group(function () {
         // Contact Section
         Route::get('/manage-contact', [AdminController::class, 'manage_contact'])->name('admin.manage_contact');
         Route::match(['get', 'post'], '/add-contact', [AdminController::class, 'add_contact'])->name('admin.add_contact');
-        // Event Section
-        
+        // Sponsor Section
         Route::get('/manage-sponsor', [AdminController::class, 'manage_sponsor'])->name('admin.manage_sponsor');
         Route::match(['get', 'post'], '/add-sponsor', [AdminController::class, 'add_sponsor'])->name('admin.add-sponsor');
         Route::get('/edit-sponsor/{id}', [AdminController::class, 'edit_sponsor'])->name('admin.edit-sponsor');
         Route::put('/update-sponsor/{id}', [AdminController::class, 'update_sponsor'])->name('admin.update-sponsor');
-        
+        // Event Section
         Route::get('/manage-event', [AdminController::class, 'manage_event'])->name('admin.manage_event');
         Route::match(['get', 'post'], '/add-event', [AdminController::class, 'add_event'])->name('admin.add-event');
         Route::get('/edit-event/{id}', [AdminController::class, 'edit_event'])->name('admin.edit-event');
+        Route::post('/update-event/{id}', [AdminController::class, 'update_event'])->name('admin.update-event');
         Route::get('/view-event/{id}', [AdminController::class, 'view_event'])->name('admin.view-event');
         
         
