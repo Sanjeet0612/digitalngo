@@ -104,28 +104,12 @@
                                             <span class="text-secondary-light text-sm mb-0">{{$eventListVal->end_date}}</span>
                                         </div>
                                     </div>
-                                    
-                                    @if($eventListVal->is_expired==1)
-                                        <a  href="javascript:void(0)" class="bg-danger-focus text-primary-600 bg-hover-primary-600 hover-text-white p-10 text-sm btn-sm px-12 py-12 radius-8 d-flex align-items-center justify-content-center mt-16 fw-medium gap-2 w-100">
-                                        Expired
+
+                                    <a  href="{{route('admin.view-event',$eventListVal->slug)}}" class="bg-primary-50 text-primary-600 bg-hover-primary-600 hover-text-white p-10 text-sm btn-sm px-12 py-12 radius-8 d-flex align-items-center justify-content-center mt-16 fw-medium gap-2 w-100">
+                                        View Event
                                         <iconify-icon icon="solar:alt-arrow-right-linear" class="icon text-xl line-height-1"></iconify-icon>
-                                        </a>
-                                    @else
-                                    
-                                    
-                                        @if($eventListVal->is_verified==0)
-                                            <a  href="javascript:void(0)" class="bg-warning-focus text-primary-600 bg-hover-primary-600 hover-text-white p-10 text-sm btn-sm px-12 py-12 radius-8 d-flex align-items-center justify-content-center mt-16 fw-medium gap-2 w-100">
-                                            Pending For Approval
-                                            <iconify-icon icon="solar:alt-arrow-right-linear" class="icon text-xl line-height-1"></iconify-icon>
-                                            </a>
-                                        
-                                        @else
-                                            <a  href="{{url('/')}}/view-event/{{$eventListVal->slug}}" class="bg-primary-50 text-primary-600 bg-hover-primary-600 hover-text-white p-10 text-sm btn-sm px-12 py-12 radius-8 d-flex align-items-center justify-content-center mt-16 fw-medium gap-2 w-100">
-                                                View Event
-                                                <iconify-icon icon="solar:alt-arrow-right-linear" class="icon text-xl line-height-1"></iconify-icon>
-                                            </a>
-                                        @endif
-                                    @endif    
+                                    </a>
+                                  
                                 </div>
                                 
                                 
