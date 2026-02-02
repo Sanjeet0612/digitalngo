@@ -140,7 +140,8 @@ Route::prefix('admin')->group(function () {
         Route::put('/update-event-gallery/{id}', [EventGalleryController::class, 'update_event_gallery'])->name('admin.update-event-gallery');
         // Team Section
 
-        Route::get('/management_team', [TeamController::class, 'management_team'])->name('admin.management_team');
+        Route::get('/management-team', [TeamController::class, 'management_team'])->name('admin.management_team');
+        Route::get('/volunteers-team', [TeamController::class, 'volunteers_team'])->name('admin.volunteers_team');
         
         
         
