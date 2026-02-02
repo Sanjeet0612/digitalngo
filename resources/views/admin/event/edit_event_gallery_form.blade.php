@@ -63,7 +63,7 @@
                             </div>
                         @endif
                         </div>
-                        
+                
                         <div class="card-body p-24">
                             <form id="myForm" action="{{route('admin.add-event-gallery')}}" method="post" class="d-flex flex-column gap-20" enctype="multipart/form-data">
                                 @csrf
@@ -73,7 +73,7 @@
                                     <select name="event_id" class="form-control border border-neutral-200 radius-8" required>
                                         <option value="">Select Event</option>
                                         @foreach($allevent as $alleventVal)
-                                        <option value="{{$alleventVal->id}}">{{$alleventVal->title}}</option>
+                                        <option value="{{$alleventVal->id}}" @if($alleventVal->id==$eventGallDetail->event_id) selected  @endif >{{$alleventVal->title}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -81,17 +81,16 @@
                                 <div>
                                     <label class="form-label fw-bold text-neutral-900" for="title">Upload Images ( 500 Kb ): </label>
                                     <input type="file" name="gallery_img[]" multiple class="form-control border border-neutral-200 radius-8" id="gallery_img" required>
+                                    <img src="{{asset('storage/'.$eventGallDetail->image)}}" style="width:150px;">
                                 </div>
 
                                 <div>
                                     <label class="form-label fw-bold text-neutral-900" for="title">Status: </label>
                                     <select name="status" class="form-control border border-neutral-200 radius-8" required>
-                                        <option value="1">Active</option>
-                                        <option value="0">Deactive</option>
+                                        <option value="1" @if($eventGallDetail->status==1) selected @endif>Active</option>
+                                        <option value="0" @if($eventGallDetail->status==0) selected @endif>Deactive</option>
                                     </select>
                                 </div>
-
-
                                 <button type="submit" class="btn btn-primary-600 radius-8">Submit</button>
                             </form>
                         </div>
