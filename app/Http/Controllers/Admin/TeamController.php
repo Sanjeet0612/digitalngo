@@ -13,4 +13,7 @@ class TeamController extends Controller
     public function volunteers_team(Request $request){
         return view('admin.team.volunteers_team');
     }
+    public function add_management_team(Request $request){
+        return view('admin.team.management_form');
+    }
 }
