@@ -12,7 +12,13 @@ class TeamController extends Controller
         return view('admin.team.management_team',compact('eventList'));
     }
     public function add_management_team(Request $request){
-        return view('admin.team.management_form');
+
+        if($request->isMethod('post')){
+                print_r($_POST);
+        }else{
+            return view('admin.team.management_form');
+        }
+        
     }
     // Volunteers Section
     public function volunteers_team(Request $request){
