@@ -142,7 +142,7 @@ Route::prefix('admin')->group(function () {
 
         Route::get('/management-team', [TeamController::class, 'management_team'])->name('admin.management_team');
         Route::get('/volunteers-team', [TeamController::class, 'volunteers_team'])->name('admin.volunteers_team');
-        
+        Route::match(['get', 'post'], '/add-management-team', [TeamController::class, 'add_management_team'])->name('admin.add-management-team');
         
         
     });
