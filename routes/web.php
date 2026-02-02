@@ -5,8 +5,10 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\SettingController;
+
 // Admin
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\EventGalleryController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -24,7 +26,6 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/video', 'video')->name('video');
     Route::get('/events', 'events')->name('events');
     Route::get('/event-details/{slug}', 'event_details')->name('event-details');
-    
     Route::get('/articles', 'articles')->name('articles');
     Route::get('/contact', 'contact')->name('contact');
     Route::get('/donation', 'donation')->name('donation');
@@ -131,6 +132,11 @@ Route::prefix('admin')->group(function () {
         Route::get('/edit-event/{id}', [AdminController::class, 'edit_event'])->name('admin.edit-event');
         Route::post('/update-event/{id}', [AdminController::class, 'update_event'])->name('admin.update-event');
         Route::get('/view-event/{id}', [AdminController::class, 'view_event'])->name('admin.view-event');
+        // Event Gallery Section
+        Route::get('/manage-event-gallery', [EventGalleryController::class, 'manage_event_gallery'])->name('admin.manage_event_gallery');
+        Route::get('/add-event-gallery', [EventGalleryController::class, 'add_event_gallery'])->name('admin.add-event-gallery');
+        
+        
         
         
         
