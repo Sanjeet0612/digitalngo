@@ -9,6 +9,7 @@ use App\Http\Controllers\SettingController;
 // Admin
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\EventGalleryController;
+use App\Http\Controllers\Admin\TeamController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -139,6 +140,7 @@ Route::prefix('admin')->group(function () {
         Route::put('/update-event-gallery/{id}', [EventGalleryController::class, 'update_event_gallery'])->name('admin.update-event-gallery');
         // Team Section
 
+        Route::get('/management_team', [TeamController::class, 'management_team'])->name('admin.management_team');
         
         
         
