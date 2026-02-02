@@ -12,6 +12,7 @@ class Event extends Model
     protected $table = 'tb_event';
 
     protected $fillable = [
+        'status',
         'title',
         'slug',
         'og_name',
