@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Admin\Event;
+use App\Models\Admin\EventGallery;
 use App\Models\Admin\Banner; 
 use Illuminate\Support\Facades\Http;
 
@@ -33,8 +34,9 @@ class HomeController extends Controller{
         return view('front.events',compact('event'));
     }
     public function event_details($slug){
-        $eventDetail = Event::where('slug',$slug)->first()->toArray();
-        return view('front.events_detail',compact('eventDetail'));
+        $eventDetail  = Event::where('slug',$slug)->first()->toArray();
+        $eventGallery = EventGallery::where('event_id',$eventDetail['id'])->where('status',1)->get()->toArray();
+        return view('front.events_detail',compact('eventDetail','eventGallery'));
     }
     public function articles(Request $request){
         return view('front.articles');
