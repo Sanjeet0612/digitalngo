@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Models;
-
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -27,8 +26,7 @@ class BlogComment extends Model
     // Relationship: Comment belongs to a User
     public function user()
     {
-        return $this->belongsTo(User::class, 'user_id')
-                    ->select('id', 'name', 'profile_img'); // only these fields
+        return $this->belongsTo(User::class, 'user_id')->select('id', 'name', 'profile_img'); // only these fields
     }
 
     // Self-referencing: Replies
