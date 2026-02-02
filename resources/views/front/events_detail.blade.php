@@ -103,18 +103,11 @@
                             Project We Have Done
                         </h1>
                     </div>
-                    <?php/*
-                        $query = mysqli_query($con,"select * from event_gallery where eg_e_id='$pac_id' order by eg_id");
-                            if(mysqli_num_rows($query)>0){
-                                while($row=mysqli_fetch_array($query)){
-                                    $eg_id = $row['eg_id'];
-                                    $image = $row['eg_image'];
-                        */
-                        ?> 
+                   @foreach($eventGallery as $eventGalleryVal)
                     <div class="col-lg-4 col-md-6">
                         <!-- Gallery Item -->
                         <div class="img-gallery-item">
-                            <a href="assets/images/events/<?php //echo $image; ?>" title="School Development">
+                            <a href="{{asset('storage/'.$eventGalleryVal['image'])}}" title="School Development">
                                 <div class="gallery-content">
                                     <!-- <div class="tag"><span>Education</span></div>
                                     <h3>School Development</h3> -->
@@ -122,12 +115,12 @@
                                         <i data-feather="plus-circle"></i>
                                     </div>
                                 </div>
-                                <img src="assets/images/events/<?php //echo $image; ?>" alt="">
+                                <img src="{{asset('storage/'.$eventGalleryVal['image'])}}" alt="">
                             </a>
                         </div>
                         <!-- Gallery Item -->
                     </div>
-                    <?php //} } ?>
+                   @endforeach
                 </div>
             </div>
         </section>
