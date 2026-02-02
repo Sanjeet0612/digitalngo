@@ -65,18 +65,18 @@
                         </div>
                         
                         <div class="card-body p-24">
-                            <form id="myForm" action="{{route('admin.add-sponsor')}}" method="post" class="d-flex flex-column gap-20" enctype="multipart/form-data">
+                            <form id="myForm" action="{{route('admin.add-management-team')}}" method="post" class="d-flex flex-column gap-20" enctype="multipart/form-data">
                                 @csrf
-                                
-                                <div>
-                                    <label class="form-label fw-bold text-neutral-900" for="title">Name: </label>
-                                    <input type="text" name="m_name" class="form-control border border-neutral-200 radius-8" id="sponsor_name" placeholder="Enter Name"  required>
-                                </div>
-                               
-                           
-                                <div>
-                                    <label class="form-label fw-bold text-neutral-900" for="title">Email id: </label>
-                                    <input type="text" name="emailid" class="form-control border border-neutral-200 radius-8" id="emailid" placeholder="Enter Email Id" required>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-bold text-neutral-900" for="title">Name: </label>
+                                        <input type="text" name="m_name" class="form-control border border-neutral-200 radius-8" id="sponsor_name" placeholder="Enter Name"  required>
+                                    </div>
+    
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-bold text-neutral-900" for="title">Email id: </label>
+                                        <input type="text" name="emailid" class="form-control border border-neutral-200 radius-8" id="emailid" placeholder="Enter Email Id" required>
+                                    </div>
                                 </div>
                                 
                                 <div>
@@ -101,17 +101,32 @@
                                         <input type="text" name="state" class="form-control border border-neutral-200 radius-8" id="state">    
                                     </div>
                                 </div>
-                                
-                                <div>
+                                <div class="row">
+                                <div class="col-md-6">
                                     <label class="form-label fw-bold text-neutral-900" for="title">Pin Code: </label>
                                     <input type="text" name="zip_code" class="form-control border border-neutral-200 radius-8" id="zip_code" placeholder="Enter Pin code">
                                 </div>
                                 
-                                <div>
+                                <div class="col-md-6">
                                     <label class="form-label fw-bold text-neutral-900" for="title">Profile Image: </label>
                                     <input type="file" name="profile_img" class="form-control border border-neutral-200 radius-8" id="profile_img" >
                                 </div>
-                                
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                       <label class="form-label fw-bold text-neutral-900" for="title">Facebook Link: </label>
+                                        <input type="url" name="fb_link" class="form-control border border-neutral-200 radius-8" id="fb_link" > 
+                                    </div>
+                                    <div class="col-md-4">
+                                       <label class="form-label fw-bold text-neutral-900" for="title">Twitter Link: </label>
+                                        <input type="url" name="twt_link" class="form-control border border-neutral-200 radius-8" id="twt_link" > 
+                                    </div>
+                                    <div class="col-md-4">
+                                       <label class="form-label fw-bold text-neutral-900" for="title">InstaGram Link: </label>
+                                        <input type="url" name="insta_link" class="form-control border border-neutral-200 radius-8" id="insta_link" > 
+                                    </div>
+                                </div>
                                 <div>
                                     <label class="form-label fw-bold text-neutral-900"> Description </label>
                                     <div class="border border-neutral-200 radius-8 overflow-hidden">
