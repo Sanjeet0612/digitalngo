@@ -10,8 +10,8 @@ class EventGalleryController extends Controller{
     //
 
     public function manage_event_gallery(Request $request){
-        $eventList = array();
-        return view('admin.event.manage_event_gallery',compact('eventList'));
+        $eventGallery = EventGallery::with('event')->get();
+        return view('admin.event.manage_event_gallery',compact('eventGallery'));
     }
     public function add_event_gallery(Request $request){
         if($request->isMethod('post')){
