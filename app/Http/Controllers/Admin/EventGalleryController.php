@@ -49,7 +49,7 @@ class EventGalleryController extends Controller{
         return view('admin.event.edit_event_gallery_form',compact('allevent','eventGallDetail'));
     }
     public function update_event_gallery(Request $request,$id){
-        $gallery = EventGallery::findOrFail(base64_decode($id));
+        $gallery = EventGallery::findOrFail($id);
         // Image update (optional)
         if($request->hasFile('gallery_img')) {
             // old image delete (optional but recommended)
