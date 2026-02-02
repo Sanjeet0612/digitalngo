@@ -73,27 +73,28 @@
                                 
                                 <li class="event-item text-center">
                                     @if($now->lt($start))
-                                        <span class="badge bg-primary">Upcoming</span>
+                                        <span class="badge bg-primary mt-3">Upcoming</span>
                                 
                                     @elseif($now->between($start, $end))
-                                        <span class="badge bg-success">Happening</span>
+                                        <span class="badge bg-success mt-3">Happening</span>
                                 
                                     @elseif($now->gt($end))
-                                        <span class="badge bg-secondary">Past</span>
+                                        <span class="badge bg-secondary mt-3">Past</span>
                                     @endif
                                 </li>
+                                <li class="event-item text-center"><b>Status : </b>@if($eventListVal->status==1) <span class="text-success">Active</span> @else <span class="text-danger">Deactive</span> @endif</li>
                                 
  
-                                <div class="ps-16 pb-16 pe-16 text-center" style="margin-top:8%">
+                                <div class="ps-16 pb-16 pe-16 text-center" style="margin-top:3%">
                                     <h6 class="text-lg mb-0 mt-4">{{$eventListVal->event->title}}</h6>
-                                    <div class="center-border position-relative bg-danger-gradient-light radius-8 p-12 d-flex align-items-center gap-4">
+                                    <div class="center-border position-relative bg-danger-gradient-light radius-8 p-12 d-flex align-items-center gap-4 mt-1">
                                         <div class="text-center w-50">
                                             <h6 class="text-md mb-0">Start Date</h6>
-                                            <span class="text-secondary-light text-sm mb-0">{{$eventListVal->event->start_date}}</span>
+                                            <span class="text-secondary-light text-sm mb-0">{{ \Carbon\Carbon::parse($eventListVal->event->start_date)->toDateString() }}</span>
                                         </div>
                                         <div class="text-center w-50">
                                             <h6 class="text-md mb-0">End Date</h6>
-                                            <span class="text-secondary-light text-sm mb-0">{{$eventListVal->event->end_date}}</span>
+                                            <span class="text-secondary-light text-sm mb-0">{{ \Carbon\Carbon::parse($eventListVal->event->end_date)->toDateString() }}</span>
                                         </div>
                                     </div>
                                     <p class="text-secondary-light text-sm mb-0 mt-3"><b class="text-md mb-0" >Time : </b> {{$eventListVal->event->e_time}}</p>
