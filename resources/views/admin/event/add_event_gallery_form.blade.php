@@ -73,7 +73,7 @@
                                     <select name="event_id" class="form-control border border-neutral-200 radius-8" required>
                                         <option value="">Select Event</option>
                                         @foreach($allevent as $alleventVal)
-                                        <option value="{{$alleventVal->id}}">{{$alleventVal->title}}</option>
+                                        <option value="{{$alleventVal->id}}"  >{{$alleventVal->title}}</option>
                                         @endforeach
                                     </select>
                                 </div>
