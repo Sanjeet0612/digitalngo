@@ -45,6 +45,9 @@
                     <li>
                         <a  href="{{route('admin.manage_event')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Manage Event</a>
                     </li>
+                    <li>
+                        <a  href="{{route('admin.manage_event_gallery')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Manage Event Gallery</a>
+                    </li>
                 </ul>
         </li>        
 		</ul>
