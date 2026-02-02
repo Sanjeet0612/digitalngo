@@ -49,7 +49,23 @@ class EventGalleryController extends Controller{
         return view('admin.event.edit_event_gallery_form',compact('allevent','eventGallDetail'));
     }
     public function update_event_gallery(Request $request,$id){
-        $gallery = EventGallery::findOrFail($id);
-        
+        $gallery = EventGallery::findOrFail(base64_decode($id));
+        // Image update (optional)
+        if($request->hasFile('gallery_img')) {
+            // old image delete (optional but recommended)
+            if($gallery->image && Storage::disk('public')->exists($gallery->image)) {
+                Storage::disk('public')->delete($gallery->image);
+            }
+            $path = $request->file('gallery_img')->store('admin/event_gallery', 'public');
+            $gallery->image = $path;
+        }
+
+        $gallery->event_id = $request->event_id;
+        $gallery->status   = $request->status ?? 1;
+        if($request->filled('position')){
+            $gallery->position = $request->position;
+        }
+        $gallery->save();
+        return redirect()->back()->with('success', 'Event gallery updated successfully');
     }
 }
