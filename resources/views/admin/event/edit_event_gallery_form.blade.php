@@ -80,7 +80,7 @@
                                 
                                 <div>
                                     <label class="form-label fw-bold text-neutral-900" for="title">Upload Images ( 500 Kb ): </label>
-                                    <input type="file" name="gallery_img[]" multiple class="form-control border border-neutral-200 radius-8" id="gallery_img">
+                                    <input type="file" name="gallery_img" class="form-control border border-neutral-200 radius-8" id="gallery_img">
                                     <img src="{{asset('storage/'.$eventGallDetail->image)}}" style="width:150px;">
                                 </div>
 
