@@ -23,7 +23,7 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/image', 'image')->name('image');
     Route::get('/video', 'video')->name('video');
     Route::get('/events', 'events')->name('events');
-    Route::get('/event-details/{id}', 'event_details')->name('event-details');
+    Route::get('/event-details/{slug}', 'event_details')->name('event-details');
     
     Route::get('/articles', 'articles')->name('articles');
     Route::get('/contact', 'contact')->name('contact');
