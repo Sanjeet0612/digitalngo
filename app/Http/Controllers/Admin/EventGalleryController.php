@@ -20,7 +20,23 @@ class EventGalleryController extends Controller{
                 'gallery_img.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:500', // validate each file
             ]);
 
-            
+            if($request->hasFile('gallery_img')) {
+                foreach ($request->file('gallery_img') as $file) {
+                    // Get last position for this event
+                    $lastPosition = EventGallery::where('event_id', $request->event_id)->max('position'); // returns null if no records
+                    $nextPosition = $lastPosition !== null ? $lastPosition + 1 : 1;
+                    // Store image
+                    $path = $file->store('admin/event_gallery', 'public');
+                    // Create DB record
+                    EventGallery::create([
+                        'event_id' => $request->event_id,
+                        'image' => $path,
+                        'position' => $nextPosition,  // auto increment per event
+                        'status' => $request->status,
+                    ]);
+                }
+            }
+            return redirect()->back()->with('success', 'Gallery images uploaded successfully.');
         }
         else{
             $allevent = Event::select('id','title')->get();
