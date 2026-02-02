@@ -134,11 +134,7 @@ Route::prefix('admin')->group(function () {
         Route::get('/view-event/{id}', [AdminController::class, 'view_event'])->name('admin.view-event');
         // Event Gallery Section
         Route::get('/manage-event-gallery', [EventGalleryController::class, 'manage_event_gallery'])->name('admin.manage_event_gallery');
-        Route::get('/add-event-gallery', [EventGalleryController::class, 'add_event_gallery'])->name('admin.add-event-gallery');
-        
-        
-        
-        
+        Route::match(['get', 'post'], '/add-event-gallery', [EventGalleryController::class, 'add_event_gallery'])->name('admin.add-event-gallery');
         
     });
 });
