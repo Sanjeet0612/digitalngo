@@ -43,10 +43,13 @@ class EventGalleryController extends Controller{
             return view('admin.event.add_event_gallery_form',compact('allevent'));
         }
     }
-
     public function edit_event_gallery($id){
         $allevent    = Event::select('id','title')->get();
         $eventGallDetail = EventGallery::where('id',base64_decode($id))->first();
         return view('admin.event.edit_event_gallery_form',compact('allevent','eventGallDetail'));
+    }
+    public function update_event_gallery(Request $request,$id){
+        $gallery = EventGallery::findOrFail($id);
+        
     }
 }
