@@ -33,23 +33,41 @@
                 </ul>    
             </li>
 
-        <li class="dropdown">
-                <a  href="javascript:void(0)">
-                    <iconify-icon icon="fluent:calendar-24-regular" class="event-icon menu-icon"></iconify-icon>
-                    <span>Event</span>
-                </a>
-                <ul class="sidebar-submenu">
-                    <li>
-                        <a  href="{{route('admin.manage_sponsor')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Manage Sponsor</a>
-                    </li>
-                    <li>
-                        <a  href="{{route('admin.manage_event')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Manage Event</a>
-                    </li>
-                    <li>
-                        <a  href="{{route('admin.manage_event_gallery')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Manage Event Gallery</a>
-                    </li>
-                </ul>
-        </li>        
+            <li class="dropdown">
+                    <a  href="javascript:void(0)">
+                        <iconify-icon icon="fluent:calendar-24-regular" class="event-icon menu-icon"></iconify-icon>
+                        <span>Event</span>
+                    </a>
+                    <ul class="sidebar-submenu">
+                        <li>
+                            <a  href="{{route('admin.manage_sponsor')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Manage Sponsor</a>
+                        </li>
+                        <li>
+                            <a  href="{{route('admin.manage_event')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Manage Event</a>
+                        </li>
+                        <li>
+                            <a  href="{{route('admin.manage_event_gallery')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Manage Event Gallery</a>
+                        </li>
+                    </ul>
+            </li>  
+            
+            <li class="dropdown">
+                    <a  href="javascript:void(0)">
+                        <iconify-icon icon="fluent:calendar-24-regular" class="event-icon menu-icon"></iconify-icon>
+                        <span>Team</span>
+                    </a>
+                    <ul class="sidebar-submenu">
+                        <li>
+                            <a  href="{{route('admin.management_team')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Management Team</a>
+                        </li>
+                        <li>
+                            <a  href="{{route('admin.manage_event')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Manage Event</a>
+                        </li>
+                        <li>
+                            <a  href="{{route('admin.manage_event_gallery')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Manage Event Gallery</a>
+                        </li>
+                    </ul>
+            </li>  
 		</ul>
 
         
