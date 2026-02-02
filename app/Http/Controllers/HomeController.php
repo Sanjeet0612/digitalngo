@@ -32,8 +32,8 @@ class HomeController extends Controller{
         $event = Event::where('status',1)->get();
         return view('front.events',compact('event'));
     }
-    public function event_details($id){
-        $eventDetail = Event::where('id',base64_decode($id));
+    public function event_details($slug){
+        $eventDetail = Event::where('slug',$slug)->first()->toArray();
         return view('front.events_detail',compact('eventDetail'));
     }
     public function articles(Request $request){
