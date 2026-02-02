@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
+use App\Models\Admin\Management;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -17,6 +17,7 @@ class TeamController extends Controller
                 // Validation
                 $request->validate([
                     'm_name'      => 'required|string|max:255',
+                    'designation'  => 'nullable|string|max:100',
                     'emailid'     => 'nullable|email|max:255',
                     'phone'       => 'nullable|string|max:20',
                     'address'     => 'nullable|string|max:500',
@@ -39,6 +40,7 @@ class TeamController extends Controller
                 // Create DB record
                 Management::create([
                     'm_name'      => $request->m_name,
+                    'designation' => $request->designation,
                     'emailid'     => $request->emailid,
                     'phone'       => $request->phone,
                     'address'     => $request->address,
