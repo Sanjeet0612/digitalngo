@@ -67,7 +67,7 @@
                         <div class="card-body p-24">
                             <form id="myForm" action="{{route('admin.update-event-gallery',$eventGallDetail->id)}}" method="post" class="d-flex flex-column gap-20" enctype="multipart/form-data">
                                 @csrf
-                                
+                                @method('PUT')
                                 <div>
                                     <label class="form-label fw-bold text-neutral-900" for="title">Event Name: </label>
                                     <select name="event_id" class="form-control border border-neutral-200 radius-8" required>
@@ -80,7 +80,7 @@
                                 
                                 <div>
                                     <label class="form-label fw-bold text-neutral-900" for="title">Upload Images ( 500 Kb ): </label>
-                                    <input type="file" name="gallery_img[]" multiple class="form-control border border-neutral-200 radius-8" id="gallery_img" required>
+                                    <input type="file" name="gallery_img[]" multiple class="form-control border border-neutral-200 radius-8" id="gallery_img">
                                     <img src="{{asset('storage/'.$eventGallDetail->image)}}" style="width:150px;">
                                 </div>
 
