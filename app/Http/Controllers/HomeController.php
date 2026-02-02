@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Admin\Event;
 use App\Models\Admin\Banner; 
 use Illuminate\Support\Facades\Http;
 
@@ -28,7 +29,8 @@ class HomeController extends Controller{
         return view('front.video');
     }
     public function events(Request $request){
-        return view('front.events');
+        $event = Event::where('status',1)->get();
+        return view('front.events',compact('event'));
     }
     public function articles(Request $request){
         return view('front.articles');
