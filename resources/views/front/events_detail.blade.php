@@ -6,7 +6,7 @@
                 <h1>Mahror Foundation Events</h1>
                 <nav aria-label="breadcrumb" class="breadcrumb-wrap">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Mahror Foundation Events</li>
                     </ol>
                 </nav>  
@@ -23,12 +23,12 @@
             <div class="container">
                 <h1 class="heading-main">
                     <small>Help Us Now</small>
-                    <?php echo $row_event['e_title']; ?>
+                    {{$eventDetail['title']}}
                    
                 </h1>
 
                 <div class="events-single-img">
-                    <img src="assets/images/events/<?php echo $row_event['e_image']; ?>" alt="">                    
+                    <img src="{{asset('storage/'.$eventDetail['banner'])}}" alt="">                    
                 </div>
             </div>
 
@@ -42,16 +42,16 @@
                                 <ul class="list-unstyled">
                                     <li>
                                         <div><i data-feather="calendar"></i> </div>
-                                        <div><?php echo date_format($date,"d-M-Y");?></div>
+                                        <div>{{ \Carbon\Carbon::parse($eventDetail['start_date'])->format('d M Y')}}</div>
                                     </li>
                                     <li>
                                         <div><i data-feather="clock"></i> </div>
-                                        <div> <?php echo $row_event['e_time']; ?></div>
+                                        <div> {{$eventDetail['e_time']}}</div>
                                         
                                     </li>
                                     <li>
                                         <div><i data-feather="map-pin"></i> </div>
-                                        <div><?php echo $row_event['e_location']; ?></div>
+                                        <div>{{$eventDetail['address']}}</div>
                                     </li>
                                 </ul>
                             </div>
@@ -61,19 +61,19 @@
                                 <ul class="list-unstyled">
                                     <li>
                                         <div><i data-feather="user"></i> </div>
-                                        <div><?php echo $row_event['e_og_anme']; ?></div>
+                                        <div>{{$eventDetail['og_name']}}</div>
                                     </li>
                                     <li>
                                         <div><i data-feather="phone"></i> </div>
-                                        <div><a href="tel:02-235-235-2365"><?php echo $row_event['e_og_mobile']; ?></a></div>
+                                        <div><a href="tel:02-235-235-2365">{{$eventDetail['og_phone']}}</a></div>
                                     </li>
                                     <li>
                                         <div><i data-feather="mail"></i> </div>
-                                        <div><a href="mailto:Info@orion.com"><?php echo $row_event['e_og_email']; ?></a></div>
+                                        <div><a href="mailto:{{$eventDetail['og_email']}}">{{$eventDetail['og_email']}}</a></div>
                                     </li>
                                     <li>
                                         <div><i data-feather="globe"></i> </div>
-                                        <div><a href="#"><?php echo $row_event['e_og_website']; ?></a></div>
+                                        <div><a href="{{$eventDetail['og_weblink']}}" target="_blank">{{$eventDetail['og_weblink']}}</a></div>
                                     </li>                                    
                                 </ul>
                             </div>
@@ -81,11 +81,10 @@
                         <div class="col-lg-7 offset-lg-1">
                             <div class="event-single-info">
                                 <div class="map-wrap">
-                                    <?php echo $row_event['e_location_map']; ?>
-                                   
+                                    {!!$eventDetail['location']!!}
                                 </div>
 
-                                <p> <?php echo $row_event['e_details']; ?></p>
+                                <p> {!! $eventDetail['description'] !!}</p>
                                      </div>
                         </div>
                         
@@ -104,18 +103,18 @@
                             Project We Have Done
                         </h1>
                     </div>
-                    <?php
+                    <?php/*
                         $query = mysqli_query($con,"select * from event_gallery where eg_e_id='$pac_id' order by eg_id");
                             if(mysqli_num_rows($query)>0){
                                 while($row=mysqli_fetch_array($query)){
                                     $eg_id = $row['eg_id'];
                                     $image = $row['eg_image'];
-                        
+                        */
                         ?> 
                     <div class="col-lg-4 col-md-6">
                         <!-- Gallery Item -->
                         <div class="img-gallery-item">
-                            <a href="assets/images/events/<?php echo $image; ?>" title="School Development">
+                            <a href="assets/images/events/<?php //echo $image; ?>" title="School Development">
                                 <div class="gallery-content">
                                     <!-- <div class="tag"><span>Education</span></div>
                                     <h3>School Development</h3> -->
@@ -123,12 +122,12 @@
                                         <i data-feather="plus-circle"></i>
                                     </div>
                                 </div>
-                                <img src="assets/images/events/<?php echo $image; ?>" alt="">
+                                <img src="assets/images/events/<?php //echo $image; ?>" alt="">
                             </a>
                         </div>
                         <!-- Gallery Item -->
                     </div>
-                    <?php } } ?>
+                    <?php //} } ?>
                 </div>
             </div>
         </section>
