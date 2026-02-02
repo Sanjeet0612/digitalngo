@@ -15,7 +15,12 @@ class EventGalleryController extends Controller{
     }
     public function add_event_gallery(Request $request){
         if($request->isMethod('post')){
-            print_r($_POST);
+            $request->validate([
+                'event_id' => 'required|exists:tb_event,id',
+                'gallery_img.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:500', // validate each file
+            ]);
+
+            
         }
         else{
             $allevent = Event::select('id','title')->get();
