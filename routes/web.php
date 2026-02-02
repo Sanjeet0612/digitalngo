@@ -137,7 +137,7 @@ Route::prefix('admin')->group(function () {
         Route::match(['get', 'post'], '/add-event-gallery', [EventGalleryController::class, 'add_event_gallery'])->name('admin.add-event-gallery');
         Route::get('/edit-event-gallery/{id}', [EventGalleryController::class, 'edit_event_gallery'])->name('admin.edit-event-gallery');
         Route::put('/update-event-gallery/{id}', [EventGalleryController::class, 'update_event_gallery'])->name('admin.update-event-gallery');
-
+        // Team Section
 
         
         
