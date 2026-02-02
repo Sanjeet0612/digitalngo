@@ -45,7 +45,7 @@
                 <div class="col-lg-12">
                     <div class="card mt-24">
                         <div class="card-header border-bottom">
-                            <h6 class="text-xl mb-0">Add New Sponsor</h6>
+                            <h6 class="text-xl mb-0">Update Event Gallery</h6>
                         </div>
                         <div class="message">
                         @if($errors->any())
@@ -65,7 +65,7 @@
                         </div>
                 
                         <div class="card-body p-24">
-                            <form id="myForm" action="{{route('admin.add-event-gallery')}}" method="post" class="d-flex flex-column gap-20" enctype="multipart/form-data">
+                            <form id="myForm" action="{{route('admin.update-event-gallery',$eventGallDetail->id)}}" method="post" class="d-flex flex-column gap-20" enctype="multipart/form-data">
                                 @csrf
                                 
                                 <div>
