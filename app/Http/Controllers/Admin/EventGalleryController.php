@@ -15,7 +15,6 @@ class EventGalleryController extends Controller{
     }
     public function add_event_gallery(Request $request){
         $allevent = Event::select('id','title')->get();
-        print_r($allevent);
-        return view('admin.event.add_event_gallery_form');
+        return view('admin.event.add_event_gallery_form',compact('allevent'));
     }
 }
