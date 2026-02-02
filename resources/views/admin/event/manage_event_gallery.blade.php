@@ -40,19 +40,19 @@
                
                 <div class="card-body p-24">
                     <div class="row gy-4">
-                         @foreach($eventList as $eventListVal)
-                         
+                         @foreach($eventGallery as $eventListVal)
+                         {{$eventListVal->start_date}}
                             @php
                                 $now = \Carbon\Carbon::now('Asia/Kolkata'); // Server ya event timezone
-                                $start = \Carbon\Carbon::parse($eventListVal->start_date, 'Asia/Kolkata');
-                                $end   = \Carbon\Carbon::parse($eventListVal->end_date, 'Asia/Kolkata');
+                                $start = \Carbon\Carbon::parse($eventListVal->event->start_date, 'Asia/Kolkata');
+                                $end   = \Carbon\Carbon::parse($eventListVal->event->end_date, 'Asia/Kolkata');
                             @endphp
                          
                          
                         <div class="col-xxl-3 col-md-6 user-grid-card   ">
                             <div class="position-relative border radius-16 overflow-hidden">
-                                @if(!empty($eventListVal->banner))
-                                <img src="{{asset('storage/'.$eventListVal->banner)}}" alt="" class="w-100 object-fit-cover">
+                                @if(!empty($eventListVal->image))
+                                <img src="{{asset('storage/'.$eventListVal->image)}}" alt="" class="w-100 object-fit-cover">
                                 @else
                                 <img src="{{ asset('assets/images/user-grid/user-grid-bg1.png') }}" alt="" class="w-100 object-fit-cover">
                                 @endif
@@ -61,7 +61,6 @@
                                     <button type="button" data-bs-toggle="dropdown" aria-expanded="false" class="bg-white-gradient-light w-32-px h-32-px radius-8 border border-light-white d-flex justify-content-center align-items-center text-white">
                                         <iconify-icon icon="entypo:dots-three-vertical" class="icon "></iconify-icon>
                                     </button>
-                                    
                                         <ul class="dropdown-menu p-12 border bg-base shadow">
                                             <li>
                                                 <a class="dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900 d-flex align-items-center gap-10"  href="{{route('admin.edit-event',base64_encode($eventListVal->id))}}">
@@ -86,7 +85,7 @@
                                 
  
                                 <div class="ps-16 pb-16 pe-16 text-center" style="margin-top:8%">
-                                    <h6 class="text-lg mb-0 mt-4">{{$eventListVal->event_name}}</h6>
+                                    <h6 class="text-lg mb-0 mt-4">{{$eventListVal->event->title}}</h6>
                                     <p class="text-line-3 text-neutral-500">{{strip_tags($eventListVal->description)}}</p>
 
                                     <div class="center-border position-relative bg-danger-gradient-light radius-8 p-12 d-flex align-items-center gap-4">
@@ -101,7 +100,7 @@
                                     </div>
                                     <p class="text-secondary-light text-sm mb-0 mt-3"><b class="text-md mb-0" >Time : </b> {{$eventListVal->e_time}}</p>
 
-                                    <a  href="{{route('admin.view-event',$eventListVal->slug)}}" class="bg-primary-50 text-primary-600 bg-hover-primary-600 hover-text-white p-10 text-sm btn-sm px-12 py-12 radius-8 d-flex align-items-center justify-content-center mt-16 fw-medium gap-2 w-100">
+                                    <a  href="#" class="bg-primary-50 text-primary-600 bg-hover-primary-600 hover-text-white p-10 text-sm btn-sm px-12 py-12 radius-8 d-flex align-items-center justify-content-center mt-16 fw-medium gap-2 w-100">
                                         View Event
                                         <iconify-icon icon="solar:alt-arrow-right-linear" class="icon text-xl line-height-1"></iconify-icon>
                                     </a>
