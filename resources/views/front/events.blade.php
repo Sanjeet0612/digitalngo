@@ -1,5 +1,17 @@
 @include('front.includes.new_header')
-
+<style>
+    a[data-toggle="modal"] {
+    position: relative; /* ensures above background */
+    z-index: 1000;      /* above most other elements */
+    pointer-events: auto; 
+    display: inline-block; /* ensures width-height */
+}
+.modal-body iframe {
+    width: 100%;      /* full width of modal body */
+    height: 200px;    /* adjust height as needed */
+    border: 0;        /* remove border */
+}
+</style>    
             <!-- Page Breadcrumbs Start -->
     <section class="breadcrumbs-page-wrap">
         <div class="bg-fixed pos-rel breadcrumbs-page">
@@ -23,38 +35,59 @@
         <section class="wide-tb-100">
             <div class="container">
                 <div class="row row-cols-1 row-cols-md-2 row-cols-sm-1">
-                    <?php 
-                        /*$query_events = mysqli_query($con,"select * from event order by e_id desc");
-                        if(mysqli_num_rows($query_events)>0){
-                            while($row=mysqli_fetch_array($query_events)){
-                            $e_date = $row['e_date'];
-                            $date=date_create("$e_date");*/
-                    ?>
+                    @foreach($event as $eventVal)
                     <div class="col mb-5">
                         <div class="event-wrap">
                             <!-- Event Wrap -->
                             <div class="img-wrap">
-                                <a href="events_details.php?event=<?php //echo $row['e_id']; ?>"><img src="assets/images/events/<?php //echo $row['e_image']; ?>" alt=""></a>
+                                <a href="{{route('event-details',$eventVal->slug)}}"><img src="{{asset('storage/'.$eventVal->banner)}}" alt=""></a>
                             </div>
                             <div class="content-wrap">
                                 <div class="date-wrap d-lg-flex align-items-end">
-                                    <div class="date-box">
-                                    <?php //echo //date_format($date,"d"); ?><center><span><?php //echo date_format($date,"M");?><br><?php //echo date_format($date,"Y");?></span></center>
+                                    <div class="date-box" style="font-size:29px;">
+                                        <center>{{ \Carbon\Carbon::parse($eventVal->start_date)->format('d M Y')}}</center>
                                     </div>
                                     <div class="event-details">
-                                        <div><i data-feather="clock"></i> <?php //echo $row['e_time']; ?></div>
-                                        <div><i data-feather="map-pin"></i> <?php //echo $row['e_location']; ?></div>
+                                        <div><i data-feather="clock"></i> {{$eventVal->e_time}}</div>
+                                        <div>
+                                            <a href="javascript:void(0)"
+                                            data-toggle="modal"
+                                            data-target="#mapModal{{$eventVal->id}}"
+                                             style="display:inline-block; cursor:pointer">
+                                                <i data-feather="map-pin"></i> {{ $eventVal->address }}
+                                            </a>
+                                        </div>
                                     </div>
+                                    <!-- Map POPUP -->
+                                    <div class="modal fade" id="mapModal{{$eventVal->id}}" tabindex="-1">
+                                        <div class="modal-dialog modal-lg modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <!-- Remove the modal-header block -->
+                                                
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">Location Map</h5>
+                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                </div>
+                                                
+                                            <div class="modal-body p-0">
+                                                {!! $eventVal->location !!}<span>
+                                            </div>
+
+                                            </div>
+                                        </div>
+                                    </div><!-- Map POPUP CLOSE -->
                                 </div>
-                                <h3><a href="events_details.php?event=<?php //echo $row['e_id']; ?>"><?php //echo $row['e_title']; ?></a></h3>
+                                <h3><a href="{{route('event-details',$eventVal->slug)}}">{{ $eventVal->title }}</a></h3>
                             </div>
                             <div class="text-md-right read-more-wrap">
-                                <a href="events_details.php?event=<?php //echo $row['e_id']; ?>" class="read-more-line"><span>Read More</span></a>
+                                <a href="{{route('event-details',$eventVal->slug)}}" class="read-more-line"><span>Read More</span></a>
                             </div>
                             <!-- Event Wrap -->
                         </div>
                     </div>
-                    <?php  //} } ?>
+                    @endforeach
+
+                   
                 </div> 
             </div>
         </section>
@@ -89,3 +122,9 @@
       <!-- Main Footer Start -->
 
 @include('front.includes.new_footer')
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/feather-icons"></script>
+<script>
+    feather.replace();
+</script>
