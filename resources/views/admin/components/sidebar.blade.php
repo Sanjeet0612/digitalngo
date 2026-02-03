@@ -67,6 +67,10 @@
                         <li>
                             <a  href="{{route('admin.volunteers_team')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Volunteers Team</a>
                         </li>
+
+                        <li>
+                            <a  href="{{route('admin.all_team')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>All Team</a>
+                        </li>
                        
                     </ul>
             </li>  
