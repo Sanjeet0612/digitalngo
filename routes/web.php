@@ -149,9 +149,10 @@ Route::prefix('admin')->group(function () {
         Route::get('/volunteers-team', [TeamController::class, 'volunteers_team'])->name('admin.volunteers_team');
         // All Team
         Route::get('/all-team', [TeamController::class, 'all_team'])->name('admin.all_team');
-
         // Gallery Section
-        Route::get('/management-picture', [GalleryController::class, 'management_picture'])->name('admin.management_picture');
+        Route::get('/picture-category', [GalleryController::class, 'picture_category'])->name('admin.picture_category');
+        Route::get('/gallery-picture', [GalleryController::class, 'gallery_picture'])->name('admin.gallery_picture');
+        Route::get('/gallery-video', [GalleryController::class, 'gallery_video'])->name('admin.gallery_video');
         
         
         
