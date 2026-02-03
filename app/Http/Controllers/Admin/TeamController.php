@@ -122,6 +122,10 @@ class TeamController extends Controller
         return redirect()->route('admin.management_team')->with('success', 'Management record updated successfully');
 
     }
+    // Governing Board Teams
+    public function governing_board_teams(Request $request){
+
+    }
     // Volunteers Section
     public function volunteers_team(Request $request){
         return view('admin.team.volunteers_team');
