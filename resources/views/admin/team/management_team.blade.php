@@ -82,8 +82,8 @@
                                             <span class="text-secondary-light text-sm mb-0"><i class="ri-phone-line"></i> {{$eventListVal->phone}}</span>
                                         </div>
                                     
-                                        <a  href="" class="bg-primary-50 text-primary-600 bg-hover-primary-600 hover-text-white p-10 text-sm btn-sm px-12 py-12 radius-8 d-flex align-items-center justify-content-center mt-16 fw-medium gap-2 w-100">
-                                            View Event
+                                        <a  target="_blank" href="{{route('management')}}" class="bg-primary-50 text-primary-600 bg-hover-primary-600 hover-text-white p-10 text-sm btn-sm px-12 py-12 radius-8 d-flex align-items-center justify-content-center mt-16 fw-medium gap-2 w-100">
+                                            View
                                             <iconify-icon icon="solar:alt-arrow-right-linear" class="icon text-xl line-height-1"></iconify-icon>
                                         </a>
                                     </div>
