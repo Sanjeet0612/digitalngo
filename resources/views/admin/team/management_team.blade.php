@@ -40,7 +40,7 @@
                
                 <div class="card-body p-24">
                     <div class="row gy-4">
-                         @foreach($eventList as $eventListVal)
+                         @foreach($managementList as $eventListVal)
                          
                             @php
                                 $now = \Carbon\Carbon::now('Asia/Kolkata'); // Server ya event timezone
@@ -51,8 +51,8 @@
                          
                         <div class="col-xxl-3 col-md-6 user-grid-card   ">
                             <div class="position-relative border radius-16 overflow-hidden">
-                                @if(!empty($eventListVal->banner))
-                                <img src="{{asset('storage/'.$eventListVal->banner)}}" alt="" class="w-100 object-fit-cover">
+                                @if(!empty($eventListVal->profile_img))
+                                <img src="{{asset('storage/'.$eventListVal->profile_img)}}" alt="" class="w-100 object-fit-cover">
                                 @else
                                 <img src="{{ asset('assets/images/user-grid/user-grid-bg1.png') }}" alt="" class="w-100 object-fit-cover">
                                 @endif
@@ -64,51 +64,29 @@
                                     
                                         <ul class="dropdown-menu p-12 border bg-base shadow">
                                             <li>
-                                                <a class="dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900 d-flex align-items-center gap-10"  href="{{route('admin.edit-event',base64_encode($eventListVal->id))}}">
+                                                <a class="dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900 d-flex align-items-center gap-10"  href="{{route('admin.edit-management',base64_encode($eventListVal->id))}}">
                                                     Edit
                                                 </a>
                                             </li>
                                         </ul>
                                 </div>
-                                   
-                                
-                                <li class="event-item text-center">
-                                    @if($now->lt($start))
-                                        <span class="badge bg-primary">Upcoming</span>
-                                
-                                    @elseif($now->between($start, $end))
-                                        <span class="badge bg-success">Happening</span>
-                                
-                                    @elseif($now->gt($end))
-                                        <span class="badge bg-secondary">Past</span>
-                                    @endif
-                                </li>
-                                
- 
-                                <div class="ps-16 pb-16 pe-16 text-center" style="margin-top:8%">
-                                    <h6 class="text-lg mb-0 mt-4">{{$eventListVal->event_name}}</h6>
+
+                                <div class="ps-16 pb-16 pe-16" style="margin-top:8%">
+                                    <h6 class="text-lg mb-0 mt-4">{{$eventListVal->m_name}}</h6>
                                     <p class="text-line-3 text-neutral-500">{{strip_tags($eventListVal->description)}}</p>
 
-                                    <div class="center-border position-relative bg-danger-gradient-light radius-8 p-12 d-flex align-items-center gap-4">
-                                        <div class="text-center w-50">
-                                            <h6 class="text-md mb-0">Start Date</h6>
-                                            <span class="text-secondary-light text-sm mb-0">{{$eventListVal->start_date}}</span>
+                                    <div>
+                                            <span class=" text-md text-secondary-light text-sm mb-0"><i class="ri-mail-line"></i> {{$eventListVal->emailid}}</span>
                                         </div>
-                                        <div class="text-center w-50">
-                                            <h6 class="text-md mb-0">End Date</h6>
-                                            <span class="text-secondary-light text-sm mb-0">{{$eventListVal->end_date}}</span>
+                                        <div class="w-50">
+                                            <span class="text-secondary-light text-sm mb-0"><i class="ri-phone-line"></i> {{$eventListVal->phone}}</span>
                                         </div>
+                                    
+                                        <a  href="" class="bg-primary-50 text-primary-600 bg-hover-primary-600 hover-text-white p-10 text-sm btn-sm px-12 py-12 radius-8 d-flex align-items-center justify-content-center mt-16 fw-medium gap-2 w-100">
+                                            View Event
+                                            <iconify-icon icon="solar:alt-arrow-right-linear" class="icon text-xl line-height-1"></iconify-icon>
+                                        </a>
                                     </div>
-                                    <p class="text-secondary-light text-sm mb-0 mt-3"><b class="text-md mb-0" >Time : </b> {{$eventListVal->e_time}}</p>
-
-                                    <a  href="{{route('admin.view-event',$eventListVal->slug)}}" class="bg-primary-50 text-primary-600 bg-hover-primary-600 hover-text-white p-10 text-sm btn-sm px-12 py-12 radius-8 d-flex align-items-center justify-content-center mt-16 fw-medium gap-2 w-100">
-                                        View Event
-                                        <iconify-icon icon="solar:alt-arrow-right-linear" class="icon text-xl line-height-1"></iconify-icon>
-                                    </a>
-                                  
-                                </div>
-                                
-                                
                             </div>
                         </div>
                         @endforeach
