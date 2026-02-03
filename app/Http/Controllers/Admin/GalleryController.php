@@ -8,8 +8,8 @@ use Illuminate\Http\Request;
 class GalleryController extends Controller
 {
     public function picture_category(Request $request){
-        $banners = array(); 
-        return view('admin.gallery.manage_picture_category',compact('banners'));
+        $allCategory = GalleryCategory::all(); 
+        return view('admin.gallery.manage_picture_category',compact('allCategory'));
     }
     public function add_category(Request $request){
         if($request->isMethod('post')){
@@ -32,6 +32,9 @@ class GalleryController extends Controller
         }else{
             return view('admin.gallery.add_category_form');
         }
+    }
+    public function edit_category(Request $request,$id){
+        return view('admin.gallery.edit_category_form');
     }
     public function gallery_picture(Request $request){
 
