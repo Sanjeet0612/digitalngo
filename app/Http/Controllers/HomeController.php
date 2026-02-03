@@ -20,11 +20,12 @@ class HomeController extends Controller{
     }
     public function management(Request $request){
         $allManagement = Management::where('team_type','management')->where('status',1)->get();
-        $allgoverning = Management::where('team_type','governing')->where('status',1)->get();
+        $allgoverning  = Management::where('team_type','governing')->where('status',1)->get();
         return view('front.management',compact('allManagement','allgoverning'));
     }
     public function volunteers(Request $request){
-        return view('front.volunteers');
+        $allvolunteer  = Management::where('team_type','volunteer')->where('status',1)->get();
+        return view('front.volunteers',compact('allvolunteer'));
     }
     public function image(Request $request){
         return view('front.image');
