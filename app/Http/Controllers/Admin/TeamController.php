@@ -8,8 +8,8 @@ use Illuminate\Http\Request;
 class TeamController extends Controller
 {
     public function management_team(Request $request){
-        $eventList = array();
-        return view('admin.team.management_team',compact('eventList'));
+        $managementList = Management::all();
+        return view('admin.team.management_team',compact('managementList'));
     }
     public function add_management_team(Request $request){
 
@@ -61,6 +61,9 @@ class TeamController extends Controller
             return view('admin.team.management_form');
         }
         
+    }
+    public function edit_management($id){
+        echo $rowid = base64_decode($id);
     }
     // Volunteers Section
     public function volunteers_team(Request $request){
