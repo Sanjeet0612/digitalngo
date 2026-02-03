@@ -145,7 +145,8 @@ Route::prefix('admin')->group(function () {
         Route::match(['get', 'post'], '/add-management-team', [TeamController::class, 'add_management_team'])->name('admin.add-management-team');
         Route::get('/edit-management/{id}', [TeamController::class, 'edit_management'])->name('admin.edit-management');
         Route::put('/update-management-team/{id}', [TeamController::class, 'update_management_team'])->name('admin.update-management-team');
-        
+
+    
         
         
         
