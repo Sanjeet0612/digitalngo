@@ -61,6 +61,10 @@
                             <a  href="{{route('admin.management_team')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Management Team</a>
                         </li>
                         <li>
+                            <a  href="{{route('admin.governing_board_teams')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Governing Board Teams</a>
+                        </li>
+                        
+                        <li>
                             <a  href="{{route('admin.volunteers_team')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Volunteers Team</a>
                         </li>
                        
