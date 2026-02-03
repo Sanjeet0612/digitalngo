@@ -82,10 +82,13 @@
                 </a>
                 <ul class="sidebar-submenu">
                     <li>
-                        <a  href="{{route('admin.management_picture')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Picture</a>
+                        <a  href="{{route('admin.picture_category')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Picture Category</a>
                     </li>
                     <li>
-                        <a  href="{{route('admin.management_video')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Video</a>
+                        <a  href="{{route('admin.gallery_picture')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Picture</a>
+                    </li>
+                    <li>
+                        <a  href="{{route('admin.gallery_video')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Video</a>
                     </li>
                 </ul>
             </li>  
