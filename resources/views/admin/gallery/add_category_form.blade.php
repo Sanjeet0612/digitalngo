@@ -32,7 +32,7 @@
                                         <label class="form-label fw-semibold text-primary-light text-sm mb-8">
                                             Category Name <span class="text-danger-600">*</span>
                                         </label>
-                                        <input type="text" name="title[]" class="form-control radius-8" required>
+                                        <input type="text" name="cat_name[]" class="form-control radius-8" required>
                                     </div>
 
                                     <div class="col-sm-4">
