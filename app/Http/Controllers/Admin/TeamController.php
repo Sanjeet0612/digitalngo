@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Admin\Management;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class TeamController extends Controller
 {
@@ -37,9 +38,15 @@ class TeamController extends Controller
                     $path = $request->file('profile_img')->store('admin/management','public');  // storage/app/public/admin/management
                 }
 
+                $slug = Str::slug($request->m_name);
+                $count = Management::where('slug', 'LIKE', "$slug%")->count();
+                $mslug = $count ? $slug.'-'.$count : $slug;
+
+
                 // Create DB record
                 Management::create([
                     'm_name'      => $request->m_name,
+                    'slug'        => $mslug,
                     'designation' => $request->designation,
                     'emailid'     => $request->emailid,
                     'phone'       => $request->phone,
