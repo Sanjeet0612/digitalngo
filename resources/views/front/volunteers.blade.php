@@ -28,160 +28,27 @@
                 </h1>
                 <div class="row">
                     <!-- Team Column One -->
+                     @foreach($allvolunteer as $allvolunteerVal)
                     <div class="col-12 col-lg-3 col-sm-6">
                         <div class="team-section-wrap">
                             <div class="img green">
                                 <div class="social-icons">
-                                    <a href="#"><i class="icofont-facebook"></i></a>
-                                    <a href="#"><i class="icofont-twitter"></i></a>
-                                    <a href="#"><i class="icofont-instagram"></i></a>
+                                    <a href="{{$allvolunteerVal->fb_link}}" target="_blank"><i class="icofont-facebook"></i></a>
+                                    <a href="{{$allvolunteerVal->twt_link}}" target="_blank"><i class="icofont-twitter"></i></a>
+                                    <a href="{{$allvolunteerVal->insta_link}}" target="_blank"><i class="icofont-instagram"></i></a>
                                 </div>
-                                <img src="{{url('/')}}/front/assets/images/team/team-5.jpg" alt="" class="rounded-circle">
+                                <img src="{{asset('storage/'.$allvolunteerVal->profile_img)}}" alt="" class="rounded-circle">
                             </div>
-                            <h4>Your Name</h4>
-                            <h5>Volunteers </h5>
+                            <h4>{{$allvolunteerVal->m_name}}</h4>
+                            <h5>{{$allvolunteerVal->designation}}</h5>
                             <div class="text-md-right">
                                 <a href="javascript:" class="read-more-line"><span>Read More</span></a>
                             </div>
                         </div>
                     </div>
+                    @endforeach
                     <!-- Team Column One -->
-                    <!-- Team Column One -->
-                    <div class="col-12 col-lg-3 col-sm-6">
-                        <div class="team-section-wrap">
-                            <div class="img green">
-                                <div class="social-icons">
-                                    <a href="#"><i class="icofont-facebook"></i></a>
-                                    <a href="#"><i class="icofont-twitter"></i></a>
-                                    <a href="#"><i class="icofont-instagram"></i></a>
-                                </div>
-                                <img src="{{url('/')}}/front/assets/images/team/team-5.jpg" alt="" class="rounded-circle">
-                            </div>
-                            <h4>Your Name</h4>
-                            <h5>Volunteers </h5>
-                            <div class="text-md-right">
-                                <a href="javascript:" class="read-more-line"><span>Read More</span></a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Team Column One -->
-                    <!-- Team Column One -->
-                    <div class="col-12 col-lg-3 col-sm-6">
-                        <div class="team-section-wrap">
-                            <div class="img green">
-                                <div class="social-icons">
-                                    <a href="#"><i class="icofont-facebook"></i></a>
-                                    <a href="#"><i class="icofont-twitter"></i></a>
-                                    <a href="#"><i class="icofont-instagram"></i></a>
-                                </div>
-                                <img src="{{url('/')}}/front/assets/images/team/team-5.jpg" alt="" class="rounded-circle">
-                            </div>
-                            <h4>Your Name</h4>
-                            <h5>Volunteers </h5>
-                            <div class="text-md-right">
-                                <a href="javascript:" class="read-more-line"><span>Read More</span></a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Team Column One -->
-                    <!-- Team Column One -->
-                    <div class="col-12 col-lg-3 col-sm-6">
-                        <div class="team-section-wrap">
-                            <div class="img green">
-                                <div class="social-icons">
-                                    <a href="#"><i class="icofont-facebook"></i></a>
-                                    <a href="#"><i class="icofont-twitter"></i></a>
-                                    <a href="#"><i class="icofont-instagram"></i></a>
-                                </div>
-                                <img src="{{url('/')}}/front/assets/images/team/team-5.jpg" alt="" class="rounded-circle">
-                            </div>
-                            <h4>Your Name</h4>
-                            <h5>Volunteers </h5>
-                            <div class="text-md-right">
-                                <a href="javascript:" class="read-more-line"><span>Read More</span></a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Team Column One -->
-                    <!-- Team Column One -->
-                    <div class="col-12 col-lg-3 col-sm-6">
-                        <div class="team-section-wrap">
-                            <div class="img green">
-                                <div class="social-icons">
-                                    <a href="#"><i class="icofont-facebook"></i></a>
-                                    <a href="#"><i class="icofont-twitter"></i></a>
-                                    <a href="#"><i class="icofont-instagram"></i></a>
-                                </div>
-                                <img src="{{url('/')}}/front/assets/images/team/team-5.jpg" alt="" class="rounded-circle">
-                            </div>
-                            <h4>Your Name</h4>
-                            <h5>Volunteers </h5>
-                            <div class="text-md-right">
-                                <a href="javascript:" class="read-more-line"><span>Read More</span></a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Team Column One -->
-
-                    <!-- Team Column One -->
-                    <div class="col-12 col-lg-3 col-sm-6">
-                        <div class="team-section-wrap">
-                            <div class="img navy-blue">
-                                <div class="social-icons">
-                                    <a href="#"><i class="icofont-facebook"></i></a>
-                                    <a href="#"><i class="icofont-twitter"></i></a>
-                                    <a href="#"><i class="icofont-instagram"></i></a>
-                                </div>
-                                <img src="{{url('/')}}/front/assets/images/team/team-5.jpg" alt="" class="rounded-circle">
-                            </div>
-                            <h4>Your Name</h4>
-                            <h5>Volunteers </h5>
-                            <div class="text-md-right">
-                                <a href="javascript:" class="read-more-line"><span>Read More</span></a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Team Column One -->
-
-                    <!-- Team Column One -->
-                    <div class="col-12 col-lg-3 col-sm-6">
-                        <div class="team-section-wrap">
-                            <div class="img orange">
-                                <div class="social-icons">
-                                    <a href="#"><i class="icofont-facebook"></i></a>
-                                    <a href="#"><i class="icofont-twitter"></i></a>
-                                    <a href="#"><i class="icofont-instagram"></i></a>
-                                </div>
-                                <img src="{{url('/')}}/front/assets/images/team/team-7.jpg" alt="" class="rounded-circle">
-                            </div>
-                            <h4>Your Name</h4>
-                            <h5>Volunteers </h5>
-                            <div class="text-md-right">
-                                <a href="javascript:" class="read-more-line"><span>Read More</span></a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Team Column One -->
-
-                    <!-- Team Column One -->
-                    <div class="col-12 col-lg-3 col-sm-6">
-                        <div class="team-section-wrap">
-                            <div class="img beige">
-                                <div class="social-icons">
-                                    <a href="#"><i class="icofont-facebook"></i></a>
-                                    <a href="#"><i class="icofont-twitter"></i></a>
-                                    <a href="#"><i class="icofont-instagram"></i></a>
-                                </div>
-                                <img src="{{url('/')}}/front/assets/images/team/team-8.jpg" alt="" class="rounded-circle">
-                            </div>
-                            <h4>Your Name</h4>
-                            <h5>Volunteers </h5>
-                            <div class="text-md-right">
-                                <a href="javascript:" class="read-more-line"><span>Read More</span></a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Team Column One -->
+        
                 </div>
             </div>
         </section>
