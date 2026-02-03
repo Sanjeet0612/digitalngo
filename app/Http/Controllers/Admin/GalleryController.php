@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-use App\Models\Admin\Gallery;
+use App\Models\Admin\GalleryCategory;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -15,20 +15,19 @@ class GalleryController extends Controller
         if($request->isMethod('post')){
 
             $request->validate([
-                'gtype'  => 'required|string|max:255',
-                'status' => 'required|in:0,1',
+                'cat_name.*' => 'required|string|max:255',
+                'gtype.*'    => 'required|in:photo,video',
+                'status.*'   => 'required|in:0,1',
             ]);
 
-            $data = [
-                'gtype'  => $request->gtype,
-                'status' => $request->status,
-            ];
-
-            // image upload
-            if($request->hasFile('path')) {
-                $data['path'] = $request->file('path')
-                    ->store('admin/gallery-category', 'public');
+            foreach($request->cat_name as $key => $catName){
+                GalleryCategory::create([
+                    'cat_name' => $catName,
+                    'gtype'    => $request->gtype,
+                    'status'   => $request->status[$key],
+                ]);
             }
+            return redirect('admin/picture-category')->with('success', 'Successfully Addd!');
 
         }else{
             return view('admin.gallery.add_category_form');
