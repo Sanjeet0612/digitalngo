@@ -138,13 +138,15 @@ Route::prefix('admin')->group(function () {
         Route::match(['get', 'post'], '/add-event-gallery', [EventGalleryController::class, 'add_event_gallery'])->name('admin.add-event-gallery');
         Route::get('/edit-event-gallery/{id}', [EventGalleryController::class, 'edit_event_gallery'])->name('admin.edit-event-gallery');
         Route::put('/update-event-gallery/{id}', [EventGalleryController::class, 'update_event_gallery'])->name('admin.update-event-gallery');
-        // Team Section
-
+        // Team Section / Management Team
         Route::get('/management-team', [TeamController::class, 'management_team'])->name('admin.management_team');
-        Route::get('/volunteers-team', [TeamController::class, 'volunteers_team'])->name('admin.volunteers_team');
         Route::match(['get', 'post'], '/add-management-team', [TeamController::class, 'add_management_team'])->name('admin.add-management-team');
         Route::get('/edit-management/{id}', [TeamController::class, 'edit_management'])->name('admin.edit-management');
         Route::put('/update-management-team/{id}', [TeamController::class, 'update_management_team'])->name('admin.update-management-team');
+        // Governing Board Teams
+        Route::get('/governing_board_teams', [TeamController::class, 'governing_board_teams'])->name('admin.governing_board_teams');
+        // volunteers Team
+        Route::get('/volunteers-team', [TeamController::class, 'volunteers_team'])->name('admin.volunteers_team');
 
     
         
