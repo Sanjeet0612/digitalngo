@@ -54,174 +54,33 @@
         <!-- About Us Style Start -->
 
         <!-- Governing Us Style Start -->
-        <section class="wide-tb-100">
+        <section class="wide-tb-0">
             <div class="container">
                 <h1 class="heading-main">
                     <small>Team Member</small>
                     Governing Board Teams
                 </h1>
                 <div class="row">
-                    
                     <!-- Team Column One -->
+                    @foreach($allgoverning as $allgoverningVal)
                     <div class="col-12 col-lg-3 col-sm-6">
                         <div class="team-section-wrap">
                             <div class="img green">
                                 <div class="social-icons">
-                                    <a href="#"><i class="icofont-facebook"></i></a>
-                                    <a href="#"><i class="icofont-twitter"></i></a>
-                                    <a href="#"><i class="icofont-instagram"></i></a>
+                                    <a href="{{$allgoverningVal->fb_link}}" target="_blank"><i class="icofont-facebook"></i></a>
+                                    <a href="{{$allgoverningVal->twt_link}}" target="_blank"><i class="icofont-twitter"></i></a>
+                                    <a href="{{$allgoverningVal->insta_link}}" target="_blank"><i class="icofont-instagram"></i></a>
                                 </div>
-                                <img src="{{url('/')}}/front/assets/images/team/jeet.jpg" alt="" class="rounded-circle">
+                                <img src="{{asset('storage/'.$allgoverningVal->profile_img)}}" alt="" class="rounded-circle">
                             </div>
-                            <h4>Jeet Das</h4>
-                            <h5>Governing Board</h5>
+                            <h4>{{$allgoverningVal->m_name}}</h4>
+                            <h5>{{$allgoverningVal->designation}}</h5>
                             <div class="text-md-right">
                                 <a href="javascript:" class="read-more-line"><span>Read More</span></a>
                             </div>
                         </div>
                     </div>
-                    <!-- Team Column One -->
-
-                     <!-- Team Column One -->
-                     <div class="col-12 col-lg-3 col-sm-6">
-                        <div class="team-section-wrap">
-                            <div class="img orange">
-                                <div class="social-icons">
-                                    <a href="#"><i class="icofont-facebook"></i></a>
-                                    <a href="#"><i class="icofont-twitter"></i></a>
-                                    <a href="#"><i class="icofont-instagram"></i></a>
-                                </div>
-                                <img src="{{url('/')}}/front/assets/images/team/chaube.jpeg" alt="" class="rounded-circle">
-                            </div>
-                            <h4>Surya Kumar Chaubey </h4>
-                            <h5>Governing Board</h5>
-                            <div class="text-md-right">
-                                <a href="javascript:" class="read-more-line"><span>Read More</span></a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Team Column One -->
-                    <!-- Team Column One -->
-                    <div class="col-12 col-lg-3 col-sm-6">
-                        <div class="team-section-wrap">
-                            <div class="img navy-blue">
-                                <div class="social-icons">
-                                    <a href="#"><i class="icofont-facebook"></i></a>
-                                    <a href="#"><i class="icofont-twitter"></i></a>
-                                    <a href="#"><i class="icofont-instagram"></i></a>
-                                </div>
-                                <img src="{{url('/')}}/front/assets/images/team/shambhu.jpeg" alt="" class="rounded-circle">
-                            </div>
-                            <h4>Shambhu Tanti                           </h4>
-                            <h5>Governing Board</h5>
-                            <div class="text-md-right">
-                                <a href="javascript:" class="read-more-line"><span>Read More</span></a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Team Column One -->
-
-                   
-
-                    <!-- Team Column One -->
-                    <div class="col-12 col-lg-3 col-sm-6">
-                        <div class="team-section-wrap">
-                            <div class="img beige">
-                                <div class="social-icons">
-                                    <a href="#"><i class="icofont-facebook"></i></a>
-                                    <a href="#"><i class="icofont-twitter"></i></a>
-                                    <a href="#"><i class="icofont-instagram"></i></a>
-                                </div>
-                                <img src="{{url('/')}}/front/assets/images/team/pandey.jpeg" alt="" class="rounded-circle">
-                            </div>
-                            <h4>Rajesh Kumar Pandey</h4>
-                            <h5>Governing Board</h5>
-                            <div class="text-md-right">
-                                <a href="javascript:" class="read-more-line"><span>Read More</span></a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Team Column One -->
-
-
-                    <!-- Team Column One -->
-                    <div class="col-12 col-lg-3 col-sm-6">
-                        <div class="team-section-wrap">
-                            <div class="img green">
-                                <div class="social-icons">
-                                    <a href="#"><i class="icofont-facebook"></i></a>
-                                    <a href="#"><i class="icofont-twitter"></i></a>
-                                    <a href="#"><i class="icofont-instagram"></i></a>
-                                </div>
-                                <img src="{{url('/')}}/front/assets/images/team/momita.png" alt="" class="rounded-circle">
-                            </div>
-                            <h4>Moumita Mahato</h4>
-                            <h5>Governing Board</h5>
-                            <div class="text-md-right">
-                                <a href="javascript:" class="read-more-line"><span>Read More</span></a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Team Column One -->
-
-                    <!-- Team Column One -->
-                    <div class="col-12 col-lg-3 col-sm-6">
-                        <div class="team-section-wrap">
-                            <div class="img navy-blue">
-                                <div class="social-icons">
-                                    <a href="#"><i class="icofont-facebook"></i></a>
-                                    <a href="#"><i class="icofont-twitter"></i></a>
-                                    <a href="#"><i class="icofont-instagram"></i></a>
-                                </div>
-                                <img src="{{url('/')}}/front/assets/images/team/team-5.jpg" alt="" class="rounded-circle">
-                            </div>
-                            <h4>Your Name</h4>
-                            <h5>Governing Board</h5>
-                            <div class="text-md-right">
-                                <a href="javascript:" class="read-more-line"><span>Read More</span></a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Team Column One -->
-
-                    <!-- Team Column One -->
-                    <div class="col-12 col-lg-3 col-sm-6">
-                        <div class="team-section-wrap">
-                            <div class="img orange">
-                                <div class="social-icons">
-                                    <a href="#"><i class="icofont-facebook"></i></a>
-                                    <a href="#"><i class="icofont-twitter"></i></a>
-                                    <a href="#"><i class="icofont-instagram"></i></a>
-                                </div>
-                                <img src="{{url('/')}}/front/assets/images/team/team-7.jpg" alt="" class="rounded-circle">
-                            </div>
-                            <h4>Your Name</h4>
-                            <h5>Governing Board</h5>
-                            <div class="text-md-right">
-                                <a href="javascript:" class="read-more-line"><span>Read More</span></a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Team Column One -->
-
-                    <!-- Team Column One -->
-                    <div class="col-12 col-lg-3 col-sm-6">
-                        <div class="team-section-wrap">
-                            <div class="img beige">
-                                <div class="social-icons">
-                                    <a href="#"><i class="icofont-facebook"></i></a>
-                                    <a href="#"><i class="icofont-twitter"></i></a>
-                                    <a href="#"><i class="icofont-instagram"></i></a>
-                                </div>
-                                <img src="{{url('/')}}/front/assets/images/team/team-8.jpg" alt="" class="rounded-circle">
-                            </div>
-                            <h4>Your Name</h4>
-                            <h5>Governing Board</h5>
-                            <div class="text-md-right">
-                                <a href="javascript:" class="read-more-line"><span>Read More</span></a>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                     <!-- Team Column One -->
                 </div>
             </div>
