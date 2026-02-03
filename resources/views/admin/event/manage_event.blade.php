@@ -101,7 +101,7 @@
                                     </div>
                                     <p class="text-secondary-light text-sm mb-0 mt-3"><b class="text-md mb-0" >Time : </b> {{$eventListVal->e_time}}</p>
 
-                                    <a  href="{{route('admin.view-event',$eventListVal->slug)}}" class="bg-primary-50 text-primary-600 bg-hover-primary-600 hover-text-white p-10 text-sm btn-sm px-12 py-12 radius-8 d-flex align-items-center justify-content-center mt-16 fw-medium gap-2 w-100">
+                                    <a  href="{{route('event-details',$eventListVal->slug)}}" target="_blank" class="bg-primary-50 text-primary-600 bg-hover-primary-600 hover-text-white p-10 text-sm btn-sm px-12 py-12 radius-8 d-flex align-items-center justify-content-center mt-16 fw-medium gap-2 w-100">
                                         View Event
                                         <iconify-icon icon="solar:alt-arrow-right-linear" class="icon text-xl line-height-1"></iconify-icon>
                                     </a>
