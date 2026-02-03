@@ -83,7 +83,7 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label class="form-label fw-bold text-neutral-900" for="title">Email id: </label>
-                                        <input type="text" name="emailid" class="form-control border border-neutral-200 radius-8" id="emailid" placeholder="Enter Email Id" required>
+                                        <input type="text" name="emailid" class="form-control border border-neutral-200 radius-8" id="emailid" placeholder="Enter Email Id">
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label fw-bold text-neutral-900" for="title">Team Type: </label>
@@ -97,7 +97,7 @@
                                 
                                 <div>
                                     <label class="form-label fw-bold text-neutral-900" for="title">Phone: </label>
-                                    <input type="text" name="phone" class="form-control border border-neutral-200 radius-8" id="phone" placeholder="Enter Phone Number" required>
+                                    <input type="text" name="phone" class="form-control border border-neutral-200 radius-8" id="phone" placeholder="Enter Phone Number">
                                 </div>
                                 
                                 <div>
