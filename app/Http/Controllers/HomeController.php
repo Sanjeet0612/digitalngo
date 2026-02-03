@@ -19,8 +19,9 @@ class HomeController extends Controller{
         return view('front.about');
     }
     public function management(Request $request){
-        $allManagement = Management::where('status',1)->get();
-        return view('front.management',compact('allManagement'));
+        $allManagement = Management::where('team_type','management')->where('status',1)->get();
+        $allgoverning = Management::where('team_type','governing')->where('status',1)->get();
+        return view('front.management',compact('allManagement','allgoverning'));
     }
     public function volunteers(Request $request){
         return view('front.volunteers');
