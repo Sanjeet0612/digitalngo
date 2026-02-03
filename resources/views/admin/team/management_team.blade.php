@@ -72,7 +72,7 @@
                                 </div>
 
                                 <div class="ps-16 pb-16 pe-16" style="margin-top:8%">
-                                    <h6 class="text-lg mb-0 mt-4">{{$eventListVal->m_name}}</h6>
+                                    <h6 class="text-lg mb-0 mt-4">{{$eventListVal->m_name}} @if($eventListVal->status==1)<span class="text-success" style="font-size:13px;">Active</span> @else <span class="text-danger" style="font-size:13px;">Dective</span> @endif</h6>
                                     <p class="text-line-3 text-neutral-500">{{strip_tags($eventListVal->description)}}</p>
 
                                     <div>
