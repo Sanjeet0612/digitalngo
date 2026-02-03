@@ -38,15 +38,15 @@
                                         </div>
                                     </th>
                                     <th scope="col">Created Date</th>
-                                    <th scope="col">Title</th>
-                                    <th scope="col">Order Position</th>
+                                    <th scope="col">Category Name</th>
+                                    <th scope="col">Type</th>
                                     <th scope="col" class="text-center">Status</th>
                                     <th scope="col" class="text-center">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @php $i=1; @endphp
-                                @foreach($banners as $bannersVal)
+                                @foreach($allCategory as $allCategoryVal)
                                 <tr>
                                     <td>
                                         <div class="d-flex align-items-center gap-10">
@@ -56,12 +56,12 @@
                                             {{$i}}
                                         </div>
                                     </td>
-                                    <td>{{$bannersVal->created_at}}</td>
-                                    <td>{{$bannersVal->title}}</td>
+                                    <td>{{$allCategoryVal->created_at}}</td>
+                                    <td>{{$allCategoryVal->cat_name}}</td>
                                   
-                                    <td>{{$bannersVal->sort_order}}</td>
+                                    <td>{{$allCategoryVal->gtype}}</td>
                                     <td class="text-center">
-                                        @if($bannersVal->status==1)
+                                        @if($allCategoryVal->status==1)
                                         <span class="bg-success-focus text-success-600 border border-success-main px-24 py-4 radius-4 fw-medium text-sm">Active</span>
                                         @else
                                         <span class="bg-danger-focus text-danger-600 border border-danger-main px-24 py-4 radius-4 fw-medium text-sm">Deactive</span>
@@ -69,7 +69,7 @@
                                     </td>
                                     <td class="text-center">
                                         <div class="d-flex align-items-center gap-10 justify-content-center">
-                                            <a href="{{route('admin.edit_banner', $bannersVal->id)}}" class="bg-success-focus text-success-600 bg-hover-success-200 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle">
+                                            <a href="{{route('admin.edit_category', $allCategoryVal->id)}}" class="bg-success-focus text-success-600 bg-hover-success-200 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle">
                                                 <iconify-icon icon="lucide:edit" class="menu-icon"></iconify-icon>
                                             </a>
                                             <button type="button" class="remove-item-btn bg-danger-focus bg-hover-danger-200 text-danger-600 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle">
