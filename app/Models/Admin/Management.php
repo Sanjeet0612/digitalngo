@@ -16,6 +16,7 @@ class Management extends Model
         'm_name',
         'slug',
         'designation',
+        'team_type',
         'emailid',
         'phone',
         'address',
