@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 class TeamController extends Controller
 {
     public function management_team(Request $request){
-        $managementList = Management::all();
+        $managementList = Management::where('team_type','management')->get();
         return view('admin.team.management_team',compact('managementList'));
     }
     public function add_management_team(Request $request){
@@ -127,11 +127,18 @@ class TeamController extends Controller
     }
     // Governing Board Teams
     public function governing_board_teams(Request $request){
-
+        $managementList = Management::where('team_type','governing')->get();
+        return view('admin.team.management_team',compact('managementList'));
     }
     // Volunteers Section
     public function volunteers_team(Request $request){
-        return view('admin.team.volunteers_team');
+        $managementList = Management::where('team_type','volunteer')->get();
+        return view('admin.team.management_team',compact('managementList'));
+    }
+    //All Team
+    public function all_team(){
+        $managementList = Management::all();
+        return view('admin.team.management_team',compact('managementList'));
     }
     
 }
