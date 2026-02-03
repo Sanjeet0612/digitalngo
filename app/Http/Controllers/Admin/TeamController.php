@@ -18,7 +18,8 @@ class TeamController extends Controller
                 // Validation
                 $request->validate([
                     'm_name'      => 'required|string|max:255',
-                    'designation'  => 'nullable|string|max:100',
+                    'designation' => 'nullable|string|max:100',
+                    'team_type'   => 'required|in:management,governing,volunteer',
                     'emailid'     => 'nullable|email|max:255',
                     'phone'       => 'nullable|string|max:20',
                     'address'     => 'nullable|string|max:500',
