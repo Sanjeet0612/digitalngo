@@ -20,7 +20,7 @@ class TeamController extends Controller
                     'm_name'      => 'required|string|max:255',
                     'designation' => 'nullable|string|max:100',
                     'team_type'   => 'required|in:management,governing,volunteer',
-                    'emailid'     => 'nullable|email|max:255',
+                    'emailid'     => 'nullable|email|unique:tb_management,emailid',
                     'phone'       => 'nullable|string|max:20',
                     'address'     => 'nullable|string|max:500',
                     'city'        => 'nullable|string|max:100',
@@ -49,6 +49,7 @@ class TeamController extends Controller
                     'm_name'      => $request->m_name,
                     'slug'        => $mslug,
                     'designation' => $request->designation,
+                    'team_type'   => $request->team_type,
                     'emailid'     => $request->emailid,
                     'phone'       => $request->phone,
                     'address'     => $request->address,
@@ -79,8 +80,8 @@ class TeamController extends Controller
         
         $request->validate([
             'm_name'      => 'required|string|max:255',
-            'emailid'     => 'required|email',
-            'phone'       => 'required|string|max:20',
+            'emailid'     => 'nullable|email|unique:tb_management,emailid,' . $id,
+            'phone'       => 'nullable|string|max:20',
             'description' => 'nullable|string',
             'profile_img' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:500',
         ]);
@@ -96,6 +97,7 @@ class TeamController extends Controller
             'm_name'      => $request->m_name,
             'slug'        => $slug,
             'designation' => $request->designation,
+            'team_type'   => $request->team_type,
             'emailid'     => $request->emailid,
             'phone'       => $request->phone,
             'address'     => $request->address,
@@ -120,7 +122,7 @@ class TeamController extends Controller
             $data['profile_img'] = $request->file('profile_img')->store('admin/management', 'public');
         }
         $management->update($data);
-        return redirect()->route('admin.management_team')->with('success', 'Management record updated successfully');
+        return redirect('admin/management-team')->with('success', 'Management record updated successfully');
 
     }
     // Governing Board Teams
