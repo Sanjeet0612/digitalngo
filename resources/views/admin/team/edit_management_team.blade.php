@@ -71,46 +71,46 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label class="form-label fw-bold text-neutral-900" for="title">Name: </label>
-                                        <input type="text" name="m_name" value="{{$detail->m_name}}" class="form-control border border-neutral-200 radius-8" id="sponsor_name" placeholder="Enter Name"  required>
+                                        <input type="text" name="m_name" value="{{old('m_name', $detail->m_name)}}"  class="form-control border border-neutral-200 radius-8" id="sponsor_name" placeholder="Enter Name"  required>
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label fw-bold text-neutral-900" for="title">Designation: </label>
-                                        <input type="text" name="designation" value="{{$detail->designation}}" class="form-control border border-neutral-200 radius-8" id="designation" placeholder="Enter Designation" required>
+                                        <input type="text" name="designation" value="{{old('designation', $detail->designation)}}"  class="form-control border border-neutral-200 radius-8" id="designation" placeholder="Enter Designation" required>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label class="form-label fw-bold text-neutral-900" for="title">Email id: </label>
-                                        <input type="text" name="emailid" value="{{$detail->emailid}}" class="form-control border border-neutral-200 radius-8" id="emailid" placeholder="Enter Email Id" required>
+                                        <input type="text" name="emailid" value="{{old('emailid', $detail->emailid)}}" class="form-control border border-neutral-200 radius-8" id="emailid" placeholder="Enter Email Id" required>
                                     </div>
                                     
                                     <div class="col-md-6">
                                         <label class="form-label fw-bold text-neutral-900" for="title">Phone: </label>
-                                        <input type="text" name="phone"  value="{{$detail->phone}}" class="form-control border border-neutral-200 radius-8" id="phone" placeholder="Enter Phone Number" required>
+                                        <input type="text" name="phone"  value="{{old('phone', $detail->phone)}}" class="form-control border border-neutral-200 radius-8" id="phone" placeholder="Enter Phone Number" required>
                                     </div>
                                 </div>
                                 
                                 <div>
                                     <label class="form-label fw-bold text-neutral-900" for="title">Address: </label>
-                                    <textarea name="address" class="form-control">{{$detail->address}}</textarea>
+                                    <textarea name="address" class="form-control"> {{old('address', $detail->address)}}</textarea>
                                 </div>
                                 
                                 <div class="row">
                                     
                                     <div class="col-md-6">
                                         <label class="form-label fw-bold text-neutral-900">City</label>
-                                        <input type="text" name="city" value="{{$detail->city}}" class="form-control border border-neutral-200 radius-8"id="city">
+                                        <input type="text" name="city"  value="{{old('city', $detail->city)}}" value="{{$detail->city}}" class="form-control border border-neutral-200 radius-8"id="city">
                                     </div>
 
                                     <div class="col-md-6">
                                         <label class="form-label fw-bold text-neutral-900">State</label>
-                                        <input type="text" name="state" value="{{$detail->state}}" class="form-control border border-neutral-200 radius-8" id="state">    
+                                        <input type="text" name="state"  value="{{old('state', $detail->state)}}" value="{{$detail->state}}" class="form-control border border-neutral-200 radius-8" id="state">    
                                     </div>
                                 </div>
                                 <div class="row">
                                 <div class="col-md-6">
                                     <label class="form-label fw-bold text-neutral-900" for="title">Pin Code: </label>
-                                    <input type="text" name="zip_code" value="{{$detail->zip_code}}" class="form-control border border-neutral-200 radius-8" id="zip_code" placeholder="Enter Pin code">
+                                    <input type="text" name="zip_code" value="{{old('zip_code', $detail->zip_code)}}" class="form-control border border-neutral-200 radius-8" id="zip_code" placeholder="Enter Pin code">
                                 </div>
                                 
                                 <div class="col-md-6">
@@ -125,17 +125,17 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                        <label class="form-label fw-bold text-neutral-900" for="title">Facebook Link: </label>
-                                        <input type="url" value="{{$detail->fb_link}}" name="fb_link" class="form-control border border-neutral-200 radius-8" id="fb_link" > 
+                                        <input type="url" value="{{old('fb_link', $detail->fb_link)}}" name="fb_link"  class="form-control border border-neutral-200 radius-8" id="fb_link" > 
                                     </div>
                                     <div class="col-md-6">
                                        <label class="form-label fw-bold text-neutral-900" for="title">Twitter Link: </label>
-                                        <input type="url" value="{{$detail->twt_link}}" name="twt_link" class="form-control border border-neutral-200 radius-8" id="twt_link" > 
+                                        <input type="url" value="{{old('twt_link', $detail->twt_link)}}" name="twt_link" class="form-control border border-neutral-200 radius-8" id="twt_link" > 
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                        <label class="form-label fw-bold text-neutral-900" for="title">InstaGram Link: </label>
-                                        <input type="url" value="{{$detail->insta_link}}" name="insta_link" class="form-control border border-neutral-200 radius-8" id="insta_link" > 
+                                        <input type="url" value="{{old('insta_link', $detail->insta_link)}}"  name="insta_link" class="form-control border border-neutral-200 radius-8" id="insta_link" > 
                                     </div>
                                     <div class="col-md-6">
                                        <label class="form-label fw-bold text-neutral-900" for="title">Status: </label>
