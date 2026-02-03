@@ -73,6 +73,21 @@
                         </li>
                        
                     </ul>
+            </li>
+            
+            <li class="dropdown">
+                <a  href="javascript:void(0)">
+                    <iconify-icon icon="fluent:people-team-24-regular" class="event-icon menu-icon"></iconify-icon>
+                    <span>Gallery</span>
+                </a>
+                <ul class="sidebar-submenu">
+                    <li>
+                        <a  href="{{route('admin.management_picture')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Picture</a>
+                    </li>
+                    <li>
+                        <a  href="{{route('admin.management_video')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Video</a>
+                    </li>
+                </ul>
             </li>  
 		</ul>
 
