@@ -10,6 +10,7 @@ use App\Http\Controllers\SettingController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\EventGalleryController;
 use App\Http\Controllers\Admin\TeamController;
+use App\Http\Controllers\Admin\GalleryController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -151,6 +152,9 @@ Route::prefix('admin')->group(function () {
         Route::get('/all-team', [TeamController::class, 'all_team'])->name('admin.all_team');
         // Gallery Section
         Route::get('/picture-category', [GalleryController::class, 'picture_category'])->name('admin.picture_category');
+        Route::match(['get', 'post'], '/add-category', [GalleryController::class, 'add_category'])->name('admin.add_category');
+
+
         Route::get('/gallery-picture', [GalleryController::class, 'gallery_picture'])->name('admin.gallery_picture');
         Route::get('/gallery-video', [GalleryController::class, 'gallery_video'])->name('admin.gallery_video');
         
