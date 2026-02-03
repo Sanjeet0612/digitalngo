@@ -138,7 +138,7 @@ Route::prefix('admin')->group(function () {
         Route::match(['get', 'post'], '/add-event-gallery', [EventGalleryController::class, 'add_event_gallery'])->name('admin.add-event-gallery');
         Route::get('/edit-event-gallery/{id}', [EventGalleryController::class, 'edit_event_gallery'])->name('admin.edit-event-gallery');
         Route::put('/update-event-gallery/{id}', [EventGalleryController::class, 'update_event_gallery'])->name('admin.update-event-gallery');
-        // Team Section / Management Team
+        // Team Section
         Route::get('/management-team', [TeamController::class, 'management_team'])->name('admin.management_team');
         Route::match(['get', 'post'], '/add-management-team', [TeamController::class, 'add_management_team'])->name('admin.add-management-team');
         Route::get('/edit-management/{id}', [TeamController::class, 'edit_management'])->name('admin.edit-management');
@@ -149,6 +149,10 @@ Route::prefix('admin')->group(function () {
         Route::get('/volunteers-team', [TeamController::class, 'volunteers_team'])->name('admin.volunteers_team');
         // All Team
         Route::get('/all-team', [TeamController::class, 'all_team'])->name('admin.all_team');
+
+        // Gallery Section
+        Route::get('/management-picture', [GalleryController::class, 'management_picture'])->name('admin.management_picture');
+        
         
         
         
