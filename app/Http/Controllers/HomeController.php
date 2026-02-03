@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Admin\Event;
+use App\Models\Admin\Management;
 use App\Models\Admin\EventGallery;
 use App\Models\Admin\Banner; 
 use Illuminate\Support\Facades\Http;
@@ -18,7 +19,8 @@ class HomeController extends Controller{
         return view('front.about');
     }
     public function management(Request $request){
-        return view('front.management');
+        $allManagement = Management::where('status',1)->get();
+        return view('front.management',compact('allManagement'));
     }
     public function volunteers(Request $request){
         return view('front.volunteers');
