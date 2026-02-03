@@ -80,11 +80,20 @@
 
 
                                 </div>
-
-                                <div class="col-md-6">
+                                <div class="row">
+                                    <div class="col-md-6">
                                         <label class="form-label fw-bold text-neutral-900" for="title">Email id: </label>
                                         <input type="text" name="emailid" class="form-control border border-neutral-200 radius-8" id="emailid" placeholder="Enter Email Id" required>
                                     </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-bold text-neutral-900" for="title">Team Type: </label>
+                                        <select name="team_type" class="form-control">
+                                            <option value="management">Management</option>
+                                            <option value="governing">Governing</option>
+                                            <option value="volunteer">Volunteer</option>
+                                        </select>
+                                    </div>
+                                </div>    
                                 
                                 <div>
                                     <label class="form-label fw-bold text-neutral-900" for="title">Phone: </label>
