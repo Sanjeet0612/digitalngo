@@ -81,18 +81,28 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label class="form-label fw-bold text-neutral-900" for="title">Email id: </label>
-                                        <input type="text" name="emailid" value="{{old('emailid', $detail->emailid)}}" class="form-control border border-neutral-200 radius-8" id="emailid" placeholder="Enter Email Id" required>
+                                        <input type="text" name="emailid" value="{{old('emailid', $detail->emailid)}}" class="form-control border border-neutral-200 radius-8" id="emailid" placeholder="Enter Email Id">
                                     </div>
                                     
                                     <div class="col-md-6">
                                         <label class="form-label fw-bold text-neutral-900" for="title">Phone: </label>
-                                        <input type="text" name="phone"  value="{{old('phone', $detail->phone)}}" class="form-control border border-neutral-200 radius-8" id="phone" placeholder="Enter Phone Number" required>
+                                        <input type="text" name="phone"  value="{{old('phone', $detail->phone)}}" class="form-control border border-neutral-200 radius-8" id="phone" placeholder="Enter Phone Number">
                                     </div>
                                 </div>
-                                
-                                <div>
-                                    <label class="form-label fw-bold text-neutral-900" for="title">Address: </label>
-                                    <textarea name="address" class="form-control"> {{old('address', $detail->address)}}</textarea>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-bold text-neutral-900" for="title">Address: </label>
+                                        <textarea name="address" class="form-control"> {{old('address', $detail->address)}}</textarea>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-bold text-neutral-900" for="title">Team Type: </label>
+                                        <select name="team_type" class="form-control">
+                                            <option value="management" @if($detail->team_type=='management') selected @endif>Management</option>
+                                            <option value="governing"  @if($detail->team_type=='governing') selected @endif>Governing</option>
+                                            <option value="volunteer"  @if($detail->team_type=='volunteer') selected @endif>Volunteer</option>
+                                        </select>
+                                    </div>
                                 </div>
                                 
                                 <div class="row">
