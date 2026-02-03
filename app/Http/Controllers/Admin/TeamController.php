@@ -63,7 +63,10 @@ class TeamController extends Controller
         
     }
     public function edit_management($id){
-        echo $rowid = base64_decode($id);
+        $rowid = base64_decode($id);
+        $detail = Management::where('id',$rowid)->first();
+        //print_r($detail); die();
+        return view('admin.team.edit_management_team',compact('detail'));
     }
     // Volunteers Section
     public function volunteers_team(Request $request){
