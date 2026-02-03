@@ -78,15 +78,16 @@
                                         <input type="text" name="designation" value="{{$detail->designation}}" class="form-control border border-neutral-200 radius-8" id="designation" placeholder="Enter Designation" required>
                                     </div>
                                 </div>
-
-                                <div class="col-md-6">
+                                <div class="row">
+                                    <div class="col-md-6">
                                         <label class="form-label fw-bold text-neutral-900" for="title">Email id: </label>
                                         <input type="text" name="emailid" value="{{$detail->emailid}}" class="form-control border border-neutral-200 radius-8" id="emailid" placeholder="Enter Email Id" required>
                                     </div>
-                                
-                                <div>
-                                    <label class="form-label fw-bold text-neutral-900" for="title">Phone: </label>
-                                    <input type="text" name="phone"  value="{{$detail->phone}}" class="form-control border border-neutral-200 radius-8" id="phone" placeholder="Enter Phone Number" required>
+                                    
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-bold text-neutral-900" for="title">Phone: </label>
+                                        <input type="text" name="phone"  value="{{$detail->phone}}" class="form-control border border-neutral-200 radius-8" id="phone" placeholder="Enter Phone Number" required>
+                                    </div>
                                 </div>
                                 
                                 <div>
@@ -122,19 +123,28 @@
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                        <label class="form-label fw-bold text-neutral-900" for="title">Facebook Link: </label>
                                         <input type="url" value="{{$detail->fb_link}}" name="fb_link" class="form-control border border-neutral-200 radius-8" id="fb_link" > 
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                        <label class="form-label fw-bold text-neutral-900" for="title">Twitter Link: </label>
                                         <input type="url" value="{{$detail->twt_link}}" name="twt_link" class="form-control border border-neutral-200 radius-8" id="twt_link" > 
                                     </div>
-                                    <div class="col-md-4">
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
                                        <label class="form-label fw-bold text-neutral-900" for="title">InstaGram Link: </label>
                                         <input type="url" value="{{$detail->insta_link}}" name="insta_link" class="form-control border border-neutral-200 radius-8" id="insta_link" > 
                                     </div>
-                                </div>
+                                    <div class="col-md-6">
+                                       <label class="form-label fw-bold text-neutral-900" for="title">Status: </label>
+                                        <select name="status" class="form-control">
+                                            <option value="1" @if($detail->status==1) selected @endif>Active</option>
+                                            <option value="0" @if($detail->status==0) selected @endif>Deactive</option>
+                                        </select>
+                                    </div>
+                                </div>    
                                 <div>
                                     <label class="form-label fw-bold text-neutral-900"> Description </label>
                                     <div class="border border-neutral-200 radius-8 overflow-hidden">
