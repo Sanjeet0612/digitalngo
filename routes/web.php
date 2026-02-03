@@ -147,8 +147,8 @@ Route::prefix('admin')->group(function () {
         Route::get('/governing_board_teams', [TeamController::class, 'governing_board_teams'])->name('admin.governing_board_teams');
         // volunteers Team
         Route::get('/volunteers-team', [TeamController::class, 'volunteers_team'])->name('admin.volunteers_team');
-
-    
+        // All Team
+        Route::get('/all-team', [TeamController::class, 'all_team'])->name('admin.all_team');
         
         
         
