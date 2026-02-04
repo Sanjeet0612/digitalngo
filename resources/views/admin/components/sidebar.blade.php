@@ -91,7 +91,20 @@
                         <a  href="{{route('admin.gallery_video')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Video</a>
                     </li>
                 </ul>
-            </li>  
+            </li>
+            
+            <li class="dropdown">
+                <a  href="javascript:void(0)">
+                    <i class="ri-news-line text-xl me-6 d-flex w-auto"></i>
+                    <span>Articles</span>
+                </a>
+                <ul class="sidebar-submenu">
+                    <li>
+                        <a  href="{{route('admin.manage_articles')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>All Aricles</a>
+                    </li>
+                </ul>
+            </li>
+
 		</ul>
 
         
