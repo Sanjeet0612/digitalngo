@@ -73,6 +73,7 @@ class GalleryController extends Controller
     }
     public function add_picture(Request $request){
         if($request->isMethod('post')){
+
             $request->validate([
                 'gtype'  => 'required|in:photo,video',
                 'picture.*'=> 'required|file|mimes:jpg,jpeg,png,mp4,mov,avi',
@@ -211,7 +212,8 @@ class GalleryController extends Controller
     }
 
     public function gallery_video(Request $request){
-        
+        $galleryList = Gallery::with('category')->orderBy('id', 'desc')->paginate(12);
+        return view('admin.gallery.manage_gallery_video',compact('galleryList'));
     }
 
 }
