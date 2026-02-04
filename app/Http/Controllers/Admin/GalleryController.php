@@ -54,6 +54,14 @@ class GalleryController extends Controller
 
         return redirect('admin/picture-category')->with('success', 'Category updated successfully');
     }
+    public function delete_category($id){
+        $category = GalleryCategory::find($id);
+        if(!$category){
+            return redirect()->back()->with('error', 'Category not found');
+        }
+        $category->delete();
+        return redirect()->back()->with('success', 'Category deleted successfully');
+    }
     public function gallery_picture(Request $request){
 
     }
