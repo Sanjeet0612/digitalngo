@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Models\Admin\GalleryCategory;
+use App\Models\Admin\Gallery;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -70,13 +71,24 @@ class GalleryController extends Controller
     public function add_picture(Request $request){
         if($request->isMethod('post')){
             $request([
-                'gtype' => 'required',
+                'gtype'  => 'required|in:picture,video',
+                'picture.*'=> 'required|file|mimes:jpg,jpeg,png,mp4,mov,avi|max:800',
                 'status' => 'required',
             ]);
 
-
-
-
+            if($request->hasFile('picture')) {
+                foreach ($request->file('picture') as $file) {
+                    $filename = time().'_'.uniqid().'.'.$file->getClientOriginalExtension();
+                    $path = $file->storeAs('admin/uploads/gallery', $filename, 'public');
+                    Gallery::create([
+                        'cat_id' => $request->cat_id,
+                        'gtype'  => $request->gtype,
+                        'path'   => $path,
+                        'status' => 1,
+                    ]);
+                }
+            }
+            return redirect()->back()->with('success', 'Gallery uploaded successfully');
         }else{
             $allCat = GalleryCategory::all();
             return view('admin.gallery.gallery_picture_form',compact('allCat'));
