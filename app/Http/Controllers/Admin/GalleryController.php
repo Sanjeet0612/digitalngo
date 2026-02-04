@@ -67,8 +67,8 @@ class GalleryController extends Controller
     }
     // Picture Section 
     public function gallery_picture(Request $request){
-        $eventList = array();
-        return view('admin.gallery.manage_gallery_picture',compact('eventList'));
+        $galleryList = Gallery::orderBy('id', 'desc')->paginate(12);
+        return view('admin.gallery.manage_gallery_picture',compact('galleryList'));
     }
     public function add_picture(Request $request){
         if($request->isMethod('post')){
