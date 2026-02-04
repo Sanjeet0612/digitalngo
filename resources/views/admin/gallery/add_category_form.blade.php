@@ -22,9 +22,7 @@
                                     <option value="picture">Picture</option>
                                     <option value="video">Video</option>
                                 </select>
-                                
                             </div>
-
 
                             <div id="category-wrapper">
                                 <div class="row category-row align-items-end mb-3">
