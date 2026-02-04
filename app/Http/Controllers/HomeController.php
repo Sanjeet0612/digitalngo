@@ -36,7 +36,8 @@ class HomeController extends Controller{
         return view('front.image',compact('allCat','gallImg'));
     }
     public function video(Request $request){
-        return view('front.video');
+        $galleryList = Gallery::where('gtype','video')->where('status',1)->with('category')->orderBy('id', 'desc')->paginate(12);
+        return view('front.video',compact('galleryList'));
     }
     public function events(Request $request){
         $event = Event::where('status',1)->get();
