@@ -84,9 +84,17 @@
                                             <a href="{{route('admin.edit_category', $allCategoryVal->id)}}" class="bg-success-focus text-success-600 bg-hover-success-200 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle">
                                                 <iconify-icon icon="lucide:edit" class="menu-icon"></iconify-icon>
                                             </a>
-                                            <a href="{{route('admin.delete_category', $allCategoryVal->id)}}" class="remove-item-btn bg-danger-focus bg-hover-danger-200 text-danger-600 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle">
-                                                <iconify-icon icon="fluent:delete-24-regular" class="menu-icon"></iconify-icon>
-                                            </a>
+                                           
+                                            <form action="{{ route('admin.delete_category', $allCategoryVal->id) }}" 
+                                                method="POST" 
+                                                onsubmit="return confirm('Delete this category?')">
+                                                @csrf
+                                                @method('DELETE')
+
+                                                <button type="submit">
+                                                   <iconify-icon icon="fluent:delete-24-regular" class="menu-icon"></iconify-icon>
+                                                </button>
+                                            </form>
                                         </div>
                                     </td>
                                 </tr>
