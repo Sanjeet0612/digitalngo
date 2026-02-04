@@ -210,10 +210,31 @@ class GalleryController extends Controller
         ]);
         return redirect()->back()->with('success', 'Gallery updated successfully');
     }
-
+    // Video Section
     public function gallery_video(Request $request){
         $galleryList = Gallery::with('category')->orderBy('id', 'desc')->paginate(12);
         return view('admin.gallery.manage_gallery_video',compact('galleryList'));
+    }
+    public function add_video(Request $request){
+        if($request->isMethod('post')){
+
+            $request->validate([
+                'embedCode' => 'required',
+                'status' => 'required',
+            ]);
+            
+            GalleryCategory::create([
+                'cat_id' => 1,
+                'gtype'  => 'video',
+                'status' => $request->status,
+            ]);
+           
+           
+
+        }else{
+            $galleryList = Gallery::with('category')->orderBy('id', 'desc')->paginate(12);
+            return view('admin.gallery.add_video_form',compact('galleryList'));
+        }                                    
     }
 
 }
