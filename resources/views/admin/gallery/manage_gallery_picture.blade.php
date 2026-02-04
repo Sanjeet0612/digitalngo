@@ -57,7 +57,7 @@
                                     
                                         <ul class="dropdown-menu p-12 border bg-base shadow">
                                             <li>
-                                                <a class="dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900 d-flex align-items-center gap-10"  href="{{route('admin.edit-event',base64_encode($eventListVal->id))}}">
+                                                <a class="dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900 d-flex align-items-center gap-10"  href="{{route('admin.edit_gallery_picture',base64_encode($eventListVal->id))}}">
                                                     Edit
                                                 </a>
                                             </li>
