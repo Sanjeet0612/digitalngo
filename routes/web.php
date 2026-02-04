@@ -156,7 +156,9 @@ Route::prefix('admin')->group(function () {
         Route::get('/edit-category/{id}', [GalleryController::class, 'edit_category'])->name('admin.edit_category');
         Route::put('/update-category/{id}', [GalleryController::class, 'update_category'])->name('admin.update_category');
         Route::delete('/delete-category/{id}',[GalleryController::class, 'delete_category'])->name('admin.delete_category');
+        // Gallery Picture Section
         Route::get('/gallery-picture', [GalleryController::class, 'gallery_picture'])->name('admin.gallery_picture');
+        Route::match(['get', 'post'], '/add-picture', [GalleryController::class, 'add_picture'])->name('admin.add_picture');
         Route::get('/gallery-video', [GalleryController::class, 'gallery_video'])->name('admin.gallery_video');
 
     });
