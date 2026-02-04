@@ -40,19 +40,12 @@
                
                 <div class="card-body p-24">
                     <div class="row gy-4">
-                         @foreach($eventList as $eventListVal)
-                         
-                            @php
-                                $now = \Carbon\Carbon::now('Asia/Kolkata'); // Server ya event timezone
-                                $start = \Carbon\Carbon::parse($eventListVal->start_date, 'Asia/Kolkata');
-                                $end   = \Carbon\Carbon::parse($eventListVal->end_date, 'Asia/Kolkata');
-                            @endphp
-                         
-                         
+                         @foreach($galleryList as $eventListVal)
+
                         <div class="col-xxl-3 col-md-6 user-grid-card   ">
                             <div class="position-relative border radius-16 overflow-hidden">
-                                @if(!empty($eventListVal->banner))
-                                <img src="{{asset('storage/'.$eventListVal->banner)}}" alt="" class="w-100 object-fit-cover">
+                                @if(!empty($eventListVal->path))
+                                <img src="{{asset('storage/'.$eventListVal->path)}}" alt="" class="w-100 object-fit-cover">
                                 @else
                                 <img src="{{ asset('assets/images/user-grid/user-grid-bg1.png') }}" alt="" class="w-100 object-fit-cover">
                                 @endif
@@ -70,21 +63,7 @@
                                             </li>
                                         </ul>
                                 </div>
-                                   
-                                
-                                <li class="event-item text-center">
-                                    @if($now->lt($start))
-                                        <span class="badge bg-primary">Upcoming</span>
-                                
-                                    @elseif($now->between($start, $end))
-                                        <span class="badge bg-success">Happening</span>
-                                
-                                    @elseif($now->gt($end))
-                                        <span class="badge bg-secondary">Past</span>
-                                    @endif
-                                </li>
-                                
- 
+   
                                 <div class="ps-16 pb-16 pe-16 text-center" style="margin-top:8%">
                                     <h6 class="text-lg mb-0 mt-4">{{$eventListVal->event_name}}</h6>
                                     <p class="text-line-3 text-neutral-500">{{strip_tags($eventListVal->description)}}</p>
@@ -101,7 +80,7 @@
                                     </div>
                                     <p class="text-secondary-light text-sm mb-0 mt-3"><b class="text-md mb-0" >Time : </b> {{$eventListVal->e_time}}</p>
 
-                                    <a  href="{{route('event-details',$eventListVal->slug)}}" target="_blank" class="bg-primary-50 text-primary-600 bg-hover-primary-600 hover-text-white p-10 text-sm btn-sm px-12 py-12 radius-8 d-flex align-items-center justify-content-center mt-16 fw-medium gap-2 w-100">
+                                    <a  href="#" target="_blank" class="bg-primary-50 text-primary-600 bg-hover-primary-600 hover-text-white p-10 text-sm btn-sm px-12 py-12 radius-8 d-flex align-items-center justify-content-center mt-16 fw-medium gap-2 w-100">
                                         View Event
                                         <iconify-icon icon="solar:alt-arrow-right-linear" class="icon text-xl line-height-1"></iconify-icon>
                                     </a>
@@ -113,36 +92,40 @@
                         </div>
                         @endforeach
                     </div>
-                    <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mt-24">
-                        <span>Showing 1 to 10 of 12 entries</span>
+                      <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mt-24">
+                        <span>Showing {{ $galleryList->firstItem() }} to {{ $galleryList->lastItem() }} of {{ $galleryList->total() }} entries</span>
                         <ul class="pagination d-flex flex-wrap align-items-center gap-2 justify-content-center">
-                            <li class="page-item">
-                                <a class="page-link bg-neutral-200 text-secondary-light fw-semibold radius-8 border-0 d-flex align-items-center justify-content-center h-32-px w-32-px text-md"  href="javascript:void(0)">
-                                    <iconify-icon icon="ep:d-arrow-left" class=""></iconify-icon>
-                                </a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link text-secondary-light fw-semibold radius-8 border-0 d-flex align-items-center justify-content-center h-32-px w-32-px text-md bg-primary-600 text-white"  href="javascript:void(0)">1</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link bg-neutral-200 text-secondary-light fw-semibold radius-8 border-0 d-flex align-items-center justify-content-center h-32-px w-32-px"  href="javascript:void(0)">2</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link bg-neutral-200 text-secondary-light fw-semibold radius-8 border-0 d-flex align-items-center justify-content-center h-32-px w-32-px text-md"  href="javascript:void(0)">3</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link bg-neutral-200 text-secondary-light fw-semibold radius-8 border-0 d-flex align-items-center justify-content-center h-32-px w-32-px text-md"  href="javascript:void(0)">4</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link bg-neutral-200 text-secondary-light fw-semibold radius-8 border-0 d-flex align-items-center justify-content-center h-32-px w-32-px text-md"  href="javascript:void(0)">5</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link bg-neutral-200 text-secondary-light fw-semibold radius-8 border-0 d-flex align-items-center justify-content-center h-32-px w-32-px text-md"  href="javascript:void(0)">
-                                    <iconify-icon icon="ep:d-arrow-right" class=""></iconify-icon>
-                                </a>
-                            </li>
-                        </ul>
+
+                    	{{-- Previous --}}
+                    	<li class="page-item {{ $galleryList->onFirstPage() ? 'disabled' : '' }}">
+                    		<a class="page-link bg-neutral-200 text-secondary-light fw-semibold radius-8 border-0 d-flex align-items-center justify-content-center h-32-px w-32-px text-md"
+                    		   href="{{ $galleryList->previousPageUrl() ?? 'javascript:void(0)' }}">
+                    			<iconify-icon icon="ep:d-arrow-left"></iconify-icon>
+                    		</a>
+                    	</li>
+                    
+                    	{{-- Page Numbers --}}
+                    	@foreach ($galleryList->links()->elements[0] ?? [] as $page => $url)
+                    		<li class="page-item">
+                    			<a class="page-link fw-semibold radius-8 border-0 d-flex align-items-center justify-content-center h-32-px w-32-px text-md
+                    				{{ $page == $galleryList->currentPage() ? 'bg-primary-600 text-white' : 'bg-neutral-200 text-secondary-light' }}"
+                    			   href="{{ $url }}">
+                    				{{ $page }}
+                    			</a>
+                    		</li>
+                    	@endforeach
+                    
+                    	{{-- Next --}}
+                    	<li class="page-item {{ $galleryList->hasMorePages() ? '' : 'disabled' }}">
+                    		<a class="page-link bg-neutral-200 text-secondary-light fw-semibold radius-8 border-0 d-flex align-items-center justify-content-center h-32-px w-32-px text-md"
+                    		   href="{{ $galleryList->nextPageUrl() ?? 'javascript:void(0)' }}">
+                    			<iconify-icon icon="ep:d-arrow-right"></iconify-icon>
+                    		</a>
+                    	</li>
+                    
+                    </ul>
                     </div>
+                    
                 </div>
             </div>
 
