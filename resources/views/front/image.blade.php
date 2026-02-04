@@ -25,32 +25,36 @@
                 <div class="container">
                     <div class="portfolio-menu mt-2 mb-4">
                         <center><ul>
-                        <li class="btn btn-outline-dark active" data-filter="*">All</li>
-                        <li class="btn btn-outline-dark" data-filter=".plant">Plant Distribution</li>
-                        <li class="btn btn-outline-dark" data-filter=".planting">Planting</li>
-                        <li class="btn btn-outline-dark" data-filter=".drink">Water distribution</li>
-                        <li class="btn btn-outline-dark" data-filter=".puja">Special Events</li>
-                        <li class="btn btn-outline-dark" data-filter=".education">Education</li>
-                        <li class="btn btn-outline-dark" data-filter=".cow">Cow savaya</li>
+                        @foreach($allCat as $allCatVal)
+                            <li class="btn btn-outline-dark {{ $loop->first ? 'active' : '' }}"
+                                data-filter="{{ $loop->first ? '*' : '.cat-'.$allCatVal->id }}">
+                                {{ $allCatVal->cat_name }}
+                            </li>
+                        @endforeach
                         </ul></center>
                     </div>
                     <div class="portfolio-item row">
-                    <?php
-                        /*$query = mysqli_query($con,"select * from gallery order by id desc");
-                            if(mysqli_num_rows($query)>0){
-                                while($row=mysqli_fetch_array($query)){
-                                    $id = $row['id'];
-                                    $image = $row['image'];
-                                    $title = $row['title'];
-                                    $date = $row['date'];
-                        */
-                        ?>  
-                        <div class="item <?php //echo $title; ?> col-lg-3 col-md-4 col-6 col-sm">
-                        <a href="{{url('/')}}/front/assets/images/gallery/<?php //echo $image; ?>" class="fancylight popup-btn" data-fancybox-group="light"> 
-                        <img class="img-fluid" src="{{url('/')}}/front/assets/images/gallery/<?php //echo $image; ?>" alt="">
-                        </a>
-                        </div>
-                        <?php //} } ?>
+                   
+                        @foreach($gallImg as $gallImgVal)
+    <div class="item cat-{{ $gallImgVal->cat_id }} col-lg-3 col-md-4 col-6 col-sm">
+        <a href="{{ asset('storage/'.$gallImgVal->path) }}"
+           class="fancylight popup-btn"
+           data-fancybox="gallery">
+
+            @if($gallImgVal->gtype === 'photo')
+                <img class="img-fluid"
+                     src="{{ asset('storage/'.$gallImgVal->path) }}"
+                     alt="">
+            @else
+                <video class="img-fluid" controls>
+                    <source src="{{ asset('storage/'.$gallImgVal->path) }}" type="video/mp4">
+                </video>
+            @endif
+
+        </a>
+    </div>
+@endforeach
+                       
                     </div>
                 </div> 
             </div>
@@ -80,3 +84,34 @@
         <!-- Our Partners End -->
     </main>
 @include('front.includes.new_footer')
+
+
+    <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+    <script>
+document.addEventListener('DOMContentLoaded', function () {
+
+    var grid = document.querySelector('.portfolio-item');
+
+    var iso = new Isotope(grid, {
+        itemSelector: '.item',
+        layoutMode: 'fitRows'
+    });
+
+    // filter on click
+    var filtersElem = document.querySelector('.portfolio-menu');
+
+    filtersElem.addEventListener('click', function (event) {
+        if (!event.target.matches('li')) {
+            return;
+        }
+
+        var filterValue = event.target.getAttribute('data-filter');
+        iso.arrange({ filter: filterValue });
+
+        // active class toggle
+        filtersElem.querySelectorAll('li').forEach(li => li.classList.remove('active'));
+        event.target.classList.add('active');
+    });
+
+});
+</script>
