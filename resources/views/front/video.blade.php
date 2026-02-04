@@ -25,19 +25,16 @@
                 
                 <div class="row">
                      <!-- Team Column One -->
-                    <div class="col-12 col-lg-6 col-sm-6">
-                        <div class="team-section-wrap">
-                        <iframe width="100%" height="315" src="https://www.youtube.com/embed/D6kfjvqMJnI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    @foreach($galleryList as $galleryListVal)
+                        <div class="col-12 col-lg-6 col-sm-6">
+                            <div class="team-section-wrap">
+                            {!! $galleryListVal->path !!}
+                            </div>
                         </div>
-                    </div>
+                    @endforeach
+                    
                     <!-- Team Column One -->
-                     <!-- Team Column One -->
-                    <div class="col-12 col-lg-6 col-sm-6">
-                        <div class="team-section-wrap">
-                        <iframe width="100%" height="315" src="https://www.youtube.com/embed/3TKI1d7K5IA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <!-- Team Column One -->
+                    
                 </div>
             </div>
         </section>
