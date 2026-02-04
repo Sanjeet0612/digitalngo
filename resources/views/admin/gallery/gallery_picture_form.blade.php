@@ -38,7 +38,7 @@
                                 <label class="form-label fw-semibold text-primary-light text-sm mb-8">
                                     Type<span class="text-danger-600">*</span>
                                 </label>
-                                <select name="gtype" class="form-control">
+                                <select name="gtype" class="form-control" onchange="return showHide(this.value)">
                                     <option value="">Select Type</option>
                                     <option value="photo">Picture</option>
                                     <option value="video">Video</option>
@@ -57,16 +57,16 @@
                             </div>    
 
 
-                            <div id="category-wrapper">
+                            <div id="category-wrapper" class="photoo">
                                 <div class="row category-row align-items-end mb-3">
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-6" >
                                         <label class="form-label fw-semibold text-primary-light text-sm mb-8">
                                             Upload Image/Video <span class="text-danger-600">*</span>
                                         </label>
                                         <input type="file" name="picture[]" multiple class="form-control radius-8" required>
                                     </div>
 
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-6">
                                         <label class="form-label fw-semibold text-primary-light text-sm mb-8">
                                             Status <span class="text-danger-600">*</span>
                                         </label>
@@ -75,12 +75,16 @@
                                             <option value="0">Deactive</option>
                                         </select>
                                     </div>
-
-                                    <div class="col-sm-2 text-end">
-                                        <button type="button" class="btn btn-success add-row">+</button>
-                                    </div>
                                 </div>
 
+                            </div>
+
+                            <div class="col-sm-6 video" >
+
+                                <label class="form-label fw-semibold text-primary-light text-sm mb-8">
+                                    Video Embed Code<span class="text-danger-600">*</span>
+                                </label>
+                                <input type="text" name="video" class="form-control">
                             </div>
 
                             <div class="d-flex align-items-center justify-content-center gap-3 mt-24">
@@ -97,4 +101,15 @@
             </div>
 
 @endsection
-
+<script>
+function showHide(valueType){
+    if(valueType ==='video'){
+        $('.photoo').hide();
+         $('.video').show();
+    }
+    if(valueType ==='photo'){
+        $('.photoo').show();
+        $('.video').hide();
+    }
+}
+</script>
