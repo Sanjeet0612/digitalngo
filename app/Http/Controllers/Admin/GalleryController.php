@@ -34,7 +34,25 @@ class GalleryController extends Controller
         }
     }
     public function edit_category(Request $request,$id){
-        return view('admin.gallery.edit_category_form');
+        $catdata = GalleryCategory::where('id',$id)->first();
+        return view('admin.gallery.edit_category_form',compact('catdata'));
+    }
+    public function update_category(Request $request,$id){
+        $request->validate([
+            'cat_name.*' => 'required|string|max:255',
+            'gtype.*'    => 'required|in:photo,video',
+            'status.*'   => 'required|in:0,1',
+        ]);
+        $category = GalleryCategory::findOrFail($id);
+
+        foreach($request->cat_name as $key => $catName){
+            $category->cat_name = $catName;
+            $category->gtype    = $request->gtype;
+            $category->status   = $request->status[$key];
+            $category->save();
+        }
+
+        return redirect('admin/picture-category')->with('success', 'Category updated successfully');
     }
     public function gallery_picture(Request $request){
 
