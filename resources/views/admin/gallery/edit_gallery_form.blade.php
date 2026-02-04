@@ -39,7 +39,7 @@
                                 <label class="form-label fw-semibold text-primary-light text-sm mb-8">
                                     Type<span class="text-danger-600">*</span>
                                 </label>
-                                <select name="gtype" class="form-control">
+                                <select name="gtype" class="form-control" onchange="return showHide(this.value)">
                                     <option value="">Select Type</option>
                                     <option value="photo" @if($galdetail->gtype=='photo') selected @endif >Picture</option>
                                     <option value="video" @if($galdetail->gtype=='video') selected @endif >Video</option>
@@ -101,4 +101,10 @@
             </div>
 
 @endsection
+
+<script>
+function showHide(valueType){
+    alert(valueType);
+}
+</script>
 
