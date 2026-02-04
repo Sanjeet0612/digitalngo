@@ -158,6 +158,12 @@ class GalleryController extends Controller
             }
     }
 
+    public function edit_gallery_picture($id){
+        $allCat = GalleryCategory::all();
+        $galdetail = Gallery::where('id',base64_decode($id));
+        return view('admin.gallery.edit_gallery_form',compact('allCat','galdetail'));                                
+    }
+
     public function gallery_video(Request $request){
         
     }
