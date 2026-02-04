@@ -30,8 +30,9 @@
                     @endif
                 </div>
                 <div class="card-body p-40">
-                    <form action="{{route('admin.add_picture')}}" method="post" enctype="multipart/form-data">
+                    <form action="{{route('admin.update_picture',$galdetail->id)}}" method="post" enctype="multipart/form-data">
                         @csrf
+                        @method('PUT')
                         <div class="row">
 
                             <div class="col-sm-6">
@@ -40,8 +41,8 @@
                                 </label>
                                 <select name="gtype" class="form-control">
                                     <option value="">Select Type</option>
-                                    <option value="photo">Picture</option>
-                                    <option value="video">Video</option>
+                                    <option value="photo" @if($galdetail->gtype=='photo') selected @endif >Picture</option>
+                                    <option value="video" @if($galdetail->gtype=='video') selected @endif >Video</option>
                                 </select>
                             </div>
                             <div class="col-sm-6">
@@ -51,7 +52,7 @@
                                 <select name="cat_id" class="form-control">
                                     <option value="">Select Category</option>
                                     @foreach($allCat as $allCatVal)
-                                        <option value="{{$allCatVal->id}}">{{$allCatVal->cat_name}}</option>
+                                        <option value="{{$allCatVal->id}}" @if($galdetail->cat_id==$allCatVal->id) selected @endif >{{$allCatVal->cat_name}}</option>
                                     @endforeach
                                 </select>
                             </div>    
@@ -62,8 +63,11 @@
                                     <div class="col-sm-6">
                                         <label class="form-label fw-semibold text-primary-light text-sm mb-8">
                                             Upload Image/Video <span class="text-danger-600">*</span>
+                                            @if(!empty($galdetail->path))
+                                                <img src="{{asset('storage/'.$galdetail->path)}}" style="width:100px;">
+                                            @endif
                                         </label>
-                                        <input type="file" name="picture[]" multiple class="form-control radius-8" required>
+                                        <input type="file" name="picture[]" multiple class="form-control radius-8">
                                     </div>
 
                                     <div class="col-sm-4">
@@ -71,8 +75,8 @@
                                             Status <span class="text-danger-600">*</span>
                                         </label>
                                         <select class="form-control radius-8 form-select" name="status">
-                                            <option value="1">Active</option>
-                                            <option value="0">Deactive</option>
+                                            <option value="1"  @if($galdetail->status==1) selected @endif >Active</option>
+                                            <option value="0" @if($galdetail->status==0) selected @endif >Deactive</option>
                                         </select>
                                     </div>
 
