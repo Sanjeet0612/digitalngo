@@ -67,7 +67,7 @@ class GalleryController extends Controller
     }
     // Picture Section 
     public function gallery_picture(Request $request){
-        $galleryList = Gallery::with('category')->orderBy('id', 'desc')->paginate(12);
+        $galleryList = Gallery::where('gtype','photo')->with('category')->orderBy('id', 'desc')->paginate(12);
         //print_r($galleryList);
         return view('admin.gallery.manage_gallery_picture',compact('galleryList'));
     }
@@ -212,7 +212,7 @@ class GalleryController extends Controller
     }
     // Video Section
     public function gallery_video(Request $request){
-        $galleryList = Gallery::with('category')->orderBy('id', 'desc')->paginate(12);
+        $galleryList = Gallery::where('gtype','video')->with('category')->orderBy('id', 'desc')->paginate(12);
         return view('admin.gallery.manage_gallery_video',compact('galleryList'));
     }
     public function add_video(Request $request){
@@ -223,13 +223,14 @@ class GalleryController extends Controller
                 'status' => 'required',
             ]);
             
-            GalleryCategory::create([
+            Gallery::create([
                 'cat_id' => 1,
                 'gtype'  => 'video',
+                'path'   => $request->embedCode,
                 'status' => $request->status,
             ]);
            
-           
+            return redirect()->back()->with('success','Successfully Added!');
 
         }else{
             $galleryList = Gallery::with('category')->orderBy('id', 'desc')->paginate(12);
