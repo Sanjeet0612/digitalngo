@@ -65,4 +65,21 @@ class ArticleController extends Controller{
         $title = 'Blog';
         return view('admin.articles.blog_detail', compact('blog','latestblogs','categories','tags','comments','totalComments'));
     }
+
+    public function addComment(Request $request, $blogId){
+        $request->validate([
+            'comment' => 'required|string|max:1000',
+            'parent_id' => 'nullable|exists:blog_comments,id',
+        ]);
+
+        BlogComment::create([
+            'blog_id' => $blogId,
+            'user_id' => auth()->id(), // optional if guest comments allowed
+            'comment' => $request->comment,
+            'parent_id' => $request->parent_id, // reply parent
+            'status' => 1, // active
+        ]);
+
+        return redirect()->back()->with('success', 'Comment added successfully!');
+    }
 }
