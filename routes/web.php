@@ -6,11 +6,13 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\SettingController;
 
+
 // Admin
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\EventGalleryController;
 use App\Http\Controllers\Admin\TeamController;
 use App\Http\Controllers\Admin\GalleryController;
+use App\Http\Controllers\Admin\ArticleController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -164,6 +166,8 @@ Route::prefix('admin')->group(function () {
         // Gallery Video Section
         Route::get('/gallery-video', [GalleryController::class, 'gallery_video'])->name('admin.gallery_video');
         Route::match(['get', 'post'], '/add-video', [GalleryController::class, 'add_video'])->name('admin.add_video');
+        // Articles / Blog
+        Route::get('/manage-articles', [ArticleController::class, 'manage_articles'])->name('admin.manage_articles');
         
 
     });
