@@ -38,7 +38,7 @@
                                 <label class="form-label fw-semibold text-primary-light text-sm mb-8">
                                     Type<span class="text-danger-600">*</span>
                                 </label>
-                                <select name="gtype" class="form-control" onchange="return showHide(this.value)">
+                                <select name="gtype" class="form-control">
                                     <option value="">Select Type</option>
                                     <option value="photo">Picture</option>
                                     <option value="video">Video</option>
@@ -79,13 +79,7 @@
 
                             </div>
 
-                            <div class="col-sm-6 video" >
-
-                                <label class="form-label fw-semibold text-primary-light text-sm mb-8">
-                                    Video Embed Code<span class="text-danger-600">*</span>
-                                </label>
-                                <input type="text" name="video" class="form-control">
-                            </div>
+                            
 
                             <div class="d-flex align-items-center justify-content-center gap-3 mt-24">
                                 <button type="reset" class="border border-danger-600 bg-hover-danger-200 text-danger-600 text-md px-40 py-11 radius-8">
