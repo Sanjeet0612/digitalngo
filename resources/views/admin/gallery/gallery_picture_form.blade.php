@@ -8,6 +8,18 @@
 @section('content')
 
             <div class="card h-100 p-0 radius-12 overflow-hidden">
+                <div class="message">
+                    @if(session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+                     @if(session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                    @endif
+                </div>
                 <div class="card-body p-40">
                     <form action="{{route('admin.add_picture')}}" method="post" enctype="multipart/form-data">
                         @csrf
@@ -19,7 +31,7 @@
                                 </label>
                                 <select name="gtype" class="form-control">
                                     <option value="">Select Type</option>
-                                    <option value="picture">Picture</option>
+                                    <option value="photo">Picture</option>
                                     <option value="video">Video</option>
                                 </select>
                             </div>
@@ -30,7 +42,7 @@
                                 <select name="cat_id" class="form-control">
                                     <option value="">Select Category</option>
                                     @foreach($allCat as $allCatVal)
-                                        <option value="$allCatVal->id">{{$allCatVal->cat_name}}</option>
+                                        <option value="{{$allCatVal->id}}">{{$allCatVal->cat_name}}</option>
                                     @endforeach
                                 </select>
                             </div>    
@@ -42,7 +54,7 @@
                                         <label class="form-label fw-semibold text-primary-light text-sm mb-8">
                                             Upload Image/Video <span class="text-danger-600">*</span>
                                         </label>
-                                        <input type="file" name="picture" multiple class="form-control radius-8" required>
+                                        <input type="file" name="picture[]" multiple class="form-control radius-8" required>
                                     </div>
 
                                     <div class="col-sm-4">
