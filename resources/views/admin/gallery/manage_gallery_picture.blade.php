@@ -68,19 +68,10 @@
                                     <h6 class="text-lg mb-0 mt-4">{{$eventListVal->event_name}}</h6>
                                     <p class="text-line-3 text-neutral-500">{{strip_tags($eventListVal->description)}}</p>
 
-                                    <div class="center-border position-relative bg-danger-gradient-light radius-8 p-12 d-flex align-items-center gap-4">
-                                        <div class="text-center w-50">
-                                            <h6 class="text-md mb-0">Start Date</h6>
-                                            <span class="text-secondary-light text-sm mb-0">{{$eventListVal->start_date}}</span>
-                                        </div>
-                                        <div class="text-center w-50">
-                                            <h6 class="text-md mb-0">End Date</h6>
-                                            <span class="text-secondary-light text-sm mb-0">{{$eventListVal->end_date}}</span>
-                                        </div>
-                                    </div>
-                                    <p class="text-secondary-light text-sm mb-0 mt-3"><b class="text-md mb-0" >Time : </b> {{$eventListVal->e_time}}</p>
+                  
+                                    <p class="text-secondary-light text-sm mb-0 mt-3"><b class="text-md mb-0" >Category : </b> {{$eventListVal->category->cat_name}}</p>
 
-                                    <a  href="#" target="_blank" class="bg-primary-50 text-primary-600 bg-hover-primary-600 hover-text-white p-10 text-sm btn-sm px-12 py-12 radius-8 d-flex align-items-center justify-content-center mt-16 fw-medium gap-2 w-100">
+                                    <a  href="{{route('image')}}" target="_blank" class="bg-primary-50 text-primary-600 bg-hover-primary-600 hover-text-white p-10 text-sm btn-sm px-12 py-12 radius-8 d-flex align-items-center justify-content-center mt-16 fw-medium gap-2 w-100">
                                         View Event
                                         <iconify-icon icon="solar:alt-arrow-right-linear" class="icon text-xl line-height-1"></iconify-icon>
                                     </a>
