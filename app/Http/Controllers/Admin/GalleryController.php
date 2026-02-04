@@ -5,6 +5,8 @@ use App\Models\Admin\GalleryCategory;
 use App\Models\Admin\Gallery;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Gd\Driver;
 
 class GalleryController extends Controller
 {
@@ -72,27 +74,88 @@ class GalleryController extends Controller
         if($request->isMethod('post')){
             $request->validate([
                 'gtype'  => 'required|in:photo,video',
-                'picture.*'=> 'required|file|mimes:jpg,jpeg,png,mp4,mov,avi|max:800',
+                'picture.*'=> 'required|file|mimes:jpg,jpeg,png,mp4,mov,avi',
                 'status' => 'required',
             ]);
 
-            if($request->hasFile('picture')) {
+            if($request->hasFile('picture')){
+
                 foreach ($request->file('picture') as $file) {
-                    $filename = time().'_'.uniqid().'.'.$file->getClientOriginalExtension();
-                    $path = $file->storeAs('admin/uploads/gallery', $filename, 'public');
+
+                    $mime = $file->getMimeType();
+                    // IMAGE
+                    if(str_starts_with($mime, 'image')) {
+                        $filename = time().'_'.uniqid().'.jpg';
+                        $savePath = storage_path('app/public/admin/uploads/gallery/'.$filename);
+                        if(!file_exists(dirname($savePath))) {
+                            mkdir(dirname($savePath), 0755, true);
+                        }
+                        $srcPath = $file->getRealPath();
+                        $info = getimagesize($srcPath);
+
+                        switch ($info['mime']){
+                            case 'image/jpeg':
+                                $image = imagecreatefromjpeg($srcPath);
+                                break;
+
+                            case 'image/png':
+                                $image = imagecreatefrompng($srcPath);
+                                break;
+
+                            case 'image/webp':
+                                $image = imagecreatefromwebp($srcPath);
+                                break;
+
+                            default:
+                                continue 2;
+                        }
+
+                        // Resize (max width 1920)
+                        $width  = imagesx($image);
+                        $height = imagesy($image);
+
+                        if($width > 1920) {
+                            $newWidth  = 1920;
+                            $newHeight = intval(($height / $width) * $newWidth);
+
+                            $tmp = imagecreatetruecolor($newWidth, $newHeight);
+                            imagecopyresampled($tmp, $image, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
+                            imagedestroy($image);
+                            $image = $tmp;
+                        }
+                        // Compress till ~800KB
+                        $quality = 85;
+                        do{
+                            imagejpeg($image, $savePath, $quality);
+                            $quality -= 5;
+                        } while (filesize($savePath) > 800 * 1024 && $quality > 40);
+                        imagedestroy($image);
+                        $path  = 'admin/uploads/gallery/'.$filename;
+                        $gtype = 'photo';
+                    }
+                    // VIDEO
+                    elseif(str_starts_with($mime, 'video')) {
+                        $filename = time().'_'.uniqid().'.'.$file->getClientOriginalExtension();
+                        $path = $file->storeAs('admin/uploads/gallery', $filename, 'public');
+                        $gtype = 'video';
+                    }
+                    else{
+                        continue;
+                    }
                     Gallery::create([
                         'cat_id' => $request->cat_id,
-                        'gtype'  => $request->gtype,
+                        'gtype'  => $gtype,
                         'path'   => $path,
-                        'status' => $request->status,
+                        'status' => $request->status ?? 1,
                     ]);
-                }
+                }   
             }
             return redirect()->back()->with('success', 'Gallery uploaded successfully');
-        }else{
+        }
+        else{
             $allCat = GalleryCategory::all();
             return view('admin.gallery.gallery_picture_form',compact('allCat'));
-        }
+            }
     }
 
     public function gallery_video(Request $request){
