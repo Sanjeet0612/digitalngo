@@ -23,13 +23,24 @@
                                     <option value="video">Video</option>
                                 </select>
                             </div>
+                            <div class="col-sm-6">
+                            <label class="form-label fw-semibold text-primary-light text-sm mb-8">
+                                    Category<span class="text-danger-600">*</span>
+                                </label>
+                                <select name="cat_id" class="form-control">
+                                    <option value="">Select Category</option>
+                                    @foreach($allCat as $allCatVal)
+                                        <option value="$allCatVal->id">{{$allCatVal->cat_name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>    
 
 
                             <div id="category-wrapper">
                                 <div class="row category-row align-items-end mb-3">
                                     <div class="col-sm-6">
                                         <label class="form-label fw-semibold text-primary-light text-sm mb-8">
-                                            Category Name <span class="text-danger-600">*</span>
+                                            Upload Image/Video <span class="text-danger-600">*</span>
                                         </label>
                                         <input type="file" name="picture" multiple class="form-control radius-8" required>
                                     </div>
