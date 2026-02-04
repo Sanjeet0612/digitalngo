@@ -1,7 +1,7 @@
 @extends('admin.layout.layout')
 @php
-    $title='Add Category';
-    $subTitle = 'Add Picture/Video Category';
+    $title='Add Images';
+    $subTitle = 'Add Picture/Video Images';
 
 @endphp
 
