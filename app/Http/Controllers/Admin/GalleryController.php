@@ -70,8 +70,8 @@ class GalleryController extends Controller
     }
     public function add_picture(Request $request){
         if($request->isMethod('post')){
-            $request([
-                'gtype'  => 'required|in:picture,video',
+            $request->validate([
+                'gtype'  => 'required|in:photo,video',
                 'picture.*'=> 'required|file|mimes:jpg,jpeg,png,mp4,mov,avi|max:800',
                 'status' => 'required',
             ]);
@@ -84,7 +84,7 @@ class GalleryController extends Controller
                         'cat_id' => $request->cat_id,
                         'gtype'  => $request->gtype,
                         'path'   => $path,
-                        'status' => 1,
+                        'status' => $request->status,
                     ]);
                 }
             }
