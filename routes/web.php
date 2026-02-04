@@ -170,7 +170,7 @@ Route::prefix('admin')->group(function () {
         Route::get('/manage-articles', [ArticleController::class, 'manage_articles'])->name('admin.manage_articles');
         Route::match(['get', 'post'], '/add-articles', [ArticleController::class, 'add_articles'])->name('admin.add_articles');
         Route::get('/blog-details/{slug}', [ArticleController::class, 'blog_details'])->name('admin.blog_details');
-
+        Route::post('/{id}/comment', [ArticleController::class, 'addComment'])->name('admin.comment');
         
         
         
