@@ -100,7 +100,10 @@
                 </a>
                 <ul class="sidebar-submenu">
                     <li>
-                        <a  href="{{route('admin.manage_articles')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>All Aricles</a>
+                        <a  href="{{route('admin.manage_articles')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>All Blog</a>
+                    </li>
+                    <li>
+                        <a  href="{{route('admin.add_articles')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Add Blog</a>
                     </li>
                 </ul>
             </li>
