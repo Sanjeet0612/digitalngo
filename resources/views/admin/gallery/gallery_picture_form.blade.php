@@ -8,7 +8,16 @@
 @section('content')
 
             <div class="card h-100 p-0 radius-12 overflow-hidden">
-                <div class="message">
+                <div class="messages">
+                    @if($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     @if(session('success'))
                         <div class="alert alert-success">
                             {{ session('success') }}
