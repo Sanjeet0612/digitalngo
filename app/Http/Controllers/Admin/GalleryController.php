@@ -67,7 +67,8 @@ class GalleryController extends Controller
     }
     // Picture Section 
     public function gallery_picture(Request $request){
-        $galleryList = Gallery::orderBy('id', 'desc')->paginate(12);
+        $galleryList = Gallery::with('category')->orderBy('id', 'desc')->paginate(12);
+        //print_r($galleryList);
         return view('admin.gallery.manage_gallery_picture',compact('galleryList'));
     }
     public function add_picture(Request $request){
