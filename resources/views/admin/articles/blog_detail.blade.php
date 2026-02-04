@@ -141,8 +141,8 @@
                 </div>
                 <div class="card-body p-24">
 
-                    @if(auth()->check())
-                        <form action="{{route('comment',$blog->id)}}" method="POST" class="d-flex flex-column gap-16">
+                   
+                        <form action="{{route('admin.comment',$blog->id)}}" method="POST" class="d-flex flex-column gap-16">
                             @csrf
                             <div>
                                 <label class="form-label fw-semibold" for="desc">Comment </label>
@@ -150,49 +150,8 @@
                             </div>
                             <button type="submit" class="btn btn-primary-600 radius-8">Submit</button>
                         </form>
-                    @else
-                        <button onclick="return showLoginPopup()" class="btn btn-primary-600 radius-8">Submit</button>
-
-
-                        <!-- Login Modal -->
-<!-- Login Modal -->
-<div id="login-popup" class="d-none fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-    <div class="bg-white p-8 rounded-xl shadow-lg w-96 max-w-full relative">
-        
-        <!-- Close Button -->
-        <button onclick="closeLoginPopup()" 
-                class="absolute top-3 right-3 text-gray-500 hover:text-gray-800 text-2xl font-bold">&times;</button>
-        
-        <!-- Title -->
-        <h3 class="text-2xl font-semibold text-center mb-4">Login Required</h3>
-        <p class="text-center text-gray-500 mb-6">Please login to reply or submit a comment</p>
-        
-        <!-- Login Form -->
-        <form method="POST" action="{{ route('login') }}">
-            @csrf
-            <div class="mb-4">
-                <input type="email" name="email" placeholder="Email"
-                       class="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                       required>
-            </div>
-            <div class="mb-4">
-                <input type="password" name="password" placeholder="Password"
-                       class="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                       required>
-            </div>
-            <button type="submit"
-                    class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold p-3 rounded-lg transition-all">
-                Login
-            </button>
-        </form>
-
-        <p class="text-center text-gray-500 mt-4 text-sm">
-            Don't have an account? 
-            <a href="{{ route('signup') }}" class="text-blue-600 hover:underline">Register</a>
-        </p>
-    </div>
-</div>
-                    @endif
+                   
+                    
 
                     
                 </div>
