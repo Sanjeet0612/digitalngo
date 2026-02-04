@@ -159,9 +159,54 @@ class GalleryController extends Controller
     }
 
     public function edit_gallery_picture($id){
-        $allCat = GalleryCategory::all();
-        $galdetail = Gallery::where('id',base64_decode($id));
+        $allCat    = GalleryCategory::all();
+        $galdetail = Gallery::where('id',base64_decode($id))->first();
+        //print_r($galdetail); die();
         return view('admin.gallery.edit_gallery_form',compact('allCat','galdetail'));                                
+    }
+
+    public function update_picture(Request $request,$id){
+        $gallery = Gallery::findOrFail($id);
+        $path  = $gallery->path;
+        $gtype = $gallery->gtype;
+
+        if($request->hasFile('picture')){
+            // old file delete
+            if($path && Storage::disk('public')->exists($path)) {
+                Storage::disk('public')->delete($path);
+            }
+            $file = $request->file('picture');
+            $mime = $file->getMimeType(); 
+            
+            // IMAGE
+            if(str_starts_with($mime, 'image')){
+                $manager  = new ImageManager(new Driver());
+                $filename = time().'_'.uniqid().'.jpg';
+                $savePath = storage_path('app/public/admin/uploads/gallery/'.$filename);
+                $image    = $manager->read($file);
+                $image->resize(1920, null);
+                $quality = 85;
+                do{
+                    $image->save($savePath, quality: $quality);
+                    $quality -= 5;
+                } while (filesize($savePath) > 800 * 1024 && $quality > 40);
+                $path  = 'admin/uploads/gallery/'.$filename;
+                $gtype = 'photo';
+            }
+            elseif(str_starts_with($mime, 'video')){
+                $filename = time().'_'.uniqid().'.'.$file->getClientOriginalExtension();
+                $path = $file->storeAs('admin/uploads/gallery', $filename, 'public');
+                $gtype = 'video';
+            }
+        }
+        // update record
+        $gallery->update([
+            'cat_id' => $request->cat_id,
+            'gtype'  => $gtype,
+            'path'   => $path,
+            'status' => $request->status ?? 1,
+        ]);
+        return redirect()->back()->with('success', 'Gallery updated successfully');
     }
 
     public function gallery_video(Request $request){
