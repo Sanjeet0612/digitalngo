@@ -161,9 +161,10 @@ Route::prefix('admin')->group(function () {
         Route::match(['get', 'post'], '/add-picture', [GalleryController::class, 'add_picture'])->name('admin.add_picture');
         Route::get('/edit-gallery-picture/{id}', [GalleryController::class, 'edit_gallery_picture'])->name('admin.edit_gallery_picture');
         Route::put('/update-picture/{id}', [GalleryController::class, 'update_picture'])->name('admin.update_picture');
-        
-        
+        // Gallery Video Section
         Route::get('/gallery-video', [GalleryController::class, 'gallery_video'])->name('admin.gallery_video');
+        Route::match(['get', 'post'], '/add-video', [GalleryController::class, 'add_video'])->name('admin.add_video');
+        
 
     });
 });
