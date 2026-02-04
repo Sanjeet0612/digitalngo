@@ -12,7 +12,7 @@ class ArticleController extends Controller{
     
     public function manage_articles(Request $request){
         $title = "Blog";
-        $blogs = array();
+        $blogs = Blog::all();
         return view('admin.articles.manage_article',compact('title','blogs'));
     }
 
@@ -52,5 +52,9 @@ class ArticleController extends Controller{
 
 
         
+    }
+
+    public function blog_detail($id){
+
     }
 }
