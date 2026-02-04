@@ -69,9 +69,17 @@ class GalleryController extends Controller
     }
     public function add_picture(Request $request){
         if($request->isMethod('post')){
-            print_r($_POST);
+            $request([
+                'gtype' => 'required',
+                'status' => 'required',
+            ]);
+
+
+
+
         }else{
-            return view('admin.gallery.gallery_picture_form');
+            $allCat = GalleryCategory::all();
+            return view('admin.gallery.gallery_picture_form',compact('allCat'));
         }
     }
 
