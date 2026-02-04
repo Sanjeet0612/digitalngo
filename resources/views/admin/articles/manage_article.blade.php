@@ -28,7 +28,7 @@
                 <div class="col-xxl-3 col-lg-4 col-sm-6">
                     <div class="card h-100 p-0 radius-12 overflow-hidden">
                         <div class="card-body p-0">
-                            <a  href="{{ route('details', $blogsVal->slug) }}" class="w-100 max-h-266-px radius-0 overflow-hidden">
+                            <a  href="{{ route('admin.details', $blogsVal->slug) }}" class="w-100 max-h-266-px radius-0 overflow-hidden">
                                 @if(!empty($blogsVal->bgimage))
                                 <img src="{{asset('storage/'.$blogsVal->bgimage)}}" alt="" class="w-100 h-100 object-fit-cover">
                                 @else
@@ -37,7 +37,7 @@
                             </a>
                             <div class="p-20">
                                 <h6 class="mb-16">
-                                    <a  href="{{ route('details', $blogsVal->slug) }}" class="text-line-2 text-hover-primary-600 text-xl transition-2">{{$blogsVal->title}}</a>
+                                    <a  href="{{ route('admin.details', $blogsVal->slug) }}" class="text-line-2 text-hover-primary-600 text-xl transition-2">{{$blogsVal->title}}</a>
                                 </h6>
                                 <p class="text-line-3 text-neutral-500 mb-0">{{strip_tags($blogsVal->description)}}</p>
                                 <span class="d-block border-bottom border-neutral-300 border-dashed my-20"></span>
@@ -55,7 +55,7 @@
                                             <span class="text-xs text-neutral-500">{{ \Carbon\Carbon::parse($blogsVal->created_at)->diffForHumans() }}</span>
                                         </div>
                                     </div>
-                                    <a  href="{{ route('details', $blogsVal->slug) }}" class="btn btn-sm btn-primary-600 d-flex align-items-center gap-1 text-xs px-8 py-6">
+                                    <a  href="{{ route('admin.details', $blogsVal->slug) }}" class="btn btn-sm btn-primary-600 d-flex align-items-center gap-1 text-xs px-8 py-6">
                                         Read More
                                     </a>
                                 </div>
