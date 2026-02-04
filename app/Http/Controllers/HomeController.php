@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 use App\Models\Admin\Event;
 use App\Models\Admin\Management;
+use App\Models\Admin\GalleryCategory;
 use App\Models\Admin\EventGallery;
 use App\Models\Admin\Banner; 
+use App\Models\Admin\Gallery;
 use Illuminate\Support\Facades\Http;
 
 use Illuminate\Http\Request;
@@ -28,7 +30,10 @@ class HomeController extends Controller{
         return view('front.volunteers',compact('allvolunteer'));
     }
     public function image(Request $request){
-        return view('front.image');
+        $allCat = GalleryCategory::where('status',1)->get();
+        //print_r($allCat);
+        $gallImg = Gallery::where('status',1)->get();
+        return view('front.image',compact('allCat','gallImg'));
     }
     public function video(Request $request){
         return view('front.video');
