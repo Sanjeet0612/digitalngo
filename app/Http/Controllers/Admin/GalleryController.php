@@ -167,8 +167,8 @@ class GalleryController extends Controller
 
     public function update_picture(Request $request,$id){
         $gallery = Gallery::findOrFail($id);
-        $path  = $gallery->path;
-        $gtype = $gallery->gtype;
+        $path    = $gallery->path;
+        $gtype   = $gallery->gtype;
 
         if($request->hasFile('picture')){
             // old file delete
