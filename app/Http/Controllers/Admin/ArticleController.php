@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use App\Models\Blog;
 use App\Models\BlogComment;
 use Illuminate\Support\Str;
@@ -54,7 +55,14 @@ class ArticleController extends Controller{
         
     }
 
-    public function blog_detail($id){
-
+    public function blog_details($slug){
+        $blog = Blog::where('slug', $slug)->where('status', 1)->firstOrFail(); // only active blogs
+        $latestblogs = Blog::where('status', 1)->where('created_at', '>=', now()->subDays(7))->orderByDesc('created_at')->get();
+        $categories = Blog::where('status', 1)->select('category', DB::raw('COUNT(*) as total'))->groupBy('category')->orderByDesc('total')->get();
+        $tags = Blog::where('status', 1)->selectRaw('tags, COUNT(*) as total')->groupBy('tags')->orderByDesc('total')->get();
+        $comments = BlogComment::where('blog_id', $blog->id)->whereNull('parent_id')->where('status', 1)->with(['user', 'replies.user'])->latest()->get();
+        $totalComments = BlogComment::where('blog_id', $blog->id)->where('status', 1)->count();
+        $title = 'Blog';
+        return view('admin.articles.blog_detail', compact('blog','latestblogs','categories','tags','comments','totalComments'));
     }
 }
