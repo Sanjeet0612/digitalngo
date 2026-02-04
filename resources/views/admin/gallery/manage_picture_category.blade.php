@@ -24,6 +24,18 @@
                         Add New Category
                     </a>
                 </div>
+                <div class="message">
+                    @if(session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+                     @if(session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                    @endif
+                </div>
                 <div class="card-body p-24">
                     <div class="table-responsive scroll-sm">
                         <table class="table bordered-table sm-table mb-0">
@@ -72,9 +84,9 @@
                                             <a href="{{route('admin.edit_category', $allCategoryVal->id)}}" class="bg-success-focus text-success-600 bg-hover-success-200 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle">
                                                 <iconify-icon icon="lucide:edit" class="menu-icon"></iconify-icon>
                                             </a>
-                                            <button type="button" class="remove-item-btn bg-danger-focus bg-hover-danger-200 text-danger-600 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle">
+                                            <a href="{{route('admin.delete_category', $allCategoryVal->id)}}" class="remove-item-btn bg-danger-focus bg-hover-danger-200 text-danger-600 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle">
                                                 <iconify-icon icon="fluent:delete-24-regular" class="menu-icon"></iconify-icon>
-                                            </button>
+                                            </a>
                                         </div>
                                     </td>
                                 </tr>
