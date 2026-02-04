@@ -62,8 +62,17 @@ class GalleryController extends Controller
         $category->delete();
         return redirect()->back()->with('success', 'Category deleted successfully');
     }
+    // Picture Section 
     public function gallery_picture(Request $request){
-
+        $eventList = array();
+        return view('admin.gallery.manage_gallery_picture',compact('eventList'));
+    }
+    public function add_picture(Request $request){
+        if($request->isMethod('post')){
+            print_r($_POST);
+        }else{
+            return view('admin.gallery.gallery_picture_form');
+        }
     }
 
     public function gallery_video(Request $request){
