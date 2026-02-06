@@ -177,9 +177,10 @@
                     <a class="nav-link dropdown-toggle-mob" href="{{url('/')}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Team <i class="icofont-rounded-down"></i></a>
                     <ul class="dropdown-menu">                  
                         <li><a class="dropdown-item" href="{{url('/')}}/management">Management Teams</a></li>
-                        <li><a class="dropdown-item" href="{{url('/')}}/volunteers">Volunteers Teams</a></li>                
-                        <!-- <li><a class="dropdown-item" href="become-volunteers.php">Become Volunteers</a></li>                
-                        <li><a class="dropdown-item" href="our-faqs.php">Our Faq's</a></li>  -->               
+                        <li><a class="dropdown-item" href="{{url('/')}}/volunteers">Volunteers Teams</a></li>
+
+                        <li><a class="dropdown-item" href="{{url('/')}}/features">Function / features</a></li>                
+                        <!--<li><a class="dropdown-item" href="our-faqs.php">Our Faq's</a></li> -->            
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
