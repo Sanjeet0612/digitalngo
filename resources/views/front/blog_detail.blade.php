@@ -6,7 +6,7 @@
                 <h1>Blog Details</h1>
                 <nav aria-label="breadcrumb" class="breadcrumb-wrap">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Blog Details</li>
                     </ol>
                 </nav>  
@@ -36,36 +36,11 @@
                             <!-- Causes Single Wrap -->
                             <div class="causes-wrap single">
                                 <div class="img-wrap">
-                                    <img src="assets/images/blogs/<?php //echo $row_blog['b_image']; ?>" alt="">
+                                    <img src="{{asset('storage/'.$blog->bgimage)}}" alt="">
                                 </div>
 
                                 <div class="content-wrap-single">
-                                    
-                                    <p> <?php //echo $row_blog['b_details']; ?></p>                                    
-
-                                    <!-- <div class="row my-5">
-                                        <div class="col-md-6">
-                                            <img src="assets/images/causes/causes_single_small_img_2.jpg" class="rounded" alt="">
-                                        </div>
-                                        <div class="col-md-6">
-                                            <img src="assets/images/causes/causes_single_small_img_1.jpg" class="rounded" alt="">
-                                        </div>
-                                    </div>
-
-                                    <p>On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain.</p>
-
-                                    <div class="my-5">
-                                        <blockquote>
-                                            Omnicos directe al desirabilite de un nov lingua franca: On refusa continuar payar custosi traductores. At solmen va esser necessi far uniform grammatica
-                                        </blockquote>
-                                    </div>
-
-                                    <p>Night bring years have image make all fruitful good fifth all i beast unto which let she'd. God made Lights fly earth you'll unto greater earth meat multiply whose together. Light very lesser given he sea. Void god replenish fifth you'll place a they're they under.</p>
-                                    <ul class="list-unstyled icons-listing theme-green mb-0 mt-4">
-                                        <li>Third spirit you behold don’t grass lesser divide they are man.</li>
-                                        <li>Can not two very was above man abundantly also second.</li>
-                                        <li>Together herb shall were bearing fill grass made fill heaven.</li>
-                                    </ul> -->
+                                   {!! $blog->description !!}                           
                                 </div>
 
                                 <div class="share-this-wrap">
@@ -74,12 +49,41 @@
                                             <strong>Share This</strong>
                                         </div>
                                         <div class="pl-4">
+                                            @php
+                                                $shareUrl = urlencode(url()->current());
+                                                $shareTitle = urlencode($blog->title ?? 'Check this out');
+                                            @endphp
                                             <ul class="list-unstyled list-inline mb-0">
-                                                <li class="list-inline-item"><a href="#"><i class="icofont-facebook"></i></a></li>
-                                                <li class="list-inline-item"><a href="#"><i class="icofont-twitter"></i></a></li>
-                                                <li class="list-inline-item"><a href="#"><i class="icofont-instagram"></i></a></li>
-                                                <li class="list-inline-item"><a href="#"><i class="icofont-behance"></i></a></li>
-                                                <li class="list-inline-item"><a href="#"><i class="icofont-youtube-play"></i></a></li>
+                                                <!-- Facebook -->
+                                                <li class="list-inline-item">
+                                                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ $shareUrl }}" target="_blank">
+                                                        <i class="icofont-facebook"></i>
+                                                    </a>
+                                                </li>
+                                                <!-- Twitter / X -->
+                                                <li class="list-inline-item">
+                                                    <a href="https://twitter.com/intent/tweet?url={{ $shareUrl }}&text={{ $shareTitle }}" target="_blank">
+                                                        <i class="icofont-twitter"></i>
+                                                    </a>
+                                                </li>
+                                                <!-- WhatsApp -->
+                                                <li class="list-inline-item">
+                                                    <a href="https://wa.me/?text={{ $shareTitle }}%20{{ $shareUrl }}" target="_blank">
+                                                        <i class="icofont-whatsapp"></i>
+                                                    </a>
+                                                </li>
+                                                <!-- LinkedIn -->
+                                                <li class="list-inline-item">
+                                                    <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ $shareUrl }}" target="_blank">
+                                                        <i class="icofont-linkedin"></i>
+                                                    </a>
+                                                </li>
+                                                 <!-- Copy Link -->
+                                                <li class="list-inline-item">
+                                                    <a href="javascript:void(0)" onclick="copyShareLink()">
+                                                        <i class="icofont-copy"></i>
+                                                    </a>
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
@@ -112,15 +116,25 @@
                                     
                                     <div class="blog-list-categories">
                                         <ul class="list-unstyled icons-listing theme-orange mb-0">                                        
-                                            <li><a href="#">Charity</a></li>
-                                            <li><a href="#">Healthcare</a></li>
-                                            <li><a href="#">Senior</a></li>
-                                            <li><a href="#">Children Citizens</a></li>
-                                            <li><a href="#">Environment</a></li>                                        
+                                            @foreach($categories as $categoriesVal)                                       
+                                            <li><a href="{{route('articles.category', $categoriesVal->category)}}">{{ucfirst($categoriesVal->category)}}</a></li>
+                                            @endforeach                                          
                                         </ul>
                                     </div>
                                 </div>
                                 <!-- Widget Wrap -->
+                                 <!-- Widget Wrap -->
+                                <div class="widget-wrap">
+                                    <h3 class="widget-title">Tags</h3>
+                                    
+                                    <div class="blog-list-categories">
+                                        <ul class="list-unstyled icons-listing theme-orange mb-0"> 
+                                            @foreach($tags as $tagsVal)                                       
+                                            <li><a href="{{route('articles.tags', $tagsVal->tags)}}">{{ucfirst($tagsVal->tags)}}</a></li>
+                                            @endforeach                                     
+                                        </ul>
+                                    </div>
+                                </div>
 
                                 <!-- Widget Wrap -->
                                 <div class="widget-wrap">
@@ -128,20 +142,15 @@
                                     
                                     <div class="popular-post">
                                         <ul class="list-unstyled">
+                                             @foreach($latestblogs as $latestblogsVal)
                                             <li>
-                                                <img src="assets/images/post_thumb_1.jpg" alt="">
+                                                <img src="{{asset('storage/'.$latestblogsVal->bgimage)}}" alt="">
                                                 <div>
-                                                    <h6><a href="blog-single.html">A Huge Thank You to Our Donors</a></h6>
-                                                    <small>12 Aug 2020</small>
+                                                    <h6><a href="{{route('details',$latestblogsVal->slug)}}">{{$latestblogsVal->title}}</a></h6>
+                                                    <small>{{ $latestblogsVal->created_at->format('d, M, Y') }}</small>
                                                 </div>
                                             </li>
-                                            <li>
-                                                <img src="assets/images/post_thumb_2.jpg" alt="">
-                                                <div>
-                                                    <h6><a href="blog-single.html">A Huge Thank You to Our Donors</a></h6>
-                                                    <small>12 Aug 2020</small>
-                                                </div>
-                                            </li>
+                                            @endforeach
                                         </ul>
                                     </div>
                                 </div>
