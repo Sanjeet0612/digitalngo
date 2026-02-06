@@ -7,7 +7,7 @@
                 <h1>Blog</h1>
                 <nav aria-label="breadcrumb" class="breadcrumb-wrap">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Blog  </li>
                     </ol>
                 </nav>  
@@ -35,9 +35,10 @@
                                             <a href="{{route('details',$allBlogVal->slug)}}"><img src="{{asset('storage/'.$allBlogVal->bgimage)}}" alt=""></a>
                                         </div>
                                         <div class="post-content">
-                                            <div class="post-date"><?php //echo date_format($date,"d, M, Y");?></div>
-                                            <h3 class="post-title"><a href="{{route('details',$allBlogVal->slug)}}"><?php //echo $row['b_title']; ?></a></h3>
-                                            <div class="post-category"><?php //echo $row['b_cat_name']; ?></div>
+                                            <div class="post-date">{{ $allBlogVal->created_at->format('d, M, Y') }}</div>
+                                            <h3 class="post-title"><a href="{{route('details',$allBlogVal->slug)}}">{{ $allBlogVal->title}}</a></h3>
+                                            <div class="post-category">{{ucfirst($allBlogVal->category)}}</div>
+                                            <div class="post-category">{!! \Illuminate\Support\Str::limit(strip_tags($allBlogVal->description), 100) !!}</div>
                                             <div class="text-md-right">
                                                 <a href="{{route('details',$allBlogVal->slug)}}" class="read-more-line"><span>Read More</span></a>
                                             </div>
@@ -90,12 +91,24 @@
                                     <h3 class="widget-title">Categories</h3>
                                     
                                     <div class="blog-list-categories">
-                                        <ul class="list-unstyled icons-listing theme-orange mb-0">                                        
-                                            <li><a href="#">Charity</a></li>
-                                            <li><a href="#">Healthcare</a></li>
-                                            <li><a href="#">Senior</a></li>
-                                            <li><a href="#">Children Citizens</a></li>
-                                            <li><a href="#">Environment</a></li>                                        
+                                        <ul class="list-unstyled icons-listing theme-orange mb-0"> 
+                                            @foreach($categories as $categoriesVal)                                       
+                                            <li><a href="{{route('articles.category', $categoriesVal->category)}}">{{ucfirst($categoriesVal->category)}}</a></li>
+                                            @endforeach                                     
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- Widget Wrap -->
+
+                                <!-- Widget Wrap -->
+                                <div class="widget-wrap">
+                                    <h3 class="widget-title">Tags</h3>
+                                    
+                                    <div class="blog-list-categories">
+                                        <ul class="list-unstyled icons-listing theme-orange mb-0"> 
+                                            @foreach($tags as $tagsVal)                                       
+                                            <li><a href="{{route('articles.tags', $tagsVal->tags)}}">{{ucfirst($tagsVal->tags)}}</a></li>
+                                            @endforeach                                     
                                         </ul>
                                     </div>
                                 </div>
@@ -107,20 +120,16 @@
                                     
                                     <div class="popular-post">
                                         <ul class="list-unstyled">
+                                            @foreach($latestblogs as $latestblogsVal)
                                             <li>
-                                                <img src="{{url('/')}}/front/assets/images/post_thumb_1.jpg" alt="">
+                                                <img src="{{asset('storage/'.$latestblogsVal->bgimage)}}" alt="">
                                                 <div>
-                                                    <h6><a href="blog-single.html">A Huge Thank You to Our Donors</a></h6>
-                                                    <small>12 Aug 2020</small>
+                                                    <h6><a href="{{route('details',$latestblogsVal->slug)}}">{{$latestblogsVal->title}}</a></h6>
+                                                    <small>{{ $latestblogsVal->created_at->format('d, M, Y') }}</small>
                                                 </div>
                                             </li>
-                                            <li>
-                                                <img src="{{url('/')}}/front/assets/images/post_thumb_2.jpg" alt="">
-                                                <div>
-                                                    <h6><a href="blog-single.html">A Huge Thank You to Our Donors</a></h6>
-                                                    <small>12 Aug 2020</small>
-                                                </div>
-                                            </li>
+                                            @endforeach
+                                           
                                         </ul>
                                     </div>
                                 </div>
