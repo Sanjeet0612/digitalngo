@@ -44,9 +44,7 @@
                             </div>
                         </div>
                     @endforeach
-                    
                     <!-- Team Column One -->
-                    
                 </div>
             </div>
         </section>
