@@ -7,6 +7,7 @@ use App\Models\Admin\GalleryCategory;
 use App\Models\Admin\EventGallery;
 use App\Models\Admin\Banner; 
 use App\Models\Admin\Gallery;
+use App\Models\Blog;
 use Illuminate\Support\Facades\Http;
 
 use Illuminate\Http\Request;
@@ -49,6 +50,7 @@ class HomeController extends Controller{
         return view('front.events_detail',compact('eventDetail','eventGallery'));
     }
     public function articles(Request $request){
+
         return view('front.articles');
     }
     public function contact(Request $request){
