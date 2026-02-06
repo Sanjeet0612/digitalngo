@@ -33,7 +33,7 @@ class PartnerController extends Controller{
                 }
             }
 
-            return redirect()->back()->with('success', 'Partner added successfully');
+            return redirect('admin/our-partners')->with('success', 'Partner added successfully');
 
         }else{
             return view('admin.partner.our_partner_form');
