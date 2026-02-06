@@ -11,11 +11,11 @@
     <section class="breadcrumbs-page-wrap">
         <div class="bg-fixed pos-rel breadcrumbs-page">
             <div class="container">
-                <h1>Our Video</h1>
+                <h1>Function & Features</h1>
                 <nav aria-label="breadcrumb" class="breadcrumb-wrap">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Our Video</li>
+                        <li class="breadcrumb-item active" aria-current="page">Function & Features</li>
                     </ol>
                 </nav>  
             </div>
@@ -35,11 +35,12 @@
                     @foreach($allFeature as $allFeatureVal)
                         <div class="col-12 col-lg-4 col-sm-4">
                             <div class="team-section-wrap d-flex flex-column align-items-center text-center p-3">
-                                <i class="icofont-id-card gradient-icon mb-3" style="font-size:60px;"></i>
+                                <!--<i class="icofont-id-card gradient-icon mb-3" style="font-size:60px;"></i>-->
+                                <img src="{{url('/')}}/{{$allFeatureVal->icon_img}}" style="width:60px;">
                                 <h4 class="mb-2">{{$allFeatureVal->title}}</h4>
                                 <p class="mb-3">{!! $allFeatureVal->description !!}</p>
                                 <button class="btn btn-primary mb-3">Demo Book Now</button>
-                                <small>Call / WhatsApp करें +91 870 765 7378</small>
+                                <small>Call / WhatsApp On +91 {{$allFeatureVal->phone}}</small>
                             </div>
                         </div>
                     @endforeach

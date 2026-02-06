@@ -44,8 +44,8 @@
                                             <label class="custom-control-label" for="customRadioInline2">₹ 500 Volunteers Fees</label>
                                         </div>
                                         <div class="custom-control custom-radio custom-control-inline">
-                                            <input type="radio" id="customRadioInline2" name="package" value="100" class="custom-control-input">
-                                            <label class="custom-control-label" for="customRadioInline2">₹ 100 Donation for Plant</label>
+                                            <input type="radio" id="customRadioInline3" name="package" value="100" class="custom-control-input">
+                                            <label class="custom-control-label" for="customRadioInline3">₹ 100 Donation for Plant</label>
                                         </div>
 
                                         <!-- <div class="mt-3">

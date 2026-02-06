@@ -176,6 +176,9 @@ Route::prefix('admin')->group(function () {
         // Key Feature
         Route::get('key-features', [KeyFeatureController::class, 'key_features'])->name('admin.key_features');
         Route::match(['get', 'post'], '/add-key-feature', [KeyFeatureController::class, 'add_key_feature'])->name('admin.add_key_feature');
+        Route::get('/edit-key-feture/{id}', [KeyFeatureController::class, 'edit_key_feture'])->name('admin.edit_key_feture');
+        Route::put('/update-key-feature/{id}', [KeyFeatureController::class, 'update_key_feature'])->name('admin.update_key_feature');
+        
 
         
 
