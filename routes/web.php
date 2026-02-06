@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\EventGalleryController;
 use App\Http\Controllers\Admin\TeamController;
 use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\ArticleController;
+use App\Http\Controllers\Admin\KeyFeatureController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -170,7 +171,10 @@ Route::prefix('admin')->group(function () {
         Route::match(['get', 'post'], '/add-articles', [ArticleController::class, 'add_articles'])->name('admin.add_articles');
         Route::get('/blog-details/{slug}', [ArticleController::class, 'blog_details'])->name('admin.blog_details');
         Route::post('/{id}/comment', [ArticleController::class, 'addComment'])->name('admin.comment');
-        
+        // Key Feature
+        Route::get('key-features', [KeyFeatureController::class, 'key_features'])->name('admin.key_features');
+        Route::match(['get', 'post'], '/add-key-feature', [KeyFeatureController::class, 'add_key_feature'])->name('admin.add_key_feature');
+
         
         
         
