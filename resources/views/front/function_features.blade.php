@@ -39,7 +39,7 @@
                                 <img src="{{url('/')}}/{{$allFeatureVal->icon_img}}" style="width:60px;">
                                 <h4 class="mb-2">{{$allFeatureVal->title}}</h4>
                                 <p class="mb-3">{!! $allFeatureVal->description !!}</p>
-                                <button class="btn btn-primary mb-3">Demo Book Now</button>
+                                <a href="" class="btn mb-3" style="color:#fff;background-color:#D59B2D;border-color: #D59B2D;">Demo Book Now</a>
                                 <small>Call / WhatsApp On +91 {{$allFeatureVal->phone}}</small>
                             </div>
                         </div>
