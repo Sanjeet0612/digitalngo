@@ -77,6 +77,32 @@
                                     </li>                                    
                                 </ul>
                             </div>
+
+                            <div class="event-single-listing pattern-green">
+                                <h3>Sponsor Info</h3>
+                                @foreach($sponsors as $sponsorsVal)
+                                <ul class="list-unstyled">
+                                    <li>
+                                        <div><i data-feather="user"></i> </div>
+                                        <div>{{$sponsorsVal['name']}}</div>
+                                    </li>
+                                    <li>
+                                        <div><i data-feather="phone"></i> </div>
+                                        <div><a href="tel:02-235-235-2365">{{$sponsorsVal['phone']}}</a></div>
+                                    </li>
+                                    <li>
+                                        <div><i data-feather="mail"></i> </div>
+                                        <div><a href="mailto:{{$sponsorsVal['email']}}">{{$sponsorsVal['email']}}</a></div>
+                                    </li>
+                                    @if(!empty($sponsorsVal['website']))
+                                    <li>
+                                        <div><i data-feather="globe"></i> </div>
+                                        <div><a href="{{$sponsorsVal['website']}}" target="_blank">{{$sponsorsVal['website']}}</a></div>
+                                    </li> 
+                                    @endif
+                                </ul><hr>
+                                @endforeach
+                            </div>
                         </div>
                         <div class="col-lg-7 offset-lg-1">
                             <div class="event-single-info">
