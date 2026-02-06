@@ -20,7 +20,8 @@
         <!-- About Us Style Start -->
         <section class="wide-tb-100">
             <div class="container">
-                <div class="row">                    
+                <div class="row"> 
+                                
                     <div class="col-lg-8 col-md-12">
                         <h1 class="heading-main">
                             <small>Donation</small>
@@ -31,20 +32,32 @@
 
                         <div class="donation-wrap">
                             <h3 class="h3-sm fw-5 txt-blue mb-3">Select Your Donation Amount</h3>
-                            <form action="" method="post">
+                            <div class="message">
+                                @if(session('success'))
+                                    <p style="color:green">{{ session('success') }}</p>
+                                @endif
+
+                                @if($errors->any())
+                                    @foreach($errors->all() as $error)
+                                        <p style="color:red">{{ $error }}</p>
+                                    @endforeach
+                                @endif
+                            </div> 
+                            <form action="{{url('/')}}/donation" method="post">
+                                @csrf
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <div class="custom-control custom-radio custom-control-inline">
-                                            <input type="radio" id="customRadioInline1" name="package" value="1100" class="custom-control-input" checked>
+                                            <input type="radio" id="customRadioInline1" name="package_amt" value="1100" class="custom-control-input" checked>
                                             <label class="custom-control-label" for="customRadioInline1">₹ 1100 Membership Fees</label>
                                         </div>
                                         <div class="custom-control custom-radio custom-control-inline">
-                                            <input type="radio" id="customRadioInline2" name="package" value="500" class="custom-control-input">
+                                            <input type="radio" id="customRadioInline2" name="package_amt" value="500" class="custom-control-input">
                                             <label class="custom-control-label" for="customRadioInline2">₹ 500 Volunteers Fees</label>
                                         </div>
                                         <div class="custom-control custom-radio custom-control-inline">
-                                            <input type="radio" id="customRadioInline3" name="package" value="100" class="custom-control-input">
+                                            <input type="radio" id="customRadioInline3" name="package_amt" value="100" class="custom-control-input">
                                             <label class="custom-control-label" for="customRadioInline3">₹ 100 Donation for Plant</label>
                                         </div>
 
@@ -59,28 +72,28 @@
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="name" name="name" placeholder="First Name" required>
+                                        <input type="text" class="form-control" id="name" value="{{old('name')}}" name="name" placeholder="First Name" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="mobile" name="mobile" placeholder="Mobile Number" required>
+                                        <input type="text" class="form-control" id="mobile" value="{{old('phone')}}" name="phone" placeholder="Mobile Number" required>
                                     </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="email" class="form-control" id="email" name="email1" placeholder="Your Email" required>
+                                        <input type="email" class="form-control" id="email" value="{{old('email')}}" name="email" placeholder="Your Email" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="zip"  name="city" placeholder="Enter your City" required>
+                                        <input type="text" class="form-control" id="city" value="{{old('city')}}"  name="city" placeholder="Enter your City" required>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="zip" name="address" placeholder="Enter your Address" required>
+                                        <input type="text" class="form-control" id="address" value="{{old('address')}}" name="address" placeholder="Enter your Address" required>
                                     </div>
                                 </div>
                                 
@@ -88,17 +101,17 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="card" name="state" placeholder="Enter your State" required>
+                                        <input type="text" class="form-control" id="state" value="{{old('state')}}" name="state" placeholder="Enter your State" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="card_name" name="pincode"  placeholder="Enter your Pincode" required>
+                                        <input type="text" class="form-control" id="pincode"  value="{{old('pincode')}}" name="pincode"  placeholder="Enter your Pincode" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" name="under_userid" id="security" placeholder="Refer Code">
+                                        <input type="text" class="form-control" value="{{old('refrer_code')}}" name="refrer_code" id="security" placeholder="Refer Code">
                                     </div>
                                 </div>
                                 <div class="col-md-12 mt-3">
