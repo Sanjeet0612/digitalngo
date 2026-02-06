@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Admin\Event;
+use App\Models\Admin\Sponsor;
 use App\Models\Admin\Management;
 use App\Models\Admin\GalleryCategory;
 use App\Models\Admin\EventGallery;
@@ -49,8 +50,11 @@ class HomeController extends Controller{
     }
     public function event_details($slug){
         $eventDetail  = Event::where('slug',$slug)->first()->toArray();
+        $sponsorIds = explode(',',$eventDetail['sponsor_id']);
+        $sponsors = Sponsor::whereIn('id', $sponsorIds)->get();
+        //print_r($sponsors);
         $eventGallery = EventGallery::where('event_id',$eventDetail['id'])->where('status',1)->get()->toArray();
-        return view('front.events_detail',compact('eventDetail','eventGallery'));
+        return view('front.events_detail',compact('eventDetail','eventGallery','sponsors'));
     }
     public function articles(Request $request){
         $allBlog = Blog::where('status',1)->get();
