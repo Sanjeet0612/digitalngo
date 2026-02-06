@@ -33,12 +33,6 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/articles', 'articles')->name('articles');
     Route::get('/contact', 'contact')->name('contact');
     Route::get('/donation', 'donation')->name('donation');
-
-    
-    
-
-    
-    
 });
 
 Route::get('/ask-ai', [HomeController::class, 'askAi']);
