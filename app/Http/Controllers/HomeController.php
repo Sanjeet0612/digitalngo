@@ -8,6 +8,7 @@ use App\Models\Admin\GalleryCategory;
 use App\Models\Admin\EventGallery;
 use App\Models\Admin\Banner; 
 use App\Models\Admin\Gallery;
+use App\Models\Admin\KeyFeature;
 use App\Models\Blog;
 use App\Models\BlogComment;
 use Illuminate\Support\Facades\Http;
@@ -95,6 +96,11 @@ class HomeController extends Controller{
     }
     public function donation(Request $request){
         return view('front.donation');
+    }
+
+    public function function_features(){
+        $allFeature = KeyFeature::where('status',1)->get();
+        return view('front.function_features',compact('allFeature'));
     }
     
 
