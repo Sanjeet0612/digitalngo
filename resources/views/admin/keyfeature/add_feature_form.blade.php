@@ -143,7 +143,7 @@
                                         <label class="upload-file h-160-px w-100 border input-form-light radius-8 overflow-hidden border-dashed bg-neutral-50 bg-hover-neutral-200 d-flex align-items-center flex-column justify-content-center gap-1" for="upload-file">
                                             <iconify-icon icon="solar:camera-outline" class="text-xl text-secondary-light"></iconify-icon>
                                             <span class="fw-semibold text-secondary-light">Upload</span>
-                                            <input id="upload-file" type="file" name="bgimage" hidden>
+                                            <input id="upload-file" type="file" name="iconimage" hidden>
                                         </label>
                                     </div>
                                 </div>
