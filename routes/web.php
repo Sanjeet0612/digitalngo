@@ -31,6 +31,9 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/events', 'events')->name('events');
     Route::get('/event-details/{slug}', 'event_details')->name('event-details');
     Route::get('/articles', 'articles')->name('articles');
+    Route::get('/articles/category/{category}', 'category')->name('articles.category');
+     Route::get('/articles/tags/{tags}', 'tags')->name('articles.tags');
+     Route::get('/articles/{slug}', 'artical_detail')->name('details');
     Route::get('/contact', 'contact')->name('contact');
     Route::get('/donation', 'donation')->name('donation');
 });
@@ -76,7 +79,7 @@ Route::prefix('blog')->middleware('auth')->group(function () {
     });
 });
 
-Route::get('/articles/{slug}', [BlogController::class, 'blog_detail'])->name('details');
+
 
 
 Route::get('/category/{category}', [BlogController::class, 'category'])->name('blogs.category');
