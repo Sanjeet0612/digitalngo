@@ -13,6 +13,18 @@ return new class extends Migration
     {
         Schema::create('tb_guest_donation', function (Blueprint $table) {
             $table->id();
+
+            $table->decimal('package_amt', 10, 2); // donation amount
+            $table->string('name', 150);
+            $table->string('phone', 20);
+            $table->string('email', 150)->nullable();
+            $table->string('city', 100)->nullable();
+            $table->string('state', 100)->nullable();
+            $table->text('address')->nullable();
+            $table->string('pincode', 10)->nullable();
+            $table->string('refrer_code', 100)->nullable();
+
+            $table->tinyInteger('status')->default(1); // 1=success/active, 0=pending/inactive
             $table->timestamps();
         });
     }
