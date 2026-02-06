@@ -76,7 +76,9 @@ Route::prefix('blog')->middleware('auth')->group(function () {
     });
 });
 
-Route::get('/blog/{slug}', [BlogController::class, 'blog_detail'])->name('details');
+Route::get('/articles/{slug}', [BlogController::class, 'blog_detail'])->name('details');
+
+
 Route::get('/category/{category}', [BlogController::class, 'category'])->name('blogs.category');
 Route::get('/tag/{tag}', [BlogController::class, 'tag'])->name('blogs.tag');
 Route::post('/comment/store', [BlogController::class, 'store'])->name('comment.store');
