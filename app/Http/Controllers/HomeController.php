@@ -11,6 +11,7 @@ use App\Models\Admin\Gallery;
 use App\Models\Admin\KeyFeature;
 use App\Models\Blog;
 use App\Models\BlogComment;
+use App\Models\GuestDonation;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\DB;
 
@@ -95,7 +96,44 @@ class HomeController extends Controller{
         return view('front.contact');
     }
     public function donation(Request $request){
-        return view('front.donation');
+
+        if($request->isMethod('post')){
+
+            $request->validate([
+                'package_amt' => 'required|numeric|min:100',
+                'name'        => 'required|string|max:150',
+                'phone'       => 'required|string|max:20',
+                'email'       => 'nullable|email|max:150',
+                'city'        => 'nullable|string|max:100',
+                'state'       => 'nullable|string|max:100',
+                'address'     => 'nullable|string',
+                'pincode'     => 'nullable|string|max:10',
+                'refrer_code' => 'nullable|exists:users,refer_code',
+            ],
+            [
+                'refrer_code.exists' => 'Invalid referral code.',
+            ]);
+
+            $data = $request->only([
+                'package_amt',
+                'name',
+                'phone',
+                'email',
+                'city',
+                'state',
+                'address',
+                'pincode',
+                'refrer_code',
+            ]);
+            // default status (pending / success as per your logic)
+            $data['status'] = 1;
+            GuestDonation::create($data);
+            return redirect()->back()->with('success', 'Thank you! Your donation details have been submitted successfully.');
+
+        }else{
+            return view('front.donation');
+        }
+        
     }
 
     public function function_features(){
