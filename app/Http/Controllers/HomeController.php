@@ -50,8 +50,8 @@ class HomeController extends Controller{
         return view('front.events_detail',compact('eventDetail','eventGallery'));
     }
     public function articles(Request $request){
-
-        return view('front.articles');
+        $allBlog = Blog::where('status',1)->get();
+        return view('front.articles',compact('allBlog'));
     }
     public function contact(Request $request){
         return view('front.contact');
