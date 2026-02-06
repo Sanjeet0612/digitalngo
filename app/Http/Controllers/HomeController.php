@@ -21,7 +21,8 @@ class HomeController extends Controller{
         return view('front.index',compact('banners'));
     }
     public function about(Request $request){
-        return view('front.about');
+        $allManagement = Management::where('team_type', 'management')->where('status', 1)->take(4)->get();
+        return view('front.about',compact('allManagement'));
     }
     public function management(Request $request){
         $allManagement = Management::where('team_type','management')->where('status',1)->get();
