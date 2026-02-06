@@ -37,6 +37,8 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/articles/{slug}', 'artical_detail')->name('details');
     Route::get('/contact', 'contact')->name('contact');
     Route::get('/donation', 'donation')->name('donation');
+    Route::get('/function-features', 'function_features')->name('function_features');
+    
 });
 
 Route::get('/ask-ai', [HomeController::class, 'askAi']);
@@ -174,6 +176,8 @@ Route::prefix('admin')->group(function () {
         // Key Feature
         Route::get('key-features', [KeyFeatureController::class, 'key_features'])->name('admin.key_features');
         Route::match(['get', 'post'], '/add-key-feature', [KeyFeatureController::class, 'add_key_feature'])->name('admin.add_key_feature');
+
+        
 
         
         
