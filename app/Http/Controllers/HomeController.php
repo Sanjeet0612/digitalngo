@@ -8,7 +8,9 @@ use App\Models\Admin\EventGallery;
 use App\Models\Admin\Banner; 
 use App\Models\Admin\Gallery;
 use App\Models\Blog;
+use App\Models\BlogComment;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
 
@@ -51,7 +53,37 @@ class HomeController extends Controller{
     }
     public function articles(Request $request){
         $allBlog = Blog::where('status',1)->get();
-        return view('front.articles',compact('allBlog'));
+        $categories = Blog::where('status', 1)->select('category', DB::raw('COUNT(*) as total'))->groupBy('category')->orderByDesc('total')->get();
+        $latestblogs = Blog::where('status', 1)->where('created_at', '>=', now()->subDays(7))->orderByDesc('created_at')->get();
+        $tags = Blog::where('status', 1)->selectRaw('tags, COUNT(*) as total')->groupBy('tags')->orderByDesc('total')->get();
+        return view('front.articles',compact('allBlog','categories','latestblogs','tags'));
+    }
+     // Category wise blogs
+    public function category($category){
+        $categories = Blog::where('status', 1)->select('category', DB::raw('COUNT(*) as total'))->groupBy('category')->orderByDesc('total')->get();
+        $allBlog = Blog::where('status', 1)->where('category', $category)->latest()->paginate(12);
+        $latestblogs = Blog::where('status', 1)->where('created_at', '>=', now()->subDays(7))->orderByDesc('created_at')->get();
+        $tags = Blog::where('status', 1)->selectRaw('tags, COUNT(*) as total')->groupBy('tags')->orderByDesc('total')->get();
+        return view('front.articles',compact('allBlog','categories','latestblogs','tags'));
+    }
+    // Tag wise blogs
+    public function tags($tag){
+        $allBlog = Blog::where('status', 1)->where('tags', 'LIKE', "%$tag%")->latest()->paginate(12);
+        $categories = Blog::where('status', 1)->select('category', DB::raw('COUNT(*) as total'))->groupBy('category')->orderByDesc('total')->get();
+        $latestblogs = Blog::where('status', 1)->where('created_at', '>=', now()->subDays(7))->orderByDesc('created_at')->get();
+        $tags = Blog::where('status', 1)->selectRaw('tags, COUNT(*) as total')->groupBy('tags')->orderByDesc('total')->get();
+        return view('front.articles',compact('allBlog','categories','latestblogs','tags'));
+    }
+    public function artical_detail($slug){
+        $blog = Blog::where('slug', $slug)->where('status', 1)->firstOrFail(); // only active blogs
+        $latestblogs = Blog::where('status', 1)->where('created_at', '>=', now()->subDays(7))->orderByDesc('created_at')->get();
+        $categories = Blog::where('status', 1)->select('category', DB::raw('COUNT(*) as total'))->groupBy('category')->orderByDesc('total')->get();
+        $tags = Blog::where('status', 1)->selectRaw('tags, COUNT(*) as total')->groupBy('tags')->orderByDesc('total')->get();
+        $comments = BlogComment::where('blog_id', $blog->id)->whereNull('parent_id')->where('status', 1)->with(['user', 'replies.user'])->latest()->get();
+        $totalComments = BlogComment::where('blog_id', $blog->id)->where('status', 1)->count();
+        $title = 'Blog';
+        
+        return view('front.blog_detail', compact('blog','latestblogs','categories','tags','comments','totalComments'));
     }
     public function contact(Request $request){
         return view('front.contact');
