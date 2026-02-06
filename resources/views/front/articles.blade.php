@@ -26,32 +26,26 @@
                     <div class="col-lg-9 col-md-12">
                         <div class="sidebar-spacer">
                             <div class="row">
-                            <?php 
-                                /* $query_events = mysqli_query($con,"select * from blog order by b_id desc");
-                                if(mysqli_num_rows($query_events)>0){
-                                    while($row=mysqli_fetch_array($query_events)){
-                                    $e_date = $row['b_create_date'];
-                                    
-                                    $date=date_create("$e_date"); */
-                            ?>
+                           
                                 <!-- Blog Wrap -->
+                                @foreach($allBlog as $allBlogVal) 
                                 <div class="col-md-6 mb-0">                                    
                                     <div class="post-wrap">
                                         <div class="post-img">
-                                            <a href="blog_details.php?blog=<?php //echo $row['b_id'];?>"><img src="{{url('/')}}/front/assets/images/blogs/<?php //echo $row['b_image']; ?>" alt=""></a>
+                                            <a href="{{route('details',$allBlogVal->slug)}}"><img src="{{asset('storage/'.$allBlogVal->bgimage)}}" alt=""></a>
                                         </div>
                                         <div class="post-content">
                                             <div class="post-date"><?php //echo date_format($date,"d, M, Y");?></div>
-                                            <h3 class="post-title"><a href="blog_details.php?blog=<?php //echo $row['b_id'];?>"><?php //echo $row['b_title']; ?></a></h3>
+                                            <h3 class="post-title"><a href="{{route('details',$allBlogVal->slug)}}"><?php //echo $row['b_title']; ?></a></h3>
                                             <div class="post-category"><?php //echo $row['b_cat_name']; ?></div>
                                             <div class="text-md-right">
-                                                <a href="blog_details.php?blog=<?php //echo $row['b_id'];?>" class="read-more-line"><span>Read More</span></a>
+                                                <a href="{{route('details',$allBlogVal->slug)}}" class="read-more-line"><span>Read More</span></a>
                                             </div>
                                         </div>
                                     </div>                                    
                                 </div>
-                                <!-- Blog Wrap -->
-                                <?php //} } ?>
+                                @endforeach
+                               
                             </div>
 
                             <div class="theme-pagination">
