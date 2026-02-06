@@ -211,87 +211,25 @@
 
                 <div class="row">
                     <!-- Team Column One -->
+                     @foreach($allManagement as $allManagementVal)
                     <div class="col-12 col-lg-3 col-sm-6">
-                        <div class="team-section-wrap mb-0">
+                        <div class="team-section-wrap">
                             <div class="img green">
                                 <div class="social-icons">
-                                    <a href="#"><i class="icofont-facebook"></i></a>
-                                    <a href="#"><i class="icofont-twitter"></i></a>
-                                    <a href="#"><i class="icofont-instagram"></i></a>
+                                    <a href="{{$allManagementVal->fb_link}}" target="_blank"><i class="icofont-facebook"></i></a>
+                                    <a href="{{$allManagementVal->twt_link}}" target="_blank"><i class="icofont-twitter"></i></a>
+                                    <a href="{{$allManagementVal->insta_link}}" target="_blank"><i class="icofont-instagram"></i></a>
                                 </div>
-                                <img src="{{url('/')}}/front/assets/images/team/team-1.jpg" alt="" class="rounded-circle">
+                                <img src="{{asset('storage/'.$allManagementVal->profile_img)}}" alt="" class="rounded-circle">
                             </div>
-                            <h4>Anup Singh Mahror</h4>
-                            <h5>Director</h5>
+                            <h4>{{$allManagementVal->m_name}}</h4>
+                            <h5>{{$allManagementVal->designation}}</h5>
                             <div class="text-md-right">
-                                <a href="#" class="read-more-line"><span>Read More</span></a>
+                                <a href="javascript:" class="read-more-line"><span>Read More</span></a>
                             </div>
                         </div>
                     </div>
-                    <!-- Team Column One -->
-
-                    <!-- Team Column One -->
-                    <div class="col-12 col-lg-3 col-sm-6">
-                        <div class="team-section-wrap mb-0">
-                            <div class="img navy-blue">
-                                <div class="social-icons">
-                                    <a href="#"><i class="icofont-facebook"></i></a>
-                                    <a href="#"><i class="icofont-twitter"></i></a>
-                                    <a href="#"><i class="icofont-instagram"></i></a>
-                                </div>
-                                <img src="{{url('/')}}/front/assets/images/team/team-2.jpg" alt="" class="rounded-circle">
-                            </div>
-                            <h4>Khusbu Singh</h4>
-                            <h5>Patrons</h5>
-                            <div class="text-md-right">
-                                <a href="#" class="read-more-line"><span>Read More</span></a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Team Column One -->
-
-                    <!-- Spacer For Medium -->
-                    <div class="w-100 d-none d-sm-block d-lg-none spacer-60"></div>
-                    <!-- Spacer For Medium -->
-
-                    <!-- Team Column One -->
-                    <div class="col-12 col-lg-3 col-sm-6">
-                        <div class="team-section-wrap mb-0">
-                            <div class="img orange">
-                                <div class="social-icons">
-                                    <a href="#"><i class="icofont-facebook"></i></a>
-                                    <a href="#"><i class="icofont-twitter"></i></a>
-                                    <a href="#"><i class="icofont-instagram"></i></a>
-                                </div>
-                                <img src="{{url('/')}}/front/assets/images/team/team-3.jpg" alt="" class="rounded-circle">
-                            </div>
-                            <h4>Ravi Kumar </h4>
-                            <h5>Director</h5>
-                            <div class="text-md-right">
-                                <a href="#" class="read-more-line"><span>Read More</span></a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Team Column One -->
-
-                    <!-- Team Column One -->
-                    <div class="col-12 col-lg-3 col-sm-6">
-                        <div class="team-section-wrap mb-0">
-                            <div class="img beige">
-                                <div class="social-icons">
-                                    <a href="#"><i class="icofont-facebook"></i></a>
-                                    <a href="#"><i class="icofont-twitter"></i></a>
-                                    <a href="#"><i class="icofont-instagram"></i></a>
-                                </div>
-                                <img src="{{url('/')}}/front/assets/images/team/team-4.jpg" alt="" class="rounded-circle">
-                            </div>
-                            <h4>Krishn Kant Singh</h4>
-                            <h5>Patrons</h5>
-                            <div class="text-md-right">
-                                <a href="#" class="read-more-line"><span>Read More</span></a>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                     <!-- Team Column One -->
                 </div>
             </div>
