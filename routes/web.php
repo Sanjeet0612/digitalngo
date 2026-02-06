@@ -32,8 +32,8 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/event-details/{slug}', 'event_details')->name('event-details');
     Route::get('/articles', 'articles')->name('articles');
     Route::get('/articles/category/{category}', 'category')->name('articles.category');
-     Route::get('/articles/tags/{tags}', 'tags')->name('articles.tags');
-     Route::get('/articles/{slug}', 'artical_detail')->name('details');
+    Route::get('/articles/tags/{tags}', 'tags')->name('articles.tags');
+    Route::get('/articles/{slug}', 'artical_detail')->name('details');
     Route::get('/contact', 'contact')->name('contact');
     Route::get('/donation', 'donation')->name('donation');
 });
