@@ -32,7 +32,12 @@
                                 <div class="col-md-6 mb-0">                                    
                                     <div class="post-wrap">
                                         <div class="post-img">
-                                            <a href="{{route('details',$allBlogVal->slug)}}"><img src="{{asset('storage/'.$allBlogVal->bgimage)}}" alt=""></a>
+                                            <a href="{{route('details',$allBlogVal->slug)}}">
+                                            @if(!empty($allBlogVal->bgimage))   
+                                            <img src="{{asset('storage/'.$allBlogVal->bgimage)}}" alt=""></a>
+                                            @else
+                                             <img src="{{ asset('assets/images/user-grid/NGOBanner.png') }}" alt=""></a>
+                                            @endif
                                         </div>
                                         <div class="post-content">
                                             <div class="post-date">{{ $allBlogVal->created_at->format('d, M, Y') }}</div>
@@ -122,7 +127,11 @@
                                         <ul class="list-unstyled">
                                             @foreach($latestblogs as $latestblogsVal)
                                             <li>
+                                                @if(!empty($latestblogsVal->bgimage))
                                                 <img src="{{asset('storage/'.$latestblogsVal->bgimage)}}" alt="">
+                                                @else
+                                                 <img src="{{ asset('assets/images/user-grid/NGOBanner.png') }}" alt="" style="width: 55%;">   
+                                                @endif
                                                 <div>
                                                     <h6><a href="{{route('details',$latestblogsVal->slug)}}">{{$latestblogsVal->title}}</a></h6>
                                                     <small>{{ $latestblogsVal->created_at->format('d, M, Y') }}</small>
