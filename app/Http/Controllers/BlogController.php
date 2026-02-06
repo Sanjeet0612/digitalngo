@@ -41,6 +41,7 @@ class BlogController extends Controller{
         $comments = BlogComment::where('blog_id', $blog->id)->whereNull('parent_id')->where('status', 1)->with(['user', 'replies.user'])->latest()->get();
         $totalComments = BlogComment::where('blog_id', $blog->id)->where('status', 1)->count();
         $title = 'Blog';
+        
         return view('front.blog_detail', compact('blog','latestblogs','categories','tags','comments','totalComments'));
     }
     
