@@ -65,6 +65,7 @@
                                     <img src="{{url('/')}}/front/assets/images/clients/weupdated.png" alt="">
                                 </div>
                             </div>
+                            
                         </div>
                     </div>
                 </div>
