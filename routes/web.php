@@ -36,7 +36,7 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/articles/tags/{tags}', 'tags')->name('articles.tags');
     Route::get('/articles/{slug}', 'artical_detail')->name('details');
     Route::get('/contact', 'contact')->name('contact');
-    Route::get('/donation', 'donation')->name('donation');
+    Route::match(['get', 'post'],'/donation','donation')->name('donation');
     Route::get('/function-features', 'function_features')->name('function_features');
     
 });
