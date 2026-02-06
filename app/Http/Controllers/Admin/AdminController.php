@@ -33,7 +33,7 @@ class AdminController extends Controller{
             $request->session()->regenerate();
             return redirect()->intended(route('admin.dashboard'));
         }
-        return back()->withErrors(['email' =>'Invalid admin credentials'])->withInput();
+        return redirect('admin/')->withErrors(['email' =>'Invalid admin credentials'])->withInput();
     }
 
     public function dashboard(Request $request){
