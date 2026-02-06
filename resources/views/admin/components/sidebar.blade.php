@@ -117,23 +117,22 @@
                     <li>
                         <a  href="{{route('admin.key_features')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>All  Key Features</a>
                     </li>
+                </ul>
+            </li>
+
+            <li class="dropdown">
+                <a  href="javascript:void(0)">
+                    <i class="ri-news-line text-xl me-6 d-flex w-auto"></i>
+                    <span> Our Partner</span>
+                </a>
+                <ul class="sidebar-submenu">
                     <li>
-                        <a  href="{{route('admin.add_articles')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Add Blog</a>
+                        <a  href="{{route('admin.our_partners')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>All  Partners</a>
                     </li>
                 </ul>
             </li>
 
            
-
 		</ul>
-
-        
-          
-       
     </div>
-        
-
-
-
-
 </aside>

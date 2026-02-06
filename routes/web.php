@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\TeamController;
 use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\Admin\KeyFeatureController;
+use App\Http\Controllers\Admin\PartnerController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -178,6 +179,10 @@ Route::prefix('admin')->group(function () {
         Route::match(['get', 'post'], '/add-key-feature', [KeyFeatureController::class, 'add_key_feature'])->name('admin.add_key_feature');
         Route::get('/edit-key-feture/{id}', [KeyFeatureController::class, 'edit_key_feture'])->name('admin.edit_key_feture');
         Route::put('/update-key-feature/{id}', [KeyFeatureController::class, 'update_key_feature'])->name('admin.update_key_feature');
+        // Our Partners
+        Route::get('our-partners', [PartnerController::class, 'our_partners'])->name('admin.our_partners');
+        Route::match(['get', 'post'], '/add-partners', [PartnerController::class, 'add_partners'])->name('admin.add_partners');
+        
         
 
         
