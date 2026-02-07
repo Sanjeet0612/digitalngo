@@ -13,7 +13,13 @@ return new class extends Migration
     {
         Schema::create('tb_contact_data', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('name');
+            $table->string('phone', 20);
+            $table->string('email');
+            $table->string('subject');
+            $table->text('message');
+            $table->tinyInteger('status')->default(1);
+            $table->timestamps(); // created_at & updated_at
         });
     }
 
