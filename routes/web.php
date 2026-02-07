@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\Admin\KeyFeatureController;
 use App\Http\Controllers\Admin\PartnerController;
+use App\Http\Controllers\Admin\CausesController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -83,10 +84,6 @@ Route::prefix('fearures')->middleware('auth')->group(function () {
     Route::controller(FeaturesController::class)->group(function () {
         Route::get('/', 'all_features')->name('all_fearure');
         Route::post('/feature-pdf', 'feature_pdf')->name('feature_pdf');
-
-
-        
-        
     });
 });
 
@@ -177,20 +174,14 @@ Route::prefix('admin')->group(function () {
         Route::get('/gallery-video', [GalleryController::class, 'gallery_video'])->name('admin.gallery_video');
         Route::match(['get', 'post'], '/add-video', [GalleryController::class, 'add_video'])->name('admin.add_video');
         // Articles / Blog
-        
         Route::get('/manage-category', [ArticleController::class, 'manage_category'])->name('admin.manage_category');
         Route::match(['get', 'post'], '/add-article-category', [ArticleController::class, 'add_article_category'])->name('admin.add_article_category');
-        
         Route::get('/edit-blog-category/{id}', [ArticleController::class, 'edit_blog_category'])->name('admin.edit_blog_category');
         Route::put('/update-article-category/{id}', [ArticleController::class, 'update_article_category'])->name('admin.update_article_category');
-
-
-
         Route::get('/manage-articles', [ArticleController::class, 'manage_articles'])->name('admin.manage_articles');
         Route::match(['get', 'post'], '/add-articles', [ArticleController::class, 'add_articles'])->name('admin.add_articles');
         Route::get('/edit-articles/{id}', [ArticleController::class, 'edit_articles'])->name('admin.edit_articles');
         Route::put('/update-articles/{id}', [ArticleController::class, 'update_articles'])->name('admin.update_articles');
-
         Route::get('/blog-details/{slug}', [ArticleController::class, 'blog_details'])->name('admin.blog_details');
         Route::get('/category/{category}', [ArticleController::class, 'category'])->name('admin.category');
         Route::get('/tags/{category}', [ArticleController::class, 'tags'])->name('admin.tag');
@@ -206,8 +197,9 @@ Route::prefix('admin')->group(function () {
         Route::get('/edit-our-partner/{id}', [PartnerController::class, 'edit_our_partner'])->name('admin.edit_our_partner');
         Route::put('/update-partners/{id}', [PartnerController::class, 'update_partners'])->name('admin.update_partners');
         Route::get('/delete-partner/{id}', [PartnerController::class, 'delete_partner'])->name('admin.delete_partner');
-        
-        // Our Partners
+        // Causes
+        Route::get('manage-causes-category', [CausesController::class, 'manage_causes_category'])->name('admin.manage_causes_category');
+        Route::match(['get', 'post'], '/add-cause-category', [CausesController::class, 'add_cause_category'])->name('admin.add_cause_category');
         
 
         
