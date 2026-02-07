@@ -9,63 +9,15 @@
                     </div>
                     <div class="col-sm-12">
                         <div class="owl-carousel owl-theme" id="home-clients">
-
-
                             <!-- Client Logo -->
+                             @foreach($partners as $partnersVal)
                             <div class="item">
                                 <div class="clients-logo">
-                                    <img src="{{url('/')}}/front/assets/images/clients/rolltocall.png" alt="">
+                                    <img src="{{url('/')}}/{{$partnersVal->logo}}" alt="">
                                 </div>
                             </div>
+                            @endforeach
                             <!-- Client Logo -->
-
-                            <!-- Client Logo -->
-                            <div class="item">
-                                <div class="clients-logo">
-                                    <img src="{{url('/')}}/front/assets/images/clients/atharvaworld.jpg" alt="">
-                                </div>
-                            </div>
-                            <!-- Client Logo -->
-
-                            <!-- Client Logo -->
-                            <div class="item">
-                                <div class="clients-logo">
-                                    <img src="{{url('/')}}/front/assets/images/clients/mav.png" alt="">
-                                </div>
-                            </div>
-                            <!-- Client Logo -->
-
-                            <!-- Client Logo -->
-                            <div class="item">
-                                <div class="clients-logo">
-                                    <img src="{{url('/')}}/front/assets/images/clients/youviu.png" alt="">
-                                </div>
-                            </div>
-                            <!-- Client Logo -->
-
-                            <!-- Client Logo -->
-                            <div class="item">
-                                <div class="clients-logo">
-                                    <img src="{{url('/')}}/front/assets/images/clients/mahrordgitalsolutions.png" alt="">
-                                </div>
-                            </div>
-                            <!-- Client Logo -->
-
-                            <!-- Client Logo -->
-                            <div class="item">
-                                <div class="clients-logo">
-                                    <img src="{{url('/')}}/front/assets/images/clients/mahrorgroup.png" alt="">
-                                </div>
-                            </div>
-                            <!-- Client Logo -->
-
-                            <!-- Client Logo -->
-                            <div class="item">
-                                <div class="clients-logo">
-                                    <img src="{{url('/')}}/front/assets/images/clients/weupdated.png" alt="">
-                                </div>
-                            </div>
-                            
                         </div>
                     </div>
                 </div>
