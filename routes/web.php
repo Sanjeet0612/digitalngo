@@ -182,6 +182,14 @@ Route::prefix('admin')->group(function () {
         // Our Partners
         Route::get('our-partners', [PartnerController::class, 'our_partners'])->name('admin.our_partners');
         Route::match(['get', 'post'], '/add-partners', [PartnerController::class, 'add_partners'])->name('admin.add_partners');
+        Route::get('/edit-our-partner/{id}', [PartnerController::class, 'edit_our_partner'])->name('admin.edit_our_partner');
+        Route::put('/update-partners/{id}', [PartnerController::class, 'update_partners'])->name('admin.update_partners');
+        Route::get('/delete-partner/{id}', [PartnerController::class, 'delete_partner'])->name('admin.delete_partner');
+        
+        // Our Partners
+        
+
+        
         
         
 
