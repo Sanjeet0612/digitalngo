@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use App\Models\Admin\Contact;
+use App\Models\Admin\Partner;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -29,5 +30,13 @@ class AppServiceProvider extends ServiceProvider
                 $view->with('contact', $contact); // simple variable name
             }
         );
+
+        // New Partner (footer me include)
+        View::composer('front.includes.new_partner', function ($view) {
+            $partners = Partner::where('status',1)->get();
+            $view->with('partners', $partners);
+        });
     }
+
+   
 }
