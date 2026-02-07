@@ -66,6 +66,18 @@ class ArticleController extends Controller{
         return view('admin.articles.blog_detail', compact('blog','latestblogs','categories','tags','comments','totalComments'));
     }
 
+    public function category($category){
+        $title = "Category - ".$category;
+        $blogs = Blog::where('status', 1)->where('category', $category)->latest()->paginate(12);
+        return view('admin.articles.manage_article',compact('title','blogs'));
+    }
+
+    public function tags($tags){
+        $title = "Tags - ".$tags;
+        $blogs = Blog::where('status', 1)->where('tags', $tags)->latest()->paginate(12);
+        return view('admin.articles.manage_article',compact('title','blogs'));
+    }
+
     public function addComment(Request $request, $blogId){
         $request->validate([
             'comment' => 'required|string|max:1000',
