@@ -35,40 +35,53 @@
 
                 <div class="row mt-5">
                     <div class="col-lg-8 col-md-12 order-lg-last">
+                        
                         <div class="contact-wrap">
                             <div class="contact-icon-xl">
                                 <i class="charity-love_hearts"></i>
                             </div>
-                            <div id="sucessmessage"> </div>
-                            <form action="" method="post">
+                            <div class="message">
+                                @if(session('success'))
+                                    <p style="color:green">{{ session('success') }}</p>
+                                @endif
+
+                                @if($errors->any())
+                                    @foreach($errors->all() as $error)
+                                        <p style="color:red">{{ $error }}</p>
+                                    @endforeach
+                                @endif
+                            </div> 
+                            <div class="text-danger">All fields are required.</div>
+                            <form action="{{route('contact')}}" method="post">
+                                @csrf
                                 <div class="row">
                                     <div class="col-md-6 mb-0">
                                         <div class="form-group">
-                                            <input type="text" name="c_name" id="name" class="form-control" placeholder="First Name">
+                                            <input type="text" name="c_name" value="{{old('c_name')}}" id="name" class="form-control" placeholder="First Name" required>
                                         </div>
                                     </div>
 
                                     <div class="col-md-6 mb-0">
                                         <div class="form-group">
-                                            <input type="number" name="c_mobile" id="phone" class="form-control" placeholder="Phone Number">
+                                            <input type="number" name="c_mobile" value="{{old('c_mobile')}}" id="phone" class="form-control" placeholder="Phone Number" required>
                                         </div>
                                     </div>
 
                                     <div class="col-md-6 mb-0">
                                         <div class="form-group">
-                                            <input type="email" name="c_email" id="email" class="form-control" placeholder="Your Email">
+                                            <input type="email" name="c_email" value="{{old('c_email')}}" id="email" class="form-control" placeholder="Your Email" required>
                                         </div>
                                     </div>
 
                                     <div class="col-md-6 mb-0">
                                         <div class="form-group">
-                                            <input type="text" name="c_sub" id="c_sub" class="form-control" placeholder="Your Subject">
+                                            <input type="text" name="c_sub" value="{{old('c_sub')}}"  id="c_sub" class="form-control" placeholder="Your Subject" required>
                                         </div>
                                     </div>
 
                                     <div class="col-md-12 mb-0">
                                         <div class="form-group">
-                                            <textarea name="c_message" id="comment" class="form-control" rows="6" placeholder="Message"></textarea>
+                                            <textarea name="c_message" id="comment" class="form-control" rows="6" placeholder="Message">{{ old('c_message') }}</textarea>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
