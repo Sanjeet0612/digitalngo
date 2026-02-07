@@ -85,7 +85,7 @@
                                 
                      
                                 <div>
-                                    <label class="form-label fw-bold text-neutral-900">Upload Logo </label>
+                                    <label class="form-label fw-bold text-neutral-900">Upload Logo <sapn class="text-danger">(500 Kb)</span></label>
                                     <input type="file" name="partner_logo[]" multiple class="form-control">
                                 </div>
 
