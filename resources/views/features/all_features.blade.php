@@ -20,10 +20,10 @@
                             <iconify-icon icon="ion:search-outline" class="icon"></iconify-icon>
                         </form>
                     </div>
-                    <a  href="#" class="btn btn-primary text-sm btn-sm px-12 py-12 radius-8 d-flex align-items-center gap-2">
+                    <!--<a  href="#" class="btn btn-primary text-sm btn-sm px-12 py-12 radius-8 d-flex align-items-center gap-2">
                         <iconify-icon icon="ic:baseline-plus" class="icon text-xl line-height-1"></iconify-icon>
-                        Add New User
-                    </a>
+                        Add New
+                    </a>-->
                 </div>
                 <div class="card-body p-24">
                     <div class="row gy-4">
@@ -54,20 +54,14 @@
                                 <div class="ps-16 pb-16 pe-16 text-center mt--50">
                                     <img src="{{url('/')}}/{{$allFeatureVal->icon_img}}" alt="" class="border br-white border-width-2-px w-100-px h-100-px  object-fit-cover">
                                     <h6 class="text-lg mb-0 mt-4">{{$allFeatureVal->title}}</h6>
-                                    <span class="text-secondary-light mb-16">{!! $allFeatureVal->description !!}</span>
+                                    <span class="text-secondary-light mb-16 mt-10">{!! $allFeatureVal->description !!}</span>
 
                                     <div class="center-border position-relative bg-danger-gradient-light radius-8 p-12 d-flex align-items-center gap-4">
-                                        <div class="text-center w-50">
-                                            <h6 class="text-md mb-0">Design</h6>
-                                            <span class="text-secondary-light text-sm mb-0">Department</span>
-                                        </div>
-                                        <div class="text-center w-50">
-                                            <h6 class="text-md mb-0">UI UX Designer</h6>
-                                            <span class="text-secondary-light text-sm mb-0">Designation</span>
-                                        </div>
+                                        <small>Call / WhatsApp On </small>
+                                        <div>+91 {{$allFeatureVal->phone}}</div>
                                     </div>
-                                    <a  href="#" class="bg-primary-50 text-primary-600 bg-hover-primary-600 hover-text-white p-10 text-sm btn-sm px-12 py-12 radius-8 d-flex align-items-center justify-content-center mt-16 fw-medium gap-2 w-100">
-                                        View Profile
+                                    <a  href="#" onclick="return generate_pdf({{ $allFeatureVal->id }}, '{{ $allFeatureVal->title }}')" class="bg-primary-50 text-primary-600 bg-hover-primary-600 hover-text-white p-10 text-sm btn-sm px-12 py-12 radius-8 d-flex align-items-center justify-content-center mt-16 fw-medium gap-2 w-100">
+                                        Create Now
                                         <iconify-icon icon="solar:alt-arrow-right-linear" class="icon text-xl line-height-1"></iconify-icon>
                                     </a>
                                 </div>
@@ -110,3 +104,29 @@
             </div>
 
 @endsection
+
+<script>
+    function generate_pdf(pid,title){
+        $.ajax({
+            url: "{{route('feature_pdf') }}",
+            type: "POST",
+            data: {
+                _token: $('meta[name="csrf-token"]').attr('content'),
+                id: pid,
+                title: title
+            },
+            xhrFields: {
+                responseType: 'blob'   // 👈 PDF ke liye important
+            },
+            success: function (response) {
+                let blob = new Blob([response], { type: 'application/pdf' });
+                let link = document.createElement('a');
+
+                link.href = window.URL.createObjectURL(blob);
+                link.download = title + '.pdf';
+
+                link.click();
+            }
+        });
+    }
+</script>    
