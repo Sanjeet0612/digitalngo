@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use App\Models\Blog;
+use App\Models\Admin\BlogCategory;
 use App\Models\BlogComment;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -19,6 +20,18 @@ class ArticleController extends Controller{
 
     public function add_article_category(Request $request){
         if($request->isMethod('post')){
+
+                $request->validate([
+                    'cat_name' => 'required|string|max:1000',
+                    'status' => 'required|in:0,1',
+                ]);
+
+                BlogCategory::create([
+                    'cat_name' => $request->cat_name,
+                    'status'   => $request->status,
+                ]);
+
+                return redirect()->back()->with('success', 'Blog category added successfully!');
 
         }else{
             return view('admin.articles.artical_category');
