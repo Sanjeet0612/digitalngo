@@ -82,6 +82,10 @@ Route::prefix('users')->middleware('auth')->group(function () {
 Route::prefix('fearures')->middleware('auth')->group(function () {
     Route::controller(FeaturesController::class)->group(function () {
         Route::get('/', 'all_features')->name('all_fearure');
+        Route::post('/feature-pdf', 'feature_pdf')->name('feature_pdf');
+
+
+        
         
     });
 });
