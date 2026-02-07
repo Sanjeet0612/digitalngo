@@ -33,18 +33,16 @@
                
             </li>
 
-             <li class="dropdown">
+            <li class="dropdown">
                 <a  href="javascript:void(0)">
                     <i class="ri-news-line text-xl me-6 d-flex w-auto"></i>
-                    <span>Blog</span>
+                    <span>Function & Features</span>
                 </a>
                 <ul class="sidebar-submenu">
                     <li>
-                        <a  href="{{ route('blog') }}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>All Blog</a>
+                        <a  href="{{ route('all_fearure') }}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>All Features</a>
                     </li>
-                    <li>
-                        <a  href="{{url('/')}}/blog/add-blog"><i class="ri-circle-fill circle-icon text-info-main w-auto"></i> Add Blog</a>
-                    </li>
+                    
                 </ul>
             </li>
 
