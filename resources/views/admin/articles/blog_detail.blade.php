@@ -183,7 +183,7 @@
                     @foreach($latestblogs as $latestblogsVal)
                     <div class="card-body d-flex flex-column gap-24 p-24">
                         <div class="d-flex flex-wrap">
-                            <a  href="{{route('details', $latestblogsVal->slug)}}" class="blog__thumb w-100 radius-12 overflow-hidden">
+                            <a  href="{{ route('admin.blog_details', $latestblogsVal->slug) }}" class="blog__thumb w-100 radius-12 overflow-hidden">
                                 @if(!empty($latestblogsVal->bgimage))
                                 <img src="{{asset('storage/'.$latestblogsVal->bgimage)}}" alt="" class="w-100 h-100 object-fit-cover">
                                 @else
@@ -192,7 +192,7 @@
                             </a>
                             <div class="blog__content">
                                 <h6 class="mb-8">
-                                    <a  href="{{route('details', $latestblogsVal->slug)}}" class="text-line-2 text-hover-primary-600 text-md transition-2">{{$latestblogsVal->title}}</a>
+                                    <a  href="{{ route('admin.blog_details', $latestblogsVal->slug) }}" class="text-line-2 text-hover-primary-600 text-md transition-2">{{$latestblogsVal->title}}</a>
                                 </h6>
                                 <p class="text-line-2 text-sm text-neutral-500 mb-0">{{strip_tags($latestblogsVal->description)}}</p>
                             </div>
@@ -211,7 +211,7 @@
                         <ul>
                             @foreach($categories as $categoriesVal)
                             <li class="w-100 d-flex align-items-center justify-content-between flex-wrap gap-8 border-bottom border-dashed pb-12 mb-12">
-                                <a  href="{{route('blogs.category', $categoriesVal->category)}}" class="text-hover-primary-600 transition-2"> {{ucfirst($categoriesVal->category)}} </a>
+                                <a  href="{{route('admin.category', $categoriesVal->category)}}" class="text-hover-primary-600 transition-2"> {{ucfirst($categoriesVal->category)}} </a>
                                 <span class="text-neutral-500 w-28-px h-28-px rounded-circle bg-neutral-100 d-flex justify-content-center align-items-center transition-2 text-xs fw-semibold"> {{$categoriesVal->total}} </span>
                             </li>
                             @endforeach
@@ -227,7 +227,7 @@
                     <div class="card-body p-24">
                         <div class="d-flex align-items-center flex-wrap gap-8">
                             @foreach($tags as $tagsVal)
-                            <a  href="{{route('blogs.tag', $tagsVal->tags)}}" class="btn btn-sm btn-primary-600 bg-primary-50 bg-hover-primary-600 text-primary-600 border-0 d-inline-flex align-items-center gap-1 text-sm px-16 py-6"> {{$tagsVal->tags}} ({{$tagsVal->total}})</a>
+                            <a  href="{{route('admin.tag', $tagsVal->tags)}}" class="btn btn-sm btn-primary-600 bg-primary-50 bg-hover-primary-600 text-primary-600 border-0 d-inline-flex align-items-center gap-1 text-sm px-16 py-6"> {{$tagsVal->tags}} ({{$tagsVal->total}})</a>
                             @endforeach
                         </div>
                     </div>
