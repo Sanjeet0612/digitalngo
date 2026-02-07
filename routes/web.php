@@ -5,6 +5,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\FeaturesController;
+
 
 
 // Admin
@@ -76,12 +78,11 @@ Route::prefix('users')->middleware('auth')->group(function () {
         Route::get('/users','userList')->name('users.list');
     });
 });
-// Blog Section
-Route::prefix('blog')->middleware('auth')->group(function () {
-    Route::controller(BlogController::class)->group(function () {
-        Route::get('/', 'blog')->name('blog');
-        Route::match(['get', 'post'],'/add-blog', 'add_blog')->name('add_blog');
-        Route::post('/{id}/comment','addComment')->name('comment');
+// Function & Features Section
+Route::prefix('fearures')->middleware('auth')->group(function () {
+    Route::controller(FeaturesController::class)->group(function () {
+        Route::get('/', 'all_features')->name('all_fearure');
+        
     });
 });
 
