@@ -172,6 +172,9 @@ Route::prefix('admin')->group(function () {
         Route::get('/gallery-video', [GalleryController::class, 'gallery_video'])->name('admin.gallery_video');
         Route::match(['get', 'post'], '/add-video', [GalleryController::class, 'add_video'])->name('admin.add_video');
         // Articles / Blog
+        
+        Route::get('/manage-category', [ArticleController::class, 'manage_category'])->name('admin.manage_category');
+        Route::match(['get', 'post'], '/add-article-category', [ArticleController::class, 'add_article_category'])->name('admin.add_article_category');
         Route::get('/manage-articles', [ArticleController::class, 'manage_articles'])->name('admin.manage_articles');
         Route::match(['get', 'post'], '/add-articles', [ArticleController::class, 'add_articles'])->name('admin.add_articles');
         Route::get('/blog-details/{slug}', [ArticleController::class, 'blog_details'])->name('admin.blog_details');
