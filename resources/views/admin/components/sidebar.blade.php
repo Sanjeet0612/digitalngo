@@ -77,7 +77,7 @@
             
             <li class="dropdown">
                 <a  href="javascript:void(0)">
-                    <iconify-icon icon="fluent:people-team-24-regular" class="event-icon menu-icon"></iconify-icon>
+                   <i class="ri-image-line"></i>
                     <span>Gallery</span>
                 </a>
                 <ul class="sidebar-submenu">
@@ -113,7 +113,7 @@
 
             <li class="dropdown">
                 <a  href="javascript:void(0)">
-                    <i class="ri-news-line text-xl me-6 d-flex w-auto"></i>
+                    <i class="ri-star-line"></i>
                     <span> Key Features</span>
                 </a>
                 <ul class="sidebar-submenu">
@@ -125,7 +125,7 @@
 
             <li class="dropdown">
                 <a  href="javascript:void(0)">
-                    <i class="ri-news-line text-xl me-6 d-flex w-auto"></i>
+                    <i class="ri-team-line"></i>
                     <span> Our Partner</span>
                 </a>
                 <ul class="sidebar-submenu">
@@ -134,6 +134,20 @@
                     </li>
                 </ul>
             </li>
+
+            <li class="dropdown">
+                <a  href="javascript:void(0)">
+                    <i class="ri-heart-2-line"></i>
+                    <span>Recent Causes</span>
+                </a>
+                <ul class="sidebar-submenu">
+                    <li>
+                        <a  href="{{route('admin.manage_causes_category')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Causes Category</a>
+                    </li>
+                </ul>
+            </li>
+
+            
 
            
 		</ul>
