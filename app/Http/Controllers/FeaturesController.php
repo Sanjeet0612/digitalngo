@@ -42,6 +42,13 @@ class FeaturesController extends Controller
                     'title' => $title
                 ]);
             }
+            if($id==4){
+                $pdf = Pdf::loadView('features.achievement_certificate', [
+                    'user'  => $user,
+                    'id'    => $id,
+                    'title' => $title
+                ]);
+            }
             
             // download ya stream
             return $pdf->download(str()->slug($title).'.pdf');
