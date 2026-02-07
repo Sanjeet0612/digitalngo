@@ -35,9 +35,13 @@
                                 <img src="{{ asset('assets/images/user-grid/NGOBanner.png') }}" alt="" class="w-100 h-100 object-fit-cover">
                                 @endif
                             </a>
+
                             <div class="p-20">
                                 <h6 class="mb-16">
                                     <a  href="{{ route('admin.blog_details', $blogsVal->slug) }}" class="text-line-2 text-hover-primary-600 text-xl transition-2">{{$blogsVal->title}}</a>
+                                     <a href="{{ route('admin.edit_articles', $blogsVal->id) }}" class="bg-success-focus text-success-600 bg-hover-success-200 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle">
+                                                <iconify-icon icon="lucide:edit" class="menu-icon"></iconify-icon>
+                                            </a>
                                 </h6>
                                 <p class="text-line-3 text-neutral-500 mb-0">{{strip_tags($blogsVal->description)}}</p>
                                 <span class="d-block border-bottom border-neutral-300 border-dashed my-20"></span>
@@ -58,6 +62,7 @@
                                     <a  href="{{ route('admin.blog_details', $blogsVal->slug) }}" class="btn btn-sm btn-primary-600 d-flex align-items-center gap-1 text-xs px-8 py-6">
                                         Read More
                                     </a>
+                                    
                                 </div>
                             </div>
                         </div>
