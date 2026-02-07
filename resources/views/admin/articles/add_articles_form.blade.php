@@ -77,10 +77,10 @@
                                     <label class="form-label fw-bold text-neutral-900">Post Category: </label>
                                     <select name="category" class="form-control border border-neutral-200 radius-8">
                                         <option value="">Select Category</option>
-                                        <option value="technology">Technology</option>
-                                        <option value="business">Business</option>
-                                        <option value="course">Course</option>
-                                        <option value="fashion">Fashion</option>
+                                        @foreach($allcat as $allcatVal)
+                                        <option value="{{strtolower($allcatVal->cat_name)}}">{{$allcatVal->cat_name}}</option>
+                                        @endforeach
+                                        
                                     </select>
                                 </div>
                                 <div>
