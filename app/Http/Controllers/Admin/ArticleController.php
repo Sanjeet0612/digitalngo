@@ -93,12 +93,51 @@ class ArticleController extends Controller{
             return redirect()->back()->with('success', 'Blog added successfully!');
 
         }else{
+            $allcat = BlogCategory::all();
             $blogs = array();
-            return view('admin.articles.add_articles_form',compact('blogs'));
+            return view('admin.articles.add_articles_form',compact('blogs','allcat'));
         }
+    }
 
+    public function edit_articles($id){
+        $allcat = BlogCategory::all();
+        $blogs = Blog::all();
+        $blogDataById = Blog::where('id',$id)->first();
+        return view('admin.articles.edit_articles_form',compact('blogs','allcat','blogDataById'));
+    }
 
-        
+    public function update_articles(Request $request,$id){
+        if($request->isMethod('put')){
+            $request->validate([
+                'title' => 'required|string|max:255',
+                'category' => 'required|string|max:255',
+                'tags' => 'nullable|string|max:100',
+                'description' => 'required',
+                'bgimage' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:500',
+            ]);
+
+            $blog  = Blog::findOrFail($id);
+            // basic fields
+            $blog->title       = $request->title;
+            $blog->slug        = Str::slug($request->title) . '-' . Str::random(6); // all small
+            $blog->author      = auth()->user()->name;
+            $blog->category    = $request->category;
+            $blog->tags        = $request->tags;
+            $blog->description = $request->description;
+            $blog->status      = $request->status;
+
+            // bg image update
+            if($request->hasFile('bgimage')) {
+                // old image delete
+                if($blog->bgimage && Storage::disk('public')->exists($blog->bgimage)) {
+                    Storage::disk('public')->delete($blog->bgimage);
+                }
+                // new image store
+                $blog->bgimage = $request->file('bgimage')->store('uploads/blogs', 'public');
+            }
+            $blog->save();
+            return redirect('admin/manage-articles')->with('success', 'Blog updated successfully!');
+        }
     }
 
     public function blog_details($slug){
