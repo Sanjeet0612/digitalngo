@@ -175,6 +175,10 @@ Route::prefix('admin')->group(function () {
         Route::get('/manage-articles', [ArticleController::class, 'manage_articles'])->name('admin.manage_articles');
         Route::match(['get', 'post'], '/add-articles', [ArticleController::class, 'add_articles'])->name('admin.add_articles');
         Route::get('/blog-details/{slug}', [ArticleController::class, 'blog_details'])->name('admin.blog_details');
+        Route::get('/category/{category}', [ArticleController::class, 'category'])->name('admin.category');
+        Route::get('/tags/{category}', [ArticleController::class, 'tags'])->name('admin.tag');
+
+
         Route::post('/{id}/comment', [ArticleController::class, 'addComment'])->name('admin.comment');
         // Key Feature
         Route::get('key-features', [KeyFeatureController::class, 'key_features'])->name('admin.key_features');
