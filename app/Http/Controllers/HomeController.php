@@ -84,7 +84,7 @@ class HomeController extends Controller{
         return view('front.articles',compact('allBlog','categories','latestblogs','tags'));
     }
     public function artical_detail($slug){
-        $blog = Blog::where('slug', $slug)->where('status', 1)->firstOrFail(); // only active blogs
+        $blog = Blog::where('slug', $slug)->where('status', 'published')->firstOrFail(); // only active blogs
         $latestblogs = Blog::where('status', 'published')->where('created_at', '>=', now()->subDays(7))->orderByDesc('created_at')->get();
         $categories = Blog::where('status', 'published')->select('category', DB::raw('COUNT(*) as total'))->groupBy('category')->orderByDesc('total')->get();
         $tags = Blog::where('status', 'published')->selectRaw('tags, COUNT(*) as total')->groupBy('tags')->orderByDesc('total')->get();
