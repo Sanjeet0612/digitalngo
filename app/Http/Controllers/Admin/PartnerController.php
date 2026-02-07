@@ -5,6 +5,7 @@ use App\Models\Admin\Partner;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class PartnerController extends Controller{
     
@@ -18,8 +19,9 @@ class PartnerController extends Controller{
         if($request->isMethod('post')){
             
             $request->validate([
-                'partner_logo.*'   => 'required|image|mimes:png,jpg,jpeg,svg|max:500',
-                'status' => 'required|in:0,1',
+                'partner_logo'   => 'required|array',
+                'partner_logo.*' => 'image|mimes:png,jpg,jpeg,svg|max:500',
+                'status'         => 'required|in:0,1',
             ]);
 
             if($request->hasFile('partner_logo')) {
