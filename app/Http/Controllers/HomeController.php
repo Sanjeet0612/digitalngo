@@ -41,7 +41,7 @@ class HomeController extends Controller{
     public function image(Request $request){
         $allCat = GalleryCategory::where('status',1)->get();
         //print_r($allCat);
-        $gallImg = Gallery::where('status',1)->get();
+        $gallImg = Gallery::where('gtype','photo')->where('status',1)->get();
         return view('front.image',compact('allCat','gallImg'));
     }
     public function video(Request $request){
