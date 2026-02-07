@@ -14,8 +14,8 @@ class ArticleController extends Controller{
 
     public function manage_category(){
         $title = "Blog Category";
-        $banners = array();
-        return view('admin.articles.manage_article',compact('banners','title'));
+        $allcat = BlogCategory::all();
+        return view('admin.articles.manage_article_category',compact('allcat','title'));
     }
 
     public function add_article_category(Request $request){
@@ -35,6 +35,25 @@ class ArticleController extends Controller{
 
         }else{
             return view('admin.articles.artical_category');
+        }
+    }
+
+    public function edit_blog_category($id){
+        $catData = BlogCategory::where('id',$id)->first();
+        return view('admin.articles.edit_artical_category',compact('catData'));
+    }
+
+    public function update_article_category(Request $request,$id){
+        if($request->isMethod('put')){
+            $request->validate([
+                'cat_name' => 'required|string|max:1000',
+                'status' => 'required|in:0,1',
+            ]);
+            $blogcat  = BlogCategory::findOrFail($id);
+            $blogcat->cat_name = $request->cat_name;
+            $blogcat->status   = $request->status ?? 1;
+            $blogcat->save();
+            return redirect('admin/manage-category')->with('success', 'Blog Category updated successfully');
         }
     }
     
