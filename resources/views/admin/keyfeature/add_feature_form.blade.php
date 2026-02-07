@@ -1,4 +1,4 @@
-@extends('layout.layout')
+@extends('admin.layout.layout')
 @php
     $title='Add Key Features';
     $subTitle = 'Add Key Features';
