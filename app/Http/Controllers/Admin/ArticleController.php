@@ -10,6 +10,20 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller{
+
+    public function manage_category(){
+        $title = "Blog Category";
+        $banners = array();
+        return view('admin.articles.manage_article',compact('banners','title'));
+    }
+
+    public function add_article_category(Request $request){
+        if($request->isMethod('post')){
+
+        }else{
+            return view('admin.articles.artical_category');
+        }
+    }
     
     public function manage_articles(Request $request){
         $title = "Blog";
