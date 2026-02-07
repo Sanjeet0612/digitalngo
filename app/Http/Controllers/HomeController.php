@@ -12,8 +12,10 @@ use App\Models\Admin\KeyFeature;
 use App\Models\Blog;
 use App\Models\BlogComment;
 use App\Models\GuestDonation;
+use App\Models\ModelContactForm;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 use Illuminate\Http\Request;
 
@@ -93,7 +95,37 @@ class HomeController extends Controller{
         return view('front.blog_detail', compact('blog','latestblogs','categories','tags','comments','totalComments'));
     }
     public function contact(Request $request){
-        return view('front.contact');
+        if($request->isMethod('post')){
+
+            // Validation
+            $request->validate([
+                'c_name'    => 'required|string|max:255',
+                'c_mobile'  => 'required|string|max:20',
+                'c_email'   => 'required|email|max:255',
+                'c_sub'     => 'required|string|max:255',
+                'c_message' => 'required|string',
+            ],[
+                'c_name'    => 'Name is required!',
+                'c_mobile'  => 'Phone Number is required',
+                'c_email'   => 'Email is required',
+                'c_sub'     => 'Subject is required',
+                'c_message' => 'Message is required',
+
+            ]);
+            // Insert data
+            ModelContactForm::create([
+                'name'    => $request->c_name,
+                'phone'   => $request->c_mobile,
+                'email'   => $request->c_email,
+                'subject' => $request->c_sub,
+                'message' => $request->c_message,
+                'status'  => 1
+            ]);
+            return redirect()->back()->with('success', 'Your message has been sent successfully!');
+        }else{
+            return view('front.contact');
+        }
+        
     }
     public function donation(Request $request){
 
