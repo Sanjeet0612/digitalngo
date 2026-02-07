@@ -1,69 +1,125 @@
 @extends('admin.layout.layout')
 @php
-    $title=$title;
-    $subTitle = $title;
+    $title='Banner';
+    $subTitle = 'Manage Banner';
+    $script ='<script>
+                        $(".remove-item-btn").on("click", function() {
+                            $(this).closest("tr").addClass("d-none")
+                        });
+            </script>';
 @endphp
 
 @section('content')
 
-            <div class="row gy-4">
-                <!-- Style Two -->
-                <div class="message">
-                @if($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
+            <div class="card h-100 p-0 radius-12">
+                <div class="card-header border-bottom bg-base py-16 px-24 d-flex align-items-center flex-wrap gap-3 justify-content-between">
+                    <div class="d-flex align-items-center flex-wrap gap-3">
+                        <form class="navbar-search">
+                            <input type="text" class="bg-base h-40-px w-auto" name="search" placeholder="Search">
+                            <iconify-icon icon="ion:search-outline" class="icon"></iconify-icon>
+                        </form>
+                    </div>
+                    <a  href="{{route('admin.add_article_category')}}" class="btn btn-primary text-sm btn-sm px-12 py-12 radius-8 d-flex align-items-center gap-2">
+                        <iconify-icon icon="ic:baseline-plus" class="icon text-xl line-height-1"></iconify-icon>
+                        Add Blog Category
+                    </a>
+                </div>
+                <div class="card-body p-24">
+                    <div class="table-responsive scroll-sm">
+                        <table class="table bordered-table sm-table mb-0">
+                            <thead>
+                                <tr>
+                                    <th scope="col">
+                                        <div class="d-flex align-items-center gap-10">
+                                            <div class="form-check style-check d-flex align-items-center">
+                                                <input class="form-check-input radius-4 border input-form-dark" type="checkbox" name="checkbox" id="selectAll">
+                                            </div>
+                                            S.L
+                                        </div>
+                                    </th>
+                                    <th scope="col">Created Date</th>
+                                    <th scope="col">Title</th>
+                                    <th scope="col">Image</th>
+                                    <th scope="col">Order Position</th>
+                                    <th scope="col" class="text-center">Status</th>
+                                    <th scope="col" class="text-center">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @php $i=1; @endphp
+                                @foreach($banners as $bannersVal)
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center gap-10">
+                                            <div class="form-check style-check d-flex align-items-center">
+                                                <input class="form-check-input radius-4 border border-neutral-400" type="checkbox" name="checkbox">
+                                            </div>
+                                            {{$i}}
+                                        </div>
+                                    </td>
+                                    <td>{{$bannersVal->created_at}}</td>
+                                    <td>{{$bannersVal->title}}</td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <img src="{{ asset('storage/'.$bannersVal->image_link) }}" alt="" class="w-100-px h-70-px  flex-shrink-0 me-12 overflow-hidden">
+                                        </div>
+                                    </td>
+                                    <td>{{$bannersVal->sort_order}}</td>
+                                    <td class="text-center">
+                                        @if($bannersVal->status==1)
+                                        <span class="bg-success-focus text-success-600 border border-success-main px-24 py-4 radius-4 fw-medium text-sm">Active</span>
+                                        @else
+                                        <span class="bg-danger-focus text-danger-600 border border-danger-main px-24 py-4 radius-4 fw-medium text-sm">Deactive</span>
+                                        @endif
+                                    </td>
+                                    <td class="text-center">
+                                        <div class="d-flex align-items-center gap-10 justify-content-center">
+                                            <a href="{{route('admin.edit_banner', $bannersVal->id)}}" class="bg-success-focus text-success-600 bg-hover-success-200 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle">
+                                                <iconify-icon icon="lucide:edit" class="menu-icon"></iconify-icon>
+                                            </a>
+                                            <button type="button" class="remove-item-btn bg-danger-focus bg-hover-danger-200 text-danger-600 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle">
+                                                <iconify-icon icon="fluent:delete-24-regular" class="menu-icon"></iconify-icon>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                @php $i++; @endphp
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mt-24">
+                        <span>Showing 1 to 10 of 12 entries</span>
+                        <ul class="pagination d-flex flex-wrap align-items-center gap-2 justify-content-center">
+                            <li class="page-item">
+                                <a class="page-link bg-neutral-200 text-secondary-light fw-semibold radius-8 border-0 d-flex align-items-center justify-content-center h-32-px w-32-px text-md"  href="javascript:void(0)">
+                                    <iconify-icon icon="ep:d-arrow-left" class=""></iconify-icon>
+                                </a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link text-secondary-light fw-semibold radius-8 border-0 d-flex align-items-center justify-content-center h-32-px w-32-px text-md bg-primary-600 text-white"  href="javascript:void(0)">1</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link bg-neutral-200 text-secondary-light fw-semibold radius-8 border-0 d-flex align-items-center justify-content-center h-32-px w-32-px"  href="javascript:void(0)">2</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link bg-neutral-200 text-secondary-light fw-semibold radius-8 border-0 d-flex align-items-center justify-content-center h-32-px w-32-px text-md"  href="javascript:void(0)">3</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link bg-neutral-200 text-secondary-light fw-semibold radius-8 border-0 d-flex align-items-center justify-content-center h-32-px w-32-px text-md"  href="javascript:void(0)">4</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link bg-neutral-200 text-secondary-light fw-semibold radius-8 border-0 d-flex align-items-center justify-content-center h-32-px w-32-px text-md"  href="javascript:void(0)">5</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link bg-neutral-200 text-secondary-light fw-semibold radius-8 border-0 d-flex align-items-center justify-content-center h-32-px w-32-px text-md"  href="javascript:void(0)">
+                                    <iconify-icon icon="ep:d-arrow-right" class=""></iconify-icon>
+                                </a>
+                            </li>
                         </ul>
                     </div>
-                @endif
-                @if(session('success'))
-                    <div class="alert alert-success">
-                        {{ session('success') }}
-                    </div>
-                @endif
                 </div>
-                @foreach($blogs as $blogsVal)
-                <div class="col-xxl-3 col-lg-4 col-sm-6">
-                    <div class="card h-100 p-0 radius-12 overflow-hidden">
-                        <div class="card-body p-0">
-                            <a  href="{{ route('admin.blog_details', $blogsVal->slug) }}" class="w-100 max-h-266-px radius-0 overflow-hidden">
-                                @if(!empty($blogsVal->bgimage))
-                                <img src="{{asset('storage/'.$blogsVal->bgimage)}}" alt="" class="w-100 h-100 object-fit-cover">
-                                @else
-                                <img src="{{ asset('assets/images/user-grid/NGOBanner.png') }}" alt="" class="w-100 h-100 object-fit-cover">
-                                @endif
-                            </a>
-                            <div class="p-20">
-                                <h6 class="mb-16">
-                                    <a  href="{{ route('admin.blog_details', $blogsVal->slug) }}" class="text-line-2 text-hover-primary-600 text-xl transition-2">{{$blogsVal->title}}</a>
-                                </h6>
-                                <p class="text-line-3 text-neutral-500 mb-0">{{strip_tags($blogsVal->description)}}</p>
-                                <span class="d-block border-bottom border-neutral-300 border-dashed my-20"></span>
-                                <div class="d-flex align-items-center justify-content-between flex-wrap gap-6">
-                                    <div class="d-flex align-items-center gap-8">
-                                        <?php
-                                            if(empty($blogsVal->authimage)){
-                                                ?> <img src="{{url('/')}}/assets/images/user-list/user.png" alt="" class="w-40-px h-40-px rounded-circle object-fit-cover"><?php
-                                            }else{
-                                                ?> <img src="{{asset('storage/'.$blogsVal->authimage)}}" alt="" class="w-40-px h-40-px rounded-circle object-fit-cover"><?php
-                                            }
-                                        ?>
-                                        <div class="d-flex flex-column">
-                                            <h6 class="text-sm mb-0">{{$blogsVal->author}}</h6>
-                                            <span class="text-xs text-neutral-500">{{ \Carbon\Carbon::parse($blogsVal->created_at)->diffForHumans() }}</span>
-                                        </div>
-                                    </div>
-                                    <a  href="{{ route('admin.blog_details', $blogsVal->slug) }}" class="btn btn-sm btn-primary-600 d-flex align-items-center gap-1 text-xs px-8 py-6">
-                                        Read More
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
             </div>
-            
+
 @endsection
