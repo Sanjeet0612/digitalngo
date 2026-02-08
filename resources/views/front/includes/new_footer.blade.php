@@ -44,9 +44,9 @@
                 <div class="logo-footer">
                     <img src="{{url('/')}}/front/assets/images/logo_white.svg" alt="">
                 </div>
-               
+                @if(!empty($contact->short_desc))
                 <p>{{$contact->short_desc}}</p>
-               
+                @endif   
                 <div class="social-icons">
                     <ul class="list-unstyled list-group list-group-horizontal">
                         @if($contact && $contact->fb_link)
