@@ -46,7 +46,8 @@
                 </div>
                 @if(!empty($contact->short_desc))
                 <p>{{$contact->short_desc}}</p>
-                @endif   
+                @endif
+                   
                 <div class="social-icons">
                     <ul class="list-unstyled list-group list-group-horizontal">
                         @if($contact && $contact->fb_link)
