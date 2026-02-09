@@ -154,81 +154,32 @@
                                     <div class="owl-carousel owl-theme" id="sidebar-causes">
                         
                                         <!-- Causes Wrap -->
+                                         @foreach($allCauses as $allCausesVal)
                                         <div class="causes-wrap">
                                             <div class="img-wrap">
-                                                <a href="causes-single.html"><img src="{{url('/')}}/front/assets/images/causes/causes_img_3.jpg" alt=""></a>
+                                                <a href="{{route('causes',$allCausesVal->slug)}}"><img src="{{asset('storage/'.$allCausesVal->banner)}}" alt=""></a>
                                                 <div class="raised-progress">
                                                     <div class="skillbar-wrap">
                                                         <div class="clearfix">
-                                                            <span class="txt-orange">$10086</span> raised of <span class="txt-green">$15000</span>
+                                                            <span class="txt-orange">₹{{$allCausesVal->received_amt}}</span> raised of <span class="txt-green">₹{{$allCausesVal->tot_amt}}</span>
                                                         </div>           
                                                     </div>
                                                 </div>
                                             </div>
     
                                             <div class="content-wrap">
-                                                <span class="tag">Health</span>
-                                                <h3><a href="causes-single.html">Supply Water For Good Health</a></h3>
+                                                <span class="tag">{{ucfirst($allCausesVal->couses_cat_name)}}</span>
+                                                <h3><a href="{{route('causes',$allCausesVal->slug)}}">{{$allCausesVal->title}}</a></h3>
                                                 <div class="text-md-right">
-                                                    <a href="causes-single.html" class="read-more-line"><span>Read More</span></a>
+                                                    <a href="{{route('causes',$allCausesVal->slug)}}" class="read-more-line"><span>Read More</span></a>
                                                 </div>
                                             </div>
     
                                         </div>
+                                        @endforeach
                                         <!-- Causes Wrap -->
                                     
-                                        <!-- Causes Wrap -->
-                                        <div class="item">
-                                            <div class="causes-wrap">
-                                                <div class="img-wrap">
-                                                    <a href="causes-single.html"><img src="{{url('/')}}/front/assets/images/causes/causes_img_2.jpg" alt=""></a>
-                                                    <div class="raised-progress">
-                                                        <div class="skillbar-wrap">
-                                                            <div class="clearfix">
-                                                                <span class="txt-orange">$10086</span> raised of <span class="txt-green">$15000</span>
-                                                            </div>           
-                                                        </div>
-                                                    </div>
-                                                </div>
-        
-                                                <div class="content-wrap">
-                                                    <span class="tag">People</span>
-                                                    <h3><a href="causes-single.html">Help For Homeless People</a></h3>
-                                                    <div class="text-md-right">
-                                                        <a href="causes-single.html" class="read-more-line"><span>Read More</span></a>
-                                                    </div>
-                                                </div>
-        
-                                            </div>
-                                        </div>
-                                        <!-- Causes Wrap -->
-                                    
-                                        <!-- Causes Wrap -->
-                                        <div class="item">
-                                            <div class="causes-wrap">
-                                                <div class="img-wrap">
-                                                    <a href="causes-single.html"><img src="{{url('/')}}/front/assets/images/causes/causes_img_6.jpg" alt=""></a>
-                                                    <div class="raised-progress">
-                                                        <div class="skillbar-wrap">
-                                                            <div class="clearfix">
-                                                                <span class="txt-orange">$10086</span> raised of <span class="txt-green">$15000</span>
-                                                            </div>           
-                                                        </div>
-                                                    </div>
-                                                </div>
-        
-                                                <div class="content-wrap">
-                                                    <span class="tag">Health</span>
-                                                    <h3><a href="causes-single.html">Help From Natural
-                                                        Disaster</a></h3>
-                                                    <div class="text-md-right">
-                                                        <a href="causes-single.html" class="read-more-line"><span>Read More</span></a>
-                                                    </div>
-                                                </div>
-        
-                                            </div>
-                                        </div>
-                                        <!-- Causes Wrap -->
+                                       
                                     </div>
                                 </div>
                                 <!-- Widget Wrap -->
