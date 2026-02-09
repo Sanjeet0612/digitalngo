@@ -15,7 +15,7 @@ class CausesController extends Controller{
     public function add_cause(Request $request){
 
         if($request->isMethod('post')){
-
+            print_r($_POST);
         }else{
             return view('admin.causes.add_causes');
         }
