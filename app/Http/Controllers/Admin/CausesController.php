@@ -195,6 +195,8 @@ class CausesController extends Controller{
     }
 
     public function delete_causes($id){
-
+        $category = Causes::findOrFail($id);
+        $category->delete();
+        return redirect('admin/manage-causes/')->with('success', 'Causes deleted successfully!');
     }
 }
