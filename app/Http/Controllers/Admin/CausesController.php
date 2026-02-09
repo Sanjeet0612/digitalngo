@@ -71,8 +71,8 @@ class CausesController extends Controller{
     }
     // Category End
     public function manage_causes(Request $request){
-        $keyFeature = array();
-        return view('admin.causes.manage_causes',compact('keyFeature'));
+        $allCauses = Causes::all();
+        return view('admin.causes.manage_causes',compact('allCauses'));
     }
 
     public function add_cause(Request $request){
@@ -130,5 +130,11 @@ class CausesController extends Controller{
             $category = CausesCategory::all();
             return view('admin.causes.add_causes',compact('category'));
         }
+    }
+
+    public function edit_causes($id){
+        $category   = CausesCategory::all();
+        $causesData = Causes::findOrFail($id);
+        return view('admin.causes.edit_causes',compact('category','causesData'));
     }
 }
