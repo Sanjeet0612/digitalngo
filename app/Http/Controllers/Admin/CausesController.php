@@ -15,7 +15,9 @@ class CausesController extends Controller{
     public function add_cause(Request $request){
 
         if($request->isMethod('post')){
-            print_r($_POST);
+            if($request->validate([
+                'title' => 'required',
+            ]));
         }else{
             return view('admin.causes.add_causes');
         }
