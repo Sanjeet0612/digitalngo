@@ -207,6 +207,12 @@ Route::prefix('admin')->group(function () {
         Route::get('manage-causes', [CausesController::class, 'manage_causes'])->name('admin.manage_causes');
         Route::match(['get', 'post'], '/add-cause', [CausesController::class, 'add_cause'])->name('admin.add_cause');
         Route::get('edit-causes/{id}', [CausesController::class, 'edit_causes'])->name('admin.edit_causes');
+        Route::put('/update-cause/{id}', [CausesController::class, 'update_cause'])->name('admin.update_cause');
+        Route::get('/delete-causes/{id}', [CausesController::class, 'delete_causes'])->name('admin.delete_causes');
+
+        
+
+        
 
         
 
