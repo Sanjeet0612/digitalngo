@@ -63,6 +63,12 @@ class CausesController extends Controller{
 
         }
     }
+    public function delete_causes_category($id){
+        $category = CausesCategory::findOrFail($id);
+        $category->delete();
+        return redirect('admin/causes-category/')->with('success', 'Causes category deleted successfully!');
+    }
+    // Category End
     public function manage_causes(Request $request){
         $keyFeature = array();
         return view('admin.causes.manage_causes',compact('keyFeature'));
