@@ -70,7 +70,7 @@
                             <form id="myForm" action="{{route('admin.add_causes_category')}}" method="post" class="d-flex flex-column gap-20" enctype="multipart/form-data">
                                 @csrf
                                 <div>
-                                    <label class="form-label fw-bold text-neutral-900" for="title">Category Name: </label>
+                                    <label class="form-label fw-bold text-neutral-900" for="title">Select Category : </label>
                                     <input type="text" name="cat_name" class="form-control border border-neutral-200 radius-8" id="cat_name" placeholder="Enter Category Name">
                                 </div>
                                 
