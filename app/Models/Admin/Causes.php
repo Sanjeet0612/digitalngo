@@ -16,6 +16,8 @@ class Causes extends Model
         'couses_cat_name',
         'title',
         'slug',
+        'description',
+        'banner',
         'name',
         'phone',
         'email',
