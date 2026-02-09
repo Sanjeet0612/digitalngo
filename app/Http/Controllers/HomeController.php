@@ -9,6 +9,7 @@ use App\Models\Admin\EventGallery;
 use App\Models\Admin\Banner; 
 use App\Models\Admin\Gallery;
 use App\Models\Admin\KeyFeature;
+use App\Models\Admin\Causes;
 use App\Models\Blog;
 use App\Models\BlogComment;
 use App\Models\GuestDonation;
@@ -65,7 +66,8 @@ class HomeController extends Controller{
         $categories = Blog::where('status', 'published')->select('category', DB::raw('COUNT(*) as total'))->groupBy('category')->orderByDesc('total')->get();
         $latestblogs = Blog::where('status','published')->where('created_at', '>=', now()->subDays(7))->orderByDesc('created_at')->get();
         $tags = Blog::where('status','published')->selectRaw('tags, COUNT(*) as total')->groupBy('tags')->orderByDesc('total')->get();
-        return view('front.articles',compact('allBlog','categories','latestblogs','tags'));
+        $allCauses = Causes::where('status',1)->get();
+        return view('front.articles',compact('allBlog','categories','latestblogs','tags','allCauses'));
     }
      // Category wise blogs
     public function category($category){
@@ -172,10 +174,14 @@ class HomeController extends Controller{
         $allFeature = KeyFeature::where('status',1)->get();
         return view('front.function_features',compact('allFeature'));
     }
+
+    public function causes($slug){
+        $causesDetail = Causes::where('slug', $slug)->where('status',1)->firstOrFail(); // only active Causes
+        return view('front.causes_detail',compact('causesDetail'));
+    }
     
 
-    public function askAi()
-    {
+    public function askAi(){
         $response = Http::withToken(config('services.openai.key'))
             ->withHeaders([
                 'Content-Type' => 'application/json',
