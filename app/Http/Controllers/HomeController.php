@@ -9,6 +9,7 @@ use App\Models\Admin\EventGallery;
 use App\Models\Admin\Banner; 
 use App\Models\Admin\Gallery;
 use App\Models\Admin\KeyFeature;
+use App\Models\Admin\CausesCategory;
 use App\Models\Admin\Causes;
 use App\Models\Blog;
 use App\Models\BlogComment;
@@ -175,9 +176,21 @@ class HomeController extends Controller{
         return view('front.function_features',compact('allFeature'));
     }
 
-    public function causes($slug){
-        $causesDetail = Causes::where('slug', $slug)->where('status',1)->firstOrFail(); // only active Causes
-        return view('front.causes_detail',compact('causesDetail'));
+    public function causes($slug=null){
+        if(!empty($slug)){
+            $allCat       = CausesCategory::where('status', 1)->orderBy('cat_name', 'asc')->get();
+            $allCauses    = Causes::where('status', 1)->orderBy('id', 'desc')->take(3)->get();
+            $allCauses    = Causes::where('status', 1)->orderBy('id', 'desc')->take(3)->get();
+            $causesDetail = Causes::where('slug', $slug)->where('status',1)->firstOrFail(); // only active Causes
+            return view('front.causes_detail',compact('causesDetail','allCauses','allCat'));
+        }else{
+           $allCauses    = Causes::where('status', 1)->orderBy('id', 'desc')->take(3)->get(); 
+           return view('front.all_causes',compact('allCauses'));
+        }
+        
+    }
+    public function cause_category($slug){
+
     }
     
 
