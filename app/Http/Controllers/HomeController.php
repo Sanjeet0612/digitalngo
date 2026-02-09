@@ -189,8 +189,21 @@ class HomeController extends Controller{
         }
         
     }
+    public function show($filename)
+    {
+        $path = 'private/uploads/' . $filename;
+
+        if (!Storage::exists($path)) {
+            abort(404);
+        }
+
+        return response()->file(storage_path('app/' . $path));
+    }
     public function causes_donation($slug){
-        return view('front.causes_donation_form');
+        $causesDetail = Causes::where('slug', $slug)->where('status',1)->firstOrFail(); // only active Causes
+        $filename = "UPI.jpeg";
+        
+        return view('front.causes_donation_form',compact('causesDetail','filename'));
     }
     public function cause_category($slug){
 
