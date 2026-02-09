@@ -72,7 +72,7 @@
                                 @method('PUT')
                                 <div>
                                     <label class="form-label fw-bold text-neutral-900" for="title">Select Category : </label>
-                                    <input type="text" name="cat_name" value="{{$causeCatData->cat_name}}" class="form-control border border-neutral-200 radius-8" id="cat_name" placeholder="Enter Category Name">
+                                    <input type="text" name="cat_name" value="{{$causeCatData->cat_name}}" value="{{$causeCatData->cat_name}}" class="form-control border border-neutral-200 radius-8" id="cat_name" placeholder="Enter Category Name">
                                 </div>
                                 
                                <div>
