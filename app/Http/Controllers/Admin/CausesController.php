@@ -80,6 +80,8 @@ class CausesController extends Controller{
         if($request->isMethod('post')){
             $request->validate([
                 'title'         => 'required|string|max:255',
+                'description'   => 'nullable|string',
+                'banner'        => 'nullable|image|mimes:jpg,jpeg,png,webp|max:500',
                 'name'          => 'required|string|max:255',
                 'phone'         => 'required|string|max:20',
                 'email'         => 'required|email',
@@ -88,6 +90,12 @@ class CausesController extends Controller{
                 'end_date'      => 'required|date|after_or_equal:start_date',
                 'status'        => 'required|boolean',
             ]);
+
+            /* Banner Upload */
+            $bannerPath = null;
+            if($request->hasFile('banner')) {
+                $bannerPath = $request->file('banner')->store('causes/banners', 'public');
+            }
 
             $slug = Str::slug($request->title);
             $count = Causes::where('slug', 'LIKE', "{$slug}%")->count();
@@ -104,6 +112,8 @@ class CausesController extends Controller{
                 'couses_cat_name' => $catName, // optional snapshot
                 'title'           => $request->title,
                 'slug'            => $slug,
+                'description'     => $request->description,
+                'banner'          => $bannerPath,
                 'name'            => $request->name,
                 'phone'           => $request->phone,
                 'email'           => $request->email,
