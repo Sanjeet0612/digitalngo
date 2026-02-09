@@ -330,7 +330,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const now = new Date().getTime();
         const distance = countDownDate - now;
 
-        if (distance < 0) {
+        if(distance < 0) {
             clearInterval(interval);
             daysEl.innerHTML = "00";
             hoursEl.innerHTML = "00";
