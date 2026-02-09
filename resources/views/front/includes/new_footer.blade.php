@@ -217,9 +217,8 @@
     <!-- Way Points JS -->
     <script src="{{url('/')}}/front/assets/library/jquery-waypoints/jquery.waypoints.min.js"></script>
     <!-- Count Down JS -->
-    <script src="{{url('/')}}/front/assets/library/countdown/jquery.countdown.min.js"></script>
     <!-- Appear JS -->
-    <script src="{{url('/')}}/front/assets/library/jquery-appear/jquery.appear.js"></script>
+    <!--<script src="{{url('/')}}/front/assets/library/jquery-appear/jquery.appear.js"></script>-->
     <!-- Jquery Easing JS -->
     <script src="{{url('/')}}/front/assets/library/jquery-easing/jquery.easing.min.js"></script>
     <!-- Counter JS -->
