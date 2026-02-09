@@ -42,6 +42,8 @@ Route::controller(HomeController::class)->group(function () {
     Route::match(['get', 'post'],'/contact','contact')->name('contact');
     Route::match(['get', 'post'],'/donation','donation')->name('donation');
     Route::get('/function-features', 'function_features')->name('function_features');
+    Route::get('/causes/{slug}', 'causes')->name('causes');
+    
     
     
     
