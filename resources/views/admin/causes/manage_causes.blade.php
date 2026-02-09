@@ -37,16 +37,16 @@
                                             S.L
                                         </div>
                                     </th>
-                                    <th scope="col">Icon Image</th>
+                                    <th scope="col">Image</th>
                                     <th scope="col">Title</th>
-                                    <th scope="col">Phone</th>
+                                    <th scope="col">Category</th>
                                     <th scope="col" class="text-center">Status</th>
                                     <th scope="col" class="text-center">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                              <?php $i=1; ?>   
-                            @foreach($keyFeature as $keyFeatureVal)    
+                            @foreach($allCauses as $keyFeatureVal)    
                                 <tr>
                                     <td>
                                         <div class="d-flex align-items-center gap-10">
@@ -58,7 +58,7 @@
                                     </td>
                                     <td><img src="{{url('/')}}/{{$keyFeatureVal->icon_img}}" style="width:60px;"></td>
                                     <td>{{$keyFeatureVal->title}}</td>
-                                    <td>{!! $keyFeatureVal->phone !!}</td>
+                                    <td>{{$keyFeatureVal->couses_cat_name }}</td>
                                     <td class="text-center">
                                        @if($keyFeatureVal->status==1)
                                         <span class="bg-success-focus text-success-600 border border-success-main px-24 py-4 radius-4 fw-medium text-sm">Active</span>
@@ -68,7 +68,7 @@
                                     </td>
                                     <td class="text-center">
                                         <div class="d-flex align-items-center gap-10 justify-content-center">
-                                            <a href="{{route('admin.edit_key_feture',$keyFeatureVal->id)}}" class="bg-success-focus text-success-600 bg-hover-success-200 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle">
+                                            <a href="{{route('admin.edit_causes',$keyFeatureVal->id)}}" class="bg-success-focus text-success-600 bg-hover-success-200 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle">
                                                 <iconify-icon icon="lucide:edit" class="menu-icon"></iconify-icon>
                                             </a>
                                             <!--<button type="button" class="remove-item-btn bg-danger-focus bg-hover-danger-200 text-danger-600 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle">
