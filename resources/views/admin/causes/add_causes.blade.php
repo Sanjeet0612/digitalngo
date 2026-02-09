@@ -78,11 +78,17 @@
                                     <label class="form-label fw-bold text-neutral-900" for="title">Cause Title:<span class="text-danger-600">*</span> </label>
                                     <input type="text" name="title" class="form-control border border-neutral-200 radius-8" id="title" placeholder="Enter Title">
                                 </div>
-                               
+
+                                
                                  <div class="col-sm-6">
-                                    <label class="form-label fw-bold text-neutral-900" for="title">Purpose:<span class="text-danger-600">*</span> </label>
-                                    <input type="text" name="purpose" class="form-control border border-neutral-200 radius-8" id="purpose" placeholder="Enter for purpose">
+                                    <label class="form-label fw-bold text-neutral-900" for="title">Category:<span class="text-danger-600">*</span> </label>
+                                    <select  name="cat_name" class="form-control border border-neutral-200 radius-8" id="cat_name" >
+                                        @foreach($category as $categoryVal)
+                                        <option value="{{$categoryVal->slug}}">{{$categoryVal->cat_name}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
+
                                 
                             </div>
 
