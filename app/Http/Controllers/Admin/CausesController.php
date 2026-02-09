@@ -7,17 +7,17 @@ use Illuminate\Http\Request;
 
 class CausesController extends Controller{
     
-    public function manage_causes_category(Request $request){
+    public function manage_causes(Request $request){
         $keyFeature = array();
-        return view('admin.causes.manage_causes_cat',compact('keyFeature'));
+        return view('admin.causes.manage_causes',compact('keyFeature'));
     }
 
-    public function add_cause_category(Request $request){
+    public function add_cause(Request $request){
 
         if($request->isMethod('post')){
 
         }else{
-            return view('admin.causes.add_causes_cat');
+            return view('admin.causes.add_causes');
         }
     }
 }
