@@ -1,7 +1,7 @@
 @extends('admin.layout.layout')
 @php
-    $title='Add Causess';
-    $subTitle = 'Add Causess';
+    $title='Add Causes';
+    $subTitle = 'Add Causes';
     $script = '<script src="' . asset('assets/js/editor.highlighted.min.js') . '"></script>
                  <script src="' . asset('assets/js/editor.quill.js') . '"></script>
                  <script src="' . asset('assets/js/editor.katex.min.js') . '"></script>
