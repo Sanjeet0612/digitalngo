@@ -46,7 +46,7 @@
                     <div class="card mt-24">
 
 
-                        <div class="messages">
+                    <div class="messages">
                     @if($errors->any())
                         <div class="alert alert-danger">
                             <ul>
