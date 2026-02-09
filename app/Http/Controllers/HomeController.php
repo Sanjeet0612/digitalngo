@@ -189,6 +189,9 @@ class HomeController extends Controller{
         }
         
     }
+    public function causes_donation($slug){
+        return view('front.causes_donation_form');
+    }
     public function cause_category($slug){
 
     }
