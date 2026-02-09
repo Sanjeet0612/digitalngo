@@ -84,7 +84,7 @@
                                     <label class="form-label fw-bold text-neutral-900" for="title">Category:<span class="text-danger-600">*</span> </label>
                                     <select  name="cat_name" class="form-control border border-neutral-200 radius-8" id="cat_name" >
                                         @foreach($category as $categoryVal)
-                                        <option value="{{$categoryVal->slug}}">{{$categoryVal->cat_name}}</option>
+                                        <option value="{{$categoryVal->id}},{{$categoryVal->slug}}">{{$categoryVal->cat_name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
