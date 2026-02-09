@@ -99,31 +99,10 @@
 
                     </div>
                     <div class="col-lg-4 col-md-12">
-                        <img src="{{ route('private.image', 'UPI.jpeg') }}">
-                        <div class="faqs-sidebar pos-rel">
-                            
-                            <div class="bg-overlay blue opacity-80"></div> 
-                                                       
-                            <!--<form>
-                                <h3 class="h3-sm fw-7 txt-white mb-3">Have any Question?</h3>
-                                <div class="form-group">
-                                    <label for="fullname"><strong>Full Name</strong></label>
-                                    <input type="text" class="form-control form-light" id="fullname">
-                                </div>
-                                <div class="form-group">
-                                    <label for="emailform"><strong>Email Address</strong></label>
-                                    <input type="email" class="form-control form-light" id="emailform">
-                                </div>
-                                <div class="form-group">
-                                    <label for="emailform"><strong>Mobile Number</strong></label>
-                                    <input type="text" class="form-control form-light" id="emailform">
-                                </div>
-                                <div class="form-group">
-                                    <label for="questionmsg"><strong>How can help you?</strong></label>
-                                    <textarea class="form-control form-light" rows="5" id="questionmsg"></textarea>
-                                </div>
-                                <button type="submit" class="btn btn-default mt-3">Ask It Now</button>
-                            </form>-->
+                        
+                        <div class="faqs-sidebar pos-rel">                        
+                           <img src="{{ url('/private-image/UPI.jpeg') }}">
+                           <h3 style="text-align:center;background: #fff;padding:12px;">UPI : 9088998800@hdfcbank</h3>
                         </div>
                     </div>
                 </div>
