@@ -24,14 +24,14 @@
                                 
                     <div class="col-lg-8 col-md-12">
                         <h1 class="heading-main">
-                            <small>Donation</small>
-                            Don't Let Poverty Destroy Someone's Dreams
+                            <small>Donation For</small>
+                            {{$causesDetail->title}}
                         </h1>
 
-                        <p>The secret to happiness lies in helping others. Never underestimate the difference YOU can make in the lives of the poor, the abused and the helpless. Spread sunshine in their lives no matter what the weather may be.</p>
+                        <p></p>
 
                         <div class="donation-wrap">
-                            <h3 class="h3-sm fw-5 txt-blue mb-3">Select Your Donation Amount</h3>
+                            <h3 class="h3-sm fw-5 txt-blue mb-3">Pay Your Donation Amount</h3>
                             <div class="message">
                                 @if(session('success'))
                                     <p style="color:green">{{ session('success') }}</p>
@@ -46,26 +46,7 @@
                             <form action="{{url('/')}}/donation" method="post">
                                 @csrf
                             <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <div class="custom-control custom-radio custom-control-inline">
-                                            <input type="radio" id="customRadioInline1" name="package_amt" value="1100" class="custom-control-input" checked>
-                                            <label class="custom-control-label" for="customRadioInline1">₹ 1100 Membership Fees</label>
-                                        </div>
-                                        <div class="custom-control custom-radio custom-control-inline">
-                                            <input type="radio" id="customRadioInline2" name="package_amt" value="500" class="custom-control-input">
-                                            <label class="custom-control-label" for="customRadioInline2">₹ 500 Volunteers Fees</label>
-                                        </div>
-                                        <div class="custom-control custom-radio custom-control-inline">
-                                            <input type="radio" id="customRadioInline3" name="package_amt" value="100" class="custom-control-input">
-                                            <label class="custom-control-label" for="customRadioInline3">₹ 100 Donation for Plant</label>
-                                        </div>
-
-                                        <!-- <div class="mt-3">
-                                            <input type="text" class="form-control" id="custom" placeholder="Custom Amount">
-                                        </div> -->
-                                    </div>
-                                </div>
+                     
                                 <div class="col-md-12">
                                    <div class="border-top mb-4"></div>                                    
                                 </div>
@@ -86,34 +67,29 @@
                                         <input type="email" class="form-control" id="email" value="{{old('email')}}" name="email" placeholder="Your Email" required>
                                     </div>
                                 </div>
+                                
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="city" value="{{old('city')}}"  name="city" placeholder="Enter your City" required>
+                                        <input type="text" class="form-control" id="amount" value="{{old('amount')}}" name="amount" placeholder="Enter amount" required>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="address" value="{{old('address')}}" name="address" placeholder="Enter your Address" required>
+                                        <input type="text" class="form-control" id="utrnumber" value="{{old('utrnumber')}}"  name="utrnumber" placeholder="Enter UTR Number" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <span class="file-placeholder">Upload Screenshot</span>
+                                        <input type="file" class="form-control" name="refrer_code" id="security" placeholder="Upload Screenshot">
                                     </div>
                                 </div>
                                 
                             </div>
                             <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" id="state" value="{{old('state')}}" name="state" placeholder="Enter your State" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" id="pincode"  value="{{old('pincode')}}" name="pincode"  placeholder="Enter your Pincode" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" value="{{old('refrer_code')}}" name="refrer_code" id="security" placeholder="Refer Code">
-                                    </div>
-                                </div>
+                                
+                                
+                                
                                 <div class="col-md-12 mt-3">
                                     <button class="btn btn-default" name="member" ><i data-feather="heart"></i> Join Now</button>
                                 </div>
@@ -123,9 +99,12 @@
 
                     </div>
                     <div class="col-lg-4 col-md-12">
+                        <img src="{{ route('private.image', 'UPI.jpeg') }}">
                         <div class="faqs-sidebar pos-rel">
-                            <div class="bg-overlay blue opacity-80"></div>                            
-                            <form>
+                            
+                            <div class="bg-overlay blue opacity-80"></div> 
+                                                       
+                            <!--<form>
                                 <h3 class="h3-sm fw-7 txt-white mb-3">Have any Question?</h3>
                                 <div class="form-group">
                                     <label for="fullname"><strong>Full Name</strong></label>
@@ -144,7 +123,7 @@
                                     <textarea class="form-control form-light" rows="5" id="questionmsg"></textarea>
                                 </div>
                                 <button type="submit" class="btn btn-default mt-3">Ask It Now</button>
-                            </form>
+                            </form>-->
                         </div>
                     </div>
                 </div>
