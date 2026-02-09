@@ -46,6 +46,8 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/causes/{slug}', 'causes')->name('causes');
     Route::get('/cause-category/{slug}', 'cause_category')->name('cause_category');
     Route::get('/causes-donation/{slug}', 'causes_donation')->name('causes_donation');
+    Route::get('/private-image/{filename}', [FileController::class, 'show'])
+    ->name('private.image');
     
 
     
