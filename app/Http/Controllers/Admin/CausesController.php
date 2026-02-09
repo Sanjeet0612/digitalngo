@@ -131,10 +131,70 @@ class CausesController extends Controller{
             return view('admin.causes.add_causes',compact('category'));
         }
     }
-
     public function edit_causes($id){
         $category   = CausesCategory::all();
         $causesData = Causes::findOrFail($id);
         return view('admin.causes.edit_causes',compact('category','causesData'));
+    }
+
+    public function update_cause(Request $request,$id){
+        if($request->isMethod('put')){
+            $cause = Causes::findOrFail($id);
+            $request->validate([
+                'title'         => 'required|string|max:255',
+                'description'   => 'required|string',
+                'banner'        => 'nullable|image|mimes:jpg,jpeg,png,webp|max:500',
+                'name'          => 'required|string|max:255',
+                'phone'         => 'required|string|max:20',
+                'email'         => 'required|email',
+                'tot_amt'       => 'required|numeric|min:0',
+                'start_date'    => 'required|date',
+                'end_date'      => 'required|date|after_or_equal:start_date',
+                'status'        => 'required|boolean',
+            ]);
+
+            /* Update Slug if title changed */
+            if($cause->title !== $request->title) {
+                $slug = Str::slug($request->title);
+                $count = Causes::where('slug', 'LIKE', "{$slug}%")->where('id', '!=', $id)->count();
+                $cause->slug = $count ? "{$slug}-{$count}" : $slug;
+            }
+
+            /* Banner Update */
+            if($request->hasFile('banner')) {
+                // delete old banner
+                if($cause->banner && Storage::disk('public')->exists($cause->banner)) {
+                    Storage::disk('public')->delete($cause->banner);
+                }
+                $cause->banner = $request->file('banner')->store('causes/banners', 'public');
+            }
+
+            $catidName = explode(',',$request->cat_name);
+            $catId = $catidName[0];
+            $catName = $catidName[1];
+
+            $cause->update([
+                'causes_cat_id'   => $catId,
+                'couses_cat_name' => $catName,
+                'title'           => $request->title,
+                'description'     => $request->description,
+                'name'            => $request->name,
+                'phone'           => $request->phone,
+                'email'           => $request->email,
+                'tot_amt'         => $request->tot_amt,
+                'start_date'      => $request->start_date,
+                'end_date'        => $request->end_date,
+                'status'          => $request->status,
+            ]);
+
+            return redirect('/admin/manage-causes')->with('success', 'Cause updated successfully');
+
+        }else{
+            echo "Bad Request!";
+        }
+    }
+
+    public function delete_causes($id){
+
     }
 }
