@@ -82,7 +82,7 @@
                                     </td>
                                     <td class="text-center">
                                         <div class="d-flex align-items-center gap-10 justify-content-center">
-                                            <a href="{{route('admin.edit_blog_category', $allcatVal->id)}}" class="bg-success-focus text-success-600 bg-hover-success-200 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle">
+                                            <a href="{{route('admin.edit_causes_category', $allcatVal->id)}}" class="bg-success-focus text-success-600 bg-hover-success-200 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle">
                                                 <iconify-icon icon="lucide:edit" class="menu-icon"></iconify-icon>
                                             </a>
                                             <button type="button" class="remove-item-btn bg-danger-focus bg-hover-danger-200 text-danger-600 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle">
