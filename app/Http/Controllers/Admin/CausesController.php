@@ -26,16 +26,42 @@ class CausesController extends Controller{
                 'status'   => $request->status,
             ]);
 
-            return redirect('admin/causes-category/')->with('success', 'Blog category added successfully!');
+            return redirect('admin/causes-category/')->with('success', 'Causes category added successfully!');
 
         }else{
-            $allcat = array();
-            return view('admin.causes.add_causes_category',compact('allcat'));
+            return view('admin.causes.add_causes_category');
         }
     }
 
     public function edit_causes_category($id){
-        echo $id;
+        $causeCatData = CausesCategory::where('id',$id)->first();
+        return view('admin.causes.edit_causes_category',compact('causeCatData'));
+    }
+    public function update_causes_category(Request $request,$id){
+
+        if($request->isMethod('put')){
+            $category = CausesCategory::findOrFail($id);
+            $request->validate([
+                'cat_name' => 'required|string|max:255',
+                'status'   => 'required|boolean',
+            ]);
+            $slug = Str::slug($request->cat_name);
+
+            // handle duplicate slug
+            /*$count = CausesCategory::where('slug', 'LIKE', "{$slug}%")->where('id', '!=', $id)->count();
+            if($count) {
+                $slug = $slug . '-' . $count;
+            }*/
+
+            $category->update([
+                'cat_name' => $request->cat_name,
+                'slug'     => $slug,
+                'status'   => $request->status,
+            ]);
+
+            return redirect('admin/causes-category/')->with('success', 'Causes category Updated successfully!');
+
+        }
     }
     public function manage_causes(Request $request){
         $keyFeature = array();
