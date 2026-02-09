@@ -142,7 +142,7 @@
                 </a>
                 <ul class="sidebar-submenu">
                     <li>
-                        <a  href="{{route('admin.manage_causes_category')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Causes Category</a>
+                        <a  href="{{route('admin.manage_causes')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Manage Causes</a>
                     </li>
                 </ul>
             </li>
