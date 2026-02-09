@@ -81,7 +81,8 @@ class CausesController extends Controller{
                 'title' => 'required',
             ]));
         }else{
-            return view('admin.causes.add_causes');
+            $category = CausesCategory::all();
+            return view('admin.causes.add_causes',compact('category'));
         }
     }
 }
