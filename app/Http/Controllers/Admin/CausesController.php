@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 
 class CausesController extends Controller{
     
+public function causes_category(){
+    return view('admin.causes.causes_category');
+}
     public function manage_causes(Request $request){
         $keyFeature = array();
         return view('admin.causes.manage_causes',compact('keyFeature'));
