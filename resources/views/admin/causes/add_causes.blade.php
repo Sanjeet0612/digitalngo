@@ -181,7 +181,7 @@
                                 </div>
 
                                 <div>
-                                    <label class="form-label fw-bold text-neutral-900">Upload Image (500 Kb) <span class="text-danger-600">*</span></label>
+                                    <label class="form-label fw-bold text-neutral-900">Upload Image (500 Kb)  <span class="text-danger-600">*</span></label>
                                     <div class="upload-image-wrapper">
                                         <div class="uploaded-img d-none position-relative h-160-px w-100 border input-form-light radius-8 overflow-hidden border-dashed bg-neutral-50">
                                             <button type="button" class="uploaded-img__remove position-absolute top-0 end-0 z-1 text-2xxl line-height-1 me-8 mt-8 d-flex bg-danger-600 w-40-px h-40-px justify-content-center align-items-center rounded-circle">
