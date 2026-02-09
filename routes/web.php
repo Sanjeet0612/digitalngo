@@ -46,8 +46,13 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/causes/{slug}', 'causes')->name('causes');
     Route::get('/cause-category/{slug}', 'cause_category')->name('cause_category');
     Route::get('/causes-donation/{slug}', 'causes_donation')->name('causes_donation');
-    Route::get('/private-image/{filename}', [FileController::class, 'show'])
-    ->name('private.image');
+    Route::get('/private-image/{filename}', function ($filename) {
+        $path = storage_path('app/private/uploads/' . $filename);
+        if(!file_exists($path)) {
+            abort(404);
+        }
+        return response()->file($path);
+    });
     
 
     
