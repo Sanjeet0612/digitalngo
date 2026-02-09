@@ -88,14 +88,12 @@
                                         @endforeach
                                     </select>
                                 </div>
-
-                                
                             </div>
 
                             <div class="row">
                                 <div class="col-sm-4">
                                     <label class="form-label fw-bold text-neutral-900" for="title">Name: </label>
-                                    <input type="text" name="uname" class="form-control border border-neutral-200 radius-8" id="uname" placeholder="Enter User Name">
+                                    <input type="text" name="name" class="form-control border border-neutral-200 radius-8" id="uname" placeholder="Enter User Name">
                                 </div>
 
                                 <div class="col-sm-4">
@@ -112,7 +110,7 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <label class="form-label fw-bold text-neutral-900" for="title">Total Amount: <span class="text-danger-600">*</span> </label>
-                                    <input type="text" name="amount" class="form-control border border-neutral-200 radius-8" id="amount" placeholder="Enter Amount">
+                                    <input type="text" name="tot_amt" class="form-control border border-neutral-200 radius-8" id="amount" placeholder="Enter Amount">
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="mb-20">
@@ -122,6 +120,17 @@
                                             <option value="0">Deactive</option>
                                         </select>
                                     </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label class="form-label fw-bold text-neutral-900" for="title">Start Date: <span class="text-danger-600">*</span> </label>
+                                    <input type="date" name="start_date" class="form-control border border-neutral-200 radius-8" id="start_date" placeholder="Start Date">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label class="form-label fw-bold text-neutral-900" for="title">End Date: <span class="text-danger-600">*</span> </label>
+                                    <input type="date" name="end_date" class="form-control border border-neutral-200 radius-8" id="end_date" placeholder="End Date">
                                 </div>
                             </div>
                                 
