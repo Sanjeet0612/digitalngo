@@ -84,6 +84,11 @@
                                     {!!$causesDetail->description!!}
                                 </div>
 
+                                @php
+                                    $shareUrl = urlencode(url()->current());
+                                    $shareTitle = urlencode($causesDetail->title ?? 'Check this out');
+                                @endphp
+
                                 <div class="share-this-wrap">
                                     <div class="share-line">
                                         <div class="pr-4">
@@ -91,11 +96,36 @@
                                         </div>
                                         <div class="pl-4">
                                             <ul class="list-unstyled list-inline mb-0">
-                                                <li class="list-inline-item"><a href="#"><i class="icofont-facebook"></i></a></li>
-                                                <li class="list-inline-item"><a href="#"><i class="icofont-twitter"></i></a></li>
-                                                <li class="list-inline-item"><a href="#"><i class="icofont-instagram"></i></a></li>
-                                                <li class="list-inline-item"><a href="#"><i class="icofont-behance"></i></a></li>
-                                                <li class="list-inline-item"><a href="#"><i class="icofont-youtube-play"></i></a></li>
+                                                 <!-- Facebook -->
+                                                <li class="list-inline-item">
+                                                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ $shareUrl }}" target="_blank">
+                                                        <i class="icofont-facebook"></i>
+                                                    </a>
+                                                </li>
+                                                <!-- Twitter / X -->
+                                                <li class="list-inline-item">
+                                                    <a href="https://twitter.com/intent/tweet?url={{ $shareUrl }}&text={{ $shareTitle }}" target="_blank">
+                                                        <i class="icofont-twitter"></i>
+                                                    </a>
+                                                </li>
+                                                <!-- WhatsApp -->
+                                                <li class="list-inline-item">
+                                                    <a href="https://wa.me/?text={{ $shareTitle }}%20{{ $shareUrl }}" target="_blank">
+                                                        <i class="icofont-whatsapp"></i>
+                                                    </a>
+                                                </li>
+                                                <!-- LinkedIn -->
+                                                <li class="list-inline-item">
+                                                    <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ $shareUrl }}" target="_blank">
+                                                        <i class="icofont-linkedin"></i>
+                                                    </a>
+                                                </li>
+                                                 <!-- Copy Link -->
+                                                <li class="list-inline-item">
+                                                    <a href="javascript:void(0)" onclick="copyShareLink()">
+                                                        <i class="icofont-copy"></i>
+                                                    </a>
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
@@ -150,76 +180,28 @@
                                     <h3 class="widget-title">Recent Causes</h3>
 
                                     <!-- Causes Wrap -->
+                                    @foreach($allCauses as $allCausesVal)
                                     <div class="causes-wrap">
                                         <div class="img-wrap">
-                                            <a href="causes-single.html"><img src="assets/images/causes/causes_img_3.jpg" alt=""></a>
+                                            <a href="{{route('causes',$allCausesVal->slug)}}"><img src="{{asset('storage/'.$allCausesVal->banner)}}" alt=""></a>
                                             <div class="raised-progress">
                                                 <div class="skillbar-wrap">
                                                     <div class="clearfix">
-                                                        <span class="txt-orange">$10086</span> raised of <span class="txt-green">$15000</span>
+                                                        <span class="txt-orange">&#8377;{{$allCausesVal->received_amt}}</span> raised of <span class="txt-green">&#8377;{{$allCausesVal->tot_amt}}</span>
                                                     </div>           
                                                 </div>
                                             </div>
                                         </div>
-
                                         <div class="content-wrap">
-                                            <span class="tag">Health</span>
-                                            <h3><a href="causes-single.html">Supply Water For Good Health</a></h3>
+                                            <span class="tag">{{ucfirst($allCausesVal->couses_cat_name)}}</span>
+                                            <h3><a href="{{route('causes',$allCausesVal->slug)}}">{{$allCausesVal->title}}</a></h3>
                                             <div class="text-md-right">
-                                                <a href="causes-single.html" class="read-more-line"><span>Read More</span></a>
+                                                <a href="{{route('causes',$allCausesVal->slug)}}" class="read-more-line"><span>Read More</span></a>
                                             </div>
                                         </div>
 
                                     </div>
-                                    <!-- Causes Wrap -->
-
-                                    <!-- Causes Wrap -->
-                                    <div class="causes-wrap">
-                                        <div class="img-wrap">
-                                            <a href="causes-single.html"><img src="assets/images/causes/causes_img_2.jpg" alt=""></a>
-                                            <div class="raised-progress">
-                                                <div class="skillbar-wrap">
-                                                    <div class="clearfix">
-                                                        <span class="txt-orange">$10086</span> raised of <span class="txt-green">$15000</span>
-                                                    </div>           
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="content-wrap">
-                                            <span class="tag">People</span>
-                                            <h3><a href="causes-single.html">Help For Homeless People</a></h3>
-                                            <div class="text-md-right">
-                                                <a href="causes-single.html" class="read-more-line"><span>Read More</span></a>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <!-- Causes Wrap -->
-
-                                    <!-- Causes Wrap -->
-                                    <div class="causes-wrap">
-                                        <div class="img-wrap">
-                                            <a href="causes-single.html"><img src="assets/images/causes/causes_img_6.jpg" alt=""></a>
-                                            <div class="raised-progress">
-                                                <div class="skillbar-wrap">
-                                                    <div class="clearfix">
-                                                        <span class="txt-orange">$10086</span> raised of <span class="txt-green">$15000</span>
-                                                    </div>           
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="content-wrap">
-                                            <span class="tag">Health</span>
-                                            <h3><a href="causes-single.html">Help From Natural
-                                                Disaster</a></h3>
-                                            <div class="text-md-right">
-                                                <a href="causes-single.html" class="read-more-line"><span>Read More</span></a>
-                                            </div>
-                                        </div>
-
-                                    </div>
+                                    @endforeach
                                     <!-- Causes Wrap -->
                                 </div>
                                 <!-- Widget Wrap -->
@@ -261,12 +243,11 @@
                                     <h3 class="widget-title">Categories</h3>
                                     
                                     <div class="blog-list-categories">
-                                        <ul class="list-unstyled icons-listing theme-orange mb-0">                                        
-                                            <li><a href="#">Charity</a></li>
-                                            <li><a href="#">Healthcare</a></li>
-                                            <li><a href="#">Senior</a></li>
-                                            <li><a href="#">Children Citizens</a></li>
-                                            <li><a href="#">Environment</a></li>                                        
+                                        <ul class="list-unstyled icons-listing theme-orange mb-0"> 
+                                            @foreach($allCat as $allCatVal)                                       
+                                            <li><a href="{{route('cause_category',$allCatVal->slug)}}">{{$allCatVal->cat_name}}</a></li>
+                                            @endforeach
+                                                                         
                                         </ul>
                                     </div>
                                 </div>
