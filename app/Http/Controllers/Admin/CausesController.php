@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Models\Admin\CausesCategory;
+use App\Models\Admin\Causes;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -77,9 +78,44 @@ class CausesController extends Controller{
     public function add_cause(Request $request){
 
         if($request->isMethod('post')){
-            if($request->validate([
-                'title' => 'required',
-            ]));
+            $request->validate([
+                'title'         => 'required|string|max:255',
+                'name'          => 'required|string|max:255',
+                'phone'         => 'required|string|max:20',
+                'email'         => 'required|email',
+                'tot_amt'       => 'required|numeric|min:0',
+                'start_date'    => 'required|date',
+                'end_date'      => 'required|date|after_or_equal:start_date',
+                'status'        => 'required|boolean',
+            ]);
+
+            $slug = Str::slug($request->title);
+            $count = Causes::where('slug', 'LIKE', "{$slug}%")->count();
+            if($count){
+                $slug .= '-' . $count;
+            }
+
+            $catidName = explode(',',$request->cat_name);
+            $catId = $catidName[0];
+            $catName = $catidName[1];
+
+            Causes::create([
+                'causes_cat_id'   => $catId,
+                'couses_cat_name' => $catName, // optional snapshot
+                'title'           => $request->title,
+                'slug'            => $slug,
+                'name'            => $request->name,
+                'phone'           => $request->phone,
+                'email'           => $request->email,
+                'tot_amt'         => $request->tot_amt,
+                'received_amt'    => 0,
+                'start_date'      => $request->start_date,
+                'end_date'        => $request->end_date,
+                'status'          => $request->status,
+            ]);
+
+            return redirect()->back()->with('success', 'Cause created successfully');
+
         }else{
             $category = CausesCategory::all();
             return view('admin.causes.add_causes',compact('category'));
