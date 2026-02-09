@@ -71,7 +71,7 @@
                             <h6 class="text-xl mb-0">Add New Causes</h6>
                         </div>
                         <div class="card-body p-24">
-                            <form id="myForm" action="{{route('admin.add_causes')}}" method="post" class="d-flex flex-column gap-20" enctype="multipart/form-data">
+                            <form id="myForm" action="{{route('admin.add_cause')}}" method="post" class="d-flex flex-column gap-20" enctype="multipart/form-data">
                                 @csrf
                             <div class="row">
                                 <div class="col-sm-6">
