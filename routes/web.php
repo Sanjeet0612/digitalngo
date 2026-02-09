@@ -198,8 +198,8 @@ Route::prefix('admin')->group(function () {
         Route::put('/update-partners/{id}', [PartnerController::class, 'update_partners'])->name('admin.update_partners');
         Route::get('/delete-partner/{id}', [PartnerController::class, 'delete_partner'])->name('admin.delete_partner');
         // Causes
-        Route::get('manage-causes-category', [CausesController::class, 'manage_causes_category'])->name('admin.manage_causes_category');
-        Route::match(['get', 'post'], '/add-cause-category', [CausesController::class, 'add_cause_category'])->name('admin.add_cause_category');
+        Route::get('manage-causes', [CausesController::class, 'manage_causes'])->name('admin.manage_causes');
+        Route::match(['get', 'post'], '/add-cause', [CausesController::class, 'add_cause'])->name('admin.add_cause');
         
 
         
