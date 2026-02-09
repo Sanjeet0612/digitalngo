@@ -71,12 +71,13 @@
                             <h6 class="text-xl mb-0">Add New Causes</h6>
                         </div>
                         <div class="card-body p-24">
-                            <form id="myForm" action="{{route('admin.add_cause')}}" method="post" class="d-flex flex-column gap-20" enctype="multipart/form-data">
+                            <form id="myForm" action="{{route('admin.update_cause',$causesData->id)}}" method="post" class="d-flex flex-column gap-20" enctype="multipart/form-data">
                                 @csrf
+                                @method('PUT')
                             <div class="row">
                                 <div class="col-sm-6">
                                     <label class="form-label fw-bold text-neutral-900" for="title">Cause Title:<span class="text-danger-600">*</span> </label>
-                                    <input type="text" name="title" class="form-control border border-neutral-200 radius-8" id="title" placeholder="Enter Title">
+                                    <input type="text" name="title" value="{{$causesData->title}}" class="form-control border border-neutral-200 radius-8" id="title" placeholder="Enter Title">
                                 </div>
 
                                 
@@ -84,7 +85,7 @@
                                     <label class="form-label fw-bold text-neutral-900" for="title">Category:<span class="text-danger-600">*</span> </label>
                                     <select  name="cat_name" class="form-control border border-neutral-200 radius-8" id="cat_name" >
                                         @foreach($category as $categoryVal)
-                                        <option value="{{$categoryVal->id}},{{$categoryVal->slug}}">{{$categoryVal->cat_name}}</option>
+                                        <option value="{{$categoryVal->id}},{{$categoryVal->slug}}" @if($causesData->causes_cat_id==$categoryVal->id) selected @endif>{{$categoryVal->cat_name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -93,31 +94,31 @@
                             <div class="row">
                                 <div class="col-sm-4">
                                     <label class="form-label fw-bold text-neutral-900" for="title">Name: </label>
-                                    <input type="text" name="name" class="form-control border border-neutral-200 radius-8" id="uname" placeholder="Enter User Name">
+                                    <input type="text" name="name" value="{{$causesData->name}}" class="form-control border border-neutral-200 radius-8" id="uname" placeholder="Enter User Name">
                                 </div>
 
                                 <div class="col-sm-4">
                                     <label class="form-label fw-bold text-neutral-900" for="title">Phone: </label>
-                                    <input type="text" name="phone" class="form-control border border-neutral-200 radius-8" id="phone" placeholder="Enter Phone No">
+                                    <input type="text" name="phone" value="{{$causesData->phone}}" class="form-control border border-neutral-200 radius-8" id="phone" placeholder="Enter Phone No">
                                 </div>
 
                                 <div class="col-sm-4">
                                     <label class="form-label fw-bold text-neutral-900" for="title">Email: </label>
-                                    <input type="text" name="email" class="form-control border border-neutral-200 radius-8" id="email" placeholder="Enter Email">
+                                    <input type="text" name="email" value="{{$causesData->email}}" class="form-control border border-neutral-200 radius-8" id="email" placeholder="Enter Email">
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="col-sm-6">
                                     <label class="form-label fw-bold text-neutral-900" for="title">Total Amount: <span class="text-danger-600">*</span> </label>
-                                    <input type="text" name="tot_amt" class="form-control border border-neutral-200 radius-8" id="amount" placeholder="Enter Amount">
+                                    <input type="text" name="tot_amt" value="{{$causesData->tot_amt}}" class="form-control border border-neutral-200 radius-8" id="amount" placeholder="Enter Amount">
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="mb-20">
                                         <label for="status" class="form-label fw-semibold text-primary-light text-sm mb-8">Status <span class="text-danger-600">*</span> </label>
                                         <select class="form-control radius-8 form-select" name="status" id="status">
-                                            <option value="1">Active</option>
-                                            <option value="0">Deactive</option>
+                                            <option value="1" @if($causesData->status==1) selected @endif >Active</option>
+                                            <option value="0" @if($causesData->status==0) selected @endif>Deactive</option>
                                         </select>
                                     </div>
                                 </div>
@@ -126,11 +127,11 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <label class="form-label fw-bold text-neutral-900" for="title">Start Date: <span class="text-danger-600">*</span> </label>
-                                    <input type="date" name="start_date" class="form-control border border-neutral-200 radius-8" id="start_date" placeholder="Start Date">
+                                    <input type="date" name="start_date" value="{{$causesData->start_date}}" class="form-control border border-neutral-200 radius-8" id="start_date" placeholder="Start Date">
                                 </div>
                                 <div class="col-sm-6">
                                     <label class="form-label fw-bold text-neutral-900" for="title">End Date: <span class="text-danger-600">*</span> </label>
-                                    <input type="date" name="end_date" class="form-control border border-neutral-200 radius-8" id="end_date" placeholder="End Date">
+                                    <input type="date" name="end_date" value="{{$causesData->end_date}}" class="form-control border border-neutral-200 radius-8" id="end_date" placeholder="End Date">
                                 </div>
                             </div>
                                 
@@ -188,7 +189,7 @@
                                             <!-- Editor Toolbar Start -->
 
                                             <!-- Editor start -->
-                                            <div id="editor"></div>
+                                            <div id="editor">{!! $causesData->description !!}</div>
                                             <input type="hidden" name="description" id="editdesc">
                                             <!-- Edit End -->
                                         </div>
@@ -197,6 +198,9 @@
 
                                 <div>
                                     <label class="form-label fw-bold text-neutral-900">Upload Image (500 Kb)  <span class="text-danger-600">*</span></label>
+                                    @if(!empty($causesData->banner))
+                                        <img src="{{asset('storage/'.$causesData->banner)}}" style="width:100px;">
+                                    @endif
                                     <div class="upload-image-wrapper">
                                         <div class="uploaded-img d-none position-relative h-160-px w-100 border input-form-light radius-8 overflow-hidden border-dashed bg-neutral-50">
                                             <button type="button" class="uploaded-img__remove position-absolute top-0 end-0 z-1 text-2xxl line-height-1 me-8 mt-8 d-flex bg-danger-600 w-40-px h-40-px justify-content-center align-items-center rounded-circle">
