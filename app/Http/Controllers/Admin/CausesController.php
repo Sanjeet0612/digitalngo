@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 use App\Models\Admin\CausesCategory;
 use App\Models\Admin\Causes;
+use App\Models\CausesDonation;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -198,5 +199,15 @@ class CausesController extends Controller{
         $category = Causes::findOrFail($id);
         $category->delete();
         return redirect('admin/manage-causes/')->with('success', 'Causes deleted successfully!');
+    }
+    // Causes Donation
+    public function causes_donation(Request $request){
+        $alldonation = CausesDonation::orderBy('donation_date', 'desc')->get();
+        return view('admin.causes.causes_donation',compact('alldonation'));
+    }
+
+    public function edit_donation($id){
+        $donationDetail = CausesDonation::where('id',$id)->first();
+        return view('admin.causes.edit_donation',compact('donationDetail'));
     }
 }
