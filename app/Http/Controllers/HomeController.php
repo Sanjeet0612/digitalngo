@@ -197,6 +197,9 @@ class HomeController extends Controller{
     public function add_causes_donation(Request $request){
         if($request->isMethod('post')){
             print_r($_POST);
+            $rowid = base64_decode($request->rid);
+
+            
         }
     }
     public function cause_category($slug){
