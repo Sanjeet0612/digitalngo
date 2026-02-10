@@ -1,5 +1,35 @@
 
 @include('front.includes.new_header')
+<style>
+    <style>
+.skillbar {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 35px;
+    background: #eee;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.skillbar-bar {
+    height: 100%;
+    width: 0;
+    background: #4CAF50;
+    border-radius: 20px;
+    transition: width 1.5s ease-in-out;
+}
+
+.skillbar-percent {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    z-index: 2;
+    color: #000;
+}
+</style>
+
+</style>    
  <!-- Page Breadcrumbs Start -->
     <section class="breadcrumbs-page-wrap">
         <div class="bg-fixed pos-rel breadcrumbs-page">
@@ -331,5 +361,13 @@ document.addEventListener("DOMContentLoaded", function () {
         secondsEl.innerHTML = seconds < 10 ? '0' + seconds : seconds;
 
     }, 1000);
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll('.skillbar').forEach(function (bar) {
+        let percent = bar.getAttribute('data-percent');
+        bar.querySelector('.skillbar-bar').style.width = percent;
+    });
 });
 </script>
