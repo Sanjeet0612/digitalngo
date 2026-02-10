@@ -194,6 +194,11 @@ class HomeController extends Controller{
         $causesDetail = Causes::where('slug', $slug)->where('status',1)->firstOrFail(); // only active Causes
         return view('front.causes_donation_form',compact('causesDetail'));
     }
+    public function add_causes_donation(Request $request){
+        if($request->isMethod('post')){
+            print_r($_POST);
+        }
+    }
     public function cause_category($slug){
 
     }
