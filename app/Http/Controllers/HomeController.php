@@ -186,10 +186,9 @@ class HomeController extends Controller{
             $allDoner = CausesDonation::select('name',DB::raw('SUM(donation_amt) as total_amount'))->where('causes_id', $causeId)->where('is_paid', 1)->where('status', 1)->groupBy('name')->orderByDesc('total_amount')->get();
             return view('front.causes_detail',compact('causesDetail','allCauses','allCat','allDoner'));
         }else{
-           $allCauses    = Causes::where('status', 1)->orderBy('id', 'desc')->take(3)->get(); 
+           $allCauses    = Causes::where('status', 1)->orderBy('id', 'desc')->get(); 
            return view('front.all_causes',compact('allCauses'));
         }
-        
     }
    
     public function causes_donation($slug){
@@ -244,7 +243,8 @@ class HomeController extends Controller{
         }
     }
     public function cause_category($slug){
-
+        $allCauses    = Causes::where('couses_cat_name', $slug)->where('status', 1)->orderBy('id', 'desc')->get(); 
+        return view('front.all_causes',compact('allCauses'));
     }
     
 
