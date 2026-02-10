@@ -50,7 +50,8 @@
                                             S.L
                                         </div>
                                     </th>
-                                    <th scope="col">Created Date</th>
+                                    <th scope="col">Donation Date</th>
+                                    <th scope="col">Donation For</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Phone</th>
                                     <th scope="col">UTR No.</th>
@@ -72,6 +73,7 @@
                                         </div>
                                     </td>
                                     <td>{{$allcatVal->donation_date}}</td>
+                                    <td>{{$allcatVal->cause->title}}</td>
                                     <td>{{$allcatVal->name}}</td>
                                     <td>{{$allcatVal->phone}}</td>
                                     <td>{{$allcatVal->utr_number}}</td>
