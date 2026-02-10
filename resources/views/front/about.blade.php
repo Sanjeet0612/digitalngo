@@ -44,7 +44,7 @@
                         </div>    
                         
                         <div class="d-flex">
-                            <a class="btn btn-default mr-3" href="become-volunteers.html">Join Now</a>
+                            <a class="btn btn-default mr-3" href="{{route('donation')}}">Join Now</a>
                             <div class="about-phone">
                                 <i data-feather="phone-call"></i>
                                 Conatct Us <br> +91 8478884111
@@ -205,7 +205,7 @@
                         </h1>
                     </div>
                     <div class="col-lg-8 col-md-6 text-md-right btn-team">
-                        <a href="management.php" class="btn btn-outline-dark">View All Members</a>
+                        <a href="{{route('management')}}" class="btn btn-outline-dark">View All Members</a>
                     </div>
                 </div>
 
@@ -251,7 +251,7 @@
                                         Mahror Foundation 
                                     </h1>
                                     <p>Mahror foundation was started in 2022 with a initiative to contribute in making our planet more better and healthier. We are a team who is working together towards environmental wellness we are planting trees and hope to inspire more people to join in this effort of keeping our planet healthy and green. For any query reach out to us we will be glad to help you.</p>
-                                    <a class="btn btn-default" href="our-faqs.html">Ask It Now</a>
+                                    <a class="btn btn-default" href="{{route('our-faqs')}}">Ask It Now</a>
                                 </div>
         
                                 <!-- Spacer For Medium -->
