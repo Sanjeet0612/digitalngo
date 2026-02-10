@@ -217,23 +217,19 @@
                                     
                                     <div class="our-donators">
                                         <ul class="list-unstyled">
+                                            @foreach($allDoner as $allDonerVal)
                                             <li>
-                                                <img src="assets/images/sidebar_thumb_1.jpg" alt="">
+                                                <img src="{{url('/')}}/assets/images/profile.png" alt="" style="width:50px;">
                                                 <div>
-                                                    <h4 class="name">Marty Kamson</h4>
-                                                    <div class="money">Raised $4500</div>
+                                                    <h4 class="name">{{$allDonerVal->name}}</h4>
+                                                    <div class="money">Raised ₹{{$allDonerVal->total_amount}}</div>
                                                 </div>
                                             </li>
-                                            <li>
-                                                <img src="assets/images/sidebar_thumb_2.jpg" alt="">
-                                                <div>
-                                                    <h4 class="name">Sofia Lorence</h4>
-                                                    <div class="money">Raised $2900</div>
-                                                </div>
-                                            </li>
+                                            @endforeach
+                                           
                                         </ul>
 
-                                        <a href="donation-page.html" class="btn-block btn btn-default">Become Donators</a>
+                                        <a href="{{route('causes_donation',$causesDetail->slug)}}" class="btn-block btn btn-default">Become Donators</a>
                                     </div>
                                 </div>
                                 <!-- Widget Wrap -->
