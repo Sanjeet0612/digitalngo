@@ -221,7 +221,7 @@ class HomeController extends Controller{
                 $screenshotPath = $request->file('screenshot')->store('donations/screenshots', 'public');
             }
 
-            DB::transaction(function () use ($request, $rowid,$screenshotPath) {
+            DB::transaction(function () use ($request,$rowid,$screenshotPath) {
                 // Donation insert
                 CausesDonation::create([
                     'causes_id'     => $rowid,
