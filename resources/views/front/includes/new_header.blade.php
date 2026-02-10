@@ -178,8 +178,6 @@
                     <ul class="dropdown-menu">                  
                         <li><a class="dropdown-item" href="{{url('/')}}/management">Management Teams</a></li>
                         <li><a class="dropdown-item" href="{{url('/')}}/volunteers">Volunteers Teams</a></li>
-
-                        <li><a class="dropdown-item" href="{{url('/')}}/function-features">Function / features</a></li>                
                         <!--<li><a class="dropdown-item" href="our-faqs.php">Our Faq's</a></li> -->            
                     </ul>
                 </li>
