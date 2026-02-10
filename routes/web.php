@@ -54,6 +54,8 @@ Route::controller(HomeController::class)->group(function () {
         }
         return response()->file($path);
     });
+    Route::get('/our-faqs', 'our_faqs')->name('our-faqs');
+    
     
 
     
