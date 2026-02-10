@@ -46,7 +46,7 @@
                             <form action="{{route('add_causes_donation')}}" method="post" enctype="multipart/form-data">
                                 @csrf
                             <div class="row">
-                     
+                                <input type="hidden" name="rid" value="{{base64_encode($causesDetail->id)}}">
                                 <div class="col-md-12">
                                    <div class="border-top mb-4"></div>                                    
                                 </div>
