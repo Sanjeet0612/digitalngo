@@ -96,7 +96,6 @@ class HomeController extends Controller{
         $totalComments = BlogComment::where('blog_id', $blog->id)->where('status', 1)->count();
         $allCauses     = Causes::where('status', 1)->orderBy('id', 'desc')->take(3)->get();
         $title = 'Blog';
-        
         return view('front.blog_detail', compact('blog','latestblogs','categories','tags','comments','totalComments','allCauses'));
     }
     public function contact(Request $request){
@@ -183,7 +182,9 @@ class HomeController extends Controller{
             $allCat       = CausesCategory::where('status', 1)->orderBy('cat_name', 'asc')->get();
             $allCauses    = Causes::where('status', 1)->orderBy('id', 'desc')->take(3)->get();
             $causesDetail = Causes::where('slug', $slug)->where('status',1)->firstOrFail(); // only active Causes
-            return view('front.causes_detail',compact('causesDetail','allCauses','allCat'));
+            $causeId  = $causesDetail->id;
+            $allDoner = CausesDonation::select('name',DB::raw('SUM(donation_amt) as total_amount'))->where('causes_id', $causeId)->where('is_paid', 1)->where('status', 1)->groupBy('name')->orderByDesc('total_amount')->get();
+            return view('front.causes_detail',compact('causesDetail','allCauses','allCat','allDoner'));
         }else{
            $allCauses    = Causes::where('status', 1)->orderBy('id', 'desc')->take(3)->get(); 
            return view('front.all_causes',compact('allCauses'));
