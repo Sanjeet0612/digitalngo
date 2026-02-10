@@ -88,15 +88,16 @@ class HomeController extends Controller{
         return view('front.articles',compact('allBlog','categories','latestblogs','tags'));
     }
     public function artical_detail($slug){
-        $blog = Blog::where('slug', $slug)->where('status', 'published')->firstOrFail(); // only active blogs
-        $latestblogs = Blog::where('status', 'published')->where('created_at', '>=', now()->subDays(7))->orderByDesc('created_at')->get();
-        $categories = Blog::where('status', 'published')->select('category', DB::raw('COUNT(*) as total'))->groupBy('category')->orderByDesc('total')->get();
-        $tags = Blog::where('status', 'published')->selectRaw('tags, COUNT(*) as total')->groupBy('tags')->orderByDesc('total')->get();
-        $comments = BlogComment::where('blog_id', $blog->id)->whereNull('parent_id')->where('status', 1)->with(['user', 'replies.user'])->latest()->get();
+        $blog          = Blog::where('slug', $slug)->where('status', 'published')->firstOrFail(); // only active blogs
+        $latestblogs   = Blog::where('status', 'published')->where('created_at', '>=', now()->subDays(7))->orderByDesc('created_at')->get();
+        $categories    = Blog::where('status', 'published')->select('category', DB::raw('COUNT(*) as total'))->groupBy('category')->orderByDesc('total')->get();
+        $tags          = Blog::where('status', 'published')->selectRaw('tags, COUNT(*) as total')->groupBy('tags')->orderByDesc('total')->get();
+        $comments      = BlogComment::where('blog_id', $blog->id)->whereNull('parent_id')->where('status', 1)->with(['user', 'replies.user'])->latest()->get();
         $totalComments = BlogComment::where('blog_id', $blog->id)->where('status', 1)->count();
+        $allCauses     = Causes::where('status', 1)->orderBy('id', 'desc')->take(3)->get();
         $title = 'Blog';
         
-        return view('front.blog_detail', compact('blog','latestblogs','categories','tags','comments','totalComments'));
+        return view('front.blog_detail', compact('blog','latestblogs','categories','tags','comments','totalComments','allCauses'));
     }
     public function contact(Request $request){
         if($request->isMethod('post')){
@@ -180,7 +181,6 @@ class HomeController extends Controller{
     public function causes($slug=null){
         if(!empty($slug)){
             $allCat       = CausesCategory::where('status', 1)->orderBy('cat_name', 'asc')->get();
-            $allCauses    = Causes::where('status', 1)->orderBy('id', 'desc')->take(3)->get();
             $allCauses    = Causes::where('status', 1)->orderBy('id', 'desc')->take(3)->get();
             $causesDetail = Causes::where('slug', $slug)->where('status',1)->firstOrFail(); // only active Causes
             return view('front.causes_detail',compact('causesDetail','allCauses','allCat'));
