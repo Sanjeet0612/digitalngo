@@ -165,3 +165,11 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 1000);
 });
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll('.skillbar').forEach(function (bar) {
+        let percent = bar.getAttribute('data-percent');
+        bar.querySelector('.skillbar-bar').style.width = percent;
+    });
+});
+</script>
