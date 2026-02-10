@@ -1,35 +1,6 @@
 
 @include('front.includes.new_header')
-<style>
-    <style>
-.skillbar {
-    position: relative;
-    display: block;
-    width: 100%;
-    height: 35px;
-    background: #eee;
-    border-radius: 20px;
-    overflow: hidden;
-}
-
-.skillbar-bar {
-    height: 100%;
-    width: 0;
-    background: #4CAF50;
-    border-radius: 20px;
-    transition: width 1.5s ease-in-out;
-}
-
-.skillbar-percent {
-    position: absolute;
-    right: 10px;
-    top: 5px;
-    z-index: 2;
-    color: #000;
-}
-</style>
-
-</style>    
+  
  <!-- Page Breadcrumbs Start -->
     <section class="breadcrumbs-page-wrap">
         <div class="bg-fixed pos-rel breadcrumbs-page">
@@ -105,7 +76,7 @@
                                                     <div class="seconds_text">Seconds</div>
                                                 </li>
                                             </ul>
-                                            <a class="btn-outline-default btn" href="donation-page.html">Donate Now</a>
+                                            <a class="btn-outline-default btn" href="{{route('causes_donation',$causesDetail->slug)}}">Donate Now</a>
                                         </div>
                                     </div>
                                 </div>
