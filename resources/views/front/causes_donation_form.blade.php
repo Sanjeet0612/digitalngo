@@ -81,7 +81,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <span class="file-placeholder">Upload Screenshot</span>
-                                        <input type="file" class="form-control" name="refrer_code" id="security" placeholder="Upload Screenshot">
+                                        <input type="file" class="form-control" name="screenshot" id="security" placeholder="Upload Screenshot">
                                     </div>
                                 </div>
                                 
