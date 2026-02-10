@@ -213,18 +213,24 @@ Route::prefix('admin')->group(function () {
         Route::get('/edit-our-partner/{id}', [PartnerController::class, 'edit_our_partner'])->name('admin.edit_our_partner');
         Route::put('/update-partners/{id}', [PartnerController::class, 'update_partners'])->name('admin.update_partners');
         Route::get('/delete-partner/{id}', [PartnerController::class, 'delete_partner'])->name('admin.delete_partner');
-        // Causes
+        // Causes Category
         Route::get('causes-category', [CausesController::class, 'causes_category'])->name('admin.causes_category');
         Route::match(['get', 'post'], '/add-causes-category', [CausesController::class, 'add_causes_category'])->name('admin.add_causes_category');
         Route::get('/edit-causes-category/{id}', [CausesController::class, 'edit_causes_category'])->name('admin.edit_causes_category');
         Route::put('/update-causes-category/{id}', [CausesController::class, 'update_causes_category'])->name('admin.update_causes_category');
         Route::get('/delete-causes-category/{id}', [CausesController::class, 'delete_causes_category'])->name('admin.delete_causes_category');
-
+        // Causes
         Route::get('manage-causes', [CausesController::class, 'manage_causes'])->name('admin.manage_causes');
         Route::match(['get', 'post'], '/add-cause', [CausesController::class, 'add_cause'])->name('admin.add_cause');
         Route::get('edit-causes/{id}', [CausesController::class, 'edit_causes'])->name('admin.edit_causes');
         Route::put('/update-cause/{id}', [CausesController::class, 'update_cause'])->name('admin.update_cause');
         Route::get('/delete-causes/{id}', [CausesController::class, 'delete_causes'])->name('admin.delete_causes');
+        // Causes Donation
+        Route::get('causes-donation', [CausesController::class, 'causes_donation'])->name('admin.causes_donation');
+        Route::get('edit-donation/{id}', [CausesController::class, 'edit_donation'])->name('admin.edit_donation');
+
+        
+        
 
         
 
