@@ -259,7 +259,9 @@ class HomeController extends Controller{
         $allCauses    = Causes::where('couses_cat_name', $slug)->where('status', 1)->orderBy('id', 'desc')->get(); 
         return view('front.all_causes',compact('allCauses'));
     }
-    
+    public function our_faqs(){
+        return view('front.our_faqs');
+    }
 
     public function askAi(){
         $response = Http::withToken(config('services.openai.key'))
