@@ -164,6 +164,17 @@ class HomeController extends Controller{
                 'refrer_code',
             ]);
             // default status (pending / success as per your logic)
+            $amt  = $request->package_amt;
+            if($amt==500){
+                $d_type = "Volunteers";
+            }else if($amt==1100){
+                $d_type = "Membership";
+            }else if($amt==100){
+                $d_type = "Donation for Plant";
+            }else{
+                $d_type = "null";
+            }
+            $data['d_type'] = $d_type; 
             $data['status'] = 1;
             GuestDonation::create($data);
             return redirect()->back()->with('success', 'Thank you! Your donation details have been submitted successfully.');
