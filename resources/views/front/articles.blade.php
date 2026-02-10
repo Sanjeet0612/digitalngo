@@ -190,7 +190,7 @@
                                         <div class="content">
                                             <i class="charity-donate_money"></i>
                                             <h3>Let Us Come Together To Make A Difference</h3>
-                                            <a href="donation-page.html" class="btn btn-secondary">Donate Now</a>
+                                            <a href="{{route('donation')}}" class="btn btn-secondary">Donate Now</a>
                                         </div>
                                     </div>
                                 </div>
