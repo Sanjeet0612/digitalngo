@@ -105,7 +105,7 @@
                             </h1>
                             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
                             <div class="d-flex align-items-center justify-content-between mt-4">
-                                <a href="donation-page.html" class="btn btn-default">Donate Now</a>
+                                <a href="{{route('donation')}}" class="btn btn-default">Donate Now</a>
                                 <div class="share-on-text">
                                     <strong>Share On</strong> <a href="#"><img src="assets/images/facebook.svg" alt=""></a> <a href="#"><img src="assets/images/instagram.svg" alt=""></a>
                                 </div>
@@ -118,7 +118,7 @@
         </section>
         <!-- Featured Cause End -->
          <!-- Our Partners Start -->
-        @include('front.includes.new_partner')
+        
         <!-- Our Partners End -->
     </main>
     <!-- Main Footer Start -->
