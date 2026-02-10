@@ -153,7 +153,7 @@
                                 <!-- Map Icons Start -->
                             </div>
 
-                            <a href="become-volunteers.php" class="btn btn-outline-default">Become a Volunteer</a>
+                            <a href="{{route('donation')}}"  class="btn btn-outline-default">Become a Volunteer</a>
                         </div>
                     </div>
 
@@ -177,7 +177,7 @@
                             <small>Make An Effort</small>
                             We Wish To Make Our Planet Green, Beacuse We have Only One 
                         </h1>
-                        <a href="donation-page.html" class="btn btn-default">Donate Now</a>
+                        <a href="{{route('donation')}}" class="btn btn-default">Donate Now</a>
                     </div>
                 </div>
             </div>
@@ -310,14 +310,12 @@
                         </div>    
                         
                         <div class="d-flex">
-                            <a class="btn btn-default mr-3" href="become-volunteers.html">Join Now</a>
+                            <a class="btn btn-default mr-3" href="{{route('donation')}}">Join Now</a>
                             <div class="about-phone">
                                 <i data-feather="phone-call"></i>
                                 Conatct Us <br> +91 8478884111
                             </div>
                         </div>
-
-
                     </div>
                 </div>
             </div>
@@ -343,47 +341,39 @@
                     }
                 </style>
                 <div class="owl-carousel owl-theme event-carousel" id="home-second-events">
-                <?php 
-                    /*
-                        $query_events = mysqli_query($con,"select * from event order by e_id desc");
-                        if(mysqli_num_rows($query_events)>0){
-                            while($row=mysqli_fetch_array($query_events)){
-                            $e_date = $row['e_date'];
-                            $date=date_create("$e_date"); */
-                    ?>   
+                
                     <!-- Events Alternate Wrap -->
+                     @foreach($allEvent as $allEventVal)
                     <div class="item">
                         <div class="event-wrap-alternate">
                             <!-- Event Wrap -->
                             <div class="img-wrap">
                                 <div class="date-box">
-                                <?php //echo date_format($date,"d"); ?> <span><?php //echo date_format($date,"M");?></span>
+                                {{ \Carbon\Carbon::parse($allEventVal['start_date'])->format('d')}} <span>{{ \Carbon\Carbon::parse($allEventVal['start_date'])->format('M')}}</span>
                                 </div>
-                                <a href="events_details.php?event=<?php //echo $row['e_id']; ?>"><img src="assets/images/events/<?php //echo $row['e_image']; ?>" alt=""></a>
+                                <a href="{{route('event-details',$allEventVal->slug)}}">
+                                    <img src="{{asset('storage/'.$allEventVal->banner)}}" alt="">
+                                </a>
                                 <div class="content-wrap">
-                                    <h3><a href="events_details.php?event=<?php //echo $row['e_id']; ?>"><?php //echo $row['e_title']; ?></a></h3>
+                                    <h3><a href="{{route('event-details',$allEventVal->slug)}}">{{$allEventVal['title']}}</a></h3>
                                     <div class="event-details">
-                                        <div><i data-feather="clock"></i> <?php //echo $row['e_time']; ?></div>
-                                        <div><i data-feather="map-pin"></i> <?php //echo $row['e_location']; ?></div>
+                                        <div><i data-feather="clock"></i> {{$allEventVal['e_time']}}</div>
+                                        <div><i data-feather="map-pin"></i> {{$allEventVal['address']}}</div>
                                     </div>
                                 </div>
                             </div>                            
                             <!-- Event Wrap -->
                         </div>
                     </div>
+                    @endforeach
                     <!-- Events Alternate Wrap -->
-                    <?php //}} ?>
                 </div>
-
                 <div class="text-center mt-5">
-                    <a href="events.php" class="btn btn-outline-dark">View All Events</a>
+                    <a href="{{route('events')}}" class="btn btn-outline-dark">View All Events</a>
                 </div>
             </div>
         </section>
         <!-- Event Style End -->
-
-          
-
         <!-- Testimonials Style Start -->
         <section class="wide-tb-100 pattern-green pb-0 home-second-testimonials-wrap">
             <div class="container">
@@ -484,33 +474,26 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="owl-carousel owl-theme" id="home-second-blog-post">
-                        <?php 
-                               /* $query_events = mysqli_query($con,"select * from blog order by b_id desc");
-                                if(mysqli_num_rows($query_events)>0){
-                                    while($row=mysqli_fetch_array($query_events)){
-                                    $e_date = $row['b_create_date'];
-                                    
-                                    $date=date_create("$e_date"); */
-                            ?>
+                       
                             <!-- Blog Post Slider Item -->
+                            @foreach($allBlog as $allBlogVal)
                             <div class="item">
                                 <div class="post-wrap">
                                     <div class="post-img">
-                                        <a href="blog-single.html"><img src="{{url('/')}}/front/assets/images/blogs/<?php //echo $row['b_image']; ?>" alt=""></a>
+                                        <a href="{{route('details',$allBlogVal->slug)}}"><img src="{{asset('storage/'.$allBlogVal->bgimage)}}" alt=""></a>
                                     </div>
                                     <div class="post-content">
-                                        <div class="post-date"><?php //echo date_format($date,"d, M, Y");?></div>
-                                        <h3 class="post-title"><a href="blog-single.html"><?php //echo $row['b_title']; ?></a></h3>
-                                        <div class="post-category"><?php //echo $row['b_cat_name']; ?></div>
+                                        <div class="post-date">{{ \Carbon\Carbon::parse($allBlogVal->start_date)->format('d M Y')}}</div>
+                                        <h3 class="post-title"><a href="{{route('details',$allBlogVal->slug)}}">{{$allBlogVal->title}}</a></h3>
+                                        <div class="post-category">{{ucfirst($allBlogVal->category)}}</div>
                                         <div class="text-md-right">
-                                            <a href="blog-single.html" class="read-more-line"><span>Read More</span></a>
+                                            <a href="{{route('details',$allBlogVal->slug)}}" class="read-more-line"><span>Read More</span></a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            @endforeach
                             <!-- Blog Post Slider Item -->
-                            <?php //} } ?>
-                        
                         </div>
                     </div>
                 </div>
