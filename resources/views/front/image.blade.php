@@ -33,27 +33,27 @@
                         @endforeach
                         </ul></center>
                     </div>
-                    <div class="portfolio-item row">
-                   
+                    
+                    <div class="portfolio-item row">-->
                         @foreach($gallImg as $gallImgVal)
-    <div class="item cat-{{ $gallImgVal->cat_id }} col-lg-3 col-md-4 col-6 col-sm">
-        <a href="{{ asset('storage/'.$gallImgVal->path) }}"
-           class="fancylight popup-btn"
-           data-fancybox="gallery">
+                            <div class="item cat-{{ $gallImgVal->cat_id }} col-lg-3 col-md-4 col-6 col-sm">
+                                <a href="{{ asset('storage/'.$gallImgVal->path) }}"
+                                class="fancylight popup-btn"
+                                data-fancybox="gallery">
 
-            @if($gallImgVal->gtype === 'photo')
-                <img class="img-fluid"
-                     src="{{ asset('storage/'.$gallImgVal->path) }}"
-                     alt="">
-            @else
-                <video class="img-fluid" controls>
-                    <source src="{{ asset('storage/'.$gallImgVal->path) }}" type="video/mp4">
-                </video>
-            @endif
+                                    @if($gallImgVal->gtype === 'photo')
+                                        <img class="img-fluid"
+                                            src="{{ asset('storage/'.$gallImgVal->path) }}"
+                                            alt="">
+                                    @else
+                                        <video class="img-fluid" controls>
+                                            <source src="{{ asset('storage/'.$gallImgVal->path) }}" type="video/mp4">
+                                        </video>
+                                    @endif
 
-        </a>
-    </div>
-@endforeach
+                                </a>
+                            </div>
+                        @endforeach
                        
                     </div>
                 </div> 
