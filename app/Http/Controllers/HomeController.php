@@ -11,6 +11,7 @@ use App\Models\Admin\Gallery;
 use App\Models\Admin\KeyFeature;
 use App\Models\Admin\CausesCategory;
 use App\Models\Admin\Causes;
+use App\Models\CausesDonation;
 use App\Models\Blog;
 use App\Models\BlogComment;
 use App\Models\GuestDonation;
@@ -195,11 +196,50 @@ class HomeController extends Controller{
         return view('front.causes_donation_form',compact('causesDetail'));
     }
     public function add_causes_donation(Request $request){
-        if($request->isMethod('post')){
-            print_r($_POST);
-            $rowid = base64_decode($request->rid);
 
-            
+        if($request->isMethod('post')){
+
+            $rowid = base64_decode($request->rid); 
+
+            $validator = Validator::make(
+                array_merge($request->all(), ['rowid' => $rowid]),
+                [
+                    'rowid'         => 'required|exists:tb_causes,id',
+                    'amount'        => 'required|numeric|min:1',
+                    'name'          => 'required|string|max:150',
+                    'email'         => 'nullable|email|max:150',
+                    'phone'         => 'required|string|max:20',
+                    'utrnumber'     => 'nullable|string|max:100|unique:tb_causes_donation,utr_number',
+                    'screenshot'    => 'nullable|image|mimes:jpg,jpeg,png|max:500',
+                ]
+            );
+
+            $validator->validate();
+
+            $screenshotPath = null;
+            if($request->hasFile('screenshot')) {
+                $screenshotPath = $request->file('screenshot')->store('donations/screenshots', 'public');
+            }
+
+            DB::transaction(function () use ($request, $rowid,$screenshotPath) {
+                // Donation insert
+                CausesDonation::create([
+                    'causes_id'     => $rowid,
+                    'donation_amt'  => $request->amount,
+                    'name'          => $request->name,
+                    'email'         => $request->email,
+                    'phone'         => $request->phone,
+                    'utr_number'    => $request->utrnumber,
+                    'screenshot'    => $screenshotPath,
+                    'donation_date' => now()->toDateString(),
+                    'status'        => 1,
+                ]);
+                // Causes table me amount add karo
+                Causes::where('id', $rowid)->increment('received_amt', $request->amount);
+            });
+
+            return redirect()->back()->with('success', 'Thank you for your donation 🙏');
+
         }
     }
     public function cause_category($slug){
