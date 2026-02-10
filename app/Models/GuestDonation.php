@@ -13,6 +13,7 @@ class GuestDonation extends Model
 
     protected $fillable = [
         'package_amt',
+        'd_type',
         'name',
         'phone',
         'email',
