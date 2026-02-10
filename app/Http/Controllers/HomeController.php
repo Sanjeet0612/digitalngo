@@ -232,10 +232,10 @@ class HomeController extends Controller{
                     'utr_number'    => $request->utrnumber,
                     'screenshot'    => $screenshotPath,
                     'donation_date' => now()->toDateString(),
-                    'status'        => 1,
+                    'status'        => 0,
                 ]);
                 // Causes table me amount add karo
-                Causes::where('id', $rowid)->increment('received_amt', $request->amount);
+                //Causes::where('id', $rowid)->increment('received_amt', $request->amount);
             });
 
             return redirect()->back()->with('success', 'Thank you for your donation 🙏');
