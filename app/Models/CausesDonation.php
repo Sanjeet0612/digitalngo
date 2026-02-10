@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Admin\Causes;
 
 class CausesDonation extends Model
 {
@@ -33,6 +34,6 @@ class CausesDonation extends Model
      */
     public function cause()
     {
-        return $this->belongsTo(Cause::class, 'causes_id');
+        return $this->belongsTo(Causes::class, 'causes_id');
     }
 }
