@@ -21,6 +21,11 @@ class CausesDonation extends Model
         'screenshot',
         'donation_date',
         'status',
+        'is_paid',
+    ];
+
+    protected $attributes = [
+        'is_paid' => 0,
     ];
 
     /**
