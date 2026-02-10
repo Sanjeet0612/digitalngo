@@ -25,8 +25,10 @@ use Illuminate\Http\Request;
 class HomeController extends Controller{
 
     public function index(Request $request){
-        $banners = Banner::where('status',1)->orderBy('sort_order','asc')->get();
-        return view('front.index',compact('banners'));
+        $banners  = Banner::where('status',1)->orderBy('sort_order','asc')->get();
+        $allEvent = Event::where('status',1)->orderBy('id','desc')->get();
+        $allBlog  = Blog::where('status','published')->get();
+        return view('front.index',compact('banners','allEvent','allBlog'));
     }
     public function about(Request $request){
         $allManagement = Management::where('team_type', 'management')->where('status', 1)->take(4)->get();
