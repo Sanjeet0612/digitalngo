@@ -44,6 +44,7 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/function-features', 'function_features')->name('function_features');
     Route::get('/causes', 'causes')->name('causes');
     Route::get('/causes/{slug}', 'causes')->name('causes');
+    Route::post('/add-causes-donation', 'add_causes_donation')->name('add_causes_donation');
     Route::get('/cause-category/{slug}', 'cause_category')->name('cause_category');
     Route::get('/causes-donation/{slug}', 'causes_donation')->name('causes_donation');
     Route::get('/private-image/{filename}', function ($filename) {
