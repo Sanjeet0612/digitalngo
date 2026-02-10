@@ -7,6 +7,7 @@ use App\Models\CausesDonation;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 
 class CausesController extends Controller{
     
@@ -207,7 +208,40 @@ class CausesController extends Controller{
     }
 
     public function edit_donation($id){
-        $donationDetail = CausesDonation::where('id',$id)->first();
+        $donationDetail = CausesDonation::with('cause:id,title')->where('id', $id)->first();
         return view('admin.causes.edit_donation',compact('donationDetail'));
+    }
+
+    public function update_donation(Request $request,$id){
+        $donationData = CausesDonation::findOrFail($id);
+
+        try{
+            DB::transaction(function () use ($request, $donationData) {
+                // Already paid protection
+                if($donationData->is_paid == 1 && $request->is_paid == 1) {
+                    throw new \Exception('Donation already marked as paid');
+                }
+                // Update donation table
+                $updated = $donationData->update([
+                    'is_paid' => $request->is_paid,
+                    'status'  => $request->status,
+                ]);
+                if(!$updated) {
+                    throw new \Exception('Failed to update donation record');
+                }
+                // Update causes table
+                if($request->is_paid == 1) {
+                    $incremented = Causes::where('id', $donationData->causes_id)->increment('received_amt', $donationData->donation_amt);
+                    if(!$incremented) {
+                        throw new \Exception('Failed to update causes received amount');
+                    }
+                }
+            });
+        }
+        catch (\Throwable $e){
+            // Transaction auto-rollback ho chuka hoga
+            return redirect()->back()->with('error', $e->getMessage());
+        }
+        return redirect()->back()->with('success', 'Donation & Cause updated successfully ✅');
     }
 }
