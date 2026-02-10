@@ -43,7 +43,7 @@
                                     @endforeach
                                 @endif
                             </div> 
-                            <form action="{{url('/')}}/donation" method="post">
+                            <form action="{{route('add_causes_donation')}}" method="post" enctype="multipart/form-data">
                                 @csrf
                             <div class="row">
                      
@@ -91,7 +91,7 @@
                                 
                                 
                                 <div class="col-md-12 mt-3">
-                                    <button class="btn btn-default" name="member" ><i data-feather="heart"></i> Join Now</button>
+                                    <button class="btn btn-default" name="submit" ><i data-feather="heart"></i> Join Now</button>
                                 </div>
                             </div>
                             </form>
