@@ -153,6 +153,19 @@
                 </ul>
             </li>
 
+            <li class="dropdown">
+                <a  href="javascript:void(0)">
+                    <i class="ri-heart-2-line"></i>
+                    <span>Donation</span>
+                </a>
+                <ul class="sidebar-submenu">
+                    <li>
+                        <a  href="{{route('admin.guest_donation')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Guest Donation</a>
+                    </li>
+                   
+                </ul>
+            </li>
+
             
 
            
