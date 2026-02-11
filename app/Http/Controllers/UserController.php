@@ -117,7 +117,9 @@ class UserController extends Controller{
     }
 
     public function new_user(Request $request){
-        $users = User::where('created_at', '>=', now()->subDay(15))->orderByDesc('created_at')->paginate(12); // 12 users per page
+        $user = auth()->user();
+        $refCode  = $user->refer_code; 
+        $users = User::where('sponsor_code',$refCode )->orderByDesc('created_at')->paginate(12); // 12 users per page
         return view('users.usersGrid', ['userlist'=>$users]);
     }
     public function view_profile(Request $request){
