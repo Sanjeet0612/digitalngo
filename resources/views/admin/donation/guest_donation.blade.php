@@ -54,7 +54,6 @@
                                     <th scope="col">Donation For</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Phone</th>
-                                    <th scope="col">UTR No.</th>
                                     <th scope="col">Donation</th>
                                     <th scope="col" class="text-center">Status</th>
                                     <th scope="col" class="text-center">Action</th>
@@ -72,12 +71,11 @@
                                             {{$i}}
                                         </div>
                                     </td>
-                                    <td>{{$allcatVal->donation_date}}</td>
+                                    <td>{{$allcatVal->created_at}}</td>
                                     <td>{{$allcatVal->d_type}}</td>
                                     <td>{{$allcatVal->name}}</td>
                                     <td>{{$allcatVal->phone}}</td>
-                                    <td>{{$allcatVal->utr_number}}</td>
-                                    <td>{{$allcatVal->donation_amt}}</td>
+                                    <td>{{$allcatVal->package_amt}}</td>
                                     <td class="text-center">
                                         @if($allcatVal->status==1)
                                         <span class="bg-success-focus text-success-600 border border-success-main px-24 py-4 radius-4 fw-medium text-sm">Active</span>
@@ -87,10 +85,10 @@
                                     </td>
                                     <td class="text-center">
                                         <div class="d-flex align-items-center gap-10 justify-content-center">
-                                            <a href="{{route('admin.edit_donation', $allcatVal->id)}}" class="bg-success-focus text-success-600 bg-hover-success-200 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle">
+                                            <a href="{{route('admin.edit_guest_donation', $allcatVal->id)}}" class="bg-success-focus text-success-600 bg-hover-success-200 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle">
                                                 <iconify-icon icon="lucide:edit" class="menu-icon"></iconify-icon>
                                             </a>
-                                            <a href="{{route('admin.delete_causes_category', $allcatVal->id)}}" class="bg-danger-focus bg-hover-danger-200 text-danger-600 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle">
+                                            <a href="{{route('admin.delete_guest_category', $allcatVal->id)}}" class="bg-danger-focus bg-hover-danger-200 text-danger-600 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle">
                                                 <iconify-icon icon="fluent:delete-24-regular" class="menu-icon"></iconify-icon>
                                             </a>
                                         </div>
