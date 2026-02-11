@@ -55,6 +55,8 @@ Route::controller(HomeController::class)->group(function () {
         return response()->file($path);
     });
     Route::get('/our-faqs', 'our_faqs')->name('our-faqs');
+    Route::post('/easy-donation', 'easy_donation')->name('easy_donation');
+    
     
     
 
