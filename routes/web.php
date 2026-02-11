@@ -237,6 +237,12 @@ Route::prefix('admin')->group(function () {
         Route::put('update-donation/{id}', [CausesController::class, 'update_donation'])->name('admin.update_donation');
         // Guest Donation
         Route::get('guest-donation', [GuestDonation::class, 'guest_donation'])->name('admin.guest_donation');
+        Route::get('edit-guest-donation/{id}', [GuestDonation::class, 'edit_guest_donation'])->name('admin.edit_guest_donation');
+        Route::put('update-guest-donation/{id}', [GuestDonation::class, 'update_guest_donation'])->name('admin.update_guest_donation');
+        Route::get('delete-guest-category/{id}', [GuestDonation::class, 'delete_guest_category'])->name('admin.delete_guest_category');
+
+        
+        
         
 
 
