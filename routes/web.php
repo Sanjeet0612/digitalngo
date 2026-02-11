@@ -56,6 +56,7 @@ Route::controller(HomeController::class)->group(function () {
     });
     Route::get('/our-faqs', 'our_faqs')->name('our-faqs');
     Route::post('/easy-donation', 'easy_donation')->name('easy_donation');
+    Route::post('/subscribe', 'subscribe')->name('subscribe');
     
     
     
