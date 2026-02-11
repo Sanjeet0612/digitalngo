@@ -124,11 +124,11 @@
                 <h3 class="footer-heading">Explore Us</h3>
                 <div class="footer-widget-menu">
                     <ul class="list-unstyled">
-                        <li><a href="index.php"><i class="icofont-simple-right"></i> <span>Home</span></a></li>
-                        <li><a href="about.php"><i class="icofont-simple-right"></i> <span>About Us</span></a></li>
-                        <li><a href="management.php"><i class="icofont-simple-right"></i> <span>Management</span></a></li>
-                        <li><a href="image.php"><i class="icofont-simple-right"></i> <span>Our Gallery</span></a></li>
-                        <li><a href="video.php"><i class="icofont-simple-right"></i> <span>Our Video</span></a></li>
+                        <li><a href="{{url('/')}}"><i class="icofont-simple-right"></i> <span>Home</span></a></li>
+                        <li><a href="{{route('about')}}"><i class="icofont-simple-right"></i> <span>About Us</span></a></li>
+                        <li><a href="{{route('management')}}"><i class="icofont-simple-right"></i> <span>Management</span></a></li>
+                        <li><a href="{{route('image')}}"><i class="icofont-simple-right"></i> <span>Our Gallery</span></a></li>
+                        <li><a href="{{route('video')}}"><i class="icofont-simple-right"></i> <span>Our Video</span></a></li>
                     </ul>
                 </div>
             </div>
@@ -139,11 +139,11 @@
                 <h3 class="footer-heading">Explore Us</h3>
                 <div class="footer-widget-menu">
                 <ul class="list-unstyled">
-                    <li><a href="events.php"><i class="icofont-simple-right"></i> <span>Event</span></a></li>
-                    <li><a href="blog.php"><i class="icofont-simple-right"></i> <span>Blog</span></a></li>
-                    <li><a href="contact.php"><i class="icofont-simple-right"></i> <span>Contact</span></a></li>
-                    <li><a href="donation.php"><i class="icofont-simple-right"></i> <span>Donation</span></a></li>
-                    <li><a href="user/login.php"><i class="icofont-simple-right"></i> <span>Members</span></a></li>
+                    <li><a href="{{route('events')}}"><i class="icofont-simple-right"></i> <span>Event</span></a></li>
+                    <li><a href="{{route('articles')}}"><i class="icofont-simple-right"></i> <span>Blog</span></a></li>
+                    <li><a href="{{route('contact')}}"><i class="icofont-simple-right"></i> <span>Contact</span></a></li>
+                    <li><a href="{{route('donation')}}"><i class="icofont-simple-right"></i> <span>Donation</span></a></li>
+                    <li><a href="{{route('login')}}" target="_blank"><i class="icofont-simple-right"></i> <span>Members</span></a></li>
                 </ul>
                 </div>
             </div>
