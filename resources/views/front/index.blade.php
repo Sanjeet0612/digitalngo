@@ -52,7 +52,7 @@
                                     <i class="charity-gift_box"></i>
                                 </div>
                                 <small>Total Funds Committed</small>
-                                <span class="counter">9</span>
+                                <span class="counter">{{$donationAmt}}</span>
                             </div>
 
                             <div class="message">
