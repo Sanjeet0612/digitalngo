@@ -27,7 +27,7 @@
 
                 <ul class="sidebar-submenu">
                     <li>
-                        <a  href="{{route('new_user')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>New Users</a>
+                        <a  href="{{route('new_user')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Refrer Users</a>
                     </li>
                 </ul>    
                
