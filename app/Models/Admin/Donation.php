@@ -22,6 +22,7 @@ class Donation extends Model
         'address',
         'pincode',
         'refrer_code',
+        'is_paid',
         'status',
         'causes',
         'pan_no',
