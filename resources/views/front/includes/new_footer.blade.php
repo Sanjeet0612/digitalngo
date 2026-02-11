@@ -25,7 +25,7 @@
                         $phones = explode(',', $contact->phone);
                     @endphp
                         @foreach($phones as $phone)
-                            <a href="tel:{{ trim($phone) }}"><h3>+91 {{trim($phone)}}</h3></a><br>
+                            <a href="tel:{{ trim($phone) }}"><h3>+91 {{trim($phone)}}</h3></a><br>@break
                         @endforeach
                 @endif
             </div>
