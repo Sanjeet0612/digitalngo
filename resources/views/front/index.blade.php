@@ -52,14 +52,24 @@
                                     <i class="charity-gift_box"></i>
                                 </div>
                                 <small>Total Funds Committed</small>
-                                <span class="counter"><?php /* 
-                                $q = mysqli_query($con, "SELECT SUM(d_amount) AS total FROM donation where d_status='Success'");
-                                    $r = mysqli_fetch_assoc($q);
-                                  echo  $total_offer = $r['total'] ?? 0; */ 100
-                                ?></span>
+                                <span class="counter">9</span>
                             </div>
 
-                           <form action="" method="post" class="form-style" onsubmit="return validateForm()">
+                            <div class="message">
+                                @if(session('success'))
+                                    <p style="color:green">{{ session('success') }}</p>
+                                @endif
+
+                                @if($errors->any())
+                                    @foreach($errors->all() as $error)
+                                        <p style="color:red">{{ $error }}</p>
+                                    @endforeach
+                                @endif
+                            </div> 
+
+                           <form action="{{route('easy_donation')}}" method="post" class="form-style" onsubmit="return validateForm()">
+                                @csrf
+                                <input type="hidden" name="easy_donation" value="easy_donation">
                                 <h3 class="h3-sm fw-7 txt-white mb-3">Easy Donation</h3>
                             
                                 <div class="form-group">
