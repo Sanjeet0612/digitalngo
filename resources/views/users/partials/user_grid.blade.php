@@ -41,12 +41,12 @@
 
                                     <div class="center-border position-relative bg-danger-gradient-light radius-8 p-12 d-flex align-items-center gap-4">
                                         <div class="text-center w-50">
-                                            <h6 class="text-md mb-0">Design</h6>
-                                            <span class="text-secondary-light text-sm mb-0">Department</span>
+                                            <h6 class="text-md mb-0">Phone</h6>
+                                            <span class="text-secondary-light text-sm mb-0">{{$userlistVal->phone}}</span>
                                         </div>
                                         <div class="text-center w-50">
-                                            <h6 class="text-md mb-0">UI UX Designer</h6>
-                                            <span class="text-secondary-light text-sm mb-0">Designation</span>
+                                            <h6 class="text-md mb-0">Refrer Code</h6>
+                                            <span class="text-secondary-light text-sm mb-0">{{$userlistVal->refer_code}}</span>
                                         </div>
                                     </div>
                                     <form  action="{{url('/')}}/users/view-profile" method="post" class="bg-primary-50 text-primary-600 bg-hover-primary-600 hover-text-white p-10 text-sm btn-sm px-12 py-12 radius-8 d-flex align-items-center justify-content-center mt-16 fw-medium gap-2 w-100">
