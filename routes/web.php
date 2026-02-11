@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\Admin\KeyFeatureController;
 use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\Admin\CausesController;
+use App\Http\Controllers\Admin\GuestDonation;
 use Illuminate\Support\Facades\Route;
 
 
@@ -234,6 +235,10 @@ Route::prefix('admin')->group(function () {
         Route::get('causes-donation', [CausesController::class, 'causes_donation'])->name('admin.causes_donation');
         Route::get('edit-donation/{id}', [CausesController::class, 'edit_donation'])->name('admin.edit_donation');
         Route::put('update-donation/{id}', [CausesController::class, 'update_donation'])->name('admin.update_donation');
+        // Guest Donation
+        Route::get('guest-donation', [GuestDonation::class, 'guest_donation'])->name('admin.guest_donation');
+        
+
 
         
 
