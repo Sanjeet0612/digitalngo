@@ -43,10 +43,23 @@
             <div class="row gy-4">
                 <div class="col-lg-4">
                     <div class="user-grid-card position-relative border radius-16 overflow-hidden bg-base h-100">
-                        <img src="{{ asset('assets/images/user-grid/user-grid-bg1.png') }}" alt="" class="w-100 object-fit-cover">
+                        <?php
+                        if(empty($userlist->bg_img)){
+                            ?> <img src="{{ asset('assets/images/user-grid/NGOBanner.png') }}" alt="" class="w-100 object-fit-cover"> <?php
+                        }else{
+                            ?> <img src="{{asset('storage/'.$userlist->bg_img)}}" alt="" class="w-100 object-fit-cover"> <?php
+                        }
+                        ?>
+
                         <div class="pb-24 ms-16 mb-24 me-16  mt--100">
                             <div class="text-center border border-top-0 border-start-0 border-end-0">
-                                <img src="{{ asset('assets/images/user-grid/user-grid-img14.png') }}" alt="" class="border br-white border-width-2-px w-200-px h-200-px rounded-circle object-fit-cover">
+                                <?php
+                                if(empty($userlist->profile_img)){
+                                    ?> <img src="{{url('/')}}/assets/images/user-list/user.png" alt="" class="border br-white border-width-2-px w-200-px h-200-px rounded-circle object-fit-cover"><?php
+                                }else{
+                                    ?> <img src="{{asset('storage/'.$userlist->profile_img)}}" alt="" class="border br-white border-width-2-px w-200-px h-200-px rounded-circle object-fit-cover" ><?php
+                                }
+                                ?>
                                 <h6 class="mb-0 mt-16">{{$userlist->name}}</h6>
                                 <span class="text-secondary-light mb-16">{{$userlist->email}}</span>
                             </div>
@@ -55,31 +68,39 @@
                                 <ul>
                                     <li class="d-flex align-items-center gap-1 mb-12">
                                         <span class="w-30 text-md fw-semibold text-primary-light">Full Name</span>
-                                        <span class="w-70 text-secondary-light fw-medium">: Will Jonto</span>
+                                        <span class="w-70 text-secondary-light fw-medium">: {{$userlist->name}}</span>
                                     </li>
                                     <li class="d-flex align-items-center gap-1 mb-12">
                                         <span class="w-30 text-md fw-semibold text-primary-light"> Email</span>
-                                        <span class="w-70 text-secondary-light fw-medium">: willjontoax@gmail.com</span>
+                                        <span class="w-70 text-secondary-light fw-medium">: {{$userlist->email}}</span>
                                     </li>
                                     <li class="d-flex align-items-center gap-1 mb-12">
                                         <span class="w-30 text-md fw-semibold text-primary-light"> Phone Number</span>
-                                        <span class="w-70 text-secondary-light fw-medium">: (1) 2536 2561 2365</span>
+                                        <span class="w-70 text-secondary-light fw-medium">:{{$userlist->phone}}</span>
                                     </li>
                                     <li class="d-flex align-items-center gap-1 mb-12">
-                                        <span class="w-30 text-md fw-semibold text-primary-light"> Department</span>
-                                        <span class="w-70 text-secondary-light fw-medium">: Design</span>
+                                        <span class="w-30 text-md fw-semibold text-primary-light"> Gender</span>
+                                        <span class="w-70 text-secondary-light fw-medium">: {{$userlist->gender}}</span>
                                     </li>
                                     <li class="d-flex align-items-center gap-1 mb-12">
-                                        <span class="w-30 text-md fw-semibold text-primary-light"> Designation</span>
-                                        <span class="w-70 text-secondary-light fw-medium">: UI UX Designer</span>
+                                        <span class="w-30 text-md fw-semibold text-primary-light"> Address</span>
+                                        <span class="w-70 text-secondary-light fw-medium">: {{$userlist->address}}</span>
                                     </li>
                                     <li class="d-flex align-items-center gap-1 mb-12">
-                                        <span class="w-30 text-md fw-semibold text-primary-light"> Languages</span>
-                                        <span class="w-70 text-secondary-light fw-medium">: English</span>
+                                        <span class="w-30 text-md fw-semibold text-primary-light"> City</span>
+                                        <span class="w-70 text-secondary-light fw-medium">: {{$userlist->city}}</span>
+                                    </li>
+                                     <li class="d-flex align-items-center gap-1 mb-12">
+                                        <span class="w-30 text-md fw-semibold text-primary-light"> State</span>
+                                        <span class="w-70 text-secondary-light fw-medium">: {{$userlist->state}}</span>
+                                    </li>
+                                    <li class="d-flex align-items-center gap-1 mb-12">
+                                        <span class="w-30 text-md fw-semibold text-primary-light"> Zipcode</span>
+                                        <span class="w-70 text-secondary-light fw-medium">: {{$userlist->zipcode}}</span>
                                     </li>
                                     <li class="d-flex align-items-center gap-1">
                                         <span class="w-30 text-md fw-semibold text-primary-light"> Bio</span>
-                                        <span class="w-70 text-secondary-light fw-medium">: Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span>
+                                        <span class="w-70 text-secondary-light fw-medium">: {{$userlist->bio}}</span>
                                     </li>
                                 </ul>
                             </div>
