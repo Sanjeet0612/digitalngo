@@ -79,6 +79,14 @@
                                         <span class="w-70 text-secondary-light fw-medium">:{{$userlist->phone}}</span>
                                     </li>
                                     <li class="d-flex align-items-center gap-1 mb-12">
+                                        <span class="w-30 text-md fw-semibold text-primary-light"> Sponsor Code</span>
+                                        <span class="w-70 text-secondary-light fw-medium">:{{$userlist->sponsor_code}}</span>
+                                    </li>
+                                    <li class="d-flex align-items-center gap-1 mb-12">
+                                        <span class="w-30 text-md fw-semibold text-primary-light"> Refer Code</span>
+                                        <span class="w-70 text-secondary-light fw-medium">:{{$userlist->refer_code}}</span>
+                                    </li>
+                                    <li class="d-flex align-items-center gap-1 mb-12">
                                         <span class="w-30 text-md fw-semibold text-primary-light"> Gender</span>
                                         <span class="w-70 text-secondary-light fw-medium">: {{$userlist->gender}}</span>
                                     </li>
