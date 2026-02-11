@@ -135,24 +135,9 @@
         </div>
         <!-- Topbar Buttons Start -->
         <div class="d-inline-flex request-btn order-lg-last col-auto p-0 align-items-center"> 
-             @if(Auth::check())
-            <div class="dropdown d-inline-block">
-                <a href="#" class="dropdown-togglee">
-                    <i class="icofont-ui-user" style="color:#D59B2D;"></i>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right" style="background-color: #d59b2d !important;color: #fff !important;">
-                    <a class="dropdown-item" href="#" style="color:#fff">Profile</a>
-                    <a class="dropdown-item" href="#" style="color:#fff">Settings</a>
-                    <a class="dropdown-item" href="#" style="color:#fff">Logout</a>
-                </div>
-            </div>
-            @else
-                <a href="{{route('login')}}" class="dropdown-togglee">
-                    <i class="icofont-ui-user" style="color:#D59B2D;"></i>
-                </a>
-            @endif
+            
             <!--<a class="btn-outline-primary btn ml-3" href="#" id="search_home"><i data-feather="search"></i></a>-->
-            <a class="nav-link btn btn-default ml-3 donate-btn" href="{{url('/')}}/donation">Join Member</a>
+            <a class="nav-link btn btn-default ml-3 donate-btn" href="{{route('login')}}" target="_blank">Join Member</a>
 
             <!-- Toggle Button Start -->
             <button class="navbar-toggler x collapsed" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -170,17 +155,18 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{url('/')}}">Home</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{url('/')}}/about">About Us</a>
-                </li>
+                
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle-mob" href="{{url('/')}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Team <i class="icofont-rounded-down"></i></a>
-                    <ul class="dropdown-menu">                  
+                    <a class="nav-link dropdown-toggle-mob" href="{{url('/')}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About Us <i class="icofont-rounded-down"></i></a>
+                    <ul class="dropdown-menu"> 
+                        <li><a class="dropdown-item" href="{{url('/')}}/about">About us</a></li>                 
                         <li><a class="dropdown-item" href="{{url('/')}}/management">Management Teams</a></li>
                         <li><a class="dropdown-item" href="{{url('/')}}/volunteers">Volunteers Teams</a></li>
                         <!--<li><a class="dropdown-item" href="our-faqs.php">Our Faq's</a></li> -->            
                     </ul>
                 </li>
+
+               
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle-mob" href="{{url('/')}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gallery <i class="icofont-rounded-down"></i></a>
                     <ul class="dropdown-menu">                  
@@ -188,12 +174,16 @@
                         <li><a class="dropdown-item" href="{{url('/')}}/video">Video</a></li>                              
                     </ul>
                 </li>
-              <!--  <li class="nav-item">
-                    <a class="nav-link" href="causes.php">Causes</a>
-                </li>  -->                    
-                <li class="nav-item">
-                    <a class="nav-link" href="{{url('/')}}/events">Event</a>
-                </li>
+            
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle-mob" href="{{url('/')}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Our Program <i class="icofont-rounded-down"></i></a>
+                    <ul class="dropdown-menu">                  
+                        <li><a class="dropdown-item" href="{{url('/')}}/events">Event</a></li>
+                        <li><a class="dropdown-item" href="{{url('/')}}/causes">Our Couses</a></li>                              
+                    </ul>
+                </li>    
+
                 <li class="nav-item">
                     <a class="nav-link" href="{{url('/')}}/articles">Blog</a>
                 </li>
