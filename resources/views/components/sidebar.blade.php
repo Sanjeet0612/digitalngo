@@ -24,13 +24,11 @@
                     <iconify-icon icon="flowbite:users-group-outline" class="menu-icon"></iconify-icon>
                     <span>Users</span>
                 </a>
-
                 <ul class="sidebar-submenu">
                     <li>
                         <a  href="{{route('new_user')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Refrer Users</a>
                     </li>
                 </ul>    
-               
             </li>
 
             <li class="dropdown">
@@ -41,6 +39,19 @@
                 <ul class="sidebar-submenu">
                     <li>
                         <a  href="{{ route('all_fearure') }}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>All Features</a>
+                    </li>
+                    
+                </ul>
+            </li>
+
+            <li class="dropdown">
+                <a  href="javascript:void(0)">
+                    <i class="ri-heart-2-line"></i>
+                    <span>Donation</span>
+                </a>
+                <ul class="sidebar-submenu">
+                    <li>
+                        <a  href="{{ route('manage_causes_donation') }}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Causes Donation</a>
                     </li>
                     
                 </ul>
