@@ -7,21 +7,13 @@
                 <div class="footer-subscribe">
                     <h3>Newsletter</h3>
                     <h2>Get Update Every Week</h2>
-                    <form action="" method="post">
-                    <div class="input-wrap">
-                        
-                            <input type="text" name="email" placeholder="Enter Your Email">
+                    <form action="{{route('subscribe')}}" method="post">
+                        @csrf
+                        <div class="input-wrap">
+                            <input type="text" name="email" placeholder="Enter Your Email" required>
                             <button type="submit" name="news" class="btn btn-default">Subscribe now</button>
-                            </div>
-                        </form>
-                        <?php 
-                        if(isset($_POST['news'])){
-                            $email = $_POST['email'];
-                            mysqli_query($con,"INSERT INTO `newsletter`(`nl_cat`, `nl_email`, `nl_create_date`) VALUES('Newsletter','$email',NOW())");
-                            //echo "<script>window.open('index.php','_self')</script>";
-                            }
-                        ?>
-                   
+                        </div>
+                    </form>
                 </div>  
             </div>
             <div class="give-us-call">
