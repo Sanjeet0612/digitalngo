@@ -23,5 +23,7 @@ class GuestDonation extends Model
         'pincode',
         'refrer_code',
         'status',
+        'causes',
+        'pan_no',
     ];
 }
