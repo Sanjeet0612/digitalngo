@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\FeaturesController;
+use App\Http\Controllers\DonationController;
 
 // Admin
 use App\Http\Controllers\Admin\AdminController;
@@ -89,6 +90,12 @@ Route::prefix('fearures')->middleware('auth')->group(function () {
     Route::controller(FeaturesController::class)->group(function () {
         Route::get('/', 'all_features')->name('all_fearure');
         Route::post('/feature-pdf', 'feature_pdf')->name('feature_pdf');
+    });
+});
+// Donation Section
+Route::prefix('donation')->middleware('auth')->group(function () {
+    Route::controller(DonationController::class)->group(function () {
+        Route::get('/manage-causes-donation', 'manage_causes_donation')->name('manage_causes_donation');
     });
 });
 
