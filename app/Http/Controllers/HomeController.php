@@ -28,9 +28,8 @@ class HomeController extends Controller{
         $banners  = Banner::where('status',1)->orderBy('sort_order','asc')->get();
         $allEvent = Event::where('status',1)->orderBy('id','desc')->get();
         $allBlog  = Blog::where('status','published')->get();
-
-        $donationAmt = GuestDonation::sum('package_amt')->where('d_type','easy_donation')->where('status',1)->get();
-        return view('front.index',compact('banners','allEvent','allBlog'));
+        $donationAmt = GuestDonation::where('d_type', 'easy_donation')->where('status', 1)->sum('package_amt');
+        return view('front.index',compact('banners','allEvent','allBlog','donationAmt'));
     }
     public function about(Request $request){
         $allManagement = Management::where('team_type', 'management')->where('status', 1)->take(4)->get();
