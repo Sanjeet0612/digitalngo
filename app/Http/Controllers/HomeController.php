@@ -184,6 +184,35 @@ class HomeController extends Controller{
         }
         
     }
+    public function easy_donation(Request $request){
+
+        $request->validate([
+            'input_amount' => 'required|numeric|min:100',
+            'd_name'       => 'required|string|max:150',
+            'd_mobile'     => 'required|string|max:20',
+            'd_email'      => 'nullable|email|max:150',
+        ]);
+         
+        $data = [
+            'package_amt' => $request->input_amount,
+            'd_type'      => $request->easy_donation,
+            'name'        => $request->d_name,
+            'phone'       => $request->d_mobile,
+            'email'       => $request->d_email,
+            'city'        => '',
+            'state'       => '',
+            'address'     => '',
+            'pincode'     => '',
+            'refrer_code' => '',
+            'status'      => 0,
+            'causes'      => $request->d_causes,
+            'pan_no'      => $request->d_pancard,
+         ];
+
+        GuestDonation::create($data);
+
+        return redirect()->back()->with('success', 'Thank you! Your donation details have been submitted successfully.');
+    }
 
     public function function_features(){
         $allFeature = KeyFeature::where('status',1)->get();
