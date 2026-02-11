@@ -49,17 +49,17 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <div class="custom-control custom-radio custom-control-inline">
-                                            <input type="radio" id="customRadioInline1" name="package_amt" value="1100" class="custom-control-input" checked>
-                                            <label class="custom-control-label" for="customRadioInline1">₹ 1100 Membership Fees</label>
+                                            <input type="radio" id="customRadioInline1" name="package_amt" value="365" class="custom-control-input" checked>
+                                            <label class="custom-control-label" for="customRadioInline1">₹ 365 Membership Fees</label>
                                         </div>
                                         <div class="custom-control custom-radio custom-control-inline">
-                                            <input type="radio" id="customRadioInline2" name="package_amt" value="500" class="custom-control-input">
-                                            <label class="custom-control-label" for="customRadioInline2">₹ 500 Volunteers Fees</label>
+                                            <input type="radio" id="customRadioInline2" name="package_amt" value="200" class="custom-control-input">
+                                            <label class="custom-control-label" for="customRadioInline2">₹ 200 Volunteers Fees</label>
                                         </div>
-                                        <div class="custom-control custom-radio custom-control-inline">
+                                        <!--<div class="custom-control custom-radio custom-control-inline">
                                             <input type="radio" id="customRadioInline3" name="package_amt" value="100" class="custom-control-input">
                                             <label class="custom-control-label" for="customRadioInline3">₹ 100 Donation for Plant</label>
-                                        </div>
+                                        </div>-->
 
                                         <!-- <div class="mt-3">
                                             <input type="text" class="form-control" id="custom" placeholder="Custom Amount">
