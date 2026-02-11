@@ -1,7 +1,7 @@
 @extends('layout.layout')
 @php
-    $title='New Users';
-    $subTitle = 'New Users';
+    $title='Refrer Users';
+    $subTitle = 'Refrer Users';
     $script = '<script>
                         $(".delete-btn").on("click", function() {
                             $(this).closest(".user-grid-card").addClass("d-none")
