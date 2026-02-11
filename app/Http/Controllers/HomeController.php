@@ -28,6 +28,8 @@ class HomeController extends Controller{
         $banners  = Banner::where('status',1)->orderBy('sort_order','asc')->get();
         $allEvent = Event::where('status',1)->orderBy('id','desc')->get();
         $allBlog  = Blog::where('status','published')->get();
+
+        $donationAmt = GuestDonation::sum('package_amt')->where('d_type','easy_donation')->where('status',1)->get();
         return view('front.index',compact('banners','allEvent','allBlog'));
     }
     public function about(Request $request){
@@ -175,7 +177,7 @@ class HomeController extends Controller{
                 $d_type = "null";
             }
             $data['d_type'] = $d_type; 
-            $data['status'] = 1;
+            $data['status'] = 0;
             GuestDonation::create($data);
             return redirect()->back()->with('success', 'Thank you! Your donation details have been submitted successfully.');
 
