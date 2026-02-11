@@ -7,8 +7,6 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\FeaturesController;
 
-
-
 // Admin
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\EventGalleryController;
@@ -20,12 +18,6 @@ use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\Admin\CausesController;
 use App\Http\Controllers\Admin\GuestDonation;
 use Illuminate\Support\Facades\Route;
-
-
-
-/*Route::get('/', function () {
-    return view('welcome');
-});*/
 
 Route::controller(HomeController::class)->group(function () {
     Route::get('/', 'index')->name('index');
@@ -58,15 +50,6 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/our-faqs', 'our_faqs')->name('our-faqs');
     Route::post('/easy-donation', 'easy_donation')->name('easy_donation');
     Route::post('/subscribe', 'subscribe')->name('subscribe');
-    
-    
-    
-
-    
-    
-    
-    
-    
 });
 
 Route::get('/ask-ai', [HomeController::class, 'askAi']);
@@ -108,8 +91,6 @@ Route::prefix('fearures')->middleware('auth')->group(function () {
         Route::post('/feature-pdf', 'feature_pdf')->name('feature_pdf');
     });
 });
-
-
 
 
 Route::get('/category/{category}', [BlogController::class, 'category'])->name('blogs.category');
