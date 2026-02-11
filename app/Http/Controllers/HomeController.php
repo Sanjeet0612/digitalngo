@@ -293,6 +293,23 @@ class HomeController extends Controller{
         return view('front.our_faqs');
     }
 
+    public function subscribe(Request $request){
+        if($request->isMethod('post')){
+            date_default_timezone_set('Asia/Calcutta');
+		    $formattedDate   = date('Y-m-d h-i-s');
+            $request->validate([
+                'email' => 'required|email|max:150|unique:tb_newsletter,emailid',
+            ]);
+            $data =[
+                'emailid'    => $request->email,
+                'created_at' => $formattedDate,
+                'updated_at' => $formattedDate,
+                ];
+            DB::table('tb_newsletter')->insert($data);
+            return redirect()->back()->with('success', 'Thank you!');
+        }
+    }
+
     public function askAi(){
         $response = Http::withToken(config('services.openai.key'))
             ->withHeaders([
