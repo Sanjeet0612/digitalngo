@@ -20,16 +20,19 @@
                             <iconify-icon icon="ion:search-outline" class="icon"></iconify-icon>
                         </form>
                     </div>
-                    <a  href="#" class="btn btn-primary text-sm btn-sm px-12 py-12 radius-8 d-flex align-items-center gap-2">
+                    <!--<a  href="#" class="btn btn-primary text-sm btn-sm px-12 py-12 radius-8 d-flex align-items-center gap-2">
                         <iconify-icon icon="ic:baseline-plus" class="icon text-xl line-height-1"></iconify-icon>
                         Add New User
-                    </a>
+                    </a>-->
                 </div>
                 <div class="card-body p-24">
                     <div class="row gy-4">
+                        @foreach($allCauses as $allCausesVal)
                         <div class="col-xxl-3 col-md-6 user-grid-card   ">
                             <div class="position-relative border radius-16 overflow-hidden">
-                                <img src="{{ asset('assets/images/user-grid/user-grid-bg1.png') }}" alt="" class="w-100 object-fit-cover">
+                                @if(!empty($allCausesVal->banner))
+                                <img src="{{asset('storage/'.$allCausesVal->banner)}}" alt="" class="w-100 object-fit-cover">
+                                @endif
 
                                 <div class="dropdown position-absolute top-0 end-0 me-16 mt-16">
                                     <button type="button" data-bs-toggle="dropdown" aria-expanded="false" class="bg-white-gradient-light w-32-px h-32-px radius-8 border border-light-white d-flex justify-content-center align-items-center text-white">
@@ -50,27 +53,30 @@
                                 </div>
 
                                 <div class="ps-16 pb-16 pe-16 text-center mt--50">
-                                    <img src="{{ asset('assets/images/user-grid/user-grid-img1.png') }}" alt="" class="border br-white border-width-2-px w-100-px h-100-px rounded-circle object-fit-cover">
-                                    <h6 class="text-lg mb-0 mt-4">Jacob Jones</h6>
-                                    <span class="text-secondary-light mb-16">ifrandom@gmail.com</span>
+                                    <!--<img src="{{ asset('assets/images/user-grid/user-grid-img1.png') }}" alt="" class="border br-white border-width-2-px w-100-px h-100-px rounded-circle object-fit-cover">-->
+                                   
+                                    <h6 class="text-lg mb-0 mt-4" style="margin-top:60px !important;"> {{$allCausesVal->title}}</h6>
+                                    <span class="text-secondary-light mb-16">{{ucfirst($allCausesVal->couses_cat_name)}}</span>
 
                                     <div class="center-border position-relative bg-danger-gradient-light radius-8 p-12 d-flex align-items-center gap-4">
+                                       
                                         <div class="text-center w-50">
-                                            <h6 class="text-md mb-0">Design</h6>
-                                            <span class="text-secondary-light text-sm mb-0">Department</span>
+                                            <h6 class="text-md mb-0">Start Date</h6>
+                                            <span class="text-secondary-light text-sm mb-0">{{$allCausesVal->start_date}}</span>
                                         </div>
-                                        <div class="text-center w-50">
-                                            <h6 class="text-md mb-0">UI UX Designer</h6>
-                                            <span class="text-secondary-light text-sm mb-0">Designation</span>
+                                         <div class="text-center w-50">
+                                            <h6 class="text-md mb-0">End Date</h6>
+                                            <span class="text-secondary-light text-sm mb-0">{{$allCausesVal->end_date}}</span>
                                         </div>
                                     </div>
-                                    <a  href="#" class="bg-primary-50 text-primary-600 bg-hover-primary-600 hover-text-white p-10 text-sm btn-sm px-12 py-12 radius-8 d-flex align-items-center justify-content-center mt-16 fw-medium gap-2 w-100">
-                                        View Profile
+                                    <a  href="{{route('cause_donation',$allCausesVal->id)}}" class="bg-primary-50 text-primary-600 bg-hover-primary-600 hover-text-white p-10 text-sm btn-sm px-12 py-12 radius-8 d-flex align-items-center justify-content-center mt-16 fw-medium gap-2 w-100">
+                                        Donate Now
                                         <iconify-icon icon="solar:alt-arrow-right-linear" class="icon text-xl line-height-1"></iconify-icon>
                                     </a>
                                 </div>
                             </div>
                         </div>
+                        @endforeach
                      
                     </div>
                     <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mt-24">
