@@ -68,6 +68,8 @@ Route::prefix('authentication')->group(function () {
 Route::prefix('dashboard')->middleware('auth')->group(function () {
     Route::controller(DashboardController::class)->group(function () {
         Route::get('/', 'index')->name('dashboard.index');
+        Route::get('/become-member', 'become_member')->name('become_member');
+        Route::post('/membership-fee', 'membership_fee')->name('membership_fee');
         Route::get('/logout', 'logout')->name('dashboard.logout');
         
     });
@@ -83,6 +85,7 @@ Route::prefix('users')->middleware('auth')->group(function () {
         Route::get('/new-user', 'new_user')->name('new_user');
         Route::match(['get', 'post'],'/view-profile','view_profile')->name('view_profile');
         Route::get('/users','userList')->name('users.list');
+
     });
 });
 // Function & Features Section
@@ -99,7 +102,6 @@ Route::prefix('donation')->middleware('auth')->group(function () {
         Route::get('/cause-donation/{id}', 'cause_donation')->name('cause_donation');
         Route::post('/donation-for-cause', 'donation_for_cause')->name('donation_for_cause');
         Route::get('/my-causes-donation', 'my_causes_donation')->name('my_causes_donation');
-        
     });
 });
 
