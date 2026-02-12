@@ -76,6 +76,17 @@
                                 @method('PUT')
 
                             <div class="row">
+                                <div class="col-sm-6">
+                                    <label class="form-label fw-bold text-neutral-900" for="utr_number">UTR NO:<span class="text-danger-600">*</span> </label>
+                                    <input type="text" name="d_type" value="{{$donationDetail->utr_number}}" class="form-control border border-neutral-200 radius-8" id="d_type">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label class="form-label fw-bold text-neutral-900" for="screenshot">Screenshot: <span class="text-danger-600">*</span> </label>
+                                    <a href="{{asset('storage/'.$donationDetail->screenshot)}}" target="_blank"><img  src="{{asset('storage/'.$donationDetail->screenshot)}}" id="screenshot" style="width:100px;"></a>
+                                </div>
+                            </div>    
+
+                            <div class="row">
                                 <div class="col-sm-4">
                                     <label class="form-label fw-bold text-neutral-900" for="d_type">Donation For:<span class="text-danger-600">*</span> </label>
                                     <input type="text" name="d_type" value="{{$donationDetail->d_type}}" class="form-control border border-neutral-200 radius-8" id="d_type">
@@ -111,15 +122,15 @@
                             <div class="row">
                                 <div class="col-sm-4">
                                     <label class="form-label fw-bold text-neutral-900" for="address">Address: <span class="text-danger-600">*</span> </label>
-                                    <input type="text" name="address" value="{{$donationDetail->address}}" class="form-control border border-neutral-200 radius-8" id="donation_date" placeholder="Donation Date">
+                                    <input type="text" name="address" value="{{$donationDetail->address}}" class="form-control border border-neutral-200 radius-8" id="address" placeholder="Address">
                                 </div>
                                 <div class="col-sm-4">
                                     <label class="form-label fw-bold text-neutral-900" for="city">City:<span class="text-danger-600">*</span> </label>
-                                    <input type="text" name="city" value="{{$donationDetail->city}}" class="form-control border border-neutral-200 radius-8" id="utr_number">
+                                    <input type="text" name="city" value="{{$donationDetail->city}}" class="form-control border border-neutral-200 radius-8" id="city">
                                 </div>
                                 <div class="col-sm-4">
                                     <label class="form-label fw-bold text-neutral-900" for="state">State: <span class="text-danger-600">*</span> </label>
-                                    <input type="text" name="state" value="{{$donationDetail->state}}" class="form-control border border-neutral-200 radius-8" id="amount" placeholder="Donation Amount">
+                                    <input type="text" name="state" value="{{$donationDetail->state}}" class="form-control border border-neutral-200 radius-8" id="state" placeholder="State">
                                 </div>
                             </div>
 
