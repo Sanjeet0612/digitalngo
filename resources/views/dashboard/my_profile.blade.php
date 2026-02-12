@@ -70,6 +70,14 @@
                                         <span class="w-70 text-secondary-light fw-medium">: {{ $user->name }}</span>
                                     </li>
                                     <li class="d-flex align-items-center gap-1 mb-12">
+                                        <span class="w-30 text-md fw-semibold text-primary-light">Sponsor Code</span>
+                                        <span class="w-70 text-secondary-light fw-medium">: {{ $user->sponsor_code }}</span>
+                                    </li>
+                                    <li class="d-flex align-items-center gap-1 mb-12">
+                                        <span class="w-30 text-md fw-semibold text-primary-light">Refer Code</span>
+                                        <span class="w-70 text-secondary-light fw-medium">: {{ $user->refer_code }}</span>
+                                    </li>
+                                    <li class="d-flex align-items-center gap-1 mb-12">
                                         <span class="w-30 text-md fw-semibold text-primary-light"> Email</span>
                                         <span class="w-70 text-secondary-light fw-medium" style="font-size:13px;">: {{ $user->email }}</span>
                                     </li>
@@ -125,11 +133,11 @@
                                         Change Password
                                     </button>
                                 </li>
-                                <li class="nav-item" role="presentation">
+                                <!--<li class="nav-item" role="presentation">
                                     <button class="nav-link d-flex align-items-center px-24" id="pills-notification-tab" data-bs-toggle="pill" data-bs-target="#pills-notification" type="button" role="tab" aria-controls="pills-notification" aria-selected="false" tabindex="-1">
                                         Notification Settings
                                     </button>
-                                </li>
+                                </li>-->
                             </ul>
 
                             <div class="tab-content" id="pills-tabContent">
