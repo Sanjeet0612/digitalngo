@@ -22,10 +22,10 @@
                 </form>
             </div>
 
-            <button type="button" class="btn btn-primary text-sm btn-sm px-12 py-12 radius-8 d-flex align-items-center gap-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <!--<button type="button" class="btn btn-primary text-sm btn-sm px-12 py-12 radius-8 d-flex align-items-center gap-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 <iconify-icon icon="ic:baseline-plus" class="icon text-xl line-height-1"></iconify-icon>
                 Add Languages
-            </button>
+            </button>-->
         </div>
         <div class="card-body p-24">
             <div class="table-responsive scroll-sm">
