@@ -15,7 +15,9 @@ use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\File;
 use Carbon\Carbon;
+
 
 class AdminController extends Controller{
 
@@ -345,10 +347,8 @@ class AdminController extends Controller{
                 if($event->banner && File::exists(public_path('admin/uploads/events/'.$event->banner))) {
                     File::delete(public_path('admin/uploads/events/'.$event->banner));
                 }
-                $file = $request->file('event_banner');
-                $filename = time().'_'.$file->getClientOriginalName();
-                $file->move(public_path('admin/uploads/events'), $filename);
-                $event->banner = $filename;
+                $bannerPath = $request->file('event_banner')->store('admin/events/banner', 'public');
+                $event->banner = $bannerPath;
             }
             $event->save();
             return redirect()->back()->with('success', 'Event updated successfully');
