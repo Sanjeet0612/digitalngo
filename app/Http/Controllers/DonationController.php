@@ -57,4 +57,11 @@ class DonationController extends Controller
         return redirect()->back()->with('success', 'Thank you for your donation 🙏');
 
     }
+
+    public function my_causes_donation(Request $request){
+        $user = Auth::user();
+        $allCausesDonation = CausesDonation::with('cause')->where('user_id', $user->id)->get();
+        ///print_r($allCausesDonation);
+        return view('donation.my_donation_list',compact('allCausesDonation'));
+    }
 }
