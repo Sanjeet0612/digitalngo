@@ -59,10 +59,19 @@
                     <div class="card shadow-none border bg-gradient-start-3 h-100">
                         <div class="card-body p-20">
                             <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
+                                @if($member->is_paid==1)
                                 <div>
-                                    <p class="fw-medium text-primary-light mb-1">Become a Member</p>
-                                    <h6 class="mb-0">₹365 </h6>
+                                    <p class="fw-medium text-primary-light mb-1">Your are a Member</p>
+                                    <h6 class="mb-0 text-success">Active </h6>
                                 </div>
+
+                                @else
+                                    <div>
+                                        <p class="fw-medium text-primary-light mb-1">Become a Member</p>
+                                        <h6 class="mb-0">₹365 </h6>
+                                    </div>
+                                @endif
+
                                 <div class="w-50-px h-50-px bg-info rounded-circle d-flex justify-content-center align-items-center">
                                     <iconify-icon icon="fluent:people-20-filled" class="text-white text-2xl mb-0"></iconify-icon>
                                 </div>
