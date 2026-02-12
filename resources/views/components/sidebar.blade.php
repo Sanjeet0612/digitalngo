@@ -53,6 +53,9 @@
                     <li>
                         <a  href="{{ route('manage_causes_donation') }}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Causes Donation</a>
                     </li>
+                    <li>
+                        <a  href="{{ route('my_causes_donation') }}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>My Donation</a>
+                    </li>
                     
                 </ul>
             </li>
