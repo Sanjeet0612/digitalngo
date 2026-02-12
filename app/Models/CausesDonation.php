@@ -13,6 +13,7 @@ class CausesDonation extends Model
     protected $table = 'tb_causes_donation';
 
     protected $fillable = [
+        'user_id',
         'causes_id',
         'donation_amt',
         'name',
