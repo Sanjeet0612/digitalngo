@@ -97,7 +97,8 @@ Route::prefix('donation')->middleware('auth')->group(function () {
     Route::controller(DonationController::class)->group(function () {
         Route::get('/manage-causes-donation', 'manage_causes_donation')->name('manage_causes_donation');
         Route::get('/cause-donation/{id}', 'cause_donation')->name('cause_donation');
-        Route::post('/donation_for_cause', 'donation_for_cause')->name('donation_for_cause');
+        Route::post('/donation-for-cause', 'donation_for_cause')->name('donation_for_cause');
+        Route::get('/my-causes-donation', 'my_causes_donation')->name('my_causes_donation');
         
     });
 });
