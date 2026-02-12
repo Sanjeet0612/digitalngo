@@ -18,7 +18,9 @@ class DashboardController extends Controller{
         $refer_code = $user->refer_code;
         $myRefrerUser = User::where('sponsor_code',$refer_code)->count();
         $totDonation  = CausesDonation::where('user_id',$user_id)->where('is_paid',1)->sum('donation_amt');
-        return view('dashboard.index',compact('myRefrerUser','totDonation'));
+        $member = GuestDonation::where('user_id',$user_id)->where('d_type','Membership')->first();
+        return view('dashboard.index',compact('myRefrerUser','totDonation','member'));
+
     }
 
     public function become_member(Request $request){
