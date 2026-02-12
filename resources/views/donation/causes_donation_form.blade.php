@@ -1,7 +1,7 @@
 @extends('layout.layout')
 @php
-    $title='Company';
-    $subTitle = 'Settings - Company';
+    $title='Causes Donation';
+    $subTitle = 'Causes Donation';
 
 @endphp
 
