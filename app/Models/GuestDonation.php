@@ -12,6 +12,7 @@ class GuestDonation extends Model
     protected $table = 'tb_guest_donation';
 
     protected $fillable = [
+        'user_id',
         'package_amt',
         'd_type',
         'name',
@@ -25,5 +26,7 @@ class GuestDonation extends Model
         'status',
         'causes',
         'pan_no',
+        'utr_number',
+        'screenshot',
     ];
 }
