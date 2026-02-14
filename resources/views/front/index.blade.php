@@ -1,5 +1,4 @@
 @include('front.includes.new_header')
-
     <!-- Banner Start -->
     <section class="main-banner home-style-second">
         <div class="slides-wrap">
@@ -394,6 +393,7 @@
                 <div class="owl-carousel owl-theme nav-light" id="home-second-testimonials">
                         
                     <!-- Client Testimonials Alternate Slider Item -->
+                    @foreach($testimonial as $testimonialVal)
                     <div class="item">
                         <div class="container">
                             <div class="row">
@@ -401,13 +401,13 @@
                                     <div class="client-testimonial-alternate">
                                         <div class="client-inner-content">
                                             <i class="charity-quotes"></i>
-                                            <p>Mahror Foundation is a nonprofit organization that is working towards the evnironmental issues and human welfare, we are a group of members which is supported by a few sponsors which the same vision to make our Planet Greener </p>
+                                            <p>{{$testimonialVal->description}} </p>
                                         </div>
                                         <div class="client-testimonial-icon">
-                                            <img src="{{url('/')}}/front/assets/images/team/jeet.jpg" alt="">
+                                            <img src="{{asset('storage/'.$testimonialVal->profile_img)}}" alt="">
                                             <div class="text">
-                                                <div class="name">Jeet</div>
-                                                <div class="post">Senior Activist</div>
+                                                <div class="name">{{$testimonialVal->name}}</div>
+                                                <div class="post">{{$testimonialVal->designation}}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -415,56 +415,8 @@
                             </div>
                         </div>                        
                     </div>
+                    @endforeach
                     <!-- Client Testimonials Alternate Slider Item -->
-                
-                    <!-- Client Testimonials Alternate Slider Item -->
-                    <div class="item">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-lg-8 col-md-11 mx-auto">
-                                    <div class="client-testimonial-alternate">
-                                        <div class="client-inner-content">
-                                            <i class="charity-quotes"></i>
-                                            <p>Mahror Foundation is a nonprofit organization that is working towards the evnironmental issues and human welfare, we are a group of members which is supported by a few sponsors which the same vision to make our Planet Greener</p>
-                                        </div>
-                                        <div class="client-testimonial-icon">
-                                            <img src="{{url('/')}}/front/assets/images/team/chaube.jpeg" alt="">
-                                            <div class="text">
-                                                <div class="name">Surya Kumar Chaubey</div>
-                                                <div class="post">Senior Activist</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>                        
-                    </div>
-                    <!-- Client Testimonials Alternate Slider Item -->
-                
-                    <!-- Client Testimonials Alternate Slider Item -->
-                    <div class="item">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-lg-8 col-md-11 mx-auto">
-                                    <div class="client-testimonial-alternate">
-                                        <div class="client-inner-content">
-                                            <i class="charity-quotes"></i>
-                                            <p>Mahror Foundation is a nonprofit organization that is working towards the evnironmental issues and human welfare, we are a group of members which is supported by a few sponsors which the same vision to make our Planet Greener</p>
-                                        </div>
-                                        <div class="client-testimonial-icon">
-                                            <img src="{{url('/')}}/front/assets/images/team/team-4.jpg" alt="">
-                                            <div class="text">
-                                                <div class="name">Krishn Kant Singh</div>
-                                                <div class="post">Senior Activist</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>                        
-                    </div>
-                    <!-- Client Testimonials Alternate Slider Item -->
-                
                 </div>
             </div>
         </section>
@@ -484,7 +436,6 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="owl-carousel owl-theme" id="home-second-blog-post">
-                       
                             <!-- Blog Post Slider Item -->
                             @foreach($allBlog as $allBlogVal)
                             <div class="item">
