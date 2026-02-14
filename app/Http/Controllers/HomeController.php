@@ -11,6 +11,7 @@ use App\Models\Admin\Gallery;
 use App\Models\Admin\KeyFeature;
 use App\Models\Admin\CausesCategory;
 use App\Models\Admin\Causes;
+use App\Models\Admin\TestimonialModel;
 use App\Models\CausesDonation;
 use App\Models\Blog;
 use App\Models\BlogComment;
@@ -29,7 +30,8 @@ class HomeController extends Controller{
         $allEvent = Event::where('status',1)->orderBy('id','desc')->get();
         $allBlog  = Blog::where('status','published')->get();
         $donationAmt = GuestDonation::where('d_type', 'easy_donation')->where('status', 1)->sum('package_amt');
-        return view('front.index',compact('banners','allEvent','allBlog','donationAmt'));
+        $testimonial = TestimonialModel::where('status',1)->get();
+        return view('front.index',compact('banners','allEvent','allBlog','donationAmt','testimonial'));
     }
     public function about(Request $request){
         $allManagement = Management::where('team_type', 'management')->where('status', 1)->take(4)->get();
