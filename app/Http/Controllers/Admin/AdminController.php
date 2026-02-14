@@ -21,7 +21,7 @@ use Carbon\Carbon;
 
 class AdminController extends Controller{
 
-    public function index(Request $request){
+    public function admin_log(Request $request){
         return view('admin.authentication.signin');
     }
 
@@ -35,7 +35,7 @@ class AdminController extends Controller{
             $request->session()->regenerate();
             return redirect()->intended(route('admin.dashboard'));
         }
-        return redirect('admin/')->withErrors(['email' =>'Invalid admin credentials'])->withInput();
+        return redirect('admin/admin-log')->withErrors(['email' =>'Invalid admin credentials'])->withInput();
     }
 
     public function dashboard(Request $request){
@@ -368,10 +368,10 @@ class AdminController extends Controller{
             // Clear session
             $request->session()->invalidate();
             $request->session()->regenerateToken();
-            return redirect('/admin')->with('success', "User $name has logged out successfully");
+            return redirect('admin/admin-log')->with('success', "User $name has logged out successfully");
         }
         // If no user is logged in
-        return redirect('/admin');
+        return redirect('admin/admin-log');
     }
 
 }
