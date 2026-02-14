@@ -236,6 +236,7 @@ Route::prefix('admin')->group(function () {
         // Testimonial
         Route::get('manage-testimonial', [AdminTestimonial::class, 'manage_testimonial'])->name('admin.manage_testimonial');
         Route::post('add-testimonial', [AdminTestimonial::class, 'add_testimonial'])->name('admin.add_testimonial');
+        Route::get('delete-testimonial/{id}', [AdminTestimonial::class, 'delete_testimonial'])->name('admin.delete_testimonial');
         
         
         
