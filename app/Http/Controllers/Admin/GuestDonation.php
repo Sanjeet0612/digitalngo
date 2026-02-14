@@ -20,7 +20,6 @@ class GuestDonation extends Controller
 
     public function update_guest_donation(Request $request,$id){
         if($request->isMethod('put')){
-            
             $donationData = Donation::findOrFail($id);
             //print_r($donationData); die();
             $updated = $donationData->update([
