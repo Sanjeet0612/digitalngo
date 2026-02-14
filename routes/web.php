@@ -126,15 +126,13 @@ Route::prefix('settings')->middleware('auth')->group(function () {
 
 
 
-
-
 // Admin Section 
 
 //Route::get('/admin',[AdminController::class,'index'])->name('index');
 
 Route::prefix('admin')->group(function () {
     // Login
-    Route::get('/', [AdminController::class, 'index'])->name('index');
+    Route::get('/admin-log', [AdminController::class, 'admin_log'])->name('admin_log');
     Route::post('/login', [AdminController::class, 'login'])->name('admin.login.post');
     // Logout
     Route::get('/logout', [AdminController::class, 'logout'])->name('admin.logout');
