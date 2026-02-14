@@ -145,6 +145,10 @@
                                 <textarea  id="description" name="description" class="form-control radius-8" ></textarea>
                             </div>
                             <div class="col-6 mb-20">
+                                <label for="designation" class="form-label fw-semibold text-primary-light text-sm mb-8"> Designation </label>
+                                <input type="text"  id="designation" name="designation" class="form-control radius-8" >
+                            </div>
+                            <div class="col-6 mb-20">
                                 <label for="country" class="form-label fw-semibold text-primary-light text-sm mb-8">Status </label>
                                 <select name="status" class="form-control radius-8 form-select" id="country">
                                     <option selected disabled>Select One</option>
