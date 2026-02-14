@@ -168,7 +168,7 @@
 
             <li class="dropdown">
                 <a  href="javascript:void(0)">
-                    <i class="ri-heart-2-line"></i>
+                    <i class="ri-news-line text-xl me-6 d-flex w-auto"></i>
                     <span>Testimonial</span>
                 </a>
                 <ul class="sidebar-submenu">
