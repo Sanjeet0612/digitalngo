@@ -166,6 +166,19 @@
                 </ul>
             </li>
 
+            <li class="dropdown">
+                <a  href="javascript:void(0)">
+                    <i class="ri-heart-2-line"></i>
+                    <span>Testimonial</span>
+                </a>
+                <ul class="sidebar-submenu">
+                    <li>
+                        <a  href="{{route('admin.manage_testimonial')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Manage Testimonial</a>
+                    </li>
+                   
+                </ul>
+            </li>
+
             
 
            
