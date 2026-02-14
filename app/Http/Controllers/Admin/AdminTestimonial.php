@@ -27,6 +27,7 @@ class AdminTestimonial extends Controller
 
             TestimonialModel::create([
                 'name' => $request->name,
+                'designation' => $request->designation,
                 'description' => $request->description,
                 'profile_img' => $imagePath,
                 'status' => $request->status,
