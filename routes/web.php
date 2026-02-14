@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\KeyFeatureController;
 use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\Admin\CausesController;
 use App\Http\Controllers\Admin\GuestDonation;
+use App\Http\Controllers\Admin\AdminTestimonial;
 use Illuminate\Support\Facades\Route;
 
 Route::controller(HomeController::class)->group(function () {
@@ -232,7 +233,9 @@ Route::prefix('admin')->group(function () {
         Route::get('edit-guest-donation/{id}', [GuestDonation::class, 'edit_guest_donation'])->name('admin.edit_guest_donation');
         Route::put('update-guest-donation/{id}', [GuestDonation::class, 'update_guest_donation'])->name('admin.update_guest_donation');
         Route::get('delete-guest-category/{id}', [GuestDonation::class, 'delete_guest_category'])->name('admin.delete_guest_category');
-
+        // Testimonial
+        Route::get('manage-testimonial', [AdminTestimonial::class, 'manage_testimonial'])->name('admin.manage_testimonial');
+        Route::post('add-testimonial', [AdminTestimonial::class, 'add_testimonial'])->name('admin.add_testimonial');
         
         
         
