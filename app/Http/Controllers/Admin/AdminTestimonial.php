@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Admin\TestimonialModel;
 
 class AdminTestimonial extends Controller
 {
@@ -29,6 +30,8 @@ class AdminTestimonial extends Controller
                 'profile_img' => $imagePath,
                 'status' => $request->status,
             ]);
+
+            return redirect('admin/manage-testimonial')->with('success','Successfully Added!');
         }
     }
 }
