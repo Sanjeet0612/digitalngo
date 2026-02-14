@@ -9,7 +9,8 @@ use App\Models\Admin\TestimonialModel;
 class AdminTestimonial extends Controller
 {
     public function manage_testimonial(Request $request){
-        return view('admin.testimonial.manage_testimonial');
+        $testiData = TestimonialModel::all();
+        return view('admin.testimonial.manage_testimonial',compact('testiData'));
     }
 
     public function add_testimonial(Request $request){
@@ -33,5 +34,11 @@ class AdminTestimonial extends Controller
 
             return redirect('admin/manage-testimonial')->with('success','Successfully Added!');
         }
+    }
+
+    public function delete_testimonial(Request $request,$id){
+        $testi = TestimonialModel::findOrFail($id);
+        $testi->delete();
+        return redirect('admin/manage-testimonial/')->with('success', 'Testimonial deleted successfully!');
     }
 }
