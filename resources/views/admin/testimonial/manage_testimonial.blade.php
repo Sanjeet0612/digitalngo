@@ -13,6 +13,27 @@
 @section('content')
 
     <div class="card h-100 p-0 radius-12">
+          <div class="message">
+            @if($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+            @if(session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+            @if(session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            @endif
+        </div>
         <div class="card-header border-bottom bg-base py-16 px-24 d-flex align-items-center flex-wrap gap-3 justify-content-between">
             <div class="d-flex align-items-center flex-wrap gap-3">
                 <form class="navbar-search">
@@ -32,15 +53,18 @@
                     <thead>
                         <tr>
                             <th scope="col"> S.L</th>
+                            <th scope="col" class="text-center">Profile Image</th>
                             <th scope="col" class="text-center">Name</th>
                             <th scope="col" class="text-center">Status</th>
                             <th scope="col" class="text-center">Action</th>
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach($testiData as $testiDataVal)
                         <tr>
                             <td>01</td>
-                            <td class="text-center">English(Default)</td>
+                            <td class="text-center"><img src="{{asset('storage/'.$testiDataVal->profile_img)}}" style="width:100px;"></td>
+                            <td class="text-center">{{$testiDataVal->name}}</td>
                             <td>
                                 <div class="form-switch switch-primary d-flex align-items-center justify-content-center">
                                     <input class="form-check-input" type="checkbox" role="switch" checked>
@@ -51,164 +75,14 @@
                                     <button type="button" class="bg-success-100 text-success-600 bg-hover-success-200 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle" data-bs-toggle="modal" data-bs-target="#exampleModalEdit">
                                         <iconify-icon icon="lucide:edit" class="menu-icon"></iconify-icon>
                                     </button>
-                                    <button type="button" class="remove-item-button bg-danger-focus bg-hover-danger-200 text-danger-600 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle">
+                                    <a href="{{route('admin.delete_testimonial',$testiDataVal->id)}}" class="bg-danger-focus bg-hover-danger-200 text-danger-600 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle">
                                         <iconify-icon icon="fluent:delete-24-regular" class="menu-icon"></iconify-icon>
-                                    </button>
+                                    </a>
                                 </div>
                             </td>
                         </tr>
-                        <tr>
-                            <td>02</td>
-                            <td class="text-center">Bangla</td>
-                            <td>
-                                <div class="form-switch switch-primary d-flex align-items-center justify-content-center">
-                                    <input class="form-check-input" type="checkbox" role="switch">
-                                </div>
-                            </td>
-                            <td class="text-center">
-                                <div class="d-flex align-items-center gap-10 justify-content-center">
-                                    <button type="button" class="bg-success-100 text-success-600 bg-hover-success-200 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle" data-bs-toggle="modal" data-bs-target="#exampleModalEdit">
-                                        <iconify-icon icon="lucide:edit" class="menu-icon"></iconify-icon>
-                                    </button>
-                                    <button type="button" class="remove-item-button bg-danger-focus bg-hover-danger-200 text-danger-600 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle">
-                                        <iconify-icon icon="fluent:delete-24-regular" class="menu-icon"></iconify-icon>
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>03</td>
-                            <td class="text-center">Bangla</td>
-                            <td>
-                                <div class="form-switch switch-primary d-flex align-items-center justify-content-center">
-                                    <input class="form-check-input" type="checkbox" role="switch">
-                                </div>
-                            </td>
-                            <td class="text-center">
-                                <div class="d-flex align-items-center gap-10 justify-content-center">
-                                    <button type="button" class="bg-success-100 text-success-600 bg-hover-success-200 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle" data-bs-toggle="modal" data-bs-target="#exampleModalEdit">
-                                        <iconify-icon icon="lucide:edit" class="menu-icon"></iconify-icon>
-                                    </button>
-                                    <button type="button" class="remove-item-button bg-danger-focus bg-hover-danger-200 text-danger-600 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle">
-                                        <iconify-icon icon="fluent:delete-24-regular" class="menu-icon"></iconify-icon>
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>04</td>
-                            <td class="text-center">Bangla</td>
-                            <td>
-                                <div class="form-switch switch-primary d-flex align-items-center justify-content-center">
-                                    <input class="form-check-input" type="checkbox" role="switch">
-                                </div>
-                            </td>
-                            <td class="text-center">
-                                <div class="d-flex align-items-center gap-10 justify-content-center">
-                                    <button type="button" class="bg-success-100 text-success-600 bg-hover-success-200 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle" data-bs-toggle="modal" data-bs-target="#exampleModalEdit">
-                                        <iconify-icon icon="lucide:edit" class="menu-icon"></iconify-icon>
-                                    </button>
-                                    <button type="button" class="remove-item-button bg-danger-focus bg-hover-danger-200 text-danger-600 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle">
-                                        <iconify-icon icon="fluent:delete-24-regular" class="menu-icon"></iconify-icon>
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>05</td>
-                            <td class="text-center">German</td>
-                            <td>
-                                <div class="form-switch switch-primary d-flex align-items-center justify-content-center">
-                                    <input class="form-check-input" type="checkbox" role="switch">
-                                </div>
-                            </td>
-                            <td class="text-center">
-                                <div class="d-flex align-items-center gap-10 justify-content-center">
-                                    <button type="button" class="bg-success-100 text-success-600 bg-hover-success-200 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle" data-bs-toggle="modal" data-bs-target="#exampleModalEdit">
-                                        <iconify-icon icon="lucide:edit" class="menu-icon"></iconify-icon>
-                                    </button>
-                                    <button type="button" class="remove-item-button bg-danger-focus bg-hover-danger-200 text-danger-600 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle">
-                                        <iconify-icon icon="fluent:delete-24-regular" class="menu-icon"></iconify-icon>
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>06</td>
-                            <td class="text-center">German</td>
-                            <td>
-                                <div class="form-switch switch-primary d-flex align-items-center justify-content-center">
-                                    <input class="form-check-input" type="checkbox" role="switch">
-                                </div>
-                            </td>
-                            <td class="text-center">
-                                <div class="d-flex align-items-center gap-10 justify-content-center">
-                                    <button type="button" class="bg-success-100 text-success-600 bg-hover-success-200 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle" data-bs-toggle="modal" data-bs-target="#exampleModalEdit">
-                                        <iconify-icon icon="lucide:edit" class="menu-icon"></iconify-icon>
-                                    </button>
-                                    <button type="button" class="remove-item-button bg-danger-focus bg-hover-danger-200 text-danger-600 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle">
-                                        <iconify-icon icon="fluent:delete-24-regular" class="menu-icon"></iconify-icon>
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>07</td>
-                            <td class="text-center">German</td>
-                            <td>
-                                <div class="form-switch switch-primary d-flex align-items-center justify-content-center">
-                                    <input class="form-check-input" type="checkbox" role="switch">
-                                </div>
-                            </td>
-                            <td class="text-center">
-                                <div class="d-flex align-items-center gap-10 justify-content-center">
-                                    <button type="button" class="bg-success-100 text-success-600 bg-hover-success-200 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle" data-bs-toggle="modal" data-bs-target="#exampleModalEdit">
-                                        <iconify-icon icon="lucide:edit" class="menu-icon"></iconify-icon>
-                                    </button>
-                                    <button type="button" class="remove-item-button bg-danger-focus bg-hover-danger-200 text-danger-600 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle">
-                                        <iconify-icon icon="fluent:delete-24-regular" class="menu-icon"></iconify-icon>
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>08</td>
-                            <td class="text-center">Hindi</td>
-                            <td>
-                                <div class="form-switch switch-primary d-flex align-items-center justify-content-center">
-                                    <input class="form-check-input" type="checkbox" role="switch">
-                                </div>
-                            </td>
-                            <td class="text-center">
-                                <div class="d-flex align-items-center gap-10 justify-content-center">
-                                    <button type="button" class="bg-success-100 text-success-600 bg-hover-success-200 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle" data-bs-toggle="modal" data-bs-target="#exampleModalEdit">
-                                        <iconify-icon icon="lucide:edit" class="menu-icon"></iconify-icon>
-                                    </button>
-                                    <button type="button" class="remove-item-button bg-danger-focus bg-hover-danger-200 text-danger-600 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle">
-                                        <iconify-icon icon="fluent:delete-24-regular" class="menu-icon"></iconify-icon>
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>09</td>
-                            <td class="text-center">Hindi</td>
-                            <td>
-                                <div class="form-switch switch-primary d-flex align-items-center justify-content-center">
-                                    <input class="form-check-input" type="checkbox" role="switch">
-                                </div>
-                            </td>
-                            <td class="text-center">
-                                <div class="d-flex align-items-center gap-10 justify-content-center">
-                                    <button type="button" class="bg-success-100 text-success-600 bg-hover-success-200 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle" data-bs-toggle="modal" data-bs-target="#exampleModalEdit">
-                                        <iconify-icon icon="lucide:edit" class="menu-icon"></iconify-icon>
-                                    </button>
-                                    <button type="button" class="remove-item-button bg-danger-focus bg-hover-danger-200 text-danger-600 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle">
-                                        <iconify-icon icon="fluent:delete-24-regular" class="menu-icon"></iconify-icon>
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
+                        @endforeach
+                      
                     </tbody>
                 </table>
             </div>
